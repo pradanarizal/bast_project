@@ -1,100 +1,103 @@
-<?php
-defined('BASEPATH') OR exit('No direct script access allowed');
-?><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="utf-8">
-	<title>Welcome to CodeIgniter</title>
 
-	<style type="text/css">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	::selection { background-color: #E13300; color: white; }
-	::-moz-selection { background-color: #E13300; color: white; }
+    <title>SB Admin 2 - Login</title>
 
-	body {
-		background-color: #fff;
-		margin: 40px;
-		font: 13px/20px normal Helvetica, Arial, sans-serif;
-		color: #4F5155;
-	}
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
-	a {
-		color: #003399;
-		background-color: transparent;
-		font-weight: normal;
-		text-decoration: none;
-	}
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
-	a:hover {
-		color: #97310e;
-	}
-
-	h1 {
-		color: #444;
-		background-color: transparent;
-		border-bottom: 1px solid #D0D0D0;
-		font-size: 19px;
-		font-weight: normal;
-		margin: 0 0 14px 0;
-		padding: 14px 15px 10px 15px;
-	}
-
-	code {
-		font-family: Consolas, Monaco, Courier New, Courier, monospace;
-		font-size: 12px;
-		background-color: #f9f9f9;
-		border: 1px solid #D0D0D0;
-		color: #002166;
-		display: block;
-		margin: 14px 0 14px 0;
-		padding: 12px 10px 12px 10px;
-	}
-
-	#body {
-		margin: 0 15px 0 15px;
-		min-height: 96px;
-	}
-
-	p {
-		margin: 0 0 10px;
-		padding:0;
-	}
-
-	p.footer {
-		text-align: right;
-		font-size: 11px;
-		border-top: 1px solid #D0D0D0;
-		line-height: 32px;
-		padding: 0 10px 0 10px;
-		margin: 20px 0 0 0;
-	}
-
-	#container {
-		margin: 10px;
-		border: 1px solid #D0D0D0;
-		box-shadow: 0 0 8px #D0D0D0;
-	}
-	</style>
 </head>
-<body>
 
-<div id="container">
-	<h1>Welcome to CodeIgniter!</h1>
+<body class="bg-gradient-primary">
 
-	<div id="body">
-		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
+    <div class="container">
 
-		<p>If you would like to edit this page you'll find it located at:</p>
-		<code>application/views/welcome_message.php</code>
+        <!-- Outer Row -->
+        <div class="row justify-content-center">
 
-		<p>The corresponding controller for this page is found at:</p>
-		<code>application/controllers/Welcome.php</code>
+            <div class="col-xl-10 col-lg-12 col-md-9">
 
-		<p>If you are exploring CodeIgniter for the very first time, you should start by reading the <a href="userguide3/">User Guide</a>.</p>
-	</div>
+                <div class="card o-hidden border-0 shadow-lg my-5">
+                    <div class="card-body p-0">
+                        <!-- Nested Row within Card Body -->
+                        <div class="row">
+                            <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                    </div>
+                                    <form class="user">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control form-control-user"
+                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                placeholder="Enter Email Address...">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="password" class="form-control form-control-user"
+                                                id="exampleInputPassword" placeholder="Password">
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="custom-control custom-checkbox small">
+                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <label class="custom-control-label" for="customCheck">Remember
+                                                    Me</label>
+                                            </div>
+                                        </div>
+                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
+                                            Login
+                                        </a>
+                                        <hr>
+                                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>
+                                    </form>
+                                    <hr>
+                                    <div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-	<p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
-</div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
 
 </body>
+
 </html>
