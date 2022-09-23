@@ -18,11 +18,11 @@ class Login_controller extends CI_Controller
 
 	public function toNocDashboard()
 	{
-		$this->load->view('dashboard_noc/head');
-		$this->load->view('dashboard_noc/sidebar_noc');
-		$this->load->view('dashboard_noc/navbar_noc');
-		$this->load->view('dashboard_noc/konten');
-		$this->load->view('dashboard_noc/footer');
+		$this->load->view('noc/head');
+		$this->load->view('noc/sidebar_noc');
+		$this->load->view('noc/navbar_noc');
+		$this->load->view('noc/konten');
+		$this->load->view('noc/footer');
 	}
 	public function loginSubmit()
 	{
@@ -52,7 +52,11 @@ class Login_controller extends CI_Controller
 	public function dashboard($role)
 	{
 		if ($role == "noc") {
-			$this->load->view('noc/dashboard_noc');
+			$this->load->view('noc/head');
+			$this->load->view('noc/sidebar_noc');
+			$this->load->view('noc/navbar_noc');
+			$this->load->view('noc/konten');
+			$this->load->view('noc/footer');
 		} elseif ($role == "user") {
 			$this->load->view('user/dashboard_user');
 		}

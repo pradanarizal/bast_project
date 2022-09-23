@@ -1,4 +1,4 @@
-
+<div style="margin: 1%;">
                     <!-- Content Row -->
                     <div class="row">
 
@@ -322,3 +322,4 @@
 
       
             <!-- End of Main Content -->
+</div>
