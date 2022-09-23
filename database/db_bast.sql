@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 23 Sep 2022 pada 08.30
+-- Waktu pembuatan: 23 Sep 2022 pada 08.43
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -34,6 +34,15 @@ CREATE TABLE `user` (
   `role` enum('user','noc','manager') NOT NULL,
   `password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `user`
+--
+
+INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
+('0000000001', 'Rifky', 'user', '123'),
+('0000000002', 'Rizal', 'noc', '321'),
+('0000000003', 'Doly', 'manager', '111');
 
 --
 -- Indexes for dumped tables
