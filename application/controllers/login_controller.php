@@ -15,9 +15,14 @@ class Login_controller extends CI_Controller
 	{
 		$this->load->view('login');
 	}
+
 	public function toNocDashboard()
 	{
-		$this->load->view('noc/dashboard_noc');
+		$this->load->view('dashboard_noc/head');
+		$this->load->view('dashboard_noc/sidebar_noc');
+		$this->load->view('dashboard_noc/navbar_noc');
+		$this->load->view('dashboard_noc/konten');
+		$this->load->view('dashboard_noc/footer');
 	}
 	public function loginSubmit()
 	{
