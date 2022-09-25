@@ -13,6 +13,9 @@ class Login_controller extends CI_Controller
 	}
 	public function index()
 	{
+		if ($this->session->userdata('status') == "login") {
+			$this->auth($this->session->userdata('role'));
+		}
 		$this->load->view('login');
 	}
 
@@ -24,7 +27,7 @@ class Login_controller extends CI_Controller
 		$this->load->view('noc/konten');
 		$this->load->view('noc/footer');
 	}
-	public function loginSubmit()
+	public function dashboard()
 	{
 		if ($this->input->post('login')) {
 			$nip = $this->input->post('nip');
@@ -33,32 +36,40 @@ class Login_controller extends CI_Controller
 				$data = $this->Model_Login->getDataforsession($nip, $password);
 				$data = array('nip' => $data['nip'], 'nama' => $data['nama'], 'role' => $data['role'], 'status' => 'login');
 				$this->session->set_userdata($data);
-				$this->dashboard($data['role']);
+				$this->auth($data['role']);
 			} else {
-				$data['error'] = "<script>alert('Username atau Password salah!');</script>";
-				$this->load->view('login', $data);
+				$data['message'] = "<script>alert('Username atau Password salah!');</script>";
+				$this->login($data);
 			}
 		} else {
 			echo "<script>alert('No Login!');</script>";
-			redirect(base_url('index.php/Controller_Login/'));
+			redirect(base_url('Controller_Login/index'));
+		}
+	}
+	public function auth($data)
+	{
+		if ($data == "noc") {
+			$this->dashboardNOC();
+		} elseif ($data == "user") {
+			$this->dashboardUser();
 		}
 	}
 	public function logout()
 	{
-		echo "<script>alert('Anda Sudah Logout!');</script>";
+		$data['message'] = "<script>alert('Anda Sudah Logout!');</script>";
 		session_destroy();
-		$this->index();
+		$this->login($data);
 	}
-	public function dashboard($role)
+	public function login($message)
 	{
-		if ($role == "noc") {
-			$this->load->view('noc/head');
-			$this->load->view('noc/sidebar_noc');
-			$this->load->view('noc/navbar_noc');
-			$this->load->view('noc/konten');
-			$this->load->view('noc/footer');
-		} elseif ($role == "user") {
-			$this->load->view('user/dashboard_user');
-		}
+		$this->load->view('login', $message);
+	}
+	public function dashboardUser()
+	{
+		redirect(base_url('user'));
+	}
+	public function dashboardNOC()
+	{
+		redirect(base_url('noc'));
 	}
 }

@@ -16,6 +16,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
@@ -346,6 +347,48 @@
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">Dashboard User</h1>
                         <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pengajuan</h6>
+                        </div>
+                        <div class="card-body">
+
+                            <?php
+                            $no = 1;
+                            if ($pengajuan) {
+                            ?>
+                                <table id="myTable" class="display">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>No.Tiket</th>
+                                            <th>Nama Barang</th>
+                                            <th>Qty</th>
+                                            <th>Perihal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        foreach ($pengajuan as $data) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $no++; ?></td>
+                                                <td><?php echo $data['no_tiket']; ?></td>
+                                                <td><?php echo $data['nama_barang']; ?></td>
+                                                <td><?php echo $data['qty']; ?></td>
+                                                <td><?php echo $data['perihal']; ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            <?php
+                            } else {
+                                echo "<h1>Riwayat Kosong!</h1>";
+                            }
+                            ?>
+                        </div>
                     </div>
 
                     <!-- Content Row -->
@@ -686,7 +729,7 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="<?php echo base_url('login_controller/logout') ?>">Logout</a>
+                    <a class="btn btn-primary" href="<?php echo base_url('login_controller/logout'); ?>">Logout</a>
                 </div>
             </div>
         </div>
@@ -708,6 +751,14 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url(); ?>assets/js/demo/chart-area-demo.js"></script>
     <script src="<?php echo base_url(); ?>assets/js/demo/chart-pie-demo.js"></script>
+
+    <script src="http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#myTable').DataTable();
+        });
+    </script>
 
 </body>
 

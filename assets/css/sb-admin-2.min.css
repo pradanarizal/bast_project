@@ -341,6 +341,7 @@ progress {
 
 [type=number]::-webkit-inner-spin-button,
 [type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
     height: auto
 }
 
@@ -11655,3 +11656,25 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+/* Start Custom CSS */
+.custom-form{
+    border-radius: 10px !important;
+}
+.btn .custom-button{
+    color: white !important;
+    font-size: 24px !important;
+    background-color: #FB1010 !important;
+    border-radius:  50px !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0 !important;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield !important;
+}
+ /* End Custom CSS */
