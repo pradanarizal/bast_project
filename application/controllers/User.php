@@ -20,7 +20,12 @@ class User extends CI_Controller
             $this->backToLogin();
         }
         $data['pengajuan'] = $this->Model_User->getPengajuan($this->session->userdata['nip']);
-        $this->load->view('user/dashboard_user', $data);
+        $this->load->view('user/head', $data);
+        $this->load->view('user/sidebar_user', $data);
+        $this->load->view('user/navbar_user', $data);
+        $this->load->view('user/konten_user', $data);
+        $this->load->view('user/footer', $data);
+        
     }
     public function backToLogin()
     {

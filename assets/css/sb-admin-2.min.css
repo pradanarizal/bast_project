@@ -7251,9 +7251,10 @@ button.bg-dark:hover {
     justify-content: flex-end!important
 }
 
-.justify-content-center {
+
+/* .justify-content-center {
     justify-content: center!important
-}
+} */
 
 .justify-content-between {
     justify-content: space-between!important
@@ -10255,8 +10256,8 @@ a:focus {
 }
 
 .bg-gradient-primary {
-    background-color: #4e73df;
-    background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
+    background-color: #111D2C;
+    /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
     background-size: cover
 }
 
@@ -10522,6 +10523,10 @@ a:focus {
     width: 2rem
 }
 
+.img-sidebar {
+    height: 50px
+}
+
 .topbar {
     height: 4.375rem
 }
@@ -10743,7 +10748,7 @@ a:focus {
     padding: .5rem 1rem;
     margin: 0 .5rem;
     display: block;
-    color: #3a3b45;
+    color: #ffff;
     text-decoration: none;
     border-radius: .35rem;
     white-space: nowrap
@@ -10831,7 +10836,7 @@ a:focus {
     text-align: center;
     padding: 0 1rem;
     font-weight: 800;
-    font-size: .65rem
+    /* font-size: .65rem */
 }
 
 .sidebar .sidebar-card {
@@ -10926,6 +10931,9 @@ a:focus {
     .sidebar.toggled {
         overflow: visible;
         width: 6.5rem!important
+    }
+    .sidebar.toggled .img-sidebar {
+        max-height: 25px
     }
     .sidebar.toggled .nav-item .collapse {
         position: absolute;
@@ -11045,7 +11053,7 @@ a:focus {
 }
 
 .sidebar-dark .sidebar-heading {
-    color: rgba(255, 255, 255, .4)
+    color: #FFFF
 }
 
 .sidebar-dark .nav-item .nav-link {
@@ -11656,25 +11664,36 @@ footer.sticky-footer .copyright {
 body.sidebar-toggled footer.sticky-footer {
     width: 100%
 }
+
+
 /* Start Custom CSS */
-.custom-form{
+
+.custom-form {
     border-radius: 10px !important;
 }
-.btn .custom-button{
+
+.btn .custom-button {
     color: white !important;
     font-size: 24px !important;
     background-color: #FB1010 !important;
-    border-radius:  50px !important;
-}
-/* Chrome, Safari, Edge, Opera */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none !important;
-  margin: 0 !important;
+    border-radius: 50px !important;
 }
 
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield !important;
+
+/* Chrome, Safari, Edge, Opera */
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0 !important;
 }
- /* End Custom CSS */
+
+
+/* Firefox */
+
+input[type=number] {
+    -moz-appearance: textfield !important;
+}
+
+
+/* End Custom CSS */
