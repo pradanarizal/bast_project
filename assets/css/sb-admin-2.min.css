@@ -11669,6 +11669,11 @@ body.sidebar-toggled footer.sticky-footer {
 
 /* Start Custom CSS */
 
+.container,
+.container-login {
+    padding-top: 5rem
+}
+
 .custom-form {
     border-radius: 10px !important;
 }

@@ -28,7 +28,7 @@ if (isset($message)) {
 
 <body background="<?php echo base_url('assets/img/background.jfif'); ?>" style="background-repeat: no-repeat;background-size: cover;">
 
-    <div class="container">
+    <div class="container container-login">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
