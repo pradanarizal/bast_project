@@ -8,7 +8,7 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <img class="img-sidebar" src="<?php echo base_url('assets/img/logo_sidebar.png') ?>">
+                <img class="img-sidebar" src="<?php echo base_url('assets/img/logo.png') ?>">
             </a>
 
             <!-- Divider -->
@@ -46,7 +46,7 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Keluar</span></a>
             </li>
-            
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center tombol-sidebar">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
