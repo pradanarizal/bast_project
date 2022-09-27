@@ -19,11 +19,11 @@ class Noc extends CI_Controller
         if ($this->session->userdata('role') != "noc") {
             $this->backToLogin();
         }
-        $this->load->view('head');
-        $this->load->view('sidebar');
-        $this->load->view('navbar');
-        $this->load->view('admin/konten_admin');
-        $this->load->view('footer');
+        $this->load->view('noc/head');
+        $this->load->view('noc/sidebar_noc');
+        $this->load->view('noc/navbar_noc');
+        $this->load->view('noc/konten');
+        $this->load->view('noc/footer');
     }
     public function backToLogin()
     {
