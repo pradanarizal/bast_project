@@ -29,11 +29,8 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-<<<<<<< HEAD
                     <i class="fas fa-file"></i>
-=======
-                    <i class="fas fa-fw fa-file"></i>
->>>>>>> 1c9553216fefd14083b9c303ea13510d02a9e47e
+
                     <span>Pengajuan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
