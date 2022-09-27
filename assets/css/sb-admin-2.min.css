@@ -630,8 +630,7 @@ pre code {
     display: flex;
     flex-wrap: wrap;
     margin-right: -.75rem;
-    margin-left: -.75rem;
-    justify-content: space-around
+    margin-left: -.75rem
 }
 
 .no-gutters {
