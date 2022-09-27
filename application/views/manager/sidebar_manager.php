@@ -48,7 +48,7 @@
             </li>
             
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+            <div class="text-center tombol-sidebar">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
         </ul>

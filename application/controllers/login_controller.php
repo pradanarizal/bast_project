@@ -19,14 +19,14 @@ class Login_controller extends CI_Controller
 		$this->load->view('login');
 	}
 
-	public function toNocDashboard()
-	{
-		$this->load->view('noc/head');
-		$this->load->view('noc/sidebar_noc');
-		$this->load->view('noc/navbar_noc');
-		$this->load->view('noc/konten');
-		$this->load->view('noc/footer');
-	}
+	// public function toNocDashboard()
+	// {
+	// 	$this->load->view('noc/head');
+	// 	$this->load->view('noc/sidebar_noc');
+	// 	$this->load->view('noc/navbar_noc');
+	// 	$this->load->view('noc/konten');
+	// 	$this->load->view('noc/footer');
+	// }
 	public function dashboard()
 	{
 		if ($this->input->post('login')) {
@@ -48,9 +48,9 @@ class Login_controller extends CI_Controller
 	}
 	public function auth($data)
 	{
-		if ($data == "noc") {
+		if ($data == "admin") {
 			$this->dashboardNOC();
-		} elseif ($data == "user") {
+		} elseif ($data == "manager") {
 			$this->dashboardUser();
 		}
 	}
@@ -66,10 +66,10 @@ class Login_controller extends CI_Controller
 	}
 	public function dashboardUser()
 	{
-		redirect(base_url('user'));
+		redirect(base_url('manager'));
 	}
 	public function dashboardNOC()
 	{
-		redirect(base_url('noc'));
+		redirect(base_url('admin'));
 	}
 }

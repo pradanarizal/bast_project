@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class User extends CI_Controller
+class Manager extends CI_Controller
 {
     public function __construct()
     {
@@ -16,15 +16,15 @@ class User extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             $this->backToLogin();
         }
-        if ($this->session->userdata('role') != "user") {
+        if ($this->session->userdata('role') != "manager") {
             $this->backToLogin();
         }
         $data['pengajuan'] = $this->Model_User->getPengajuan($this->session->userdata['nip']);
-        $this->load->view('user/head', $data);
-        $this->load->view('user/sidebar_user', $data);
-        $this->load->view('user/navbar_user', $data);
-        $this->load->view('user/konten_user', $data);
-        $this->load->view('user/footer', $data);
+        $this->load->view('head', $data);
+        $this->load->view('manager/sidebar_manager', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('manager/konten_manager', $data);
+        $this->load->view('footer', $data);
         
     }
     public function backToLogin()

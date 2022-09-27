@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Noc extends CI_Controller
+class Admin extends CI_Controller
 {
     public function __construct()
     {
@@ -16,14 +16,14 @@ class Noc extends CI_Controller
         if ($this->session->userdata('status') != "login") {
             $this->backToLogin();
         }
-        if ($this->session->userdata('role') != "noc") {
+        if ($this->session->userdata('role') != "admin") {
             $this->backToLogin();
         }
-        $this->load->view('noc/head');
-        $this->load->view('noc/sidebar_noc');
-        $this->load->view('noc/navbar_noc');
-        $this->load->view('noc/konten');
-        $this->load->view('noc/footer');
+        $this->load->view('head');
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('navbar');
+        $this->load->view('admin/konten_admin');
+        $this->load->view('footer');
     }
     public function backToLogin()
     {
