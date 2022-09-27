@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Sep 2022 pada 19.35
--- Versi server: 10.4.6-MariaDB
--- Versi PHP: 7.3.8
+-- Generation Time: Sep 27, 2022 at 07:43 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pengajuan`
+-- Table structure for table `pengajuan`
 --
 
 CREATE TABLE `pengajuan` (
@@ -38,7 +37,7 @@ CREATE TABLE `pengajuan` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pengajuan`
+-- Dumping data for table `pengajuan`
 --
 
 INSERT INTO `pengajuan` (`id_pengajuan`, `nip`, `no_tiket`, `nama_barang`, `qty`, `perihal`) VALUES
@@ -50,37 +49,37 @@ INSERT INTO `pengajuan` (`id_pengajuan`, `nip`, `no_tiket`, `nama_barang`, `qty`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `nip` varchar(10) NOT NULL,
   `nama` varchar(50) NOT NULL,
-  `role` enum('user','noc','manager') NOT NULL,
+  `role` enum('manager','admin') NOT NULL,
   `password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
-('0000000001', 'Rifky', 'user', '123'),
-('0000000002', 'Rizal', 'noc', '321'),
-('0000000003', 'Doly', 'user', '111');
+('0000000001', 'Rifky', 'manager', '123'),
+('0000000002', 'Rizal', '', '321'),
+('0000000003', 'Doly', '', '111');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indeks untuk tabel `pengajuan`
+-- Indexes for table `pengajuan`
 --
 ALTER TABLE `pengajuan`
   ADD PRIMARY KEY (`id_pengajuan`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`nip`);
