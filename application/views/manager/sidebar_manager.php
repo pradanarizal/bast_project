@@ -12,12 +12,14 @@
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
+
             <div class="sidebar-heading">
-                MENU
+                Menu
             </div>
+
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
@@ -29,7 +31,7 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-file"></i>
+                    <i class="fas fa-fw fa-folder"></i>
                     <span>Pengajuan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
