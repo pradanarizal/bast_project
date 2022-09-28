@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Sep 2022 pada 08.18
+-- Waktu pembuatan: 28 Sep 2022 pada 15.59
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -60,6 +60,7 @@ CREATE TABLE `requestor` (
   `nama` varchar(50) NOT NULL,
   `bagian` varchar(50) NOT NULL,
   `jabatan` varchar(50) NOT NULL,
+  `nama_barang` varchar(100) NOT NULL,
   `keluhan` text NOT NULL,
   `no_tiket` int(10) NOT NULL,
   `no_aset` varchar(20) NOT NULL,
@@ -70,8 +71,8 @@ CREATE TABLE `requestor` (
 -- Dumping data untuk tabel `requestor`
 --
 
-INSERT INTO `requestor` (`nik`, `nama`, `bagian`, `jabatan`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`) VALUES
-('3333234802010002', 'Asep', 'Rangkasbitung', 'Staff Stasiun', 'Gate Rusak', 457623, '88899988', 'hardware');
+INSERT INTO `requestor` (`nik`, `nama`, `bagian`, `jabatan`, `nama_barang`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`) VALUES
+('3333234802010002', 'Asep', 'Rangkasbitung', 'Staff Stasiun', 'Gate', 'Gate Rusak', 457623, '88899988', 'hardware');
 
 -- --------------------------------------------------------
 
