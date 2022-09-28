@@ -4,7 +4,34 @@
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
                         <h1 class="h3 mb-0 text-gray-800">BERANDA</h1>
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                    </div>
+
+                    <div class="mb-4">
+                        <table class="tabel" cellpadding="10px">
+                            <tr>
+                                <td>
+                                    <div class="card box bg-primary shadow">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <h6>Tolak Permintaan Approve</h4>
+                                            <h1>30</h1>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="card box bg-danger shadow">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <h6>Tolak Permintaan Approve</h4>
+                                            <h1>30</h1>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="card box bg-success shadow">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                        <h6>Tolak Permintaan Approve</h4>
+                                            <h1>30</h1>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
                     </div>
 
                     <div class="card shadow mb-4">
@@ -15,7 +42,7 @@
 
                             <?php
                             $no = 1;
-                            if ($pengajuan) {
+                            if ($requestor) {
                             ?>
                                 <table id="myTable" class="display">
                                     <thead>
@@ -23,20 +50,20 @@
                                             <th>No</th>
                                             <th>No.Tiket</th>
                                             <th>Nama Barang</th>
-                                            <th>Qty</th>
-                                            <th>Perihal</th>
+                                            <th>Requestor</th>
+                                            <th>Bagian</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        foreach ($pengajuan as $data) {
+                                        foreach ($requestor as $data) {
                                         ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $data['no_tiket']; ?></td>
                                                 <td><?php echo $data['nama_barang']; ?></td>
-                                                <td><?php echo $data['qty']; ?></td>
-                                                <td><?php echo $data['perihal']; ?></td>
+                                                <td><?php echo $data['nama']; ?></td>
+                                                <td><?php echo $data['bagian']; ?></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -91,7 +118,7 @@
                         </div> -->
 
                         <!-- Earnings (Monthly) Card Example -->
-                        
+
                         <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
@@ -119,7 +146,7 @@
                         </div> -->
 
                         <!-- Pending Requests Card Example -->
-                        
+
                         <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -138,16 +165,16 @@
                         </div>
                     </div> -->
 
-                    <!-- Content Row -->
+                        <!-- Content Row -->
 
-                    <div class="row">
+                        <div class="row">
 
-                        <!-- Area Chart -->
+                            <!-- Area Chart -->
 
-                        <!-- <div class="col-xl-8 col-lg-7">
+                            <!-- <div class="col-xl-8 col-lg-7">
                             <div class="card shadow mb-4"> -->
-                                <!-- Card Header - Dropdown -->
-                                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <!-- Card Header - Dropdown -->
+                            <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -163,9 +190,9 @@
                                     </div>
                                 </div> -->
 
-                                <!-- Card Body -->
-                               
-                               <!-- <div class="card-body">
+                            <!-- Card Body -->
+
+                            <!-- <div class="card-body">
                                     <div class="chart-area">
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
@@ -173,14 +200,14 @@
                             </div>
                         </div> -->
 
-                        <!-- Pie Chart -->
+                            <!-- Pie Chart -->
 
-                        <!-- <div class="col-xl-4 col-lg-5">
+                            <!-- <div class="col-xl-4 col-lg-5">
                             <div class="card shadow mb-4"> -->
 
-                                <!-- Card Header - Dropdown -->
-                               
-                                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                            <!-- Card Header - Dropdown -->
+
+                            <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                                     <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -196,9 +223,9 @@
                                     </div>
                                 </div> -->
 
-                                <!-- Card Body -->
-                               
-                                <!-- <div class="card-body">
+                            <!-- Card Body -->
+
+                            <!-- <div class="card-body">
                                     <div class="chart-pie pt-4 pb-2">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
@@ -218,16 +245,16 @@
                         </div>
                     </div> -->
 
-                    <!-- Content Row -->
-                   
-                   <!-- <div class="row"> -->
+                            <!-- Content Row -->
 
-                        <!-- Content Column -->
-                        
-                        <!-- <div class="col-lg-6 mb-4"> -->
+                            <!-- <div class="row"> -->
+
+                            <!-- Content Column -->
+
+                            <!-- <div class="col-lg-6 mb-4"> -->
 
                             <!-- Project Card Example -->
-                            
+
                             <!-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
@@ -257,7 +284,7 @@
                             </div> -->
 
                             <!-- Color System -->
-                           
+
                             <!-- <div class="row">
                                 <div class="col-lg-6 mb-4">
                                     <div class="card bg-primary text-white shadow">
@@ -348,7 +375,7 @@
                             </div> -->
 
                             <!-- Approach -->
-                           
+
                             <!-- <div class="card shadow mb-4">
                                 <div class="card-header py-3">
                                     <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
@@ -368,5 +395,5 @@
                 </div>
                 <!-- /.container-fluid -->
 
-            </div>
-            <!-- End of Main Content -->
+                </div>
+                <!-- End of Main Content -->

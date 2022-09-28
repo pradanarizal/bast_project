@@ -1,17 +1,16 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Model_User extends CI_Model
+class Model_Manager extends CI_Model
 {
     public function __construct()
     {
         parent::__construct();
     }
-    public function getPengajuan($nip)
+    public function getRequestor()
     {
         $this->db->select('*');
-        $this->db->from('pengajuan');
-        $this->db->where('nip', $nip);
+        $this->db->from('requestor');
         $data = $this->db->get();
         $row = $data->result_array();
         return $row;

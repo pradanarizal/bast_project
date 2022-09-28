@@ -9,7 +9,7 @@ class Manager extends CI_Controller
         $this->load->helper('url');
         $this->load->library('session');
         $this->load->database();
-        $this->load->model('Model_User');
+        $this->load->model('Model_Manager');
     }
     public function index()
     {
@@ -19,13 +19,12 @@ class Manager extends CI_Controller
         if ($this->session->userdata('role') != "manager") {
             $this->backToLogin();
         }
-        $data['pengajuan'] = $this->Model_User->getPengajuan($this->session->userdata['nip']);
+        $data['requestor'] = $this->Model_Manager->getRequestor();
         $this->load->view('head', $data);
         $this->load->view('manager/sidebar_manager', $data);
         $this->load->view('navbar', $data);
         $this->load->view('manager/konten_manager', $data);
         $this->load->view('footer', $data);
-        
     }
     public function backToLogin()
     {
