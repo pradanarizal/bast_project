@@ -64,5 +64,6 @@
             </script>
 
             </body>
-<!-- aku akbar -->
+            <!-- aku akbar gantenk xii nax depocz -->
+
             </html>
