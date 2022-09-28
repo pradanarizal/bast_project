@@ -23,7 +23,7 @@ class Manager extends CI_Controller
         $this->load->view('head', $data);
         $this->load->view('manager/sidebar_manager', $data);
         $this->load->view('navbar', $data);
-        $this->load->view('manager/konten_manager', $data);
+        $this->load->view('manager/dashboard_manager', $data);
         $this->load->view('footer', $data);
     }
     public function backToLogin()
