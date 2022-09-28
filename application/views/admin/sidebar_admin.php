@@ -8,11 +8,16 @@
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-text mx-3">KAI Commuter</div>
+                <img class="img-sidebar" src="<?php echo base_url('assets/img/logo.png') ?>">
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Menu
+            </div>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
