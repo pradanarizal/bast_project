@@ -19,5 +19,6 @@
     <link rel="stylesheet" href="http://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/manager.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/css/admin.css" rel="stylesheet" type="text/css">
 
 </head>
