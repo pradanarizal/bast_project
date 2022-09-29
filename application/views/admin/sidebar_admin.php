@@ -21,7 +21,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="index">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -34,9 +34,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">
-                    <h6 class="collapse-header">Pilih Pengajuan :</h6>
-                        <a class="collapse-item" href="#">Software</a>
-                        <a class="collapse-item" href="#">Hardware</a>
+                        <h6 class="collapse-header">Pilih Pengajuan :</h6>
+                        <a class="collapse-item" href="submission">Software</a>
+                        <a class="collapse-item" href="submission">Hardware</a>
                     </div>
                 </div>
             </li>
@@ -60,8 +60,8 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-            <a class="nav-link">
-                <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
+                <a class="nav-link">
+                    <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Keluar</span>
                 </a>
