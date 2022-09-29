@@ -7,7 +7,7 @@
             if ($requestor) {
             ?>
                 <!-- dropdown -->
-                <div class="dropdown">
+                <div class="dropdown1">
                     <form action="/admin/dashboard_admin.php">
                         <select class="formulir" id="formulir" name="formulir">
                             <option value="software">Formulir Permintaan Installasi Software</option>
