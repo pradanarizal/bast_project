@@ -11,36 +11,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 
-.container-box {
-  display: flex;
-  margin: 0 auto;
-  color: white;
-}
-
-.boxs {
-  flex-grow: 1;
-  margin-right: 20px;
-  margin-left: 20px;
-  text-align: center;
-  font-size: 14px;
-}
-.text {
-  margin: 0 auto;
-  color: white;
-  text-align: center;
-  font-weight: 800;
-  text-transform: uppercase;
-}
-.font {
-  font-size: 50px;
-  margin: 0 auto;
-  text-align: center;
-  color: white;
-}
-.hasil {
-  font-weight: 600;
-  font-size: 20px;
-}
 :root {
   --blue: #4e73df;
   --indigo: #6610f2;
