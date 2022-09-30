@@ -30,13 +30,13 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-pen"></i>
-                    <span>Pengajuan</span>
+                    <span>Submission</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">
                         <h6 class="collapse-header">Pilih Pengajuan :</h6>
-                        <a class="collapse-item" href="submission">Software</a>
-                        <a class="collapse-item" href="submission">Hardware</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Software</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Hardware</a>
                     </div>
                 </div>
             </li>
