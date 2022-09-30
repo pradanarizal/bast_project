@@ -38,4 +38,13 @@ class Admin extends CI_Controller
         $this->load->view('admin/submission_admin', $data);
         $this->load->view('footer', $data);
     }
+    function pengajuan_software()
+    {
+        $data['requestor'] = $this->Model_Noc->getRequestor();
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/formulir_software', $data);
+        $this->load->view('footer', $data);
+    }
 }

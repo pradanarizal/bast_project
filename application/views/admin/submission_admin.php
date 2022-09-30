@@ -8,11 +8,10 @@
             ?>
                 <!-- dropdown -->
                 <div class="dropdown1">
-                    <form action="/admin/dashboard_admin.php">
-                        <select class="formulir" id="formulir" name="formulir">
-                            <option value="software">Formulir Permintaan Installasi Software</option>
-                            <option value="hardware">Formulir Pengecekan PC/Laptop</option>
-                        </select>
+                    <form action="<?php echo base_url('admin/pengajuan_software') ?>">
+                        <button>
+                            <a>Add Form</a>
+                        </button>
                     </form>
                 </div>
                 <!-- data table -->
