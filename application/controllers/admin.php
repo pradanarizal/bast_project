@@ -38,6 +38,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/submission_admin', $data);
         $this->load->view('footer', $data);
     }
+<<<<<<< Updated upstream
     function pengajuan_software()
     {
         $data['requestor'] = $this->Model_Noc->getRequestor();
@@ -47,4 +48,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/formulir_software', $data);
         $this->load->view('footer', $data);
     }
+=======
+
+>>>>>>> Stashed changes
 }
