@@ -12,7 +12,7 @@
 
                     <div class="modal-body">
                         <form action="<?php echo base_url() . 'admin/data_barang/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
-                            <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Permintaan Instalasi Software</h5>
+                            <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Pengecekan PC/Laptop</h5>
                             <div class="card">
                                 <div class="form-row">
                                     <div class="form-group mt-3">
@@ -36,33 +36,12 @@
                                 <div class="card">
 
                                     <div class="form-grup mt-3">
-                                        <label for="inputNama">NAMA</label>
+                                        <label for="inputNama">Name</label>
                                         <input type="text" id="inputNama" name="nama_brg" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
                                         <label for="inputNik">NIK/NIP</label>
                                         <input type="text" id="inputNik" name="keterangan" class="form-control">
-                                    </div>
-
-                                    <div class="form-grup mt-3">
-                                        <label for="">CATEGORY</label><br>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                                            <label class="form-check-label" for="inlineCheckbox1">Operating System</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
-                                            <label class="form-check-label" for="inlineCheckbox2">Microsoft Office</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Software Design</label>
-                                        </div>
-                                        <div class="form-check form-check-inline">
-                                            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
-                                            <label class="form-check-label" for="inlineCheckbox3">Lainnya</label>
-                                        </div>
-
                                     </div>
 
                                     <div class="form-grup mt-3">
@@ -78,12 +57,12 @@
                                         <input type="text" name="stok" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
-                                        <label for="">Description of Needs</label>
+                                        <label for="">Description of Complains</label>
                                         <textarea name="" class="form-control" cols="30" rows="10"></textarea>
                                     </div>
                                     <div class="form-grup  mt-3">
-                                        <label for="">TTD</label>
-                                        <input type="file" name="gambar" class="form-control">
+                                        <label for="">Signature</label>
+                                        <input type="file" name="gambar" class="form-control-file">
                                     </div>
                                 </div>
                             </div>
@@ -137,7 +116,7 @@
                                 <div class="card">
 
                                     <div class="form-grup mt-3">
-                                        <label for="inputNama">NAMA</label>
+                                        <label for="inputNama">Name</label>
                                         <input type="text" id="inputNama" name="nama_brg" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
@@ -183,7 +162,7 @@
                                         <textarea name="" class="form-control" cols="30" rows="10"></textarea>
                                     </div>
                                     <div class="form-grup  mt-3">
-                                        <label for="">TTD</label>
+                                        <label for="">Signature</label>
                                         <input type="file" name="gambar" class="form-control">
                                     </div>
                                 </div>

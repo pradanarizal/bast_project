@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-md btn-primary mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Tambah Barang</button>
+            <button class="btn btn-md btn-success mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Add Form</button>
 
         </div>
     </div>
