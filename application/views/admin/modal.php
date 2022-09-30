@@ -1,4 +1,4 @@
-        <!-- Modal Software -->
+        <!-- Modal Hardware -->
 
         <div class="modal fade" id="tambahHardware" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -17,17 +17,17 @@
                                 <div class="form-row">
                                     <div class="form-group mt-3">
                                         <label for="inputEmail4">No Ticket</label>
-                                        <input type="email" class="form-control" id="inputEmail4" placeholder="input no ticket">
+                                        <input type="email" class="form-control" name="no_tiket" id="inputEmail4" placeholder="input no ticket">
                                     </div>
                                     <div class="form-group mt-3">
                                         <label for="inputPassword4">No Request</label>
-                                        <input type="password" class="form-control" id="inputPassword4" placeholder="input no request">
+                                        <input type="password" class="form-control" name="no_request" id="inputPassword4" placeholder="input no request">
                                     </div>
                                 </div>
 
                                 <div class="form-grup mt-3">
                                     <label for="inputNama">Request Date</label>
-                                    <input type="date" id="inputNama" name="nama_brg" class="form-control">
+                                    <input type="date" id="inputNama" name="request_date" class="form-control">
                                 </div>
                             </div>
 
@@ -36,25 +36,25 @@
                                 <div class="card">
 
                                     <div class="form-grup mt-3">
-                                        <label for="inputNama">Name</label>
-                                        <input type="text" id="inputNama" name="nama_brg" class="form-control">
+                                        <label for="inputNama">NAMA</label>
+                                        <input type="text" id="inputNama" name="nama" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
                                         <label for="inputNik">NIK/NIP</label>
-                                        <input type="text" id="inputNik" name="keterangan" class="form-control">
+                                        <input type="text" id="inputNik" name="nik_nip" class="form-control">
                                     </div>
 
                                     <div class="form-grup mt-3">
                                         <label for="">Unit / Division</label>
-                                        <input type="text" name="stok" class="form-control">
+                                        <input type="text" name="unit_division" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
                                         <label for="">Position</label>
-                                        <input type="text" name="stok" class="form-control">
+                                        <input type="text" name="position" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
                                         <label for="">No Asset / Inventaris / Serial Number</label>
-                                        <input type="text" name="stok" class="form-control">
+                                        <input type="text" name="no_asset" class="form-control">
                                     </div>
                                     <div class="form-grup mt-3">
                                         <label for="">Description of Complains</label>
