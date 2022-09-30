@@ -63,7 +63,7 @@
                 </div>
             </div>
             <div class="float-right">
-                <button class="btn btn-md btn-primary  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Tambah Barang</button>
+                <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Tambah Barang</button>
             </div>
 
         </div>
