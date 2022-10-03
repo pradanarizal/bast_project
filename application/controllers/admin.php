@@ -19,7 +19,8 @@ class Admin extends CI_Controller
         if ($this->session->userdata('role') != "admin") {
             $this->backToLogin();
         }
-        $this->load->view('head');
+        $data['title'] = 'BAST-Dashboard';
+        $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin');
         $this->load->view('navbar');
         $this->load->view('admin/dashboard_admin');
@@ -33,10 +34,13 @@ class Admin extends CI_Controller
     public function submission()
     {
         $data['requestor'] = $this->Model_Noc->getRequestor();
+        $data['title'] = 'BAST-Submission'; 
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/submission_admin', $data);
         $this->load->view('footer', $data);
     }
+
+
 }

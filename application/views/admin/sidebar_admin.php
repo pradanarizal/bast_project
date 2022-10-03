@@ -1,3 +1,4 @@
+<title><?php echo $title?></title>
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -34,18 +35,18 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">
-                        <h6 class="collapse-header">Pilih Pengajuan :</h6>
-                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Software</a>
-                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Hardware</a>
+                        <h6 class="collapse-header" >Select Submission :</h6>
+                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Software Instalation</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Hardware Check</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Utilities Collapse Menu --> 
             <li class="nav-item">
                 <a class="nav-link">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Surat Tanda Terima</span>
+                    <span>Recipt</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 
@@ -57,7 +58,7 @@
                 <a class="nav-link">
                     <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Keluar</span>
+                    <span>Logout</span>
                 </a>
                 <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">

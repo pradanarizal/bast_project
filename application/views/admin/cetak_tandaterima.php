@@ -26,6 +26,7 @@
 
     body {
       font-family: Calibri;
+      color: #000000;
     }
   </style>
 
@@ -43,14 +44,15 @@
         <th width="100">QTY</th>
         <th>PERIHAL</th>
       </tr>
+      <tr>
         <td style="padding-left:10px;" align="center">1</td>
-        </td>
+        
         <td style="padding-left:10px;">ini adalah isi</td>
-        </td>
+        
         <td style="padding-left:10px;">ini adalah isi</td>
-        </td>
+        
         <td style="padding-left:10px;">ini adalah isi</td>
-        </td>
+        
       </tr>
     </table>
   </center>
