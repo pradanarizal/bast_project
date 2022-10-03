@@ -132,10 +132,22 @@
                                 <form action="#" method="POST">
                                     <input class="form-control" type="date" name="tglRequest" id="tglRequest" placeholder="dd/mm/yyyy">
                                 </form>
+
                                 <br>
+
                                 <p>Catatan</p>
                                 <form action="#" method="POST">
                                     <textarea class="form-control" type="text" name="tglRequest" id="tglRequest" placeholder="Masukkan Catatan"></textarea>
+                                </form>
+                                <br>
+                                <p>Approval Authorization</p>
+                                <form action="#" method="POST">
+                                    <input type="radio" name="jeniskelamin" value="Laki-Laki" id="laki-laki" />
+                                    <label for="laki-laki">(A) Approved</label> <br>
+                                    <input type="radio" name="jeniskelamin" value="Perempuan" id="perempuan" />
+                                    <label for="perempuan">(R) Rejected</label><br>
+                                    <input type="radio" name="jeniskelamin" value="Perempuan" id="perempuan" />
+                                    <label for="perempuan">(N) Revision Needed</label>
                                 </form>
                             </div>
                             <div class="modal-footer">

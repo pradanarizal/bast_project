@@ -1,4 +1,5 @@
-<title><?php echo $title?></title>
+<title><?php echo $title ?></title>
+
 <body id="page-top">
 
     <!-- Page Wrapper -->
@@ -35,14 +36,14 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">
-                        <h6 class="collapse-header" >Select Submission :</h6>
+                        <h6 class="collapse-header">Select Submission :</h6>
                         <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Software Instalation</a>
                         <a class="collapse-item" href="<?php echo base_url('admin/submission') ?>">Hardware Check</a>
                     </div>
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu --> 
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link">
                     <i class="fas fa-fw fa-folder"></i>
