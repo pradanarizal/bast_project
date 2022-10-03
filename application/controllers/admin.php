@@ -58,7 +58,7 @@ class Admin extends CI_Controller
     public function receipt()
     {
         $data['title'] = 'BAST-Receipt';
-        $this->load->view('head' );
+        $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin');
         $this->load->view('navbar');
         $this->load->view('admin/receipt');
