@@ -20,14 +20,14 @@
             </div>
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= $this->uri->segment(2) == '' ? "active" : '' ?>">
                 <a class="nav-link" href="<?php echo base_url('admin') ?>">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= $this->uri->segment(2) == 'submission' ? "active" : '' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Submission</span>
@@ -48,7 +48,7 @@
                     <span>Surat Tanda Terima</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    
+
                 </div>
             </li>
 
