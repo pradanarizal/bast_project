@@ -30,4 +30,8 @@ class Manager extends CI_Controller
     {
         redirect(base_url());
     }
+    public function liatForm()
+    {
+        $this->load->view('form/form_permintaan_software');
+    }
 }
