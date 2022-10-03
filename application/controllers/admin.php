@@ -35,7 +35,7 @@ class Admin extends CI_Controller
     public function subsoftware()
     {
         $data['requestor'] = $this->Model_Noc->getRequestor();
-        $data['title'] = 'BAST-Submission';
+        $data['title'] = 'Software-Submission';
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
@@ -47,6 +47,7 @@ class Admin extends CI_Controller
     public function subhardware()
     {
         $data['requestor'] = $this->Model_Noc->getRequestor();
+        $data['title'] = 'Hardware-Submission';
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
@@ -64,6 +65,12 @@ class Admin extends CI_Controller
         $this->load->view('admin/receipt');
         $this->load->view('footer');
     }
+
+    public function simpan_hardware()
+    {
+        $this->Model_Noc->hardware_save();
+    }
+
 
     // function pengajuan_software()
     // {

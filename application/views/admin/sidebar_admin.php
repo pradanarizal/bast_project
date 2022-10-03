@@ -37,7 +37,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="collapse-inner rounded">
                         <h6 class="collapse-header">Select Submission :</h6>
-                        <a class="collapse-item" href="<?php echo base_url('admin/subsoftware') ?>">Software Instalation</a>
+                        <a class="collapse-item" href="<?php echo base_url('admin/subsoftware') ?>">Software Installation</a>
                         <a class="collapse-item" href="<?php echo base_url('admin/subhardware') ?>">Hardware Check</a>
                     </div>
                 </div>

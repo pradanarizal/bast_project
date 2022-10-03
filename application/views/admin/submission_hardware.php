@@ -3,6 +3,7 @@
     <div class="row">
 
         <div class="container-fluid">
+            <h2>Hardware Check Submission</h2>
             <div class="card shadow mb-4">
                 <div class="card-body">
 
