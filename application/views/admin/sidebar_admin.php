@@ -45,9 +45,9 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link">
+            <a class="nav-link" href="<?php echo base_url('admin/receipt') ?>">
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Recipt</span>
+                    <span>Receipt</span>
                 </a>
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 

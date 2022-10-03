@@ -55,6 +55,16 @@ class Admin extends CI_Controller
         $this->load->view('footer', $data);
     }
 
+    public function receipt()
+    {
+        $data['title'] = 'BAST-Receipt';
+        $this->load->view('head' );
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('navbar');
+        $this->load->view('admin/receipt');
+        $this->load->view('footer');
+    }
+
     // function pengajuan_software()
     // {
     //     $data['requestor'] = $this->Model_Noc->getRequestor();
