@@ -40,7 +40,7 @@
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $data['no_tiket']; ?></td>
                                         <td><?php echo $data2['nama']; ?></td>
-                                        <td><?php echo $data['nik']; ?></td>
+                                        <td><?php echo $data2['nik']; ?></td>
                                         <td><?php echo $data['tipe_pengajuan']; ?></td>
                                         <td><?php echo $data['keluhan']; ?></td>
                                         <td><?php echo $data2['jabatan']; ?></td>
