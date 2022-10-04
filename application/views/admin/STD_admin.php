@@ -1,9 +1,9 @@
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Surat Tanda Terima</h1>
+                        <h1 class="h3 mb-0 text-gray-800">BERANDA</h1>
                     </div>
 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Surat Tanda Terima</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pengajuan</h6>
                         </div>
                         <div class="card-body">
 
@@ -16,7 +16,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>No.Tiket</th>
-                                            <th>Nama Barang</th>
+                                            <th>Tipe Pengajuan</th>
                                             <th>Requestor</th>
                                             <th>Bagian</th>
                                             <th>Action</th>
@@ -27,12 +27,16 @@
                                         foreach ($requestor as $data) {
                                             $nik = $data['nik']
                                         ?>
+                                        <?php
+                                        foreach ($employee as $data2) {
+                                            $nik = $data['nik']
+                                        ?>
                                             <tr>
                                                 <td><?php echo $no++; ?></td>
                                                 <td><?php echo $data['no_tiket']; ?></td>
-                                                <td><?php echo $data['nama_barang']; ?></td>
-                                                <td><?php echo $data['nama']; ?></td>
-                                                <td><?php echo $data['bagian']; ?></td>
+                                                <td><?php echo $data['tipe_pengajuan']; ?></td>
+                                                <td><?php echo $data2['nama']; ?></td>
+                                                <td><?php echo $data2['bagian']; ?></td>
                                                 <td>
                                                     <button class="tombol bg-warning text-white" data-toggle="modal">
                                                         <font style="font-weight: bold;">
@@ -53,7 +57,7 @@
                                     </tbody>
                                 </table>
                             <?php
-                            } else {
+                           }  } else {
                                 echo "<h1>Riwayat Kosong!</h1>";
                             }
                             ?>

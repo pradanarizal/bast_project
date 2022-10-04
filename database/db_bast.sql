@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 28 Sep 2022 pada 15.59
+-- Waktu pembuatan: 04 Okt 2022 pada 06.06
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -25,14 +25,63 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `category`
+--
+
+CREATE TABLE `category` (
+  `id_category` int(1) NOT NULL,
+  `nama_category` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `category`
+--
+
+INSERT INTO `category` (`id_category`, `nama_category`) VALUES
+(1, 'Operating System'),
+(2, 'Microsoft Office'),
+(3, 'Software Design'),
+(4, 'Software Lainnya');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `employee`
+--
+
+CREATE TABLE `employee` (
+  `nik` varchar(16) NOT NULL,
+  `nama` varchar(50) NOT NULL,
+  `bagian` varchar(30) NOT NULL,
+  `jabatan` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `employee`
+--
+
+INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
+('1111112011010001', 'Hadi', 'Juanda', 'IT'),
+('1111112011010002', 'Rifky', 'Juanda', 'Marketing'),
+('3333234802010003', 'Doly', 'Gondangdia', 'IT Operation');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `executor`
 --
 
 CREATE TABLE `executor` (
   `id_executor` int(3) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `rekomendasi` text NOT NULL
+  `nama` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `executor`
+--
+
+INSERT INTO `executor` (`id_executor`, `nama`) VALUES
+(1, 'Agus');
 
 -- --------------------------------------------------------
 
@@ -42,8 +91,8 @@ CREATE TABLE `executor` (
 
 CREATE TABLE `hardware` (
   `id_hardware` int(3) NOT NULL,
-  `nik` varchar(16) NOT NULL,
-  `id_executor` int(3) NOT NULL,
+  `id_executor` int(2) NOT NULL,
+  `id_request` int(2) NOT NULL,
   `komponen` varchar(50) NOT NULL,
   `status` varchar(3) NOT NULL,
   `problem` text NOT NULL
@@ -52,27 +101,30 @@ CREATE TABLE `hardware` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `requestor`
+-- Struktur dari tabel `request`
 --
 
-CREATE TABLE `requestor` (
-  `nik` varchar(16) NOT NULL,
-  `nama` varchar(50) NOT NULL,
-  `bagian` varchar(50) NOT NULL,
-  `jabatan` varchar(50) NOT NULL,
-  `nama_barang` varchar(100) NOT NULL,
+CREATE TABLE `request` (
+  `id_request` int(3) NOT NULL,
   `keluhan` text NOT NULL,
   `no_tiket` int(10) NOT NULL,
   `no_aset` varchar(20) NOT NULL,
-  `tipe_pengajuan` varchar(10) NOT NULL
+  `tipe_pengajuan` enum('hardware','software') NOT NULL,
+  `status` enum('pending','process','approved','revision') NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `id_category` int(1) NOT NULL DEFAULT 1,
+  `tanggal` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `requestor`
+-- Dumping data untuk tabel `request`
 --
 
-INSERT INTO `requestor` (`nik`, `nama`, `bagian`, `jabatan`, `nama_barang`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`) VALUES
-('3333234802010002', 'Asep', 'Rangkasbitung', 'Staff Stasiun', 'Gate', 'Gate Rusak', 457623, '88899988', 'hardware');
+INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal`) VALUES
+(1, 'Gate Rusak', 457623, '88899988', 'hardware', 'pending', '1111112011010001', 1, '2022-10-04'),
+(2, 'Update Visual Studio', 222222, '222222', 'software', 'pending', '1111112011010001', 4, '2022-10-03'),
+(3, 'Update OS', 222223, '333333', 'software', 'process', '1111112011010002', 1, '2022-10-02'),
+(4, 'Installin Adobe', 235235, '333335', 'software', 'pending', '1111112011010003', 3, '2022-10-03');
 
 -- --------------------------------------------------------
 
@@ -82,12 +134,20 @@ INSERT INTO `requestor` (`nik`, `nama`, `bagian`, `jabatan`, `nama_barang`, `kel
 
 CREATE TABLE `software` (
   `id_software` int(11) NOT NULL,
-  `nik` varchar(16) NOT NULL,
-  `id_executor` int(3) NOT NULL,
+  `id_executor` int(2) NOT NULL,
+  `id_request` int(2) NOT NULL,
   `nama_software` text NOT NULL,
   `version` varchar(20) NOT NULL,
   `notes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `software`
+--
+
+INSERT INTO `software` (`id_software`, `id_executor`, `id_request`, `nama_software`, `version`, `notes`) VALUES
+(1, 1, 3, 'Linux OS', 'Debian 8', 'Paket Komplitt'),
+(3, 1, 3, 'Microsoft Windows', '11', 'Windows 11 Pro');
 
 -- --------------------------------------------------------
 
@@ -116,6 +176,18 @@ INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
 --
 
 --
+-- Indeks untuk tabel `category`
+--
+ALTER TABLE `category`
+  ADD PRIMARY KEY (`id_category`);
+
+--
+-- Indeks untuk tabel `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`nik`);
+
+--
 -- Indeks untuk tabel `executor`
 --
 ALTER TABLE `executor`
@@ -125,23 +197,19 @@ ALTER TABLE `executor`
 -- Indeks untuk tabel `hardware`
 --
 ALTER TABLE `hardware`
-  ADD PRIMARY KEY (`id_hardware`),
-  ADD KEY `nik` (`nik`),
-  ADD KEY `id_executor` (`id_executor`);
+  ADD PRIMARY KEY (`id_hardware`);
 
 --
--- Indeks untuk tabel `requestor`
+-- Indeks untuk tabel `request`
 --
-ALTER TABLE `requestor`
-  ADD PRIMARY KEY (`nik`);
+ALTER TABLE `request`
+  ADD PRIMARY KEY (`id_request`);
 
 --
 -- Indeks untuk tabel `software`
 --
 ALTER TABLE `software`
-  ADD PRIMARY KEY (`id_software`),
-  ADD UNIQUE KEY `id_executor` (`id_executor`),
-  ADD KEY `nik` (`nik`);
+  ADD PRIMARY KEY (`id_software`);
 
 --
 -- Indeks untuk tabel `user`
@@ -150,22 +218,20 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`nip`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- Ketidakleluasaan untuk tabel `hardware`
+-- AUTO_INCREMENT untuk tabel `executor`
 --
-ALTER TABLE `hardware`
-  ADD CONSTRAINT `hardware_ibfk_1` FOREIGN KEY (`nik`) REFERENCES `requestor` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `hardware_ibfk_2` FOREIGN KEY (`id_executor`) REFERENCES `executor` (`id_executor`) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE `executor`
+  MODIFY `id_executor` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Ketidakleluasaan untuk tabel `software`
+-- AUTO_INCREMENT untuk tabel `software`
 --
 ALTER TABLE `software`
-  ADD CONSTRAINT `software_ibfk_1` FOREIGN KEY (`id_executor`) REFERENCES `executor` (`id_executor`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `software_ibfk_2` FOREIGN KEY (`nik`) REFERENCES `requestor` (`nik`) ON DELETE CASCADE ON UPDATE CASCADE;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
