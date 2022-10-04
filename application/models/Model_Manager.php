@@ -10,7 +10,7 @@ class Model_Manager extends CI_Model
     public function getRequestor()
     {
         $this->db->select('*');
-        $this->db->from('requestor');
+        $this->db->from('request');
         $data = $this->db->get();
         $row = $data->result_array();
         return $row;
