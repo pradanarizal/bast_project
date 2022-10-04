@@ -22,7 +22,7 @@
 
                                 <div class="form-group mt-3">
                                     <label for="norequest">No Request</label>
-                                    <input type="text" class="form-control" name="norequest" id="norequest" placeholder="Input No. Request">
+                                    <input type="text" class="form-control" name="norequest" id="norequest" placeholder="Input No. Request" required>
                                 </div>
                             </div>
 
@@ -40,7 +40,6 @@
                                     <label for="inputnama">Name</label>
                                     <input type="text" id="inputnama" name="inputnama" class="form-control" required>
                                 </div>
-                                
                                 <div class="form-grup mt-3">
                                     <label for="inputnik">NIK/NIP</label>
                                     <input type="text" id="inputnik" name="inputnik" class="form-control" required>

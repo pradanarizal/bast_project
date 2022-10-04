@@ -30,18 +30,22 @@
                             <tbody>
                                 <?php
                                 foreach ($requestor as $data) {
-                                    $nik = $data->nik;
-                                    if ($data->tipe_pengajuan == "hardware" ) {   
+                                    $id_request = $data['id_request'];
+                                    if ($data['tipe_pengajuan'] == "hardware" ) {   
+                                ?>
+                                 <?php
+                                foreach ($employee as $data2) {
+                                    $nik = $data2['nik'];   
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data->no_tiket; ?></td>
-                                        <td><?php echo $data->nama; ?></td>
-                                        <td><?php echo $data->nik; ?></td>
-                                        <td><?php echo $data->tipe_pengajuan; ?></td>
-                                        <td><?php echo $data->keluhan; ?></td>
-                                        <td><?php echo $data->jabatan; ?></td>
-                                        <td><?php echo $data->tanggal; ?></td>
+                                        <td><?php echo $data['no_tiket']; ?></td>
+                                        <td><?php echo $data2['nama']; ?></td>
+                                        <td><?php echo $data2['nik']; ?></td>
+                                        <td><?php echo $data['tipe_pengajuan']; ?></td>
+                                        <td><?php echo $data['keluhan']; ?></td>
+                                        <td><?php echo $data2['jabatan']; ?></td>
+                                        <td><?php echo $data['tanggal']; ?></td>
                                         <td>
                                             <button class="tombol bg-warning text-white" data-toggle="modal">
                                                 <font style="font-weight: bold;">
@@ -55,7 +59,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                <?php } } ?>
+                                <?php } } }?>
                             </tbody>
                         </table>
                     <?php
