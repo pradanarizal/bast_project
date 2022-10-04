@@ -34,4 +34,12 @@ class Manager extends CI_Controller
     {
         $this->load->view('form/form_permintaan_software');
     }
+    public function reviewReq()
+    {
+        $id = $this->input->get('id');
+        $data['requestor'] = $this->Model_Manager->getRequestorById($id);
+        $data['software'] = $this->Model_Manager->getSoftwareById($id);
+        $data['tanggal'] = date("d/m/Y");
+        $this->load->view('form/form_permintaan_software', $data);
+    }
 }

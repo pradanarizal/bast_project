@@ -1,3 +1,22 @@
+                <?php
+                $approved = 0;
+                $process = 0;
+                $pending = 0;
+                $revision = 0;
+                foreach ($requestor as $data) {
+                    if ($data['tipe_pengajuan'] == "software") {
+                        if ($data['status'] == "approved") {
+                            $approved++;
+                        } elseif ($data['status'] == "pending") {
+                            $pending++;
+                        } elseif ($data['status'] == "process") {
+                            $process++;
+                        } else {
+                            $revision++;
+                        }
+                    }
+                }
+                ?>
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
@@ -12,22 +31,22 @@
                                 <td>
                                     <div class=" box bg-primary shadow">
                                         <i class="fa fa-edit fa-2x"></i>
-                                        <p>Total Permintaan Approve</p>
-                                        <h3>30</h3>
+                                        <p>Total Permintaan Pending</p>
+                                        <h3><?php echo $pending; ?></h3>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="card box bg-danger shadow">
                                         <i class="fa fa-edit fa-2x mb-2"></i>
-                                        <p>Total Permintaan Ditolak</p>
-                                        <h3>30</h3>
+                                        <p>Total Permintaan Direvisi</p>
+                                        <h3><?php echo $revision; ?></h3>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="card box bg-success shadow">
                                         <i class="fa fa-edit fa-2x mb-2"></i>
                                         <p>Total Permintaan Diterima</p>
-                                        <h3>30</h3>
+                                        <h3><?php echo $approved; ?></h3>
                                     </div>
                                 </td>
                             </tr>
@@ -39,35 +58,27 @@
                             <h6 class="m-0 font-weight-bold text-primary">Riwayat Pengajuan</h6>
                         </div>
                         <div class="card-body">
-
-                            <?php
-                            $no = 1;
-                            if ($requestor) {
-                            ?>
-                                <table id="myTable" class="display">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>No.Tiket</th>
-                                            <th>Nama Barang</th>
-                                            <th>Requestor</th>
-                                            <th>Bagian</th>
-                                            <th>Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        foreach ($requestor as $data) {
-                                            $nik = $data['nik']
-                                        ?>
+                            <table id="myTable" class="display">
+                                <thead>
+                                    <tr>
+                                        <th>No.Tiket</th>
+                                        <th>Requestor</th>
+                                        <th>Keluhan</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    foreach ($requestor as $data) {
+                                        if ($data['tipe_pengajuan'] == "software" && $data['status'] == "process") {
+                                            $id = $data['id_request'];
+                                    ?>
                                             <tr>
-                                                <td><?php echo $no++; ?></td>
                                                 <td><?php echo $data['no_tiket']; ?></td>
-                                                <td><?php echo $data['nama_barang']; ?></td>
                                                 <td><?php echo $data['nama']; ?></td>
-                                                <td><?php echo $data['bagian']; ?></td>
+                                                <td><?php echo $data['keluhan']; ?></td>
                                                 <td>
-                                                    <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#modalReview<?php echo $data['nik']; ?>">
+                                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
                                                         <font style="font-weight: bold;">
                                                             <i class="fa fa-eye"></i>
                                                         </font>
@@ -82,25 +93,26 @@
                                                     </button>
                                                 </td>
                                             </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                            <?php
-                            } else {
-                                echo "<h1>Riwayat Kosong!</h1>";
-                            }
-                            ?>
+                                    <?php
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
 
-
+                <!-- ========================= Modal Review ============================== -->
+                <!-- tambah kode di samping buat modal -> data-toggle="modal" data-target="#modalReview<?php //echo $data['nik']; 
+                                                                                                        ?>" -->
                 <?php
-                foreach ($requestor as $data) {
-                    $nik = $data['nik'];
-                    $nama = $data['nama'];
+                // foreach ($requestor as $data) {
+                //     $nik = $data['nik'];
+                //     $nama = $data['nama'];
                 ?>
-                    <div id="modalReview<?php echo $nik ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+                <!-- <div id="modalReview<?php //echo $nik 
+                                            ?>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -112,18 +124,21 @@
                                 <form class="form-horizontal" method="post" action="<?php //echo base_url().'admin/suplier/edit_suplier'
                                                                                     ?>">
                                     <div class="modal-body">
-                                        <input name="kode" type="hidden" value="<?php echo $nik; ?>">
+                                        <input name="kode" type="hidden" value="<?php //echo $nik; 
+                                                                                ?>">
                                         <div class="form-group">
                                             <label class="control-label col-xs-3">Nama Suplier</label>
                                             <div class="col-xs-9">
-                                                <input name="nama" class="form-control" type="text" placeholder="Nama Suplier..." value="<?php echo $nik; ?>" style="width:280px;" required>
+                                                <input name="nama" class="form-control" type="text" placeholder="Nama Suplier..." value="<?php //echo $nik; 
+                                                                                                                                            ?>" style="width:280px;" required>
                                             </div>
                                         </div>
 
                                         <div class="form-group">
                                             <label class="control-label col-xs-3">Alamat</label>
                                             <div class="col-xs-9">
-                                                <input name="alamat" class="form-control" type="text" placeholder="Alamat..." value="<?php echo $nama; ?>" style="width:280px;" required>
+                                                <input name="alamat" class="form-control" type="text" placeholder="Alamat..." value="<?php //echo $nama; 
+                                                                                                                                        ?>" style="width:280px;" required>
                                             </div>
                                         </div>
 
@@ -135,9 +150,9 @@
                                 </form>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 <?php
-                }
+                // }
                 ?>
 
 

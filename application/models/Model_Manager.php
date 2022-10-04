@@ -9,9 +9,19 @@ class Model_Manager extends CI_Model
     }
     public function getRequestor()
     {
-        $this->db->select('*');
-        $this->db->from('requestor');
-        $data = $this->db->get();
+        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category)");
+        $row = $data->result_array();
+        return $row;
+    }
+    public function getRequestorById($id)
+    {
+        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = $id");
+        $row = $data->result_array();
+        return $row;
+    }
+    public function getSoftwareById($id)
+    {
+        $data = $this->db->query("SELECT * FROM software WHERE id_request = $id");
         $row = $data->result_array();
         return $row;
     }
