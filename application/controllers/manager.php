@@ -42,4 +42,56 @@ class Manager extends CI_Controller
         $data['tanggal'] = date("d/m/Y");
         $this->load->view('form/form_permintaan_software', $data);
     }
+    public function dashboard()
+    {
+        redirect(base_url());
+    }
+    public function approve()
+    {
+        $id = $this->input->post('id');
+        $notes = $this->input->post('notes');
+        $tanggal = $this->input->post('tanggal');
+        $status = "approved";
+        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        if ($status) {
+            echo "<script>alert('Status Changed!')</script>";
+        }
+        $this->dashboard();
+    }
+    public function revision()
+    {
+        $id = $this->input->post('id');
+        $notes = $this->input->post('notes');
+        $tanggal = $this->input->post('tanggal');
+        $status = "revision";
+        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        if ($status) {
+            echo "<script>alert('Status Changed!')</script>";
+        }
+        $this->dashboard();
+    }
+    public function cancel()
+    {
+        $id = $this->input->post('id');
+        $status = "process";
+        $notes = "Cancelled";
+        $tanggal = date("Y-m-d");
+        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        if ($status) {
+            echo "<script>alert('Status Changed!')</script>";
+        }
+        $this->dashboard();
+    }
+    public function reject()
+    {
+        $id = $this->input->post('id');
+        $status = "rejected";
+        $notes = "Rejected";
+        $tanggal = date("Y-m-d");
+        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        if ($status) {
+            echo "<script>alert('Status Changed!')</script>";
+        }
+        $this->dashboard();
+    }
 }

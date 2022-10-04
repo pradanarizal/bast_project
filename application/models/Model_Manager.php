@@ -25,4 +25,9 @@ class Model_Manager extends CI_Model
         $row = $data->result_array();
         return $row;
     }
+    public function changeStatus($id, $notes, $status, $tanggal)
+    {
+        $data = $this->db->query("UPDATE `request` SET `tanggal_approval` = '$tanggal', `status` = '$status', `approval_notes` = '$notes' WHERE `request`.`id_request` = $id;");
+        return $data;
+    }
 }

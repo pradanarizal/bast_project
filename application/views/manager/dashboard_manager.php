@@ -3,6 +3,7 @@
                 $process = 0;
                 $pending = 0;
                 $revision = 0;
+                $rejected = 0;
                 foreach ($requestor as $data) {
                     if ($data['tipe_pengajuan'] == "software") {
                         if ($data['status'] == "approved") {
@@ -11,8 +12,10 @@
                             $pending++;
                         } elseif ($data['status'] == "process") {
                             $process++;
-                        } else {
+                        } elseif ($data['status'] == "revision") {
                             $revision++;
+                        } else {
+                            $rejected++;
                         }
                     }
                 }
@@ -32,7 +35,7 @@
                                     <div class=" box bg-primary shadow">
                                         <i class="fa fa-edit fa-2x"></i>
                                         <p>Total Permintaan Pending</p>
-                                        <h3><?php echo $pending; ?></h3>
+                                        <h3><?php echo $process; ?></h3>
                                     </div>
                                 </td>
                                 <td>
@@ -63,37 +66,68 @@
                                     <tr>
                                         <th>No.Tiket</th>
                                         <th>Requestor</th>
-                                        <th>Keluhan</th>
+                                        <th>Needs</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <?php
                                     foreach ($requestor as $data) {
-                                        if ($data['tipe_pengajuan'] == "software" && $data['status'] == "process") {
-                                            $id = $data['id_request'];
+                                        if ($data['tipe_pengajuan'] == "software") {
+                                            if ($data['status'] != "pending") {
+                                                $id = $data['id_request'];
                                     ?>
-                                            <tr>
-                                                <td><?php echo $data['no_tiket']; ?></td>
-                                                <td><?php echo $data['nama']; ?></td>
-                                                <td><?php echo $data['keluhan']; ?></td>
-                                                <td>
-                                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
-                                                        <font style="font-weight: bold;">
-                                                            <i class="fa fa-eye"></i>
-                                                        </font>
-                                                    </button>
-                                                    <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc">
-                                                        <font style="font-weight: bold;">
-                                                            <i class="fa fa-check"></i>
-                                                        </font>
-                                                    </button>
-                                                    <button class="tombol bg-danger text-white pl-2 pr-2" data-toggle="modal" data-target="#modalReject">
-                                                        <i class="fa fa-times"></i>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                                <tr>
+                                                    <td><?php echo $data['no_tiket']; ?></td>
+                                                    <td><?php echo $data['nama']; ?></td>
+                                                    <td><?php echo $data['keluhan']; ?></td>
+                                                    <td><?php echo $data['status']; ?></td>
+                                                    <?php
+                                                    if ($data['status'] == "process") {
+                                                    ?>
+                                                        <td>
+                                                            <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                                                <font style="font-weight: bold;">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </font>
+                                                            </button>
+                                                            <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc<?php echo $data['id_request']; ?>">
+                                                                <font style="font-weight: bold;">
+                                                                    <i class="fa fa-check"></i>
+                                                                </font>
+                                                            </button>
+                                                            <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalRevision<?php echo $data['id_request']; ?>">
+                                                                <font style="font-weight: bold;">
+                                                                    <i class="fa fa-sync-alt"></i>
+                                                                </font>
+                                                            </button>
+                                                            <button class="tombol bg-danger text-white pl-2 pr-2" data-toggle="modal" data-target="#modalReject<?php echo $data['id_request']; ?>">
+                                                                <i class="fa fa-times"></i>
+                                                            </button>
+                                                        </td>
+                                                    <?php
+
+                                                    } else {
+                                                    ?>
+                                                        <td>
+                                                            <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                                                <font style="font-weight: bold;">
+                                                                    <i class="fa fa-eye"></i>
+                                                                </font>
+                                                            </button>
+                                                            <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#modalCancel<?php echo $data['id_request']; ?>">
+                                                                <font style="font-weight: bold;">
+                                                                    Cancel
+                                                                </font>
+                                                            </button>
+                                                        </td>
+                                                    <?php
+                                                    }
+                                                    ?>
+                                                </tr>
                                     <?php
+                                            }
                                         }
                                     }
                                     ?>
@@ -157,64 +191,143 @@
 
 
                 <!-- modal reject -->
-                <div class="modal fade" id="modalReject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Tolak Pengajuan</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">Tolak Pengajuan ini?</div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                <a class="btn btn-primary" href="#">Tolak</a>
+                <?php
+                foreach ($requestor as $data) {
+                    $id = $data['id_request'];
+                    $nama = $data['nama'];
+                    $tiket = $data['no_tiket'];
+                ?>
+                    <div class="modal fade" id="modalReject<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Submission Reject</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">this action will reject the submission with tiket number <?php echo $tiket; ?>? do you want to continue?</div>
+                                <form action="<?php echo base_url('manager/reject'); ?>" method="POST">
+                                    <input type="text" name="id" value="<?php echo $id; ?>" hidden>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                        <input class="btn btn-primary" type="submit" name="submit" value="Reject">
+                                </form>
                             </div>
                         </div>
                     </div>
-                </div>
-                </div>
+                    </div>
+                <?php } ?>
                 <!-- /.container-fluid -->
 
-                <!-- Modal Acc -->
-                <div class="modal fade" id="modalAcc" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Terima</h5>
-                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p>Tanggal Request</p>
-                                <form action="#" method="POST">
-                                    <input class="form-control" type="date" name="tglRequest" id="tglRequest" placeholder="dd/mm/yyyy">
-                                </form>
-
-                                <br>
-
-                                <p>Catatan</p>
-                                <form action="#" method="POST">
-                                    <textarea class="form-control" type="text" name="tglRequest" id="tglRequest" placeholder="Masukkan Catatan"></textarea>
-                                </form>
-                                <br>
-                                <p>Approval Authorization</p>
-                                <form action="#" method="POST">
-                                    <input type="radio" name="jeniskelamin" value="Laki-Laki" id="laki-laki" />
-                                    <label for="laki-laki">(A) Approved</label> <br>
-                                    <input type="radio" name="jeniskelamin" value="Perempuan" id="perempuan" />
-                                    <label for="perempuan">(R) Rejected</label><br>
-                                    <input type="radio" name="jeniskelamin" value="Perempuan" id="perempuan" />
-                                    <label for="perempuan">(N) Revision Needed</label>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                                <a class="btn btn-primary" href="">Simpan</a>
+                <!-- modal revision -->
+                <?php
+                foreach ($requestor as $data) {
+                    $id = $data['id_request'];
+                    $nama = $data['nama'];
+                    $tiket = $data['no_tiket'];
+                ?>
+                    <div class="modal fade" id="modalRevision<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Submission Revision</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    To revise <?php echo $nama; ?> submission with ticket number <?php echo $tiket; ?>, you must fill in the following notes <br><br>
+                                    <form action="<?php echo base_url('manager/revision'); ?>" method="POST">
+                                        <input type="text" name="id" value="<?php echo $id; ?>" hidden>
+                                        <textarea class="form-control" type="text" name="notes" id="notes" placeholder="Notes..." required></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Revision">
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } ?>
+                <!-- /.container-fluid -->
+
+
+                <!-- modal cancel -->
+                <?php
+                foreach ($requestor as $data) {
+                    $id = $data['id_request'];
+                    $nama = $data['nama'];
+                    $tiket = $data['no_tiket'];
+                ?>
+                    <div class="modal fade" id="modalCancel<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Submission Revision</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    This action will cancel the approval of ticket number <?php echo $tiket; ?>? are you sure you want to continue? <br><br>
+                                    <form action="<?php echo base_url('manager/cancel'); ?>" method="POST">
+                                        <input type="text" name="id" value="<?php echo $id; ?>" hidden>
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Cancel Submission">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+
+                <!-- Modal Acc -->
+                <?php
+                foreach ($requestor as $data) {
+                    $id = $data['id_request'];
+                    $nama = $data['nama'];
+                    $tiket = $data['no_tiket'];
+                ?>
+                    <div class="modal fade" id="modalAcc<?php echo $id ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Approve</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Ticket Number : <?php echo $tiket; ?></p>
+                                    <p>Requestor : <?php echo $nama; ?></p>
+                                    <!-- <p>Date : <?php //echo date("d/m/Y"); 
+                                                    ?></p> -->
+                                    <p>Notes</p>
+                                    <form action="<?php echo base_url('manager/approve'); ?>" method="POST">
+                                        <input name="id" type="hidden" value="<?php echo $id; ?>">
+                                        <input name="tanggal" type="hidden" value="<?php echo date("Y-m-d"); ?>">
+                                        <textarea class="form-control" type="text" name="notes" id="notes" placeholder="Notes..."></textarea>
+
+                                        <!-- <br>
+                                        <p>Approval Authorization</p>
+                                        <input type="radio" name="approval" value="approved" id="approved" checked />
+                                        <label for="approved">(A) Approved</label> <br>
+                                        <input type="radio" name="approval" value="rejected" id="rejected" />
+                                        <label for="rejected">(R) Rejected</label><br>
+                                        <input type="radio" name="approval" value="revision" id="revision" />
+                                        <label for="revision">(N) Revision Needed</label> -->
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                    <input class="btn btn-primary" type="submit" name="submit" value="Save">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
                 <!-- End of Main Content -->
