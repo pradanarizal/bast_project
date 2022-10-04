@@ -29,26 +29,9 @@ class Model_Noc extends CI_Model
         return $query->result();
     }
 
-    // public function getRequestor()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('request');
-    //     $data = $this->db->get();
-    //     $row = $data->result_array();
-    //     return $row;
-    // }
-
-    // public function getEmployee()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('employee');
-    //     $data = $this->db->get();
-    //     $row = $data->result_array();
-    //     return $row;
-    // }
-
     public function hardware_save()
     {
+        // BELUM FIX
         // $tanggal = date("Y-m-d");
         $data = array(
             "no_tiket" => $this->input->post('noticket'),
@@ -59,7 +42,6 @@ class Model_Noc extends CI_Model
             "tipe_pengajuan" => "hardware",
             "status" => "pending",
             "id_category" => "5"
-
         );
         $this->db->insert('request', $data);
     }
