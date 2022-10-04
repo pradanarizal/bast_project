@@ -4,6 +4,7 @@
 
         <div class="container-fluid">
             <h2>Software Installation Submission</h2>
+            
             <div class="card shadow mb-4">
                 <div class="card-body">
 
@@ -29,22 +30,18 @@
                             <tbody>
                                 <?php
                                 foreach ($requestor as $data) {
-                                    $id_request = $data['id_request'];
-                                    if ($data['tipe_pengajuan'] == "software" ) {   
-                                ?>
-                                 <?php
-                                foreach ($employee as $data2) {
-                                    $nik = $data2['nik'];   
+                                    $nik = $data->nik;
+                                    if ($data->tipe_pengajuan == "software" ) {   
                                 ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data['no_tiket']; ?></td>
-                                        <td><?php echo $data2['nama']; ?></td>
-                                        <td><?php echo $data2['nik']; ?></td>
-                                        <td><?php echo $data['tipe_pengajuan']; ?></td>
-                                        <td><?php echo $data['keluhan']; ?></td>
-                                        <td><?php echo $data2['jabatan']; ?></td>
-                                        <td><?php echo $data['tanggal']; ?></td>
+                                        <td><?php echo $data->no_tiket; ?></td>
+                                        <td><?php echo $data->nama; ?></td>
+                                        <td><?php echo $data->nik; ?></td>
+                                        <td><?php echo $data->tipe_pengajuan; ?></td>
+                                        <td><?php echo $data->keluhan; ?></td>
+                                        <td><?php echo $data->jabatan; ?></td>
+                                        <td><?php echo $data->tanggal; ?></td>
                                         <td>
                                             <button class="tombol bg-warning text-white" data-toggle="modal">
                                                 <font style="font-weight: bold;">
@@ -58,7 +55,7 @@
                                             </button>
                                         </td>
                                     </tr>
-                                <?php } } }?>
+                                <?php } } ?>
                             </tbody>
                         </table>
                     <?php
@@ -68,6 +65,7 @@
                     ?>
                 </div>
             </div>
+
             <div class="float-right">
                 <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
             </div>
