@@ -18,17 +18,6 @@ class Model_Noc extends CI_Model
         return $query->result();
     }
 
-    function tampilstatus()
-    {
-
-        $this->db->select('pengajuan_pengadaan.*, divisi.kode_divisi AS kode_divisi, divisi.nama_divisi, pengadaan.no_sppbj AS no_sppbj, pengadaan.perihal,nilai_sppbj,no_pr,file');
-        $this->db->join('divisi', 'pengajuan_pengadaan.kode_divisi = divisi.kode_divisi');
-        $this->db->join('pengadaan', 'pengajuan_pengadaan.no_sppbj = pengadaan.no_sppbj');
-        $query = $this->db->get('pengajuan_pengadaan');
-
-        return $query->result();
-    }
-
     public function hardware_save()
     {
         // BELUM FIX
