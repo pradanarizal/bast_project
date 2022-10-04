@@ -21,4 +21,7 @@
     <link href="<?php echo base_url(); ?>assets/css/manager.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>assets/css/admin.css" rel="stylesheet" type="text/css">
 
+    <!-- Signature -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/signature.js"></script>
+
 </head>
