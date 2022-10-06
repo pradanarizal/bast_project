@@ -42,7 +42,7 @@ class Model_Noc extends CI_Model
 
         $cek = $this->db->query("SELECT * FROM employee where nik='" . $this->input->post('inputnik') . "'");
         if ($cek->num_rows() >= 1) {
-           echo
+
         } else {
             $this->db->insert('employee', $data2);
         }
