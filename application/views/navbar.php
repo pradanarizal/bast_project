@@ -22,7 +22,7 @@
                         <i class="fas fa-search fa-fw"></i>
                     </a>
                     <!-- Dropdown - Messages -->
-                    <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
+                    <!-- <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                         <form class="form-inline mr-auto w-100 navbar-search">
                             <div class="input-group">
                                 <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -33,17 +33,15 @@
                                 </div>
                             </div>
                         </form>
-                    </div>
+                    </div> -->
                 </li>
 
                 <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
+                <!-- <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
-                    <!-- Dropdown - Alerts -->
                     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
                             Alerts Center
@@ -83,7 +81,7 @@
                         </a>
                         <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                     </div>
-                </li>
+                </li> -->
 
                 <!-- Nav Item - Messages -->
                 <!-- <li class="nav-item dropdown no-arrow mx-1">
@@ -151,12 +149,12 @@
 
                 <!-- Nav Item - User Information -->
                 <li class="nav-item dropdown no-arrow">
-                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a style="pointer-events: none; cursor: default;" class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('role'); ?></span>
                         <img class="img-profile rounded-circle" src="<?php echo base_url('assets/img/undraw_profile.svg') ?>">
                     </a>
                     <!-- Dropdown - User Information -->
-                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                    <!-- <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                             Profile
@@ -174,7 +172,7 @@
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                             Logout
                         </a>
-                    </div>
+                    </div> -->
                 </li>
 
             </ul>
