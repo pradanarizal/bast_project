@@ -18,11 +18,11 @@
                                 <tr>
                                     <th>No</th>
                                     <th>No.Ticket</th>
-                                    <th>Name</th>
                                     <th>NIK/NIP</th>
+                                    <th>Name</th>
+                                    <th>Unit/Division</th>
                                     <th>Category</th>
                                     <th>Description</th>
-                                    <th>Unit/Division</th>
                                     <th>Create Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -36,11 +36,11 @@
                                     <tr>
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $data->no_tiket; ?></td>
-                                        <td><?php echo $data->nama; ?></td>
                                         <td><?php echo $data->nik; ?></td>
+                                        <td><?php echo $data->nama; ?></td>
+                                        <td><?php echo $data->jabatan; ?></td>
                                         <td><?php echo $data->tipe_pengajuan; ?></td>
                                         <td><?php echo $data->keluhan; ?></td>
-                                        <td><?php echo $data->jabatan; ?></td>
                                         <td><?php echo $data->tanggal_request; ?></td>
                                         <td>
                                             <button class="tombol bg-warning text-white" data-toggle="modal">

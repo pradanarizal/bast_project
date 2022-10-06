@@ -20,7 +20,7 @@ class Model_Noc extends CI_Model
 
     public function hardware_save()
     {
-        $tanggal = date("Y-m-d");
+        $tanggal_request = date("Y-m-d");
         $data = array(
             "keluhan" => $this->input->post('keluhan'),
             "no_tiket" => $this->input->post('noticket'),
@@ -29,7 +29,7 @@ class Model_Noc extends CI_Model
             "status" => "pending",
             "nik" => $this->input->post('inputnik'),
             "id_category" => "5",
-            "tanggal" => $tanggal
+            "tanggal_request" => $tanggal_request
         );
         $this->db->insert('request', $data);
 
