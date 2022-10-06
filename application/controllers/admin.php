@@ -68,6 +68,11 @@ class Admin extends CI_Controller
         $this->load->view('footer');
     }
 
+    public function simpan_software()
+    {
+        $this->Model_Noc->software_save();
+    }
+
     public function simpan_hardware()
     {
         $this->Model_Noc->hardware_save();

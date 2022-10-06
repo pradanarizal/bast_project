@@ -26,6 +26,39 @@ class Model_Noc extends CI_Model
         return $query->result();
     }
 
+    public function software_save()
+    {
+        $tanggal = date("Y-m-d");
+        $data = array(
+            "no_tiket"       => $this->input->post('no_tiket'),
+            "no_aset"        => $this->input->post('no_asset'),
+            "nik"            => $this->input->post('inputnik'),
+            "keluhan"        => $this->input->post('description'),
+            "tipe_pengajuan" => "software",
+            "status"         => "pending",
+            "tanggal_request" => $tanggal
+        );
+
+        $this->db->insert('request', $data);
+
+        $data2 = array(
+            "nik" => $this->input->post('inputnik'),
+            "nama" => $this->input->post('inputnama'),
+            "bagian" => $this->input->post('unit_division'),
+            "jabatan" => $this->input->post('position')
+        );
+
+        $cek = $this->db->query("SELECT * FROM employee where nik='" .$this->input->post('inputnik') . "'");
+        if($cek->num_rows() >= 1) {
+            echo '<script>
+            window.location.href="' . base_url('admin/subsoftware') . '";
+            alert("Pengajuan Berhasil"); 
+            </script>';
+        }else{
+            $this->db->insert('employee', $data2);
+        }
+    }
+
     public function hardware_save()
     {
         $tanggal_request = date("Y-m-d");
@@ -59,3 +92,4 @@ class Model_Noc extends CI_Model
         }
     }
 }
+
