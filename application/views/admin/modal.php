@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="modal-body">
-                    <form action="<?php echo site_url() . 'admin/simpan_hardware'; ?>" method="post" enctype="multipart/form-data">
+                    <form action="<?php echo site_url() . 'admin/hardware_save'; ?>" method="post" enctype="multipart/form-data">
                         <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Pengecekan PC/Laptop</h5>
                         <div class="card">
                             <div class="form-row">

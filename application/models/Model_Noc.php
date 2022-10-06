@@ -20,18 +20,46 @@ class Model_Noc extends CI_Model
 
     public function hardware_save()
     {
-        // BELUM FIX
-        // $tanggal = date("Y-m-d");
+        $tanggal = date("Y-m-d");
         $data = array(
-            "no_tiket" => $this->input->post('noticket'),
             "keluhan" => $this->input->post('keluhan'),
+            "no_tiket" => $this->input->post('noticket'),
             "no_aset" => $this->input->post('no_asset'),
-            "nik" => $this->input->post('inputnik'),
-            "tanggal" => $this->input->post('requestdate'),
             "tipe_pengajuan" => "hardware",
             "status" => "pending",
-            "id_category" => "5"
+            "nik" => $this->input->post('inputnik'),
+            "id_category" => "5",
+            "tanggal" => $tanggal
         );
         $this->db->insert('request', $data);
+
+        $data2 = array(
+            "nik" => $this->input->post('inputnik'),
+            "nama" => $this->input->post('inputnama'),
+            "bagian" => $this->input->post('no_asset'),
+            "jabatan" => $this->input->post('position')
+        );
+
+        $cek = $this->db->query("SELECT * FROM employee where nik='" . $this->input->post('inputnik') . "'");
+        if ($cek->num_rows() >= 1) {
+           
+        } else {
+            $this->db->insert('employee', $data2);
+        }
+    }
+
+    public function simpan()
+    {
+        $tanggal = date("Y-m-d H:i:s");
+        $data = array(
+            "no_pengajuan" => $this->input->post('no_pengajuan'),
+            "nik" => $this->input->post('nik'),
+            "jns_pengajuan" => $this->input->post('jns_pengajuan'),
+            "tanggal_pengajuan" => $tanggal,
+            "sts_pengajuan" => 1,
+            "validasi_rt" => 1,
+            "validasi_rw" => 1
+        );
+        $this->db->insert('pengajuan_surat', $data);
     }
 }
