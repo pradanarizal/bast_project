@@ -25,7 +25,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">BERANDA</h1>
+                        <h1 class="h3 mb-0 text-gray-800">DASHBOARD</h1>
                     </div>
 
                     <div class="mb-4">
@@ -34,21 +34,21 @@
                                 <td>
                                     <div class=" box bg-primary shadow">
                                         <i class="fa fa-edit fa-2x"></i>
-                                        <p>Total Permintaan Pending</p>
+                                        <p>Pending Submission</p>
                                         <h3><?php echo $process; ?></h3>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="card box bg-danger shadow">
                                         <i class="fa fa-edit fa-2x mb-2"></i>
-                                        <p>Total Permintaan Direvisi</p>
+                                        <p>Revision Submission</p>
                                         <h3><?php echo $revision; ?></h3>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="card box bg-success shadow">
                                         <i class="fa fa-edit fa-2x mb-2"></i>
-                                        <p>Total Permintaan Diterima</p>
+                                        <p>Approved Submission</p>
                                         <h3><?php echo $approved; ?></h3>
                                     </div>
                                 </td>
@@ -58,7 +58,7 @@
 
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Riwayat Pengajuan</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Submission</h6>
                         </div>
                         <div class="card-body">
                             <table id="myTable" class="display">
