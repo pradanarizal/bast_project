@@ -87,22 +87,22 @@
                                                     if ($data['status'] == "process") {
                                                     ?>
                                                         <td>
-                                                            <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
                                                                 <font style="font-weight: bold;">
                                                                     <i class="fa fa-eye"></i>
                                                                 </font>
                                                             </button>
-                                                            <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc<?php echo $data['id_request']; ?>">
+                                                            <button class="tombol bg-success text-white" data-toggle="modal" title="Approved" data-target="#modalAcc<?php echo $data['id_request']; ?>">
                                                                 <font style="font-weight: bold;">
                                                                     <i class="fa fa-check"></i>
                                                                 </font>
                                                             </button>
-                                                            <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalRevision<?php echo $data['id_request']; ?>">
+                                                            <button class="tombol bg-primary text-white" data-toggle="modal" title="Revision" data-target="#modalRevision<?php echo $data['id_request']; ?>">
                                                                 <font style="font-weight: bold;">
                                                                     <i class="fa fa-sync-alt"></i>
                                                                 </font>
                                                             </button>
-                                                            <button class="tombol bg-danger text-white pl-2 pr-2" data-toggle="modal" data-target="#modalReject<?php echo $data['id_request']; ?>">
+                                                            <button class="tombol bg-danger text-white pl-2 pr-2" data-toggle="modal" title="Rejected" data-target="#modalReject<?php echo $data['id_request']; ?>">
                                                                 <i class="fa fa-times"></i>
                                                             </button>
                                                         </td>
@@ -111,12 +111,12 @@
                                                     } else {
                                                     ?>
                                                         <td>
-                                                            <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
                                                                 <font style="font-weight: bold;">
                                                                     <i class="fa fa-eye"></i>
                                                                 </font>
                                                             </button>
-                                                            <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#modalCancel<?php echo $data['id_request']; ?>">
+                                                            <button class="tombol bg-danger text-white" title="Cancel" data-toggle="modal" data-target="#modalCancel<?php echo $data['id_request']; ?>">
                                                                 <font style="font-weight: bold;">
                                                                     Cancel
                                                                 </font>
@@ -331,3 +331,8 @@
                     </div>
                 <?php } ?>
                 <!-- End of Main Content -->
+                <script>
+                    $(document).ready(function() {
+                        $('[data-toggle="tooltip"]').tooltip();
+                    });
+                </script>

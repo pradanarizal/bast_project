@@ -37,19 +37,19 @@
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->jabatan; ?></td>
                                             <td><?php echo $data->keluhan; ?></td>
-                                            <td><?php echo $data->tanggal_request; ?></td>
+                                            <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
                                             <td>
-                                                <button class="tombol bg-warning text-white" data-toggle="modal">
+                                                <button class="tombol bg-warning text-white" data-toggle="modal" title="Review">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-eye"></i>
                                                     </font>
                                                 </button>
-                                                <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc">
+                                                <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc" title="Edit">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-edit"></i>
                                                     </font>
                                                 </button>
-                                                <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc">
+                                                <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc" title="Execute">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-forward"></i>
                                                     </font>
