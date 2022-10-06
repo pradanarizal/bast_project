@@ -41,7 +41,7 @@
                                         <td><?php echo $data->tipe_pengajuan; ?></td>
                                         <td><?php echo $data->keluhan; ?></td>
                                         <td><?php echo $data->jabatan; ?></td>
-                                        <td><?php echo $data->tanggal; ?></td>
+                                        <td><?php echo $data->tanggal_request; ?></td>
                                         <td>
                                             <button class="tombol bg-warning text-white" data-toggle="modal">
                                                 <font style="font-weight: bold;">
