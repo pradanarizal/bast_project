@@ -1,5 +1,5 @@
 /* Dashboard */
-.container-box {
+/* .container-box {
   display: flex;
   margin: 0 auto;
   color: white;
@@ -10,8 +10,8 @@
   margin-left: 20px;
   text-align: center;
   font-size: 14px;
-}
-.text {
+} */
+/* .text {
   margin: 0 auto;
   color: white;
   text-align: center;
@@ -26,14 +26,12 @@
 .hasil {
   font-weight: 600;
   font-size: 20px;
-}
+} */
 /* submission */
-.dropdown1 {
-  margin-bottom: 40px;
-}
-.formulir {
+
+/* .formulir {
   width: 350px;
   padding: 8px;
   border-color: #54a3f0;
   border-radius: 6px;
-}
+} */

@@ -1,0 +1,132 @@
+/* Sidebar */
+@media screen and (max-width: 600px) {
+  .sidebar-brand img {
+    height: 25px;
+  }
+}
+/* Dashboard Admin*/
+.row_admin {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0 auto;
+}
+.card_admin {
+  width: 120px;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+  .card_admin {
+    width: 100%;
+    padding: 0;
+  }
+}
+.card_content_admin {
+  color: white;
+  text-align: center;
+  margin: 20px;
+}
+.card_content_admin h2 {
+  font-size: 50px;
+}
+
+.items {
+  display: flex;
+  width: 100%;
+  height: auto;
+  padding: 0;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+}
+.item_admin {
+  width: auto;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+
+/* Submission Admin*/
+.formulir {
+  width: 350px;
+  padding: 8px;
+  border-color: #54a3f0;
+  border-radius: 6px;
+}
+
+/* Manager */
+.box {
+  border-radius: 10px;
+  padding: 10px;
+  color: white;
+  width: 100%;
+}
+.tabel {
+  width: 100%;
+}
+.box p {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.tombol {
+  width: 20;
+  border: solid 0px black;
+}
+
+/* Dashboard Sadmin*/
+.row_sadmin {
+  display: flex;
+  width: 100%;
+  height: 200px;
+  padding: 0;
+  margin: 0 auto;
+}
+.card_sadmin {
+  width: 100px;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  border-radius: 10px;
+}
+@media screen and (max-width: 600px) {
+  .card_sadmin {
+    width: 100%;
+    padding: 0;
+  }
+}
+.first {
+  margin-left: 0;
+  margin-right: 20px;
+}
+.second {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.three {
+  margin-left: 20px;
+  margin-right: 0;
+}
+@media screen and (max-width: 600px) {
+  .first {
+    margin: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .three {
+    margin: 20px;
+  }
+}
+.card_content_sadmin {
+  margin: 20px 30px;
+  color: white;
+}
+.card_content_sadmin p {
+  margin-top: 20px;
+  font-size: 18px;
+}

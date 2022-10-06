@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <!-- <title>BAST App - Dashboard</title> -->
+    <title>BAST App - Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?php echo base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,7 @@
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>assets/css/manager.css" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url(); ?>assets/css/admin.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet" type="text/css">
 
     <!-- Signature -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/js/signature.js"></script>
