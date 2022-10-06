@@ -37,106 +37,82 @@ foreach ($request as $data) {
     $rAll = $rSoft + $rHard;
 }
 ?>
-<div class="mr-4 ml-4">
-    <!-- Content Row -->
-    <div class="row">
-        <!-- Total Permintaan Instalasi Software -->
-        <div class="col-xl-5 col-md-6 mb-4 pl-4 pr-4">
-            <div class="card bg-success">
-                <div class="card-body">
-                    <div class="text">
-                        Software Installation Submission
-                    </div>
+<!-- Content -->
+<div class="container-fluid">
 
-                    <div class="font">
-                        <?php echo $software; ?>
-                    </div>
-                    <div class="container-box">
-                        <div class="boxs">
-                            Approved
-                            <div class="hasil"><?php echo $aSoft; ?></div>
-                        </div>
-                        <div class="boxs">Process
-                            <div class="hasil"><?php echo $pSoft; ?></div>
-                        </div>
-                        <div class="boxs">Rejected
-                            <div class="hasil"><?php echo $rSoft; ?></div>
-                        </div>
-                    </div>
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h2 class="h3 mb-0 text-gray-800">Dashboard</h2>
+    </div>
 
-                    <!-- <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
-                                Total Permintaan Instalasi Software
-                            </div>
-                            <div class="align-items-center">
-                                <div class="h1 mb-0 mr-3 font-weight-bold text-gray-800">11</div>
-                            </div>
-                        </div>
-                    </div> -->
+    <div class="mb-4">
+
+        <!-- Content Row -->
+        <div class="row_admin">
+            <div class="card_admin first bg-success">
+                <div class="card_content_admin">
+                    <p>Total User Request</p>
+                    <h2><?php echo $software; ?></h2>
                 </div>
-            </div>
-        </div>
-
-
-        <!-- Total Permintaan Instalasi Software -->
-        <div class="col-xl-5 col-md-6 mb-4 pl-4 pr-4">
-            <div class="card bg-primary">
-                <div class="card-body">
-                    <div class="text">
-                        Hardware Check Submission
+                <div class="items">
+                    <div class="item_admin">
+                        Approved
+                        <div class="hasil"><?php echo $aSoft; ?></div>
                     </div>
-
-                    <div class="font">
-                        <?php echo $hardware; ?>
+                    <div class="item_admin">
+                        Process
+                        <div class="hasil"><?php echo $aSoft; ?></div>
                     </div>
-                    <div class="container-box">
-                        <div class="boxs">
-                            Approved
-                            <div class="hasil"><?php echo $aHard; ?></div>
-                        </div>
-                        <div class="boxs">Process
-                            <div class="hasil"><?php echo $pHard; ?></div>
-                        </div>
-                        <div class="boxs">Rejected
-                            <div class="hasil"><?php echo $rHard; ?></div>
-                        </div>
+                    <div class="item_admin">
+                        Rejected
+                        <div class="hasil"><?php echo $aSoft; ?></div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Total Permintaan Instalasi Software -->
-        <div class="col-xl-5 col-md-6 mb-4 pl-4 pr-4">
-            <div class="card bg-warning">
-                <div class="card-body">
-                    <div class="text">
-                        All Submission
+            <div class="card_admin second bg-primary">
+                <div class="card_content_admin">
+                    <p>Hardware Check Submission</p>
+                    <h2><?php echo $hardware; ?></h2>
+                </div>
+                <div class="items">
+                    <div class="item_admin">
+                        Approved
+                        <div class="hasil"><?php echo $aHard; ?></div>
                     </div>
-
-                    <div class="font">
-                        <?php echo $all; ?>
+                    <div class="item_admin">
+                        Process
+                        <div class="hasil"><?php echo $aHard; ?></div>
                     </div>
-                    <div class="container-box">
-                        <div class="boxs">
-                            Approved
-                            <div class="hasil"><?php echo $aAll; ?></div>
-                        </div>
-                        <div class="boxs">Process
-                            <div class="hasil"><?php echo $pAll; ?></div>
-                        </div>
-                        <div class="boxs">Rejected
-                            <div class="hasil"><?php echo $rAll; ?></div>
-                        </div>
+                    <div class="item_admin">
+                        Rejected
+                        <div class="hasil"><?php echo $aHard; ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="card_admin three bg-warning">
+                <div class="card_content_admin">
+                    <p>All Submission</p>
+                    <h2><?php echo $all; ?></h2>
+                </div>
+                <div class="items">
+                    <div class="item_admin">
+                        Approved
+                        <div class="hasil"><?php echo $aAll; ?></div>
+                    </div>
+                    <div class="item_admin">
+                        Process
+                        <div class="hasil"><?php echo $aAll; ?></div>
+                    </div>
+                    <div class="item_admin">
+                        Rejected
+                        <div class="hasil"><?php echo $aAll; ?></div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>
 <!-- /.container-fluid -->
 
-
-<!-- End of Main Content -->
 </div>
+<!-- End of Main Content -->
