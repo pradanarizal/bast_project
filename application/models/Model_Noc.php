@@ -36,7 +36,7 @@ class Model_Noc extends CI_Model
         $data2 = array(
             "nik" => $this->input->post('inputnik'),
             "nama" => $this->input->post('inputnama'),
-            "bagian" => $this->input->post('no_asset'),
+            "bagian" => $this->input->post('inputdivisi'),
             "jabatan" => $this->input->post('position')
         );
 
