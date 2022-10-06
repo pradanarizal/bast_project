@@ -42,24 +42,9 @@ class Model_Noc extends CI_Model
 
         $cek = $this->db->query("SELECT * FROM employee where nik='" . $this->input->post('inputnik') . "'");
         if ($cek->num_rows() >= 1) {
-           
+           echo
         } else {
             $this->db->insert('employee', $data2);
         }
-    }
-
-    public function simpan()
-    {
-        $tanggal = date("Y-m-d H:i:s");
-        $data = array(
-            "no_pengajuan" => $this->input->post('no_pengajuan'),
-            "nik" => $this->input->post('nik'),
-            "jns_pengajuan" => $this->input->post('jns_pengajuan'),
-            "tanggal_pengajuan" => $tanggal,
-            "sts_pengajuan" => 1,
-            "validasi_rt" => 1,
-            "validasi_rw" => 1
-        );
-        $this->db->insert('pengajuan_surat', $data);
     }
 }
