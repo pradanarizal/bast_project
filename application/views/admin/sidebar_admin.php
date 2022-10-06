@@ -45,7 +45,7 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-            <a class="nav-link" href="<?php echo base_url('admin/receipt') ?>">
+                <a class="nav-link" href="<?php echo base_url('admin/receipt') ?>">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Receipt</span>
                 </a>
@@ -56,7 +56,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link">
+                <a class="nav-link" data-toggle="modal" href="#logoutModal">
                     <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
                     <i class="fas fa-fw fa-wrench"></i>
                     <span>Logout</span>
