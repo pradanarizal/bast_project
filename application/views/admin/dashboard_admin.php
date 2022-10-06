@@ -1,3 +1,42 @@
+<?php
+$software = 0;
+$aSoft = 0;
+$pSoft = 0;
+$rSoft = 0;
+$hardware = 0;
+$aHard = 0;
+$pHard = 0;
+$rHard = 0;
+$all = 0;
+$aAll = 0;
+$pAll = 0;
+$rAll = 0;
+foreach ($request as $data) {
+    if ($data['tipe_pengajuan'] == 'software') {
+        $software++;
+        if ($data['status'] == "approved") {
+            $aSoft++;
+        } elseif ($data['status'] == "process") {
+            $pSoft++;
+        } elseif ($data['status'] == "rejected") {
+            $rSoft++;
+        }
+    } else {
+        $hardware++;
+        if ($data['status'] == "approved") {
+            $aHard++;
+        } elseif ($data['status'] == "process") {
+            $pHard++;
+        } elseif ($data['status'] == "rejected") {
+            $rHard++;
+        }
+    }
+    $all = $software + $hardware;
+    $aAll = $aSoft + $aHard;
+    $pAll = $pSoft + $pHard;
+    $rAll = $rSoft + $rHard;
+}
+?>
 <div class="mr-4 ml-4">
     <!-- Content Row -->
     <div class="row">
@@ -6,22 +45,22 @@
             <div class="card bg-success">
                 <div class="card-body">
                     <div class="text">
-                        Total Permintaan Instalasi Software
+                        Software Installation Submission
                     </div>
 
                     <div class="font">
-                        11
+                        <?php echo $software; ?>
                     </div>
                     <div class="container-box">
                         <div class="boxs">
-                            Diterima
-                            <div class="hasil">6</div>
+                            Approved
+                            <div class="hasil"><?php echo $aSoft; ?></div>
                         </div>
-                        <div class="boxs">Diproses
-                            <div class="hasil">3</div>
+                        <div class="boxs">Process
+                            <div class="hasil"><?php echo $pSoft; ?></div>
                         </div>
-                        <div class="boxs">Ditolak
-                            <div class="hasil">9</div>
+                        <div class="boxs">Rejected
+                            <div class="hasil"><?php echo $rSoft; ?></div>
                         </div>
                     </div>
 
@@ -45,22 +84,22 @@
             <div class="card bg-primary">
                 <div class="card-body">
                     <div class="text">
-                        Total Pengecekan Laptop/PC
+                        Hardware Check Submission
                     </div>
 
                     <div class="font">
-                        11
+                        <?php echo $hardware; ?>
                     </div>
                     <div class="container-box">
                         <div class="boxs">
-                            Diterima
-                            <div class="hasil">6</div>
+                            Approved
+                            <div class="hasil"><?php echo $aHard; ?></div>
                         </div>
-                        <div class="boxs">Diproses
-                            <div class="hasil">3</div>
+                        <div class="boxs">Process
+                            <div class="hasil"><?php echo $pHard; ?></div>
                         </div>
-                        <div class="boxs">Ditolak
-                            <div class="hasil">9</div>
+                        <div class="boxs">Rejected
+                            <div class="hasil"><?php echo $rHard; ?></div>
                         </div>
                     </div>
                 </div>
@@ -72,22 +111,22 @@
             <div class="card bg-warning">
                 <div class="card-body">
                     <div class="text">
-                        Total Seluruh Permintaan
+                        All Submission
                     </div>
 
                     <div class="font">
-                        11
+                        <?php echo $all; ?>
                     </div>
                     <div class="container-box">
                         <div class="boxs">
-                            Diterima
-                            <div class="hasil">6</div>
+                            Approved
+                            <div class="hasil"><?php echo $aAll; ?></div>
                         </div>
-                        <div class="boxs">Diproses
-                            <div class="hasil">3</div>
+                        <div class="boxs">Process
+                            <div class="hasil"><?php echo $pAll; ?></div>
                         </div>
-                        <div class="boxs">Ditolak
-                            <div class="hasil">9</div>
+                        <div class="boxs">Rejected
+                            <div class="hasil"><?php echo $rAll; ?></div>
                         </div>
                     </div>
                 </div>

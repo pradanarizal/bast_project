@@ -9,19 +9,16 @@
                 <div class="card-body">
 
                     <?php
-                    $no = 1;
                     if ($requestor) {
                     ?>
                         <!-- data table -->
                         <table id="myTable" class="display">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>No.Ticket</th>
                                     <th>NIK/NIP</th>
                                     <th>Name</th>
                                     <th>Unit/Division</th>
-                                    <th>Category</th>
                                     <th>Description</th>
                                     <th>Create Date</th>
                                     <th>Action</th>
@@ -31,31 +28,35 @@
                                 <?php
                                 foreach ($requestor as $data) {
                                     $nik = $data->nik;
-                                    if ($data->tipe_pengajuan == "hardware" ) {   
+                                    if ($data->tipe_pengajuan == "hardware") {
                                 ?>
-                                    <tr>
-                                        <td><?php echo $no++; ?></td>
-                                        <td><?php echo $data->no_tiket; ?></td>
-                                        <td><?php echo $data->nik; ?></td>
-                                        <td><?php echo $data->nama; ?></td>
-                                        <td><?php echo $data->jabatan; ?></td>
-                                        <td><?php echo $data->tipe_pengajuan; ?></td>
-                                        <td><?php echo $data->keluhan; ?></td>
-                                        <td><?php echo $data->tanggal_request; ?></td>
-                                        <td>
-                                            <button class="tombol bg-warning text-white" data-toggle="modal">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-eye"></i>
-                                                </font>
-                                            </button>
-                                            <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-edit"></i>
-                                                </font>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php } } ?>
+                                        <tr>
+                                            <td><?php echo $data->no_tiket; ?></td>
+                                            <td><?php echo $data->nik; ?></td>
+                                            <td><?php echo $data->nama; ?></td>
+                                            <td><?php echo $data->jabatan; ?></td>
+                                            <td><?php echo $data->keluhan; ?></td>
+                                            <td><?php echo $data->tanggal_request; ?></td>
+                                            <td>
+                                                <button class="tombol bg-warning text-white" data-toggle="modal">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-eye"></i>
+                                                    </font>
+                                                </button>
+                                                <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-edit"></i>
+                                                    </font>
+                                                </button>
+                                                <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-forward"></i>
+                                                    </font>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                <?php }
+                                } ?>
                             </tbody>
                         </table>
                     <?php
@@ -65,7 +66,7 @@
                     ?>
                 </div>
             </div>
-            
+
             <div class="float-right">
                 <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
             </div>

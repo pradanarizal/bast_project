@@ -8,6 +8,14 @@ class Model_Noc extends CI_Model
         parent::__construct();
     }
 
+    public function getRequest()
+    {
+        $this->db->select('id_request, tipe_pengajuan, status');
+        $this->db->from('request');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     function getRequestor()
     {
 

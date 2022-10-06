@@ -19,11 +19,12 @@ class Admin extends CI_Controller
         if ($this->session->userdata('role') != "admin") {
             $this->backToLogin();
         }
+        $data['request'] = $this->Model_Noc->getRequest();
         $data['title'] = 'BAST-Dashboard';
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin');
         $this->load->view('navbar');
-        $this->load->view('admin/dashboard_admin');
+        $this->load->view('admin/dashboard_admin', $data);
         $this->load->view('footer');
     }
 
@@ -71,5 +72,4 @@ class Admin extends CI_Controller
     {
         $this->Model_Noc->hardware_save();
     }
-
 }
