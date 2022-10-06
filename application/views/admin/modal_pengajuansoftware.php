@@ -15,8 +15,8 @@
                         <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Permintaan Instalasi Software</h5>
                         <div class="card">
                             <div class="form-group mt-3">
-                                <label for="inputEmail4">No Ticket</label>
-                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" placeholder="Input No. Ticket">
+                                <label for="no_tiket">No Ticket</label>
+                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" placeholder="Input No. Ticket" minlength="10" value="#" required>
                             </div>
                         </div>
 
@@ -25,20 +25,20 @@
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="inputnik">NIK/NIP</label>
-                                    <input type="text" id="inputnik" name="inputnik" class="form-control">
+                                    <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="16" required>
                                 </div>
 
                                 <div class="form-grup mt-3">
                                     <label for="inputnama">Name</label>
-                                    <input type="text" id="inputnama" name="inputnama" class="form-control">
+                                    <input type="text" id="inputnama" name="inputnama" class="form-control" required>
                                 </div>
                                 <div class="form-grup mt-3">
                                     <label for="">Unit / Division</label>
-                                    <input type="text" id="inputdivisi" name="inputdivisi" class="form-control">
+                                    <input type="text" id="inputdivisi" name="inputdivisi" class="form-control" required>
                                 </div>
                                 <div class="form-grup mt-3">
                                     <label for="position">Position</label>
-                                    <input type="text" id="position" name="position" class="form-control">
+                                    <input type="text" id="position" name="position" class="form-control" required>
                                 </div>
 
                                 <div class="form-grup mt-3">
@@ -62,10 +62,9 @@
 
                                 </div>
 
-
                                 <div class="form-grup mt-3">
                                     <label for="">No Asset / Inventaris / Serial Number</label>
-                                    <input type="text" name="no_asset" class="form-control">
+                                    <input type="text" name="no_asset" class="form-control" required>
                                 </div>
                                 <div class="form-grup mt-3">
                                     <label for="">Description of Needs</label>

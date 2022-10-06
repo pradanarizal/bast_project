@@ -16,7 +16,7 @@
                         <div class="card">
                             <div class="form-grup mt-3">
                                 <label for="noticket">No. Ticket</label>
-                                <input type="text" id="noticket" name="noticket" class="form-control" required>
+                                <input minlength="10" value="#" type="text" id="noticket" name="noticket" class="form-control" required>
                             </div>
                         </div>
 
@@ -25,7 +25,7 @@
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="inputnik">NIK/NIP</label>
-                                    <input type="text" id="inputnik" name="inputnik" class="form-control" required>
+                                    <input minlength="16" type="text" id="inputnik" name="inputnik" class="form-control" required>
                                 </div>
 
                                 <div class="form-grup mt-3">
