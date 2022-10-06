@@ -36,7 +36,7 @@ class Model_Noc extends CI_Model
         $data2 = array(
             "nik" => $this->input->post('inputnik'),
             "nama" => $this->input->post('inputnama'),
-            "bagian" => $this->input->post('unit_division'),
+            "bagian" => $this->input->post('inputdivisi'),
             "jabatan" => $this->input->post('position')
         );
 
@@ -68,7 +68,7 @@ class Model_Noc extends CI_Model
 
         $data2 = array(
             "nik" => $this->input->post('inputnik'),
-            "nama" => $this->input->post('inputnama'),
+            "inputnama" => $this->input->post('inputnama'),
             "bagian" => $this->input->post('inputdivisi'),
             "jabatan" => $this->input->post('position')
         );
@@ -82,6 +82,22 @@ class Model_Noc extends CI_Model
         } else {
             $this->db->insert('employee', $data2);
         }
+    }
+
+    function caridata_employee($inputnik)
+    {
+        $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'inputnik' => $data->nik,
+                    'inputnama' => $data->nama,
+                    'inputdivisi' =>$data->bagian,
+                    'position' =>$data->jabatan,
+                );
+            }
+        }
+        return $hasil;
     }
 }
 

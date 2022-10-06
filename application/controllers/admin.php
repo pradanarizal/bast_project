@@ -40,7 +40,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/submission_software', $data);
-        $this->load->view('admin/modal', $data);
+        $this->load->view('admin/modal_pengajuansoftware', $data);
+        $this->load->view('admin/caridata_employee', $data);
+        $this->load->view('admin/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 
@@ -52,7 +54,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/submission_hardware', $data);
-        $this->load->view('admin/modal', $data);
+        $this->load->view('admin/modal_pengajuanhardware', $data);
+        $this->load->view('admin/caridata_employee', $data);
+        $this->load->view('admin/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 
@@ -77,4 +81,10 @@ class Admin extends CI_Controller
         $this->Model_Noc->hardware_save();
     }
 
+    function get_employee()
+    {
+        $inputnik = $this->input->post('inputnik');
+        $data = $this->Model_Noc->caridata_employee($inputnik);
+        echo json_encode($data);
+    }
 }
