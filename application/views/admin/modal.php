@@ -82,6 +82,7 @@
 <!-- End of modal software -->
 
 <!-- Modal Software -->
+<form action="<?php echo site_url('admin/simpan_software') ?>" method="POST" enctype="multipart/form-data">
 <div class="modal fade" id="tambahBarang" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -93,24 +94,13 @@
             </div>
 
             <div class="modal-body">
-                <form action="<?php echo base_url() . 'admin/data_barang/tambah_aksi'; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo site_url() . 'admin/software_save'; ?>" method="post" enctype="multipart/form-data">
                     <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Permintaan Instalasi Software</h5>
                     <div class="card">
-                        <div class="form-row">
                             <div class="form-group mt-3">
                                 <label for="inputEmail4">No Ticket</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="input no ticket">
+                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" placeholder="input no ticket">
                             </div>
-                            <div class="form-group mt-3">
-                                <label for="inputPassword4">No Request</label>
-                                <input type="password" class="form-control" id="inputPassword4" placeholder="input no request">
-                            </div>
-                        </div>
-
-                        <div class="form-grup mt-3">
-                            <label for="inputNama">Request Date</label>
-                            <input type="date" id="inputNama" name="nama_brg" class="form-control">
-                        </div>
                     </div>
 
                     <div class="request">
@@ -119,29 +109,29 @@
 
                             <div class="form-grup mt-3">
                                 <label for="inputNama">Name</label>
-                                <input type="text" id="inputNama" name="nama_brg" class="form-control">
+                                <input type="text" id="inputNama" name="inputnama" class="form-control">
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="inputNik">NIK/NIP</label>
-                                <input type="text" id="inputNik" name="keterangan" class="form-control">
+                                <input type="text" id="inputNik" name="inputnik" class="form-control">
                             </div>
 
                             <div class="form-grup mt-3">
                                 <label for="">Category</label><br>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="1">
                                     <label class="form-check-label" for="inlineCheckbox1">Operating System</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="2">
                                     <label class="form-check-label" for="inlineCheckbox2">Microsoft Office</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="3">
                                     <label class="form-check-label" for="inlineCheckbox3">Software Design</label>
                                 </div>
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="4">
                                     <label class="form-check-label" for="inlineCheckbox3">Lainnya</label>
                                 </div>
 
@@ -149,19 +139,19 @@
 
                             <div class="form-grup mt-3">
                                 <label for="">Unit / Division</label>
-                                <input type="text" name="stok" class="form-control">
+                                <input type="text" name="unit_division" class="form-control">
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="">Position</label>
-                                <input type="text" name="stok" class="form-control">
+                                <input type="text" name="position" class="form-control">
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="">No Asset / Inventaris / Serial Number</label>
-                                <input type="text" name="stok" class="form-control">
+                                <input type="text" name="no_asset" class="form-control">
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="">Description of Needs</label>
-                                <textarea name="" class="form-control" cols="30" rows="10"></textarea>
+                                <textarea name="description" class="form-control" cols="30" rows="10"></textarea>
                             </div>
                             <div class="form-grup  mt-3">
                                 <label for="">Signature</label>
@@ -192,6 +182,7 @@
         </div>
     </div>
 </div>
+
 <script>
     var wrapper = document.getElementById("signature-pad");
     var clearButton = wrapper.querySelector("[data-action=clear]");

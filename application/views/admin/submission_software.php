@@ -21,7 +21,6 @@
                                     <th>NIK/NIP</th>
                                     <th>Name</th>
                                     <th>Unit/Division</th>
-                                    <th>Category</th>
                                     <th>Description</th>
                                     <th>Create Date</th>
                                     <th>Action</th>
@@ -39,7 +38,6 @@
                                             <td><?php echo $data->nik; ?></td>
                                             <td><?php echo $data->nama; ?></td>
                                             <td><?php echo $data->jabatan; ?></td>
-                                            <td><?php echo $data->tipe_pengajuan; ?></td>
                                             <td><?php echo $data->keluhan; ?></td>
                                             <td><?php echo $data->tanggal_request; ?></td>
                                             <td>
