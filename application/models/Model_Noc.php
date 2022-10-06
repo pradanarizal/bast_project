@@ -20,18 +20,34 @@ class Model_Noc extends CI_Model
 
     public function hardware_save()
     {
-        // BELUM FIX
-        // $tanggal = date("Y-m-d");
+        $tanggal_request = date("Y-m-d");
         $data = array(
-            "no_tiket" => $this->input->post('noticket'),
             "keluhan" => $this->input->post('keluhan'),
+            "no_tiket" => $this->input->post('noticket'),
             "no_aset" => $this->input->post('no_asset'),
-            "nik" => $this->input->post('inputnik'),
-            "tanggal" => $this->input->post('requestdate'),
             "tipe_pengajuan" => "hardware",
             "status" => "pending",
-            "id_category" => "5"
+            "nik" => $this->input->post('inputnik'),
+            "id_category" => "5",
+            "tanggal_request" => $tanggal_request
         );
         $this->db->insert('request', $data);
+
+        $data2 = array(
+            "nik" => $this->input->post('inputnik'),
+            "nama" => $this->input->post('inputnama'),
+            "bagian" => $this->input->post('inputdivisi'),
+            "jabatan" => $this->input->post('position')
+        );
+
+        $cek = $this->db->query("SELECT * FROM employee where nik='" . $this->input->post('inputnik') . "'");
+        if ($cek->num_rows() >= 1) {
+            echo '<script>
+            window.location.href="' . base_url('admin/subhardware') . '";
+            alert("Pengajuan Berhasil"); 
+            </script>';
+        } else {
+            $this->db->insert('employee', $data2);
+        }
     }
 }
