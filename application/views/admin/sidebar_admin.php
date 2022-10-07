@@ -29,7 +29,7 @@
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item <?= $this->uri->segment(2) == 'submission' ? "active" : '' ?>">
+            <li class="nav-item <?= $this->uri->segment(2) == 'subsoftware' | $this->uri->segment(2) == 'subhardware' ? "active" : '' ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Submission</span>
@@ -44,7 +44,7 @@
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+            <li class="nav-item <?= $this->uri->segment(2) == 'receipt' ? "active" : '' ?>">
                 <a class="nav-link" href="<?php echo base_url('admin/receipt') ?>">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Receipt</span>
@@ -57,22 +57,9 @@
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" href="#logoutModal">
-                    <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages"> -->
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Logout</span>
                 </a>
-                <!-- <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens :</h6>
-                        <a class="collapse-item" href="#">Login</a>
-                        <a class="collapse-item" href="#">Register</a>
-                        <a class="collapse-item" href="#">Forgot Password</a>
-                        <hr class="sidebar-divider">
-                        <h6 class="collapse-header">Other Pages :</h6>
-                        <a class="collapse-item" href="#">404 Page</a>
-                        <a class="collapse-item" href="#">Blank Page</a>
-                    </div>
-                </div> -->
             </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

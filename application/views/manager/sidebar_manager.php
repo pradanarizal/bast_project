@@ -20,28 +20,12 @@
                 Menu
             </div>
 
-
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?= $this->uri->segment(2) == '' ? "active" : '' ?>">
                 <a class="nav-link" href="#">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <!-- <li class="nav-item">
-                <a class="nav-link" href="#"> -->
-            <!-- <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo"> -->
-            <!-- <i class="fas fa-fw fa-folder"></i>
-                    <span>Pengajuan</span>
-                </a> -->
-            <!-- <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Software</a>
-                        <a class="collapse-item" href="#">Hardware</a>
-                    </div>
-                </div> -->
-            <!-- </li> -->
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
