@@ -3,31 +3,39 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Model_Sadmin extends CI_Model
 {
-    public function __construct()
+    public function getUser()
     {
-        parent::__construct();
+        $this->db->select('*');
+        $this->db->from('user');
+        $query = $this->db->get();
+        return $query->result();
     }
-    public function getRequestor()
+    public function getEmployee()
     {
-        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category)");
-        $row = $data->result_array();
-        return $row;
+        $this->db->select('*');
+        $this->db->from('employee');
+        $query = $this->db->get();
+        return $query->result();
     }
-    public function getRequestorById($id)
+    public function InsertData($data)
     {
-        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = $id");
-        $row = $data->result_array();
-        return $row;
+        $this->db->insert('user', $data);
     }
-    public function getSoftwareById($id)
+    public function deleteData($nip)
     {
-        $data = $this->db->query("SELECT * FROM software WHERE id_request = $id");
-        $row = $data->result_array();
-        return $row;
+        $this->db->where('nip', $nip);
+        $this->db->delete('user');
     }
-    public function changeStatus($id, $notes, $status, $tanggal)
-    {
-        $data = $this->db->query("UPDATE `request` SET `tanggal_approval` = '$tanggal', `status` = '$status', `approval_notes` = '$notes' WHERE `request`.`id_request` = $id;");
-        return $data;
-    }
+    // // Action Edit
+    // public function ChangeData($dataUpdate, $nip)
+    // {
+    //     $this->db->where('nip', $nip);
+    //     $this->db->update('user', $dataUpdate);
+    // }
+    // public function getDataDetail($nip)
+    // {
+    //     $this->db->where('nip', $nip);
+    //     $query = $this->db->get('user');
+    //     return $query->row();
+    // }
 }

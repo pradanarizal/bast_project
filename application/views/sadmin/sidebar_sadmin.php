@@ -23,14 +23,14 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?= $this->uri->segment(2) == '' ? "active" : '' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('sadmin') ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Nav Item - User-->
             <li class="nav-item <?= $this->uri->segment(2) == 'user' ? "active" : '' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('sadmin/user') ?>">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span></a>
             </li>
