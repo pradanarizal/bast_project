@@ -1,3 +1,20 @@
+<?php
+$admin = 0;
+$sadmin = 0;
+$manager = 0;
+foreach ($user as $data) {
+    // if ($data['role'] == "admin";"admin";"admin") {
+    if ($data->role == "admin") {
+        $admin++;
+    } elseif ($data->role == "manager") {
+        $manager++;
+    } else {
+        $sadmin++;
+    }
+}
+// }
+?>
+
 <!-- Content -->
 <div class="container-fluid">
 
@@ -13,22 +30,22 @@
             <div class="card_sadmin first bg-success">
                 <div class="card_content_sadmin">
                     <i class="fa fa-user fa-3x"></i>
-                    <p>Total User Request</p>
-                    <h2>50</h2>
+                    <p>Total User Super Admin</p>
+                    <h2><?php echo $sadmin; ?></h2>
                 </div>
             </div>
             <div class="card_sadmin second bg-primary">
                 <div class="card_content_sadmin">
                     <i class="fa fa-user fa-3x"></i>
                     <p>Total User Admin</p>
-                    <h2>20</h2>
+                    <h2><?php echo $admin; ?></h2>
                 </div>
             </div>
             <div class="card_sadmin three bg-warning">
                 <div class="card_content_sadmin">
                     <i class="fa fa-user fa-3x"></i>
                     <p>Total User Manager</p>
-                    <h2>2</h2>
+                    <h2><?php echo $manager; ?></h2>
                 </div>
             </div>
         </div>
