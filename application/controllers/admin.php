@@ -78,6 +78,8 @@ class Admin extends CI_Controller
         // $data['executor'] = $this->Model_Noc->getAllExecutor();
         $data['requestor'] = $this->Model_Noc->getRequestorById($id_request);
         $data['title'] = 'Add Software';
+        $data['tiket'] = $no_tiket;
+        $data['id_request'] = $id_request;
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
@@ -92,7 +94,28 @@ class Admin extends CI_Controller
         $version = $this->input->post("version");
         $notes = $this->input->post("notes");
         $tiket = $this->input->post("tiket");
-        $this->Model_Noc->insertSoftware($software, $version, $notes, $tiket);
+        $id_request = $this->input->post("idRequest");
+        $this->Model_Noc->insertSoftware($software, $version, $notes, $tiket, $id_request);
+        // redirect(base_url("admin/addSoftware?idRequest=".$id_request."&noTiket=".$tiket));
+    }
+
+    public function deleteSoftware()
+    {
+        $software = $this->input->get("software");
+        $tiket = $this->input->get("tiket");
+        $id_request = $this->input->get("idRequest");
+        $delete = $this->Model_Noc->deleteSoftware($tiket, $software);
+        if ($delete) {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Software Success!"); 
+            </script>';
+        } else {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Software Failed!"); 
+            </script>';
+        }
     }
 
     public function deleteRequestSoftware()
