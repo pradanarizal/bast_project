@@ -44,7 +44,68 @@ class Admin extends CI_Controller
         $this->load->view('admin/modal_pengajuansoftware', $data);
         $this->load->view('admin/caridata_employee', $data);
         $this->load->view('admin/tandatangan', $data);
+        $this->load->view('admin/modal_edit_request', $data);
         $this->load->view('footer', $data);
+    }
+
+    public function addSoftware()
+    {
+        $data['software'] = array(
+            "Microsoft Windows",
+            "Microsoft Office Standart",
+            "Microsoft Visio",
+            "Microsoft Project",
+            "Autocad",
+            "Corel Draw",
+            "Adobe Photoshop",
+            "Adobe Premiere",
+            "Adobe Ilustrator",
+            "Adobe After Effect",
+            "Antivirus",
+            "Sketch Up Pro",
+            "Vray Fr Sketchup",
+            "Nitro PDF Pro",
+            "Linux OS",
+            "Open Office",
+            "Mac OS",
+            "Microsoft Office For Mac",
+            "SAP",
+            "Software Lainnya"
+        );
+        $id_request = $this->input->get('idRequest');
+        $no_tiket = $this->input->get('noTiket');
+        $data['softwares'] = $this->Model_Noc->getSoftwareByNoTiket($no_tiket);
+        // $data['executor'] = $this->Model_Noc->getAllExecutor();
+        $data['requestor'] = $this->Model_Noc->getRequestorById($id_request);
+        $data['title'] = 'Add Software';
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/list_software', $data);
+        $this->load->view('admin/tandatangan', $data);
+        $this->load->view('footer', $data);
+    }
+
+    public function insertSoftware()
+    {
+        $software = $this->input->post("software");
+        $version = $this->input->post("version");
+        $notes = $this->input->post("notes");
+        $tiket = $this->input->post("tiket");
+        $this->Model_Noc->insertSoftware($software, $version, $notes, $tiket);
+    }
+
+    public function deleteRequestSoftware()
+    {
+        $id_request = $this->input->get('idRequest');
+        $this->Model_Noc->deleteRequest($id_request);
+        redirect(base_url('admin/subsoftware'));
+    }
+
+    public function SoftwareRequestUpdate()
+    {
+        $this->Model_Noc->software_request_update($this->input->post('id_request'));
+        redirect(base_url('admin/subsoftware'));
     }
 
     public function subhardware()
