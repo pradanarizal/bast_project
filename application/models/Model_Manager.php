@@ -9,13 +9,13 @@ class Model_Manager extends CI_Model
     }
     public function getRequestor()
     {
-        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category)");
+        $data = $this->db->query("SELECT * FROM request INNER JOIN employee ON request.nik= employee.nik");
         $row = $data->result_array();
         return $row;
     }
     public function getRequestorById($id)
     {
-        $data = $this->db->query("SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = $id");
+        $data = $this->db->query("SELECT * FROM request INNER JOIN employee ON request.nik= employee.nik WHERE id_request = $id");
         $row = $data->result_array();
         return $row;
     }

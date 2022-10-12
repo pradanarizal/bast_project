@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 06 Okt 2022 pada 05.37
+-- Waktu pembuatan: 12 Okt 2022 pada 04.40
 -- Versi server: 10.4.6-MariaDB
 -- Versi PHP: 7.3.8
 
@@ -29,19 +29,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `category` (
-  `id_category` int(1) NOT NULL,
-  `nama_category` varchar(20) NOT NULL
+  `id_category` int(3) NOT NULL,
+  `operating_system` int(1) NOT NULL DEFAULT 0,
+  `microsoft_office` int(1) NOT NULL DEFAULT 0,
+  `software_design` int(1) NOT NULL DEFAULT 0,
+  `software_lainnya` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `category`
 --
 
-INSERT INTO `category` (`id_category`, `nama_category`) VALUES
-(1, 'Operating System'),
-(2, 'Microsoft Office'),
-(3, 'Software Design'),
-(4, 'Software Lainnya');
+INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `software_design`, `software_lainnya`) VALUES
+(22, 1, 0, 0, 0),
+(23, 1, 0, 0, 0),
+(24, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -61,9 +63,9 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
-('1111112011010001', 'Hadi', 'Juanda', 'IT'),
-('1111112011010002', 'Rifky', 'Juanda', 'Marketing'),
-('3333234802010003', 'Doly', 'Gondangdia', 'IT Operation');
+('134134135133434', 'Ditaaa', 'Juandaaa', 'HRDDD'),
+('1341341351334344', 'Dita', 'Juandaa', 'Marketing'),
+('1341341351334367', 'Agungaaaaa', 'Juanda', 'Design');
 
 -- --------------------------------------------------------
 
@@ -72,16 +74,16 @@ INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
 --
 
 CREATE TABLE `executor` (
-  `id_executor` int(3) NOT NULL,
-  `nama` varchar(50) NOT NULL
+  `nip_executor` int(16) NOT NULL,
+  `nama_executor` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `executor`
 --
 
-INSERT INTO `executor` (`id_executor`, `nama`) VALUES
-(1, 'Agus');
+INSERT INTO `executor` (`nip_executor`, `nama_executor`) VALUES
+(3324, 'Agus');
 
 -- --------------------------------------------------------
 
@@ -115,19 +117,16 @@ CREATE TABLE `request` (
   `id_category` int(1) NOT NULL DEFAULT 1,
   `tanggal_request` date NOT NULL,
   `tanggal_approval` date NOT NULL,
-  `approval_notes` text NOT NULL
+  `approval_notes` text NOT NULL,
+  `nip_executor` int(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `request`
 --
 
-INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`) VALUES
-(1, 'Gate Rusak', 457623, '88899988', 'hardware', 'pending', '1111112011010001', 1, '2022-10-04', '0000-00-00', ''),
-(2, 'Update Visual Studio', 222222, '222222', 'software', 'pending', '1111112011010001', 4, '2022-10-03', '0000-00-00', ''),
-(3, 'Update OS', 222223, '333333', 'software', 'process', '1111112011010002', 1, '2022-10-02', '2022-10-06', 'Cancelled'),
-(4, 'Installin Adobe', 235235, '333335', 'software', 'pending', '1111112011010003', 3, '2022-10-03', '0000-00-00', ''),
-(5, 'Install Visual Studio', 235239, '243434', 'software', 'process', '1111112011010002', 4, '2022-10-05', '2022-10-04', 'Cancelled');
+INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nip_executor`) VALUES
+(26, 'Update Office', 2147483647, '444449', 'software', 'pending', '1341341351334367', 24, '2022-10-10', '0000-00-00', '', 0);
 
 -- --------------------------------------------------------
 
@@ -137,19 +136,11 @@ INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pen
 
 CREATE TABLE `software` (
   `id_software` int(11) NOT NULL,
-  `id_executor` int(2) NOT NULL,
-  `id_request` int(2) NOT NULL,
+  `no_tiket` int(10) NOT NULL,
   `nama_software` text NOT NULL,
   `version` varchar(20) NOT NULL,
   `notes` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `software`
---
-
-INSERT INTO `software` (`id_software`, `id_executor`, `id_request`, `nama_software`, `version`, `notes`) VALUES
-(3, 1, 3, 'Microsoft Windows', '11', 'Windows 11 Pro');
 
 -- --------------------------------------------------------
 
@@ -193,7 +184,7 @@ ALTER TABLE `employee`
 -- Indeks untuk tabel `executor`
 --
 ALTER TABLE `executor`
-  ADD PRIMARY KEY (`id_executor`);
+  ADD PRIMARY KEY (`nip_executor`);
 
 --
 -- Indeks untuk tabel `hardware`
@@ -224,10 +215,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT untuk tabel `executor`
+-- AUTO_INCREMENT untuk tabel `category`
 --
-ALTER TABLE `executor`
-  MODIFY `id_executor` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `category`
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+
+--
+-- AUTO_INCREMENT untuk tabel `request`
+--
+ALTER TABLE `request`
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT untuk tabel `software`
