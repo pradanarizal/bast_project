@@ -35,16 +35,33 @@ class Admin extends CI_Controller
 
     public function subsoftware()
     {
-        $data['requestor'] = $this->Model_Noc->getRequestor();
+        $data['requestor'] = $this->Model_Noc->getRequestor_software();
         $data['title'] = 'Software-Submission';
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/submission_software', $data);
         $this->load->view('admin/modal_pengajuansoftware', $data);
-        $this->load->view('admin/caridata_employee', $data);
-        $this->load->view('admin/tandatangan', $data);
-        $this->load->view('admin/modal_edit_request', $data);
+        $this->load->view('admin/modal_editsoftware', $data);
+        $this->load->view('admin/script/hapus_pengajuan', $data);
+        $this->load->view('admin/script/caridata_employee', $data);
+        $this->load->view('admin/script/tandatangan', $data);
+        $this->load->view('footer', $data);
+    }
+
+    public function subhardware()
+    {
+        $data['requestor'] = $this->Model_Noc->getRequestor_hardware();
+        $data['title'] = 'Hardware-Submission';
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/submission_hardware', $data);
+        $this->load->view('admin/modal_pengajuanhardware', $data);
+        $this->load->view('admin/modal_edithardware', $data);
+        $this->load->view('admin/script/hapus_pengajuan', $data);
+        $this->load->view('admin/script/caridata_employee', $data);
+        $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 
@@ -99,7 +116,13 @@ class Admin extends CI_Controller
     {
         $id_request = $this->input->get('idRequest');
         $this->Model_Noc->deleteRequest($id_request);
-        redirect(base_url('admin/subsoftware'));
+        $cek = $this->input->get('tipe_pengajuan');
+
+        if ($cek == "hardware") {
+            redirect(base_url('admin/subhardware'));
+        } else {
+            redirect(base_url('admin/subsoftware'));
+        }
     }
 
     public function SoftwareRequestUpdate()
@@ -108,18 +131,10 @@ class Admin extends CI_Controller
         redirect(base_url('admin/subsoftware'));
     }
 
-    public function subhardware()
+    public function hardwareRequestUpdate()
     {
-        $data['requestor'] = $this->Model_Noc->getRequestor();
-        $data['title'] = 'Hardware-Submission';
-        $this->load->view('head', $data);
-        $this->load->view('admin/sidebar_admin', $data);
-        $this->load->view('navbar', $data);
-        $this->load->view('admin/submission_hardware', $data);
-        $this->load->view('admin/modal_pengajuanhardware', $data);
-        $this->load->view('admin/caridata_employee', $data);
-        $this->load->view('admin/tandatangan', $data);
-        $this->load->view('footer', $data);
+        $this->Model_Noc->hardware_request_update($this->input->post('id_request'));
+        redirect(base_url('admin/subhardware'));
     }
 
     public function receipt()

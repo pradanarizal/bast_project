@@ -16,7 +16,18 @@ class Model_Noc extends CI_Model
         return $query->result_array();
     }
 
-    function getRequestor()
+    // menampilkan data pengajuan hardware
+    function getRequestor_hardware()
+    {
+        $this->db->select('request.*, employee.*');
+        $this->db->join('employee', 'request.nik = employee.nik');
+        $this->db->from('request');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    // menampilkan data pengajuan software
+    function getRequestor_software()
     {
 
         $this->db->select('request.*, employee.*, category.*');
@@ -27,6 +38,28 @@ class Model_Noc extends CI_Model
         return $query->result();
     }
 
+    public function software_request_update($id_request)
+    {
+        $data = $this->getRequestorById($id_request);
+        foreach ($data as $d) {
+            $this->category_update($d['id_category']);
+            $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
+            $this->request_update($id_request);
+        }
+    }
+
+    public function hardware_request_update($id_request)
+    {
+        $data = $this->getRequestorById_2($id_request);
+        foreach ($data as $d) {
+            // $this->category_update($d['id_category']);
+            $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
+            $this->request_update($id_request);
+        
+        }
+    }
+
+    //untuk get pengajuan software
     function getRequestorById($id_request)
     {
 
@@ -37,6 +70,17 @@ class Model_Noc extends CI_Model
         $this->db->where('id_request', $id_request);
         $query = $this->db->get();
         // $query = $this->db->query('SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = ' . $id_request);
+        return $query->result_array();
+    }
+
+    // untuk get pengajuan hardware
+    function getRequestorById_2($id_request)
+    {
+        $this->db->select('request.*, employee.*');
+        $this->db->join('employee', 'request.nik = employee.nik');
+        $this->db->from('request');
+        $this->db->where('id_request', $id_request);
+        $query = $this->db->get();
         return $query->result_array();
     }
 
@@ -70,19 +114,10 @@ class Model_Noc extends CI_Model
     //     }
     // }
 
-    public function software_request_update($id_request)
-    {
-        $data = $this->getRequestorById($id_request);
-        foreach ($data as $d) {
-            $this->category_update($d['id_category']);
-            $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
-            $this->request_update($id_request);
-        }
-    }
-
     public function request_update($id_request)
     {
         $data = array(
+            "no_tiket" => $this->input->post('no_tiket'),
             "keluhan" => $this->input->post('description'),
             "no_aset" => $this->input->post('no_asset')
         );
@@ -207,13 +242,19 @@ class Model_Noc extends CI_Model
         if ($cek->num_rows() >= 1) {
             echo '<script>
             window.location.href="' . base_url('admin/subsoftware') . '";
-            alert("Pengajuan Berhasil"); 
+            alert("Your submission has been submitted...!"); 
             </script>';
         } else {
             $this->db->insert('employee', $data2);
+            echo '<script>
+            window.location.href="' . base_url('admin/subsoftware') . '";
+            alert("Your submission has been submitted with new employee data...!"); 
+            </script>';
         }
     }
 
+
+    // Hardware function
     public function hardware_save()
     {
         $tanggal_request = date("Y-m-d");
@@ -231,7 +272,7 @@ class Model_Noc extends CI_Model
 
         $data2 = array(
             "nik" => $this->input->post('inputnik'),
-            "inputnama" => $this->input->post('inputnama'),
+            "nama" => $this->input->post('inputnama'),
             "bagian" => $this->input->post('position'),
             "jabatan" => $this->input->post('inputdivisi')
         );
@@ -240,26 +281,41 @@ class Model_Noc extends CI_Model
         if ($cek->num_rows() >= 1) {
             echo '<script>
             window.location.href="' . base_url('admin/subhardware') . '";
-            alert("Pengajuan Berhasil"); 
+            alert("Your submission has been submitted...!"); 
             </script>';
         } else {
             $this->db->insert('employee', $data2);
+            echo '<script>
+            window.location.href="' . base_url('admin/subhardware') . '";
+            alert("Your submission has been submitted with new employee data...!"); 
+            </script>';
         }
     }
 
-    // function caridata_employee($inputnik)
+    function caridata_employee($inputnik)
+    {
+        $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'inputnik' => $data->nik,
+                    'inputnama' => $data->nama,
+                    'inputdivisi' => $data->bagian,
+                    'position' => $data->jabatan,
+                );
+            }
+        }
+        return $hasil;
+    }
+
+    // function datapengajuan()
     // {
-    //     $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
-    //     if ($hsl->num_rows() > 0) {
-    //         foreach ($hsl->result() as $data) {
-    //             $hasil = array(
-    //                 'inputnik' => $data->nik,
-    //                 'inputnama' => $data->nama,
-    //                 'inputdivisi' => $data->bagian,
-    //                 'position' => $data->jabatan,
-    //             );
-    //         }
-    //     }
-    //     return $hasil;
+    //     // return $this->db->get('request')->result();
+    //     $this->db->select('request.*, employee.nik AS nik, employee.nama, employee.jabatan, employee.bagian');
+    //     $this->db->join('employee', 'request.nik = employee.nik');
+    //     $this->db->from('request');
+    //     $query = $this->db->get();
+    //     return $query->result();
     // }
+
 }
