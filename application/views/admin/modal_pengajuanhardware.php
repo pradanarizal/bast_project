@@ -25,7 +25,7 @@
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="inputnik">NIK/NIP</label>
-                                    <input minlength="16" type="text" id="inputnik" name="inputnik" class="form-control" required>
+                                    <input minlength="16" maxlength="16" type="text" id="inputnik" name="inputnik" class="form-control" required>
                                 </div>
 
                                 <div class="form-grup mt-3">

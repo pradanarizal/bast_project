@@ -2,24 +2,24 @@
 <?php
 foreach ($requestor as $data) {
 ?>
-    <form action="<?php echo site_url('admin/SoftwareRequestUpdate') ?>" method="POST" enctype="multipart/form-data">
+    <form action="<?php echo site_url('admin/hardwareRequestUpdate') ?>" method="POST" enctype="multipart/form-data">
         <div class="modal fade" id="editRequest<?php echo $data->id_request; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header bg-primary">
-                        <h5 class="modal-title text-white" id="exampleModalLabel">Form Pengajuan Software</h5>
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Form Pengajuan Hardware</h5>
                         <button type="button red" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
 
                     <div class="modal-body">
-                        <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Permintaan Instalasi Software</h5>
+                        <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Pengecekan PC/Laptop</h5>
                         <div class="card">
                             <div class="form-group mt-3">
                                 <label for="no_tiket">No Ticket</label>
                                 <input type="text" name="id_request" class="form-control" value="<?php echo $data->id_request; ?>" hidden>
-                                <input type="text" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>" required>
+                                <input type="text" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>" minlength="10" maxlength="10" required>
                             </div>
                         </div>
 
@@ -45,58 +45,12 @@ foreach ($requestor as $data) {
                                 </div>
 
                                 <div class="form-grup mt-3">
-                                    <label for="">Category</label><br>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="os" type="checkbox" id="os<?php echo $data->id_request; ?>" value="1" <?php if ($data->operating_system == 1) {
-                                                                                                                                                        echo "checked";
-                                                                                                                                                    } ?>>
-                                        <label class="form-check-label" for="os<?php echo $data->id_request; ?>">Operating System</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="mo" type="checkbox" id="mo<?php echo $data->id_request; ?>" value="1" <?php if ($data->microsoft_office == 1) {
-                                                                                                                                                        echo "checked";
-                                                                                                                                                    } ?>>
-                                        <label class="form-check-label" for="mo<?php echo $data->id_request; ?>">Microsoft Office</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="sd" type="checkbox" id="sd<?php echo $data->id_request; ?>" value="1" <?php if ($data->software_design == 1) {
-                                                                                                                                                        echo "checked";
-                                                                                                                                                    } ?>>
-                                        <label class="form-check-label" for="sd<?php echo $data->id_request; ?>">Software Design</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" name="sl" type="checkbox" id="sl<?php echo $data->id_request; ?>" value="1" <?php if ($data->software_lainnya == 1) {
-                                                                                                                                                        echo "checked";
-                                                                                                                                                    } ?>>
-                                        <label class="form-check-label" for="sl<?php echo $data->id_request; ?>">Software Lainnya</label>
-                                    </div>
-
-                                </div>
-
-                                <div class="form-grup mt-3">
                                     <label for="">No Asset / Inventaris / Serial Number</label>
                                     <input type="text" name="no_asset" class="form-control" value="<?php echo $data->no_aset; ?>" required>
                                 </div>
                                 <div class="form-grup mt-3">
                                     <label for="">Description of Needs</label>
                                     <textarea name="description" class="form-control" cols="30" rows="10"><?php echo $data->keluhan; ?></textarea>
-                                </div>
-                                <div class="form-grup  mt-3">
-                                    <label for="">Signature</label>
-                                    <!-- <input type="file" name="gambar" class="form-control"> -->
-                                    <form method="post" action="process.php" enctype="multipart/form-data">
-                                        <div id="signature-pad">
-                                            <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
-                                                <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                                                <canvas id="the_canvas" width="350px" height="100px"></canvas>
-                                            </div>
-                                            <div style="margin:10px;">
-                                                <input type="hidden" id="signature" name="signature">
-                                                <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
-                                                <button type="submit" id="save_btn" class="btn btn-success" data-action="save-png">Save</button>
-                                            </div>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
                         </div>
