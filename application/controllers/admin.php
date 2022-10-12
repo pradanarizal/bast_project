@@ -108,15 +108,26 @@ class Admin extends CI_Controller
         redirect(base_url('admin/subsoftware'));
     }
 
+    public function hardwareRequestUpdate()
+    {
+        $this->Model_Noc->hardware_request_update($this->input->post('id_request'));
+        redirect(base_url('admin/subsoftware'));
+    }
+
     public function subhardware()
     {
         $data['requestor'] = $this->Model_Noc->getRequestor();
         $data['title'] = 'Hardware-Submission';
+        
+        $data['detail'] = $this->Model_Noc->datapengajuan();
+
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/submission_hardware', $data);
         $this->load->view('admin/modal_pengajuanhardware', $data);
+        $this->load->view('admin/modal_view', $data);
+        $this->load->view('admin/modal_edithardware', $data);
         $this->load->view('admin/caridata_employee', $data);
         $this->load->view('admin/tandatangan', $data);
         $this->load->view('footer', $data);

@@ -16,7 +16,7 @@
                         <div class="card">
                             <div class="form-grup mt-3">
                                 <label for="noticket">No. Ticket</label>
-                                <input minlength="10" value="#" type="text" id="noticket" name="noticket" class="form-control" required>
+                                <input minlength="10" maxlength="10" type="text" id="noticket" name="noticket" class="form-control" required>
                             </div>
                         </div>
 

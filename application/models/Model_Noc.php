@@ -70,11 +70,22 @@ class Model_Noc extends CI_Model
     //     }
     // }
 
+
     public function software_request_update($id_request)
     {
         $data = $this->getRequestorById($id_request);
         foreach ($data as $d) {
             $this->category_update($d['id_category']);
+            $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
+            $this->request_update($id_request);
+        }
+    }
+
+    public function hardware_request_update($id_request)
+    {
+        $data = $this->getRequestorById($id_request);
+        foreach ($data as $d) {
+            // $this->category_update($d['id_category']);
             $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
             $this->request_update($id_request);
         }
@@ -214,6 +225,9 @@ class Model_Noc extends CI_Model
         }
     }
 
+
+    // Hardware function
+
     public function hardware_save()
     {
         $tanggal_request = date("Y-m-d");
@@ -247,19 +261,34 @@ class Model_Noc extends CI_Model
         }
     }
 
-    // function caridata_employee($inputnik)
-    // {
-    //     $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
-    //     if ($hsl->num_rows() > 0) {
-    //         foreach ($hsl->result() as $data) {
-    //             $hasil = array(
-    //                 'inputnik' => $data->nik,
-    //                 'inputnama' => $data->nama,
-    //                 'inputdivisi' => $data->bagian,
-    //                 'position' => $data->jabatan,
-    //             );
-    //         }
-    //     }
-    //     return $hasil;
-    // }
+    function caridata_employee($inputnik)
+    {
+        $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'inputnik' => $data->nik,
+                    'inputnama' => $data->nama,
+                    'inputdivisi' => $data->bagian,
+                    'position' => $data->jabatan,
+                );
+            }
+        }
+        return $hasil;
+    }
+
+    function datapengajuan()
+    {
+        // return $this->db->get('request')->result();
+        $this->db->select('request.*, employee.nik AS nik, employee.nama, employee.jabatan, employee.bagian');
+        $this->db->join('employee', 'request.nik = employee.nik');
+        $this->db->from('request');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    function edit_datahardware($where, $table)
+    {
+        return $this->db->get_where($table, $where);
+    }
 }

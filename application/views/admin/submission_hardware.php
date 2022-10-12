@@ -38,21 +38,28 @@
                                             <td><?php echo $data->keluhan; ?></td>
                                             <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
                                             <td>
-                                                <button class="tombol bg-warning text-white" data-toggle="modal" title="Review">
+
+                                                <!-- tombol view data -->
+                                                <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#modal-show<?= $data->no_tiket; ?>">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-eye"></i>
                                                     </font>
                                                 </button>
-                                                <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc" title="Edit">
+                                                
+                                                
+                                                <!-- tombol edit data -->
+                                                <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modal-edit<?=$data->no_tiket; ?>">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-edit"></i>
                                                     </font>
                                                 </button>
-                                                <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc" title="Execute">
+
+                                                <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-forward"></i>
                                                     </font>
                                                 </button>
+                                                
                                             </td>
                                         </tr>
                                 <?php }
