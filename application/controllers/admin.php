@@ -101,7 +101,6 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/list_software', $data);
-        $this->load->view('admin/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 

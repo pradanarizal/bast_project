@@ -51,7 +51,7 @@ foreach ($request as $data) {
         <div class="row_admin">
             <div class="card_admin first bg-success">
                 <div class="card_content_admin">
-                    <p>Total User Request</p>
+                    <p>Software Installation Submission</p>
                     <h2><?php echo $software; ?></h2>
                 </div>
                 <div class="items">
