@@ -19,7 +19,7 @@ foreach ($requestor as $data) {
                             <div class="form-group mt-3">
                                 <label for="no_tiket">No Ticket</label>
                                 <input type="text" name="id_request" class="form-control" value="<?php echo $data->id_request; ?>" hidden>
-                                <input type="text" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>" maxlength="10" required>
+                                <input type="text" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>" maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             </div>
                         </div>
 
@@ -28,7 +28,7 @@ foreach ($requestor as $data) {
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="inputnik">NIK/NIP</label>
-                                    <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="16" value="<?php echo $data->nik; ?>" required>
+                                    <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="16" value="<?php echo $data->nik; ?>" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                                 </div>
 
                                 <div class="form-grup mt-3">

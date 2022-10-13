@@ -44,7 +44,8 @@ if (isset($message)) {
                         </div>
                         <form class="user" action="<?php echo base_url('login_controller/dashboard') ?>" method="POST">
                             <div class="form-group">
-                                <input type="number" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIP" required>
+                                <input type="text" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIP" minlength="10"
+                                maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             </div>
                             <div class="form-group">
                                 <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="password" placeholder="Password" required>

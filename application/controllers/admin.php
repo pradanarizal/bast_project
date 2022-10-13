@@ -173,7 +173,6 @@ class Admin extends CI_Controller
     public function simpan_software()
     {
         $this->Model_Noc->software_save();
-        redirect(base_url('admin/subsoftware'));
     }
 
     public function simpan_hardware()
