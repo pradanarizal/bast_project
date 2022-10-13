@@ -7,10 +7,17 @@
     </div>
 
     <div class="card shadow mb-4">
-        <!-- <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
-        </div> -->
         <div class="card-body">
+            <?php
+            $count = 0;
+            foreach ($user as $data) {
+                $count = $count + 1;
+            } ?>
+
+            <div class="float-left">
+                <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#modalAdd<?php echo $data->nip ?>"><i class="fas fa-plus fa-sm mr-2"></i>Add New User</button>
+            </div>
+
             <table id="myTable" class="display">
                 <thead>
                     <tr>
@@ -46,11 +53,7 @@
                     <?php } ?>
                 </tbody>
             </table>
-            <div class="float-right">
-                <button class="btn btn-md btn-success  mt-4" data-toggle="modal" data-target="#modalAdd<?php echo $data->nip ?>">
-                    <i class="fas fa-plus fa-sm mr-2"></i>Add New User
-                </button>
-            </div>
+
         </div>
     </div>
 
@@ -159,7 +162,7 @@ foreach ($user as $data) {
     $nip = $data->nip;
     $nama = $data->nama;
     $role = $data->role;
-
+    $password = $data->password;
 ?>
     <div class="modal fade" id="modalAdd<?php echo $nip ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -178,7 +181,7 @@ foreach ($user as $data) {
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="">NIP</label>
-                                    <input type="text" id="nip" name="nip" class="form-control" required minlength="16">
+                                    <input type="text" id="nip" name="nip" class="form-control" required minlength="4" maxlength="16" onkeypress="return event.charCode >= 48 && event.charCode <=57">
                                 </div>
 
                                 <div class="form-grup mt-3">

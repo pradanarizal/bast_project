@@ -11,6 +11,9 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <!-- data table -->
+                    <div class="float-left">
+                        <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
+                    </div>
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
@@ -63,6 +66,7 @@
                                                     <i class="fa fa-trash"></i>
                                                 </font>
                                             </button>
+
                                         </td>
                                     </tr>
                             <?php }
@@ -72,9 +76,7 @@
                 </div>
             </div>
 
-            <div class="float-right">
-                <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
-            </div>
+
 
         </div>
     </div>

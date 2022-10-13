@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2022 at 07:14 AM
+-- Generation Time: Oct 13, 2022 at 10:55 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -46,7 +46,9 @@ INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `
 (25, 1, 1, 1, 0),
 (26, 1, 0, 1, 0),
 (27, 1, 0, 0, 0),
-(28, 0, 0, 1, 0);
+(28, 0, 0, 1, 0),
+(29, 1, 0, 0, 0),
+(30, 1, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -76,24 +78,6 @@ INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `executor`
---
-
-CREATE TABLE `executor` (
-  `nip_executor` int(16) NOT NULL,
-  `nama_executor` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `executor`
---
-
-INSERT INTO `executor` (`nip_executor`, `nama_executor`) VALUES
-(3324, 'Agus');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `giver`
 --
 
@@ -111,10 +95,9 @@ CREATE TABLE `giver` (
 
 CREATE TABLE `hardware` (
   `id_hardware` int(3) NOT NULL,
-  `id_executor` int(2) NOT NULL,
-  `id_request` int(2) NOT NULL,
+  `no_tiket` varchar(10) NOT NULL,
   `komponen` varchar(50) NOT NULL,
-  `status` varchar(3) NOT NULL,
+  `status_hardware` varchar(3) NOT NULL,
   `problem` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -125,7 +108,7 @@ CREATE TABLE `hardware` (
 --
 
 CREATE TABLE `noc_admin` (
-  `nik_admin` int(16) NOT NULL,
+  `nik_admin` varchar(16) NOT NULL,
   `nama_admin` varchar(50) NOT NULL,
   `position_admin` varchar(50) NOT NULL,
   `division_admin` varchar(50) NOT NULL
@@ -136,8 +119,8 @@ CREATE TABLE `noc_admin` (
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
-(0, 'Dea', 'Juanda', 'NOC'),
-(1231, 'Dede', 'Juanda', 'NOC');
+('0', 'Dea', 'Juanda', 'NOC'),
+('1231', 'Dede', 'Juanda', 'NOC');
 
 -- --------------------------------------------------------
 
@@ -182,19 +165,21 @@ CREATE TABLE `request` (
   `tanggal_request` date NOT NULL,
   `tanggal_approval` date NOT NULL,
   `approval_notes` text NOT NULL,
-  `nip_executor` int(3) NOT NULL
+  `nik_admin` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `request`
 --
 
-INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nip_executor`) VALUES
-(26, 'Update Office', '2147483647', '444449', 'software', 'pending', '1341341351334367', 24, '2022-10-10', '0000-00-00', '', 0),
-(27, 'Booting keluar asap', '3434343433', '444449', 'hardware', 'pending', '134134135133434', 5, '2022-10-12', '0000-00-00', '', 0),
-(28, 'Instal office', '22222222', '444449', 'software', 'pending', '1341341351334367', 25, '2022-10-12', '0000-00-00', '', 0),
-(33, 'dddd', '4432432424', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', 0),
-(34, 'a', '0465665464', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', 0);
+INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`) VALUES
+(26, 'Update Office', '2147483647', '444449', 'software', 'process', '1341341351334367', 24, '2022-10-10', '0000-00-00', '', '0'),
+(27, 'Booting keluar asap', '3434343433', '444449', 'hardware', 'process', '134134135133434', 5, '2022-10-12', '0000-00-00', '', '0'),
+(28, 'Instal office', '22222222', '444449', 'software', 'process', '1341341351334367', 25, '2022-10-12', '0000-00-00', '', '0'),
+(33, 'dddd', '4432432424', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', '0'),
+(34, 'a', '0465665464', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', '0'),
+(35, 's', '9998767856', 'a', 'software', 'pending', '1341341351334367', 29, '2022-10-13', '0000-00-00', '', '0'),
+(36, 'sss', '9998765555', 'as', 'software', 'pending', '1341341351334367', 30, '2022-10-13', '0000-00-00', '', '0');
 
 -- --------------------------------------------------------
 
@@ -215,7 +200,9 @@ CREATE TABLE `software` (
 --
 
 INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `notes`) VALUES
-(11, '22222222', 'Microsoft Office Standart', '14', 'aaaa');
+(13, '22222222', 'Microsoft Windows', '2', 'a'),
+(14, '2147483647', 'Microsoft Visio', '', ''),
+(15, '22222222', 'Microsoft Visio', 'a', 'a');
 
 -- --------------------------------------------------------
 
@@ -237,7 +224,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
 ('0000000001', 'Rifky', 'manager', '123'),
 ('0000000002', 'Rizal', 'admin', '321'),
-('0000000003', 'Doly', '', '111');
+('0000000003', 'Doly', 'sadmin', '111'),
+('0000000004', 'Aji', 'manager', '11111');
 
 --
 -- Indexes for dumped tables
@@ -254,12 +242,6 @@ ALTER TABLE `category`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`nik`);
-
---
--- Indexes for table `executor`
---
-ALTER TABLE `executor`
-  ADD PRIMARY KEY (`nip_executor`);
 
 --
 -- Indexes for table `hardware`
@@ -293,19 +275,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `software`
 --
 ALTER TABLE `software`
-  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

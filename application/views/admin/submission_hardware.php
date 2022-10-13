@@ -9,7 +9,9 @@
             </div>
             <div class="card shadow mb-4">
                 <div class="card-body">
-
+                    <div class="float-left">
+                        <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
+                    </div>
                     <!-- data table -->
                     <table id="myTable" class="display">
                         <thead>
@@ -68,9 +70,7 @@
                 </div>
             </div>
 
-            <div class="float-right">
-                <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
-            </div>
+
         </div>
     </div>
 </div>
