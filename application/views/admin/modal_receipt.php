@@ -1,7 +1,5 @@
 <form action="<?php echo site_url('admin/simpan_receipt') ?>" method="POST" enctype="multipart/form-data">
 
-<?php foreach ( $receipt as $data) : ?>
-
 <div class="modal fade" id="addReceipt"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog  modal-lg">
         <div class="modal-content">
@@ -14,7 +12,7 @@
         
             <div class="modal-body">
 
-            <form action="<?php echo site_url() . 'admin/receipt_save'; ?>" method="post" enctype="multipart/form-data">
+                <form action="<?php echo site_url() . 'admin/receipt_save'; ?>" method="post" enctype="multipart/form-data">
                     <div class="card mb-3">
                         <div class="form-group mt-3">
                             <label for="inputEmail4">No Ticket</label>
@@ -151,8 +149,7 @@
                     </div>
                 </form>
             </div>
-            </form>
         </div>
     </div>
 </div>
-<?php endforeach ; ?>
+</form>

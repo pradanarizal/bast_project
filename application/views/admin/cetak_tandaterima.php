@@ -9,6 +9,9 @@
     <title>Document</title>
 </head>
 <style>
+    *{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
     .tabel tr td {
         text-align: center;
         font-size: 15px;
@@ -32,20 +35,18 @@
 
     .tabel2 tr td{
         color: black;
-        font-family: calibri;
         padding: 2px;
     }
 
     #halaman {
-        color: black;
-        font-family: calibri;
         width: auto; 
         height: auto; 
-        position: absolute;  
+        position: absolute; 
         padding-top: 30px; 
         padding-left: 30px; 
         padding-right: 30px; 
         padding-bottom: 80px;
+
     }
 
     .tabel4 {
@@ -101,82 +102,89 @@
 
     <br><br>
     <div id="halaman">
+
     <p>Pada hari ini, tanggal bulan tahun</p>
-    <table class= "tabel3" width="50%" border="0" align="left">
-    <tr>
-      <td width="1">Nama Lengkap</td>
-      <td width="1">:</td>
-    </tr>
-    <tr>
-      <td width="1">NIK/NIPP</td>
-      <td>:</td>
-    </tr>
-    <tr>
-      <td width="1">Jabatan</td>
-      <td>:</td>
-    </tr>
-    <tr>
-      <td width="1">Unit/Bagian</td>
-      <td>:</td>
-    </tr>
-    <tr>    
-    <td>Menyerahkan sebagai berikut</td>
-    <td>:</td>
-    </tr>
+    
+    <table class= "tabel3" width="70%" border="0" align="left">
+      <tr>
+          <td style="width: 50%;">Nama Lengkap</td>
+          <td style="width: 5%;">:</td>
+          <td style="width: 50%;">Bandoro Abdul Jamal Muhammad</td>
+      </tr>
+      <tr>
+          <td style="width: 50%;">NIK/NIPP</td>
+          <td style="width: 5%;">:</td>
+          <td style="width: 50%;">1199273223267</td>
+      </tr>
+      <tr>
+        <td style="width: 50%;">Jabatan</td>
+        <td style="width: 5%;">:</td>
+        <td style="width: 50%;">IT Operasional</td>
+      </tr>
+      <tr>
+          <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
+          <td style="width: 5%; vertical-align: top;">:</td>
+          <td style="width: 90%;">Stasiun Juanda</td>
+      </tr>
     </table>
     
     
     
    
     <table class="tabel4" width="100%" border="1" align="left">
+      <thead>
         <tr>
-          <thead>
-            <td>NO TIKET</td>
-            <td>NAMA BARANG</td>
-            <td>ID BARANG</td>
-            <td>URAIAN</td>
-          </thead>
+          <td>NO</td>
+          <td>NAMA BARANG</td>
+          <td>ID BARANG</td>
+          <td>URAIAN</td>
         </tr>
-
-        <tbody>
-          <?php 
-              foreach ($receipt as $data) :
-          ?>
-              <tr>
-                  <td><?php echo $data->no_tiket ;?></td>
-                  <td><?php echo $data->item ?></td>
-                  <td><?php echo $data->item_id ?></td>
-                  <td><?php echo $data->description ?></td>
-              </tr>
-              <?php endforeach ; ?>
-          </tbody>
+      </thead>
+      
+      <tbody>
+        <?php 
+            foreach ($receipt as $data) :
+        ?>
+            <tr>
+                <td><?php echo $data->no_tiket ;?></td>
+                <td><?php echo $data->item ?></td>
+                <td><?php echo $data->item_id ?></td>
+                <td><?php echo $data->description ?></td>
+            </tr>
+            <?php endforeach ; ?>
+      </tbody>  
     </table>
 
     <br>
-    <table class= "tabel5" width="50%" border="0" align="left">
-        <br><br>
-    <tr>
-      <td width="1">Kepada :</td>
-    </tr>
-    <tr>
-      <td width="1">Nama Lengkap</td>
-      <td width="1">:</td>
-    </tr>
-    <tr>
-      <td width="1">NIK/NIPP</td>
-      <td width="1">:</td>
-    </tr>
-    <tr>
-      <td width="1">Jabatan</td>
-      <td width="1">:</td>
-    </tr>
-    <tr>
-      <td width="1">Unit/Bagian</td>
-      <td width="1">:</td>
-    </tr>
-    <tr>
-    <td>Menyerahkan sebagai berikut :</td>
-    </tr>
+    <table class= "tabel5" width="70%" border="0" align="left">
+      <tr>
+        <td width="1">Kepada :</td>
+      </tr>
+      <div>
+        <tr>
+          <td style="width: 50%;">Nama Lengkap</td>
+          <td style="width: 5%;">:</td>
+          <td style="width: 50%;">Bandoro Abdul Jamal Muhammad</td>
+        </tr>
+        <tr>
+            <td style="width: 50%;">NIK/NIPP</td>
+            <td style="width: 5%;">:</td>
+            <td style="width: 50%;">1199273223267</td>
+        </tr>
+        <tr>
+          <td style="width: 50%;">Jabatan</td>
+          <td style="width: 5%;">:</td>
+          <td style="width: 50%;">IT Operasional</td>
+        </tr>
+        <tr>
+            <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
+            <td style="width: 5%; vertical-align: top;">:</td>
+            <td style="width: 90%;">Stasiun Juanda</td>
+        </tr>
+      </div>
+      <tr>
+        <td>Menyerahkan sebagai berikut :</td>
+      </tr>
     <!-- <tr>
     <p>Dipergunakan untuk ______ yang menjadi tagggung jawab penerima sepenuhnya </p>
     <p>untuk sebagaimana mestinya</p>
@@ -187,9 +195,8 @@
     <p>Dipergunakan untuk ______ yang menjadi tagggung jawab penerima sepenuhnya </p>
     <p>untuk sebagaimana mestinya</p> -->
     </div>
-
-
 </body>
+
 
 <!-- <style>
     table {
