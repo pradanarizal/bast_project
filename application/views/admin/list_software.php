@@ -8,7 +8,8 @@
             ?>
                 <h2>
                     Add Software
-                    <br>Requestor : <?php echo $data['nama']; ?> (<?php echo $data['no_tiket']; ?>)
+                    <br>Ticket Number : <?php echo $data['no_tiket']; ?>
+                    <br>Requestor : <?php echo $data['nama']; ?>
                     <!-- <br>Executor :
                     <?php
                     //$nipExe = "-";
@@ -38,37 +39,20 @@
                         <tbody>
                             <?php
                             foreach ($softwares as $data) {
-                                $nik = $data->nik;
-                                if ($data->tipe_pengajuan == "software") {
                             ?>
-                                    <tr>
-                                        <td><?php echo $data['nama_software']; ?></td>
-                                        <td><?php echo $data['nik']; ?></td>
-                                        <td><?php echo $data['nama']; ?></td>
-                                        <td>
-                                            <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#editRequest<?php echo $data->id_request; ?>" title="Edit/Review">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-edit"></i>
-                                                </font>
-                                            </button>
-                                            <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#modalAcc" title="Add Software">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-plus"></i>
-                                                </font>
-                                            </button>
-                                            <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc" title="Forward to Manager">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-forward"></i>
-                                                </font>
-                                            </button>
-                                            <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#modalAcc" title="Delete">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-trash"></i>
-                                                </font>
-                                            </button>
-                                        </td>
-                                    </tr>
-                            <?php }
+                                <tr>
+                                    <td><?php echo $data['nama_software']; ?></td>
+                                    <td><?php echo $data['version']; ?></td>
+                                    <td><?php echo $data['notes']; ?></td>
+                                    <td>
+                                        <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#deleteSoftware<?php echo $data['id_software']; ?>" title="Delete">
+                                            <font style="font-weight: bold;">
+                                                <i class="fa fa-trash"></i>
+                                            </font>
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php
                             } ?>
                         </tbody>
                     </table>
@@ -88,7 +72,7 @@
 </div>
 
 <!-- Modal add Software -->
-<form action="<?php echo site_url('admin/SoftwareRequestUpdate'); ?>" method="POST" enctype="multipart/form-data">
+<form action="<?php echo site_url('admin/insertSoftware'); ?>" method="POST" enctype="multipart/form-data">
     <div class="modal fade" id="addSoftware" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -101,6 +85,8 @@
 
                 <div class="modal-body">
                     <div class="form-group mt-3">
+                        <input type="text" name="tiket" value="<?php echo $tiket; ?>" hidden>
+                        <input type="text" name="idRequest" value="<?php echo $id_request; ?>" hidden>
                         <label for="software">Software</label>
                         <select class="form-control" name="software" id="software">
                             <option selected disabled>-- Choose Software --</option>
@@ -133,3 +119,31 @@
         </div>
     </div>
 </form>
+
+<!-- Modal Delete -->
+<?php
+foreach ($softwares as $data) {
+?>
+    <form action="<?php echo site_url('admin/deleteSoftware?software=' . $data['nama_software'] . '&tiket=' . $tiket . '&idRequest=' . $id_request); ?>" method="POST" enctype="multipart/form-data">
+        <div class="modal fade" id="deleteSoftware<?php echo $data['id_software'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header bg-danger">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Delete Software</h5>
+                        <button type="button red" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        Delete <?php echo $data['nama_software']; ?>?
+                    </div>
+                    <div class="modal-footer  mt-3">
+                        <button type="button" class="btn" data-dismiss="modal">Close</button>
+                        <button type="SUBMIT" class="btn btn-danger">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+<?php } ?>

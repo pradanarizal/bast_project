@@ -55,7 +55,6 @@ class Model_Noc extends CI_Model
             // $this->category_update($d['id_category']);
             $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
             $this->request_update($id_request);
-        
         }
     }
 
@@ -113,6 +112,44 @@ class Model_Noc extends CI_Model
     //         $this->category_update($d['id_category']);
     //     }
     // }
+
+    public function insertSoftware($software, $version, $notes, $tiket, $id_request)
+    {
+        $data = array(
+            "no_tiket" => $tiket,
+            "nama_software" => $software,
+            "version" => $version,
+            "notes" => $notes
+        );
+        $cek = $this->db->query("SELECT * FROM software where no_tiket='" . $tiket . "' AND nama_software='" . $software . "'");
+        if ($cek->num_rows() == 0) {
+            $this->db->insert('software', $data);
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Input Software Success!"); 
+            </script>';
+        } elseif ($cek->num_rows() == 1) {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Software already Added!"); 
+            </script>';
+        } else {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Input Software Failed!"); 
+            </script>';
+        }
+    }
+
+    public function deleteSoftware($tiket, $software)
+    {
+        $query = $this->db->query("DELETE FROM `software` WHERE no_tiket = '$tiket' AND nama_software = '$software'");
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     public function request_update($id_request)
     {
