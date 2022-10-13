@@ -35,11 +35,11 @@
                             <td><?php echo $data->role ?></td>
                             <td><?php echo md5($data->password) ?></td>
                             <td>
-                                <button class="tombol bg-success text-white" data-toggle="modal" title="Edit" data-target="#modalEdit<?php echo $data->nip ?>">
+                                <button class="tombol bg-warning text-white" data-toggle="modal" title="Edit" data-target="#modalEdit<?php echo $data->nip ?>">
                                     <i class="fa fa-edit"></i>
                                 </button>
                                 <button class="tombol bg-danger text-white pl-2 pr-2" data-toggle="modal" title="Delete" data-target="#deleteModal<?php echo $data->nip ?>">
-                                    <i class="fa fa-times"></i>
+                                    <i class="fa fa-trash"></i>
                                 </button>
                             </td>
                         </tr>
@@ -133,12 +133,11 @@ foreach ($user as $data) {
                                         <option value="manager" <?php if ($data->role == 'manager') {
                                                                     echo "selected";
                                                                 } ?>>Manager</option>
-                                        <!-- <option value="<?php echo $data->role; ?>"><?php echo $data->role; ?></option> -->
                                     </select>
                                 </div>
                                 <div class="form-grup mt-3">
                                     <label for="password">Password</label>
-                                    <input type="text" value="<?php echo $data->password; ?>" name="password" class="form-control">
+                                    <input type="password" value="<?php echo $data->password; ?>" name="password" class="form-control">
                                 </div>
                             </div>
 

@@ -3,8 +3,10 @@
     <div class="row">
 
         <div class="container-fluid">
-            <h2>Hardware Check Submission</h2>
-
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h2 class="h3 mb-0 text-gray-800">Hardware Check Submission</h2>
+            </div>
             <div class="card shadow mb-4">
                 <div class="card-body">
 

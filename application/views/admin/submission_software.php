@@ -3,7 +3,10 @@
     <div class="row">
 
         <div class="container-fluid">
-            <h2>Software Installation Submission</h2>
+            <!-- Page Heading -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h2 class="h3 mb-0 text-gray-800">Software Installation Submission</h2>
+            </div>
 
             <div class="card shadow mb-4">
                 <div class="card-body">
@@ -36,13 +39,13 @@
                                         <td><?php echo $data->keluhan; ?></td>
                                         <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
                                         <td>
-                                            
+
                                             <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#editRequest<?php echo $data->id_request; ?>" title="Edit/Review">
                                                 <font style="font-weight: bold;">
                                                     <i class="fa fa-edit"></i>
                                                 </font>
                                             </button>
-                                          
+
                                             <a href="<?php echo base_url('admin/addSoftware') . "?idRequest=" . $data->id_request . "&noTiket=" . $data->no_tiket; ?>">
                                                 <button class="tombol bg-primary text-white" title="Add Software">
                                                     <font style="font-weight: bold;">

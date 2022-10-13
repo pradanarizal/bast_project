@@ -30,7 +30,7 @@ class Login_controller extends CI_Controller
 				$this->session->set_userdata($data);
 				$this->auth($data['role']);
 			} else {
-				$data['message'] = "<script>alert('Username atau Password salah!');</script>";
+				$data['message'] = "<script>alert('Username or Password incorect!');</script>";
 				$this->login($data);
 			}
 		} else {
@@ -50,7 +50,7 @@ class Login_controller extends CI_Controller
 	}
 	public function logout()
 	{
-		$data['message'] = "<script>alert('Anda Sudah Logout!');</script>";
+		$data['message'] = "<script>alert('You are Logout!');</script>";
 		session_destroy();
 		$this->login($data);
 	}

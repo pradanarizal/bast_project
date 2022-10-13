@@ -3,7 +3,6 @@ $admin = 0;
 $sadmin = 0;
 $manager = 0;
 foreach ($user as $data) {
-    // if ($data['role'] == "admin";"admin";"admin") {
     if ($data->role == "admin") {
         $admin++;
     } elseif ($data->role == "manager") {

@@ -26,16 +26,4 @@ class Model_Sadmin extends CI_Model
         $this->db->where('nip', $nip);
         $this->db->delete('user');
     }
-    // // Action Edit
-    // public function ChangeData($dataUpdate, $nip)
-    // {
-    //     $this->db->where('nip', $nip);
-    //     $this->db->update('user', $dataUpdate);
-    // }
-    // public function getDataDetail($nip)
-    // {
-    //     $this->db->where('nip', $nip);
-    //     $query = $this->db->get('user');
-    //     return $query->row();
-    // }
 }
