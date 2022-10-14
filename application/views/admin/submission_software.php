@@ -31,7 +31,7 @@
                             foreach ($requestor as $data) {
                                 $nik = $data->nik;
                                 if ($data->tipe_pengajuan == "software") {
-                                    if ($data->status != "process" && $data->status != "rejected") {
+                                    if ($data->status == "pending" || $data->status == "revision") {
                             ?>
                                         <tr>
                                             <td><?php echo $data->no_tiket; ?></td>
