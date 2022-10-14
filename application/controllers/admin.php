@@ -193,8 +193,10 @@ class Admin extends CI_Controller
     public function executor_hardware($id)
     {
         $where = array('id_request' => $id);
-        $data ['requestor'] = $this->Model_Noc->executor_soft($where,
-        'request')->result();
+        $data['requestor'] = $this->Model_Noc->executor_soft(
+            $where,
+            'request'
+        )->result();
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
@@ -218,7 +220,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/receipt', $data);
         $this->load->view('admin/modal_receipt', $data);
         $this->load->view('admin/modal_edit_receipt', $data);
-        $this->load->view('admin/tandatangan', $data);
+        $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 
@@ -244,6 +246,5 @@ class Admin extends CI_Controller
 
     public function print_receipt()
     {
-        
     }
 }
