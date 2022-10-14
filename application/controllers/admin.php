@@ -185,25 +185,54 @@ class Admin extends CI_Controller
         redirect(base_url('admin/subhardware'));
     }
 
-    public function receipt()
-    {
-        $data['requestor'] = $this->Model_Noc->getRequestor();
-        $data['title'] = 'BAST-Receipt';
-        $this->load->view('head', $data);
-        $this->load->view('admin/sidebar_admin');
-        $this->load->view('navbar');
-        $this->load->view('admin/STD_admin');
-        $this->load->view('footer');
-    }
-
     public function simpan_software()
     {
         $this->Model_Noc->software_save();
     }
 
+    public function executor_hardware($id)
+    {
+        $where = array('id_request' => $id);
+        $data ['requestor'] = $this->Model_Noc->executor_soft($where,
+        'request')->result();
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/edit_software', $data);
+        $this->load->view('admin/modal', $data);
+        $this->load->view('footer', $data);
+    }
     public function simpan_hardware()
     {
         $this->Model_Noc->hardware_save();
+        redirect(base_url('admin/subhardware'));
+    }
+
+    public function receipt()
+    {
+        $data['receipt'] = $this->Model_Noc->getReceipt();
+        $data['title'] = 'Receipt';
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/receipt', $data);
+        $this->load->view('admin/modal_receipt', $data);
+        $this->load->view('admin/modal_edit_receipt', $data);
+        $this->load->view('admin/tandatangan', $data);
+        $this->load->view('footer', $data);
+    }
+
+    public function simpan_receipt()
+    {
+        $this->Model_Noc->receipt_save();
+        redirect(base_url('admin/receipt'));
+    }
+
+    public function edit_receipt()
+    {
+        $this->Model_Noc->receipt_update($this->input->post('id_receipt'));
+        //$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Data Berhasil diupdate</div>');
+        redirect(base_url('admin/receipt'));
     }
 
     function get_employee()
@@ -211,5 +240,10 @@ class Admin extends CI_Controller
         $inputnik = $this->input->post('inputnik');
         $data = $this->Model_Noc->caridata_employee($inputnik);
         echo json_encode($data);
+    }
+
+    public function print_receipt()
+    {
+        
     }
 }

@@ -388,4 +388,163 @@ class Model_Noc extends CI_Model
             $this->db->insert('noc_admin', $insert);
         }
     }
+    //receipt function
+    public function getReceipt()
+    {
+        $this->db->select('receipt.*, employee.*, noc_admin.*');
+        $this->db->join('employee', 'receipt.nik = employee.nik');
+        $this->db->join('noc_admin', 'receipt.nik_noc = noc_admin.nik_admin');
+        $this->db->from('receipt');
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function getReceiptById($id_receipt)
+    {
+        $this->db->select('receipt.*, employee.*, noc_admin.*');
+        $this->db->join('employee', 'receipt.nik = employee.nik');
+        $this->db->join('noc_admin', 'receipt.nik_noc = noc_admin.nik_admin');
+        $this->db->from('receipt');
+        $this->db->where('id_receipt', $id_receipt);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function receipt_save()
+    {
+        $date_receipt = date("Y-m-d");
+        $data = array(
+            "no_tiket"      => $this->input->post('no_tiket'),
+            "nik"           => $this->input->post('inputNik'),
+            "nik_noc"       => $this->input->post('nik_receiver'),
+            "item"          => $this->input->post('itemName'),
+            "item_id"       => $this->input->post('itemID'),
+            "kategori"      => $this->input->post('kategori'),
+            "description"   => $this->input->post('description'),
+            "date"          => $date_receipt
+        );
+
+        $this->db->insert('receipt', $data);
+
+        $data2 = array(
+            "nama"          => $this->input->post('inputNama'),
+            "nik"           => $this->input->post('inputNik'),
+            "jabatan"       => $this->input->post('position'),
+            "bagian"        => $this->input->post('unit_division')
+        );
+
+        $cek_employee = $this->db->query("SELECT * FROM employee where nik='" . $this->input->post('inputNik') . "'");
+        if ($cek_employee->num_rows() >= 1) {
+        } else {
+            $this->db->insert('employee', $data2);
+        }
+
+        $data3 = array(
+            "nama_admin"      => $this->input->post('nama_receiver'),
+            'nik_admin'       => $this->input->post('nik_receiver'),
+            'position_admin'  => $this->input->post('position_receiver'),
+            'division_admin'  => $this->input->post('division_receiver')
+        );
+
+        $cek_noc = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $this->input->post('nik_receiver') . "'");
+        if ($cek_noc->num_rows() >= 1) {
+        } else {
+            $this->db->insert('noc_admin', $data3);
+        }
+    }
+
+    public function receipt_update($id_receipt)
+    {
+        $data = $this->getReceiptById($id_receipt);
+        foreach ($data as $d) {
+            $this->update_data_employee($d['nik'], $this->input->post('inputNik'), $id_receipt);
+            $this->update_data_receipt($id_receipt);
+            $this->update_data_noc($d['nik_noc'], $this->input->post('nik_receiver'), $id_receipt);
+        }
+    }
+
+    public function update_data_receipt($id_receipt)
+    {
+        $data = array(
+            "no_tiket"    => $this->input->post('no_tiket'),
+            "item"        => $this->input->post('itemName'),
+            "item_id"     => $this->input->post('itemID'),
+            "description" => $this->input->post('description'),
+            "kategori"    => $this->input->post('kategori')
+        );
+
+        $this->db->where('id_receipt', $id_receipt);
+        $this->db->update('receipt', $data);
+    }
+
+    public function update_data_employee($nik, $newNik, $id_receipt)
+    {
+        if ($nik != $newNik) {
+            $data = array(
+                "nik" => $newNik,
+                "nama" => $this->input->post('inputNama'),
+                "bagian" => $this->input->post('unit_division'),
+                "jabatan" => $this->input->post('position')
+            );
+            $cek = $this->db->query("SELECT * FROM employee where nik='" . $newNik . "'");
+            if ($cek->num_rows() <= 1) {
+                $this->db->insert('employee', $data);
+                $update = array(
+                    "nik" => $newNik
+                );
+                $this->db->where('id_receipt', $id_receipt);
+                $this->db->update('receipt', $update);
+            } else {
+                $update = array(
+                    "nik" => $newNik
+                );
+                $this->db->where('id_receipt', $id_receipt);
+                $this->db->update('receipt', $update);
+            }
+        } else {
+            $data = array(
+                "nama" => $this->input->post('inputNama'),
+                "bagian" => $this->input->post('unit_division'),
+                "jabatan" => $this->input->post('position')
+            );
+            $this->db->where('nik', $nik);
+            $this->db->update('employee', $data);
+        }
+    }
+
+    public function update_data_noc($nik, $newNik, $id_receipt)
+    {
+        if ($nik != $newNik) {
+            $data = array(
+                "nik_admin" => $newNik,
+                "nama_admin" => $this->input->post('nama_receiver'),
+                "position_admin" => $this->input->post('position_receiver'),
+                "division_admin" => $this->input->post('division_receiver')
+            );
+
+            $cek = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $newNik . "'");
+            if ($cek->num_rows() <= 1) {
+                $this->db->insert('noc_admin', $data);
+                $update = array(
+                    "nik_noc" => $newNik
+                );
+                $this->db->where('id_receipt', $id_receipt);
+                $this->db->update('receipt', $update);
+            } else {
+                $update = array(
+                    "nik_admin" => $newNik
+                );
+                $this->db->where('id_receipt', $id_receipt);
+                $this->db->update('receipt', $update);
+            }
+        } else {
+            $data = array(
+                "nama_admin" => $this->input->post('nama_receiver'),
+                "position_admin" => $this->input->post('position_receiver'),
+                "division_admin" => $this->input->post('division_receiver')
+            );
+            $this->db->where('nik_admin', $nik);
+            $this->db->update('noc_admin', $data);
+        }
+    }
 }
