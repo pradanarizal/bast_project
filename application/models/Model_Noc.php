@@ -52,7 +52,6 @@ class Model_Noc extends CI_Model
     {
         $data = $this->getRequestorById_2($id_request);
         foreach ($data as $d) {
-            // $this->category_update($d['id_category']);
             $this->employee_update($d['nik'], $this->input->post('inputnik'), $id_request);
             $this->request_update($id_request);
         }
@@ -68,7 +67,6 @@ class Model_Noc extends CI_Model
         $this->db->from('request');
         $this->db->where('id_request', $id_request);
         $query = $this->db->get();
-        // $query = $this->db->query('SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = ' . $id_request);
         return $query->result_array();
     }
 
@@ -92,26 +90,19 @@ class Model_Noc extends CI_Model
         return $query->result_array();
     }
 
+    public function gethardware_ByNoTiket($no_tiket)
+    {
+        $this->db->select('*');
+        $this->db->from('hardware');
+        $this->db->where('no_tiket', $no_tiket);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function deleteRequest($id_request)
     {
         $this->db->query("DELETE FROM `request` WHERE id_request = '$id_request'");
     }
-
-    // public function getAllExecutor()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('executor');
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
-
-    // public function editSoftwareExecutor($id_request, $nip)
-    // {
-    //     $data = $this->getRequestorById($id_request);
-    //     foreach ($data as $d) {
-    //         $this->category_update($d['id_category']);
-    //     }
-    // }
 
     public function insertSoftware($software, $version, $notes, $tiket, $id_request)
     {
@@ -126,20 +117,69 @@ class Model_Noc extends CI_Model
             $this->db->insert('software', $data);
             echo '<script>
             window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
-            alert("Input Software Success!"); 
+            alert("Input Software Success...!"); 
             </script>';
         } elseif ($cek->num_rows() == 1) {
             echo '<script>
             window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
-            alert("Software already Added!"); 
+            alert("Software already Added...!"); 
             </script>';
         } else {
             echo '<script>
             window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
-            alert("Input Software Failed!"); 
+            alert("Input Software Failed...!"); 
             </script>';
         }
     }
+
+    public function insert_component($component, $status_component, $problem, $tiket, $id_request)
+    {
+        $cek_problem = $problem;
+
+        if ($cek_problem == "") {
+            $cek_problem = "-";
+        } else {
+            $cek_problem = $problem;
+        }
+
+
+        $data = array(
+            "no_tiket" => $tiket,
+            "komponen" => $component,
+            "status_hardware" => $status_component,
+            "problem" => $cek_problem
+        );
+
+        $cek = $this->db->query("SELECT * FROM hardware where no_tiket='" . $tiket . "' AND komponen='" . $component . "'");
+        if ($cek->num_rows() == 0) {
+            $this->db->insert('hardware', $data);
+            echo '<script>
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Input Component Success...!"); 
+            </script>';
+        } elseif ($cek->num_rows() == 1) {
+            echo '<script>
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Component already Checked...!"); 
+            </script>';
+        } else {
+            echo '<script>
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Input Component Failed...!"); 
+            </script>';
+        }
+    }
+
+    public function deleteHardware($tiket, $hardware)
+    {
+        $query = $this->db->query("DELETE FROM `hardware` WHERE no_tiket = '$tiket' AND komponen = '$hardware'");
+        if ($query) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public function deleteSoftware($tiket, $software)
     {
@@ -348,15 +388,21 @@ class Model_Noc extends CI_Model
         return $hasil;
     }
 
-    // function datapengajuan()
-    // {
-    //     // return $this->db->get('request')->result();
-    //     $this->db->select('request.*, employee.nik AS nik, employee.nama, employee.jabatan, employee.bagian');
-    //     $this->db->join('employee', 'request.nik = employee.nik');
-    //     $this->db->from('request');
-    //     $query = $this->db->get();
-    //     return $query->result();
-    // }
+    function caridata_executor($nikadmin)
+    {
+        $hsl = $this->db->query("SELECT * FROM noc_admin WHERE nik_admin='$nikadmin'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'nik' => $data->nik_admin,
+                    'name' => $data->nama_admin,
+                    'position' => $data->position_admin,
+                    'division' => $data->division_admin,
+                );
+            }
+        }
+        return $hasil;
+    }
 
     public function changeStatusRequest($id_request, $status)
     {

@@ -30,40 +30,43 @@
                             foreach ($requestor as $data) {
                                 $nik = $data->nik;
                                 if ($data->tipe_pengajuan == "hardware") {
+                                    if ($data->status == "pending" || $data->status == "process") {
                             ?>
-                                    <tr>
-                                        <td><?php echo $data->no_tiket; ?></td>
-                                        <td><?php echo $data->nik; ?></td>
-                                        <td><?php echo $data->nama; ?></td>
-                                        <td><?php echo $data->jabatan; ?></td>
-                                        <td><?php echo $data->keluhan; ?></td>
-                                        <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
-                                        <td>
+                                        <tr>
+                                            <td><?php echo $data->no_tiket; ?></td>
+                                            <td><?php echo $data->nik; ?></td>
+                                            <td><?php echo $data->nama; ?></td>
+                                            <td><?php echo $data->jabatan; ?></td>
+                                            <td><?php echo $data->keluhan; ?></td>
+                                            <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
+                                            <td>
 
-                                            <!-- tombol view data -->
+                                                <!-- tombol view data -->
 
-                                            <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#editRequest<?php echo $data->id_request; ?>" title="Edit/Review">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-edit"></i>
-                                                </font>
-                                            </button>
+                                                <button class="tombol bg-warning text-white" data-toggle="modal" data-target="#editRequest<?php echo $data->id_request; ?>" title="Edit/Review">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-edit"></i>
+                                                    </font>
+                                                </button>
 
+                                                <a href="<?php echo base_url('admin/hardware_check') . "?idRequest=" . $data->id_request . "&noTiket=" . $data->no_tiket; ?>">
+                                                    <button class="tombol bg-primary text-white" title="Check Component">
+                                                        <font style="font-weight: bold;">
+                                                            <i class="fa fa-plus"></i>
+                                                        </font>
+                                                    </button>
+                                                </a>
 
-                                            <button class="tombol bg-success text-white" data-toggle="modal" data-target="#modalAcc" title="Forward to Manager">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-forward"></i>
-                                                </font>
-                                            </button>
+                                                <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#deleteRequest<?php echo $data->id_request; ?>" title="Delete">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-trash"></i>
+                                                    </font>
+                                                </button>
 
-                                            <button class="tombol bg-danger text-white" data-toggle="modal" data-target="#deleteRequest<?php echo $data->id_request; ?>" title="Delete">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-trash"></i>
-                                                </font>
-                                            </button>
-
-                                        </td>
-                                    </tr>
+                                            </td>
+                                        </tr>
                             <?php }
+                                }
                             } ?>
                         </tbody>
                     </table>

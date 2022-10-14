@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 13, 2022 at 10:55 AM
+-- Generation Time: Oct 14, 2022 at 12:22 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 7.3.31
 
@@ -40,15 +40,8 @@ CREATE TABLE `category` (
 --
 
 INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `software_design`, `software_lainnya`) VALUES
-(22, 1, 0, 0, 0),
-(23, 1, 0, 0, 0),
-(24, 1, 1, 1, 1),
-(25, 1, 1, 1, 0),
-(26, 1, 0, 1, 0),
-(27, 1, 0, 0, 0),
-(28, 0, 0, 1, 0),
-(29, 1, 0, 0, 0),
-(30, 1, 0, 1, 0);
+(1, 1, 0, 0, 0),
+(2, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -68,12 +61,15 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
-('1111112011010001', 'Hadi', 'Juanda', 'IT'),
-('1111112011010002', 'Rifky', 'Juanda', 'Marketing'),
-('1323244535454554', 'gigolo', 'sds', 'dsds'),
-('134134135133434', 'Ditaaa', 'Juandaaa', 'HRD'),
-('1341341351334344', 'Dita', 'Juandaa', 'Marketing'),
-('1341341351334367', 'Agung', 'Juanda', 'Design');
+('0000000000000001', 'Rizaldi Akbar', 'Juanda', 'IT Support'),
+('0000000000000002', 'Rizal Aziz', 'Juanda', 'IT Helpdesk'),
+('0000000000000003', 'Rifky Yusuf', 'Juanda', 'IT Governance'),
+('0000000000000004', 'Sulthan', 'Juanda', 'HR & Development'),
+('0000000000000005', 'Doly', 'Juanda', 'IT Support'),
+('0000000000000006', 'Muhammad Agam', 'Juanda', 'IT Helpdesk'),
+('0000000000000007', 'Zidan Nurdin', 'Juanda', 'IT Operation'),
+('0000000000000008', 'Tri Aji', 'Juanda', 'IT Operation'),
+('0000000000000009', 'Muhammad Fadhlurrahman', 'Juanda', 'IT Governance');
 
 -- --------------------------------------------------------
 
@@ -119,8 +115,9 @@ CREATE TABLE `noc_admin` (
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
-('0', 'Dea', 'Juanda', 'NOC'),
-('1231', 'Dede', 'Juanda', 'NOC');
+('1231', 'Dede Junaedi', 'Juanda', 'IT Support'),
+('1232', 'Udin Santoso', 'Juanda', 'IT Support NOC'),
+('1233', 'Udin Bahrudin', 'Juanda', 'IT');
 
 -- --------------------------------------------------------
 
@@ -145,7 +142,7 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_noc`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
-(0, '111111', 1123, 1231, 'Gate', 11111, 'Surat Serah Terima', 'adadadad', '2022-10-13');
+(1, '4444444444', 1123, 1231, 'Gate', 11111, 'Peminjaman', 'aaaaaaaaaaaaaa', '2022-10-14');
 
 -- --------------------------------------------------------
 
@@ -173,13 +170,8 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`) VALUES
-(26, 'Update Office', '2147483647', '444449', 'software', 'process', '1341341351334367', 24, '2022-10-10', '0000-00-00', '', '0'),
-(27, 'Booting keluar asap', '3434343433', '444449', 'hardware', 'process', '134134135133434', 5, '2022-10-12', '0000-00-00', '', '0'),
-(28, 'Instal office', '22222222', '444449', 'software', 'process', '1341341351334367', 25, '2022-10-12', '0000-00-00', '', '0'),
-(33, 'dddd', '4432432424', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', '0'),
-(34, 'a', '0465665464', 'a', 'hardware', 'pending', '1341341351334367', 5, '2022-10-13', '0000-00-00', '', '0'),
-(35, 's', '9998767856', 'a', 'software', 'pending', '1341341351334367', 29, '2022-10-13', '0000-00-00', '', '0'),
-(36, 'sss', '9998765555', 'as', 'software', 'pending', '1341341351334367', 30, '2022-10-13', '0000-00-00', '', '0');
+(1, 'Update Windows', '4444444444', '444444/432413/214132', 'software', 'approved', '134134135133434', 1, '2022-10-13', '2022-10-14', 'Mantap', ''),
+(2, '1111111', '4444444444', '444449', 'software', 'pending', '134134135133434', 2, '2022-10-14', '0000-00-00', '', '');
 
 -- --------------------------------------------------------
 
@@ -200,9 +192,8 @@ CREATE TABLE `software` (
 --
 
 INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `notes`) VALUES
-(13, '22222222', 'Microsoft Windows', '2', 'a'),
-(14, '2147483647', 'Microsoft Visio', '', ''),
-(15, '22222222', 'Microsoft Visio', 'a', 'a');
+(2, '4444444444', 'Antivirus', '13', 'Avira'),
+(4, '4444444444', 'Microsoft Windows', '11', 'Windows 11 PRO');
 
 -- --------------------------------------------------------
 
@@ -224,8 +215,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
 ('0000000001', 'Rifky', 'manager', '123'),
 ('0000000002', 'Rizal', 'admin', '321'),
-('0000000003', 'Doly', 'sadmin', '111'),
-('0000000004', 'Aji', 'manager', '11111');
+('0000000003', 'Doly', 'sadmin', '111');
 
 --
 -- Indexes for dumped tables
@@ -248,6 +238,18 @@ ALTER TABLE `employee`
 --
 ALTER TABLE `hardware`
   ADD PRIMARY KEY (`id_hardware`);
+
+--
+-- Indexes for table `noc_admin`
+--
+ALTER TABLE `noc_admin`
+  ADD PRIMARY KEY (`nik_admin`);
+
+--
+-- Indexes for table `receipt`
+--
+ALTER TABLE `receipt`
+  ADD PRIMARY KEY (`id_receipt`);
 
 --
 -- Indexes for table `request`
@@ -275,19 +277,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `receipt`
+--
+ALTER TABLE `receipt`
+  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `software`
 --
 ALTER TABLE `software`
-  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

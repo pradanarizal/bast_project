@@ -92,7 +92,6 @@ class Admin extends CI_Controller
         $id_request = $this->input->get('idRequest');
         $no_tiket = $this->input->get('noTiket');
         $data['softwares'] = $this->Model_Noc->getSoftwareByNoTiket($no_tiket);
-        // $data['executor'] = $this->Model_Noc->getAllExecutor();
         $data['requestor'] = $this->Model_Noc->getRequestorById($id_request);
         $data['title'] = 'Add Software';
         $data['tiket'] = $no_tiket;
@@ -100,6 +99,7 @@ class Admin extends CI_Controller
         $this->load->view('head', $data);
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
+        $this->load->view('admin/script/caridata_executor', $data);
         $this->load->view('admin/list_software', $data);
         $this->load->view('footer', $data);
     }
@@ -112,7 +112,25 @@ class Admin extends CI_Controller
         $tiket = $this->input->post("tiket");
         $id_request = $this->input->post("idRequest");
         $this->Model_Noc->insertSoftware($software, $version, $notes, $tiket, $id_request);
-        // redirect(base_url("admin/addSoftware?idRequest=".$id_request."&noTiket=".$tiket));
+    }
+
+    public function deleteSoftware()
+    {
+        $software = $this->input->get("software");
+        $tiket = $this->input->get("noTiket");
+        $id_request = $this->input->get("idRequest");
+        $delete = $this->Model_Noc->deleteSoftware($tiket, $software);
+        if ($delete) {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Software Success...!"); 
+            </script>';
+        } else {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Software Failed...!"); 
+            </script>';
+        }
     }
 
     public function forwardToManager()
@@ -141,24 +159,93 @@ class Admin extends CI_Controller
         }
     }
 
-    public function deleteSoftware()
+    public function hardware_check()
     {
-        $software = $this->input->get("software");
+        $data['component'] = array(
+            "Hardisk",
+            "Memory",
+            "Monitor",
+            "Keyboard",
+            "Mouse",
+            "Software",
+            "Adaptor/Power Supply",
+            "Processor",
+            "Fan/Heatsink",
+            "Lainnya"
+        );
+        $id_request = $this->input->get('idRequest');
+        $no_tiket = $this->input->get('noTiket');
+        $data['komponen'] = $this->Model_Noc->gethardware_byNoTiket($no_tiket);
+        $data['requestor'] = $this->Model_Noc->getRequestorById_2($id_request);
+
+        $data['title'] = 'Add ';
+        $data['tiket'] = $no_tiket;
+        $data['id_request'] = $id_request;
+        $this->load->view('head', $data);
+        $this->load->view('admin/sidebar_admin', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('admin/script/caridata_executor', $data);
+        $this->load->view('admin/list_component', $data);
+        $this->load->view('footer', $data);
+    }
+
+    public function component_check()
+    {
+        $component = $this->input->post("component");
+        $status_component = $this->input->post("status_komponen");
+        $problem = $this->input->post("problem");
+        $tiket = $this->input->post("tiket");
+        $id_request = $this->input->post("idRequest");
+        $status = "process";
+        $this->Model_Noc->insert_component($component, $status_component, $problem, $tiket, $id_request);
+        $this->Model_Noc->changeStatusRequest($id_request, $status);
+    }
+
+    public function delete_component()
+    {
+        $hardware = $this->input->get("hardware");
         $tiket = $this->input->get("noTiket");
         $id_request = $this->input->get("idRequest");
-        $delete = $this->Model_Noc->deleteSoftware($tiket, $software);
+        $delete = $this->Model_Noc->deleteHardware($tiket, $hardware);
         if ($delete) {
             echo '<script>
-            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
-            alert("Delete Software Success!"); 
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Component Success...!"); 
             </script>';
         } else {
             echo '<script>
-            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
-            alert("Delete Software Failed!"); 
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Delete Component Failed...!"); 
             </script>';
         }
     }
+
+    public function add_executor()
+    {
+        $component_count = $this->input->post("component_count");
+        $id_request = $this->input->get("idRequest");
+        $tiket = $this->input->get("noTiket");
+        $noc_nik = $this->input->post("nik");
+        $noc_name = $this->input->post("name");
+        $noc_position = $this->input->post("position");
+        $noc_division = $this->input->post("division");
+        $status = "finish";
+
+        if ($component_count == 0) {
+            echo '<script>
+            window.location.href="' . base_url("admin/hardware_check?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("Please check the hardware components first...!"); 
+            </script>';
+        } else {
+            $this->Model_Noc->changeStatusRequest($id_request, $status);
+            $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
+            echo '<script>
+            window.location.href="' . base_url("admin/subhardware") . '";
+            alert("The hardware components has been checked and the status is complete...!"); 
+            </script>';
+        }
+    }
+
 
     public function deleteRequestSoftware()
     {
@@ -233,7 +320,6 @@ class Admin extends CI_Controller
     public function edit_receipt()
     {
         $this->Model_Noc->receipt_update($this->input->post('id_receipt'));
-        //$this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Data Berhasil diupdate</div>');
         redirect(base_url('admin/receipt'));
     }
 
@@ -241,6 +327,13 @@ class Admin extends CI_Controller
     {
         $inputnik = $this->input->post('inputnik');
         $data = $this->Model_Noc->caridata_employee($inputnik);
+        echo json_encode($data);
+    }
+    
+    function get_executor()
+    {
+        $nikadmin = $this->input->post('nik');
+        $data = $this->Model_Noc->caridata_executor($nikadmin);
         echo json_encode($data);
     }
 
