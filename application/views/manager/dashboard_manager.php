@@ -87,7 +87,7 @@ foreach ($requestor as $data) {
                                     if ($data['status'] == "process") {
                                     ?>
                                         <td>
-                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id . '&tiket=' . $data['no_tiket']); ?>');newWindow.print();">
                                                 <font style="font-weight: bold;">
                                                     <i class="fa fa-eye"></i>
                                                 </font>
@@ -111,7 +111,7 @@ foreach ($requestor as $data) {
                                     } else {
                                     ?>
                                         <td>
-                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id); ?>');newWindow.print();">
+                                            <button class="tombol bg-warning text-white" title="Review" onClick="newWindow = window.open('<?php echo base_url('manager/reviewReq?id=' . $id . '&tiket=' . $data['no_tiket']); ?>');newWindow.print();">
                                                 <font style="font-weight: bold;">
                                                     <i class="fa fa-eye"></i>
                                                 </font>

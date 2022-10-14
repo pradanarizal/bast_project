@@ -19,9 +19,9 @@ class Model_Manager extends CI_Model
         $row = $data->result_array();
         return $row;
     }
-    public function getSoftwareById($id)
+    public function getSoftwareByTiket($tiket)
     {
-        $data = $this->db->query("SELECT * FROM software WHERE id_request = $id");
+        $data = $this->db->query("SELECT * FROM software WHERE no_tiket = $tiket");
         $row = $data->result_array();
         return $row;
     }

@@ -16,7 +16,7 @@ foreach ($request as $data) {
         $software++;
         if ($data['status'] == "approved") {
             $aSoft++;
-        } elseif ($data['status'] == "process") {
+        } elseif ($data['status'] == 'process') {
             $pSoft++;
         } elseif ($data['status'] == "rejected") {
             $rSoft++;
@@ -61,11 +61,11 @@ foreach ($request as $data) {
                     </div>
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $aSoft; ?></div>
+                        <div class="hasil"><?php echo $pSoft; ?></div>
                     </div>
                     <div class="item_admin">
                         Rejected
-                        <div class="hasil"><?php echo $aSoft; ?></div>
+                        <div class="hasil"><?php echo $rSoft; ?></div>
                     </div>
                 </div>
             </div>
@@ -81,11 +81,11 @@ foreach ($request as $data) {
                     </div>
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $aHard; ?></div>
+                        <div class="hasil"><?php echo $pHard; ?></div>
                     </div>
                     <div class="item_admin">
                         Rejected
-                        <div class="hasil"><?php echo $aHard; ?></div>
+                        <div class="hasil"><?php echo $rHard; ?></div>
                     </div>
                 </div>
             </div>
@@ -101,11 +101,11 @@ foreach ($request as $data) {
                     </div>
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $aAll; ?></div>
+                        <div class="hasil"><?php echo $pAll; ?></div>
                     </div>
                     <div class="item_admin">
                         Rejected
-                        <div class="hasil"><?php echo $aAll; ?></div>
+                        <div class="hasil"><?php echo $rAll; ?></div>
                     </div>
                 </div>
             </div>

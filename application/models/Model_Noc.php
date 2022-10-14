@@ -355,4 +355,34 @@ class Model_Noc extends CI_Model
     //     return $query->result();
     // }
 
+    public function changeStatusRequest($id_request, $status)
+    {
+        $update = array(
+            "status" => $status
+        );
+        $this->db->where('id_request', $id_request);
+        $this->db->update('request', $update);
+    }
+
+    public function addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division)
+    {
+        $cek = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $noc_nik . "'");
+        if ($cek->num_rows() >= 1) {
+            $insert = array(
+                "nama_admin" => $noc_name,
+                "position_admin" => $noc_position,
+                "division_admin" => $noc_division
+            );
+            $this->db->where('nik_admin', $noc_nik);
+            $this->db->update('noc_admin', $insert);
+        } else {
+            $insert = array(
+                "nik_admin" => $noc_nik,
+                "nama_admin" => $noc_name,
+                "position_admin" => $noc_position,
+                "division_admin" => $noc_division
+            );
+            $this->db->insert('noc_admin', $insert);
+        }
+    }
 }

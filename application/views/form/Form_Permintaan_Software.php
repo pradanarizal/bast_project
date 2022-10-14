@@ -162,18 +162,15 @@
                 </tr>
                 <tr class="form-software">
                     <?php
-                    foreach ($software as $soft) {
-                        if ($soft['nama_software'] == "Microsoft Windows") {
-                            $nama_software = $soft['nama_software'];
-                            $version = $soft['version'];
-                            $notes = $soft['notes'];
+                    if (in_array("Microsoft Windows", $software)) {
+                        foreach ($software as $data) {
                     ?>
-                            <td align="center"><input type="checkbox" name="mwn" id="mwn" value="Microsoft Windows" <?php if ($nama_software == "Microsoft Windows") echo "checked"; ?>></td>
+                            <td align="center"><input type="checkbox" name="mw" id="mw" value="Microsoft Windows" <?php if ($software['nama_software'] == "Microsoft Windows") echo "checked"; ?>></td>
                             <td colspan="2"><label for="mwn">Microsoft Windows</label></td>
                             <td colspan="2">
                                 <?php
-                                if ($version != "") {
-                                    echo $version;
+                                if ($software['version'] != "") {
+                                    echo $software['version'];
                                 } else {
                                     echo "______________________";
                                 }
@@ -181,15 +178,27 @@
                             </td>
                             <td colspan="2">
                                 <?php
-                                if ($notes != "") {
-                                    echo $notes;
+                                if ($software['notes'] != "") {
+                                    echo $software['notes'];
                                 } else {
                                     echo "______________________";
-                                } ?>
+                                }
+                                ?>
                             </td>
-                    <?php
+                        <?php
                             break;
                         }
+                    } else {
+                        ?>
+                        <td align="center"><input type="checkbox" name="mw" id="mw" value="Linux OS"></td>
+                        <td colspan="2"><label for="mwn">Microsoft Windows</label></td>
+                        <td colspan="2">
+                            ______________________
+                        </td>
+                        <td colspan="2">
+                            ______________________
+                        </td>
+                    <?php
                     }
                     ?>
                 </tr>

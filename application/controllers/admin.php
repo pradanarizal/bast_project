@@ -115,10 +115,36 @@ class Admin extends CI_Controller
         // redirect(base_url("admin/addSoftware?idRequest=".$id_request."&noTiket=".$tiket));
     }
 
+    public function forwardToManager()
+    {
+        $softwareCount = $this->input->post("softwareCount");
+        $id_request = $this->input->get("idRequest");
+        $tiket = $this->input->get("noTiket");
+        $noc_nik = $this->input->post("nik");
+        $noc_name = $this->input->post("name");
+        $noc_position = $this->input->post("position");
+        $noc_division = $this->input->post("division");
+        $status = "process";
+
+        if ($softwareCount == 0) {
+            echo '<script>
+            window.location.href="' . base_url("admin/addSoftware?idRequest=$id_request&noTiket=$tiket") . '";
+            alert("At Least Add 1 Software"); 
+            </script>';
+        } else {
+            $this->Model_Noc->changeStatusRequest($id_request, $status);
+            $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
+            echo '<script>
+            window.location.href="' . base_url("admin/subsoftware") . '";
+            alert("Successfully forwarded to manager!"); 
+            </script>';
+        }
+    }
+
     public function deleteSoftware()
     {
         $software = $this->input->get("software");
-        $tiket = $this->input->get("tiket");
+        $tiket = $this->input->get("noTiket");
         $id_request = $this->input->get("idRequest");
         $delete = $this->Model_Noc->deleteSoftware($tiket, $software);
         if ($delete) {

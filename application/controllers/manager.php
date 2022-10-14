@@ -37,8 +37,9 @@ class Manager extends CI_Controller
     public function reviewReq()
     {
         $id = $this->input->get('id');
+        $tiket = $this->input->get('tiket');
         $data['requestor'] = $this->Model_Manager->getRequestorById($id);
-        $data['software'] = $this->Model_Manager->getSoftwareById($id);
+        $data['software'] = $this->Model_Manager->getSoftwareByTiket($tiket);
         $data['tanggal'] = date("d/m/Y");
         $this->load->view('form/form_permintaan_software', $data);
     }
