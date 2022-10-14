@@ -54,22 +54,6 @@ class Model_Noc extends CI_Model
         $this->db->query("DELETE FROM `request` WHERE id_request = '$id_request'");
     }
 
-    // public function getAllExecutor()
-    // {
-    //     $this->db->select('*');
-    //     $this->db->from('executor');
-    //     $query = $this->db->get();
-    //     return $query->result_array();
-    // }
-
-    // public function editSoftwareExecutor($id_request, $nip)
-    // {
-    //     $data = $this->getRequestorById($id_request);
-    //     foreach ($data as $d) {
-    //         $this->category_update($d['id_category']);
-    //     }
-    // }
-
 
     public function software_request_update($id_request)
     {
@@ -289,7 +273,6 @@ class Model_Noc extends CI_Model
         $this->db->join('noc_admin', 'receipt.nik_noc = noc_admin.nik_admin');
         $this->db->from('receipt');
         $query = $this->db->get();
-        // $query = $this->db->query('SELECT * FROM ((request INNER JOIN employee ON request.nik= employee.nik) INNER JOIN category ON request.id_category = category.id_category) WHERE id_request = ' . $id_request);
         return $query->result();
     }
 
