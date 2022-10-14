@@ -165,27 +165,30 @@ class Model_Noc extends CI_Model
     public function employee_update($nik, $newNik, $id_request)
     {
         if ($nik != $newNik) {
-            $data = array(
-                "nik" => $newNik,
-                "nama" => $this->input->post('inputnama'),
-                "bagian" => $this->input->post('position'),
-                "jabatan" => $this->input->post('inputdivisi')
-            );
+
             $cek = $this->db->query("SELECT * FROM employee where nik='" . $newNik . "'");
-            if ($cek->num_rows() <= 1) {
-                $this->db->insert('employee', $data);
+            if ($cek->num_rows() >= 1) {
                 $update = array(
-                    "nik" => $newNik
+                    "nama" => $this->input->post('inputnama'),
+                    "bagian" => $this->input->post('position'),
+                    "jabatan" => $this->input->post('inputdivisi')
                 );
-                $this->db->where('id_request', $id_request);
-                $this->db->update('request', $update);
+                $this->db->where('nik', $newNik);
+                $this->db->update('employee', $update);
             } else {
-                $update = array(
-                    "nik" => $newNik
+                $data = array(
+                    "nik" => $newNik,
+                    "nama" => $this->input->post('inputnama'),
+                    "bagian" => $this->input->post('position'),
+                    "jabatan" => $this->input->post('inputdivisi')
                 );
-                $this->db->where('id_request', $id_request);
-                $this->db->update('request', $update);
+                $this->db->insert('employee', $data);
             }
+            $updateRequest = array(
+                "nik" => $newNik
+            );
+            $this->db->where('id_request', $id_request);
+            $this->db->update('request', $updateRequest);
         } else {
             $data = array(
                 "nama" => $this->input->post('inputnama'),

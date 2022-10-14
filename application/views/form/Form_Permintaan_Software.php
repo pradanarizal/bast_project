@@ -1,3 +1,11 @@
+<?php
+$soft = array(
+    "count" => 0,
+    "notes" => "-",
+    "version" => "-"
+);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,7 +62,7 @@
     foreach ($requestor as $data) {
     ?>
         <div style="padding-left: 10px;">Nomor Request : <?php echo $data['id_request']; ?><br>
-            Tanggal Request : <?php echo $tanggal; ?>(dd/mm/yyyy)</div>
+            Tanggal Request : <?php echo date("d/m/Y",  strtotime($data['tanggal_request'])); ?>(dd/mm/yyyy)</div>
         <div class="container">
             <table border="0" width="100%" cellpadding="0">
                 <tr>
@@ -151,331 +159,139 @@
                         </table>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="7" class="header">ADMIN</td>
-                </tr>
-                <tr>
-                    <td align="center">Selection</td>
-                    <td colspan="2">Software</td>
-                    <td colspan="2">Version</td>
-                    <td colspan="2">Notes</td>
-                </tr>
-                <tr class="form-software">
-                    <?php
-                    if (in_array("Microsoft Windows", $software)) {
-                        foreach ($software as $data) {
-                    ?>
-                            <td align="center"><input type="checkbox" name="mw" id="mw" value="Microsoft Windows" <?php if ($software['nama_software'] == "Microsoft Windows") echo "checked"; ?>></td>
-                            <td colspan="2"><label for="mwn">Microsoft Windows</label></td>
-                            <td colspan="2">
-                                <?php
-                                if ($software['version'] != "") {
-                                    echo $software['version'];
-                                } else {
-                                    echo "______________________";
-                                }
-                                ?>
-                            </td>
-                            <td colspan="2">
-                                <?php
-                                if ($software['notes'] != "") {
-                                    echo $software['notes'];
-                                } else {
-                                    echo "______________________";
-                                }
-                                ?>
-                            </td>
-                        <?php
-                            break;
-                        }
-                    } else {
-                        ?>
-                        <td align="center"><input type="checkbox" name="mw" id="mw" value="Linux OS"></td>
-                        <td colspan="2"><label for="mwn">Microsoft Windows</label></td>
+            <?php } ?>
+            <tr>
+                <td colspan="7" class="header">ADMIN</td>
+            </tr>
+            <tr>
+                <td align="center">Selection</td>
+                <td colspan="2">Software</td>
+                <td colspan="2">Version</td>
+                <td colspan="2">Notes</td>
+            </tr>
+            <!-- software loop -->
+            <?php
+            foreach ($softwares as $softName) {
+                foreach ($software as $data) {
+                    if ($data['nama_software'] == $softName) {
+                        $soft['count'] = 1;
+                        $soft['version'] = $data['version'];
+                        $soft['notes'] = $data['notes'];
+                    }
+                }
+                if ($soft['count'] > 0) {
+            ?>
+                    <tr class="form-software">
+                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>" checked></td>
+                        <td colspan="2"><label for="<?php echo $softName; ?>"><?php echo $softName; ?></label></td>
+                        <td colspan="2">
+                            <?php
+                            if ($soft['version'] != "-") {
+                                echo $soft['version'];
+                            } else {
+                                echo "______________________";
+                            }
+                            ?>
+                        </td>
+                        <td colspan="2">
+                            <?php
+                            if ($soft['notes'] != "-") {
+                                echo $soft['notes'];
+                            } else {
+                                echo "______________________";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                <?php
+                    $soft['count'] = 0;
+                    $soft['version'] = "-";
+                    $soft['notes'] = "-";
+                } else { ?>
+                    <tr class="form-software">
+                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>"></td>
+                        <td colspan="2"><label for="<?php echo $softName; ?>"><?php echo $softName; ?></label></td>
                         <td colspan="2">
                             ______________________
                         </td>
                         <td colspan="2">
                             ______________________
                         </td>
-                    <?php
+                    </tr>
+            <?php }
+            } ?>
+            <tr>
+                <td colspan="3" style="padding-left:50px;">
+                    <div class="ttd" style="padding: 0px 30px 40px 10px;">Request Owner</div>
+                </td>
+                <td colspan="4" align="right" style="margin: 0;">
+                    <table border="0" cellspacing="7" style="margin-bottom: 10px;">
+                        <tr>
+                            <td>Nama/Tanda Tangan :</td>
+                            <td rowspan="7">
+                                <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="7" class="header">APPROVALS</td>
+            </tr>
+            <tr>
+                <?php
+                foreach ($requestor as $data) {
+                    $otorisasi = "-";
+                    if ($data['status'] == "approved") {
+                        $otorisasi = "A";
+                    } elseif ($data['status'] == "rejected") {
+                        $otorisasi = "R";
+                    } elseif ($data['status'] == "revision") {
+                        $otorisasi = "N";
                     }
-                    ?>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="mos" id="mos" value="Microsoft Office Standar"></td>
-                    <td colspan="2"><label for="mos">Microsoft Office Standar</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="mvs" id="mvs" value="Microsoft Visio"></td>
-                    <td colspan="2"><label for="mvs">Microsoft Visio</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="mpr" id="mpr" value="Microsoft Project"></td>
-                    <td colspan="2"><label for="mpr">Microsoft Project</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="aut" id="aut" value="Autocad"></td>
-                    <td colspan="2"><label for="aut">Autocad</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="cdr" id="cdr" value="Corel Draw"></td>
-                    <td colspan="2"><label for="cdr">Corel Draw</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="aph" id="aph" value="Adobe Photoshop"></td>
-                    <td colspan="2"><label for="aph">Adobe Photoshop</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="apr" id="apr" value="Adobe Premiere"></td>
-                    <td colspan="2"><label for="apr">Adobe Premiere</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="ail" id="ail" value="Adobe Ilustrator"></td>
-                    <td colspan="2"><label for="ail">Adobe Ilustrator</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="aae" id="aae" value="Adobe After Effect"></td>
-                    <td colspan="2"><label for="aae">Adobe After Effect</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="atv" id="atv" value="Antivirus"></td>
-                    <td colspan="2"><label for="atv">Antivirus</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="sup" id="sup" value="Sketch Up Pro"></td>
-                    <td colspan="2"><label for="sup">Sketch Up Pro</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="vfs" id="vfs" value="Vray Fr Sketchup"></td>
-                    <td colspan="2"><label for="vfs">Vray Fr Sketchup</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="npp" id="npp" value="Nitro PDF Pro"></td>
-                    <td colspan="2"><label for="npp">Nitro PDF Pro</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <?php
-                    foreach ($software as $soft) {
-                        if ($soft['nama_software'] == "Linux OS") {
-                            $nama_software = $soft['nama_software'];
-                            $version = $soft['version'];
-                            $notes = $soft['notes'];
-                    ?>
-                            <td align="center"><input type="checkbox" name="los" id="los" value="Linux OS" <?php if ($nama_software == "Linux OS") echo "checked"; ?>></td>
-                            <td colspan="2"><label for="mwn">Linux OS</label></td>
-                            <td colspan="2">
-                                <?php
-                                if ($version != "") {
-                                    echo $version;
-                                } else {
-                                    echo "______________________";
-                                }
-                                ?>
-                            </td>
-                            <td colspan="2">
-                                <?php
-                                if ($notes != "") {
-                                    echo $notes;
-                                } else {
-                                    echo "______________________";
-                                } ?>
-                            </td>
-                        <?php
-                            break;
-                        } else {
-                        ?>
-                            <td align="center"><input type="checkbox" name="los" id="los" value="Linux OS"></td>
-                            <td colspan="2"><label for="mwn">Linux OS</label></td>
-                            <td colspan="2">
-                                ______________________
-                            </td>
-                            <td colspan="2">
-                                ______________________
-                            </td>
-                    <?php
-                        }
+                    $tanggal = "__/__/____";
+                    if ($data['tanggal_approval'] != "0000-00-00") {
+                        $tanggal = date("d/m/Y",  strtotime($data['tanggal_request']));
                     }
-                    ?>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="oof" id="oof" value="Open Office"></td>
-                    <td colspan="2"><label for="oof">Open Office</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="mac" id="mac" value="Mac OS"></td>
-                    <td colspan="2"><label for="mac">Mac OS</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="mom" id="mom" value="Microsoft Office for Mac"></td>
-                    <td colspan="2"><label for="mom">Microsoft Office for Mac</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="sap" id="sap" value="SAP"></td>
-                    <td colspan="2"><label for="sap">SAP</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td align="center"><input type="checkbox" name="sln" id="sln" value="Software Lainnya"></td>
-                    <td colspan="2"><label for="sln">Software Lainnya...</label></td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                    <td colspan="2">
-                        ______________________
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="3" style="padding-left:50px;">
-                        <div class="ttd" style="padding: 0px 30px 40px 10px;">Request Owner</div>
-                    </td>
-                    <td colspan="4" align="right" style="margin: 0;">
-                        <table border="0" cellspacing="7" style="margin-bottom: 10px;">
-                            <tr>
-                                <td>Nama/Tanda Tangan :</td>
-                                <td rowspan="7">
-                                    <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
-                                </td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="7" class="header">APPROVALS</td>
-                </tr>
-                <tr>
+
+                ?>
                     <td colspan="7" align="right">
                         <table border="0" width="">
                             <tr>
                                 <td>Otorisasi Persetujuan</td>
                                 <td>:</td>
                                 <td>
-                                    <div class="ttd" style="padding:4px; font-weight:bold;" align="center">A</div>
+                                    <div class="ttd" style="padding:4px; font-weight:bold;" align="center"><?php echo $otorisasi; ?></div>
                                 </td>
                                 <td>(A) Approved, (R) Rejected, (N) Needed Revision</td>
                             </tr>
                             <tr>
                                 <td>Catatan</td>
                                 <td>:</td>
-                                <td>
-                                    -
+                                <td colspan="2">
+                                    <?php
+                                    if ($data['approval_notes'] != "") {
+                                        echo $data['approval_notes'];
+                                    } else {
+                                        echo "-";
+                                    }
+                                    ?>
                                 </td>
                             </tr>
                             <tr>
@@ -483,7 +299,7 @@
                             </tr>
                             <tr>
                                 <td colspan="2">Nama/Tanda Tangan</td>
-                                <td colspan="2" align="right">Jakarta, __/__/____(dd/mm/yyyy)</td>
+                                <td colspan="2" align="right">Jakarta, <?php echo $tanggal; ?>(dd/mm/yyyy)</td>
                             </tr>
                             <tr>
                                 <td colspan="3">
@@ -492,8 +308,9 @@
                             </tr>
                         </table>
                     </td>
-                </tr>
-                <!-- <tr>
+                <?php } ?>
+            </tr>
+            <!-- <tr>
                 <td colspan="7" align="right">
                     <table border="0" width="600px;">
                         <td align="">Catatan</td>
@@ -506,9 +323,6 @@
                 </td>
             </tr> -->
             </table>
-        <?php
-    }
-        ?>
         </div>
 </body>
 

@@ -36,6 +36,28 @@ class Manager extends CI_Controller
     }
     public function reviewReq()
     {
+        $data['softwares'] = array(
+            "Microsoft Windows",
+            "Microsoft Office Standart",
+            "Microsoft Visio",
+            "Microsoft Project",
+            "Autocad",
+            "Corel Draw",
+            "Adobe Photoshop",
+            "Adobe Premiere",
+            "Adobe Ilustrator",
+            "Adobe After Effect",
+            "Antivirus",
+            "Sketch Up Pro",
+            "Vray Fr Sketchup",
+            "Nitro PDF Pro",
+            "Linux OS",
+            "Open Office",
+            "Mac OS",
+            "Microsoft Office For Mac",
+            "SAP",
+            "Software Lainnya"
+        );
         $id = $this->input->get('id');
         $tiket = $this->input->get('tiket');
         $data['requestor'] = $this->Model_Manager->getRequestorById($id);
