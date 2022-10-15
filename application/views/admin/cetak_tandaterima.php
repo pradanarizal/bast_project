@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,6 +45,12 @@
 
     .tabel4 {
       border-collapse: collapse;
+      margin: 5px;
+    }
+
+    .title-content {
+      font-family: sans-serif;
+      font-weight: bold;
     }
 
     .tabel6{
@@ -101,73 +109,70 @@
             <td>Halaman : 1 dari 1</td>
         </tr>
     </table>
+    <?php foreach ($receipt as $data) { 
+      ?>
 
     <br>
-    <?php // if(isset($receipt)){ foreach ($receipt as $data): $no = 1 ; 
-    ?>
       <table class="tabel2" border="1" width="25%"  align="left" >
           <thead>
             <tr>
                 <td style="width: 30%;">No. Tiket</td>
-                <td style="width: 50%;"><?php //echo $data->no_tiket?></td>
+                <td style="width: 50%;"><?php echo $data->no_tiket ;?></td>
             </tr>
             <tr>
               <td style="width: 30%;">Tanggal</td>
-              <td style="width: 50%;"><?php //echo $data->date?></td>
+              <td style="width: 50%;"><?php echo $data->date ;?></td>
             </tr>
           </thead>
-        </table>
+      </table>
       <br><br>
       <div id="halaman">
 
-        <p>Pada hari ini, tanggal bulan tahun</p>
+        <p>Pada hari ini, tanggal <span><?php echo date("d/m/Y",  strtotime($data->date)); ?></span></p>
         <table class="tabel3" width="70%" align="left">
+
           <tr>
               <td style="width: 50%;">Nama Lengkap</td>
               <td style="width: 5%;">:</td>
-              <td style="width: 50%;"><?php // echo $data->nama; ?></td>
+              <td style="width: 50%;"><?php  echo $data->nama; ?></td>
           </tr>
           <tr>
               <td style="width: 50%;">NIK/NIPP</td>
               <td style="width: 5%;">:</td>
-              <td style="width: 50%;"><?php //echo $data->nik?></td>
+              <td style="width: 50%;"><?php echo $data->nik?></td>
           </tr>
           <tr>
             <td style="width: 50%;">Jabatan</td>
             <td style="width: 5%;">:</td>
-            <td style="width: 50%;"><?php //echo $data->jabatan?></td>
+            <td style="width: 50%;"><?php echo $data->jabatan?></td>
           </tr>
           <tr>
               <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
               <td style="width: 5%; vertical-align: top;">:</td>
-              <td style="width: 50%;"><?php //echo $data->bagian?></td>
+              <td style="width: 50%;"><?php echo $data->bagian?></td>
           </tr>
-
         </table>
         
         <table class="tabel4" width="100%" border="1" align="left">
           <thead>
             <tr>
-              <td>NO TIKET</td>
-              <td>NAMA BARANG</td>
-              <td>ID BARANG</td>
-              <td>URAIAN</td>
+              <td class="title-content">NO TIKET</td>
+              <td class="title-content">NAMA BARANG</td>
+              <td class="title-content">ID BARANG</td>
+              <td class="title-content">URAIAN</td>
             </tr>
           </thead>
           
           <tbody>
-            <?php foreach ($receipt as $data) :
-            ?>
                 <tr>
                     <td><?php echo $data->no_tiket ; ?></td>
                     <td><?php echo $data->item ; ?></td>
                     <td><?php echo $data->item_id ; ?></td>
                     <td><?php echo $data->description ; ?></td>
                 </tr>
-                <?php endforeach ; ?> 
           </tbody>  
         </table>
-      
+
         <br>
         <table class= "tabel5" width="70%" border="0" align="left">
           <tr>
@@ -208,7 +213,6 @@
             </td>
           </tr>
         </table>
-      <?php // ; } ?>
 
         <table class="tabel6" width="100%">
           <tr>
@@ -220,11 +224,14 @@
             <td>
               <div style="width: 50%; text-align: left; float: right;">Yang Menerima</div><br>
               <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div><br><br><br><br><br>
-              <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php echo $data->nik_noc ; ?></span></div> 
+              <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php echo $data->nik_admin ; ?></span></div> 
             </td> 
           </tr>
+
         </table>
-    </div>
+        <?php  } ?> 
+
+  </div>
 
 
     <!-- <br><br><br>

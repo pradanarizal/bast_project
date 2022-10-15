@@ -439,7 +439,7 @@ class Model_Noc extends CI_Model
     {
         $this->db->select('receipt.*, employee.*, noc_admin.*');
         $this->db->join('employee', 'receipt.nik = employee.nik');
-        $this->db->join('noc_admin', 'receipt.nik_noc = noc_admin.nik_admin');
+        $this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
         $this->db->from('receipt');
         $query = $this->db->get();
         return $query->result();
@@ -449,7 +449,7 @@ class Model_Noc extends CI_Model
     {
         $this->db->select('receipt.*, employee.*, noc_admin.*');
         $this->db->join('employee', 'receipt.nik = employee.nik');
-        $this->db->join('noc_admin', 'receipt.nik_noc = noc_admin.nik_admin');
+        $this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
         $this->db->from('receipt');
         $this->db->where('id_receipt', $id_receipt);
         $query = $this->db->get();
@@ -458,10 +458,13 @@ class Model_Noc extends CI_Model
 
     public function getReceiptPrint($id)
     {
-        $data = $this->db->query("SELECT * FROM receipt INNER JOIN employee ON receipt.nik = employee.nik WHERE id_receipt = $id ");
-        //return $data->result_array();
-        $row = $data->result_array();
-        return $row;
+        $this->db->select('receipt.*, employee.*, noc_admin.*');
+        $this->db->join('employee', 'receipt.nik = employee.nik');
+        $this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
+        $this->db->from('receipt');
+        $this->db->where('id_receipt', $id);
+        $query = $this->db->get_where();
+        return $query->result();
     }
 
     public function receipt_save()
@@ -470,7 +473,7 @@ class Model_Noc extends CI_Model
         $data = array(
             "no_tiket"      => $this->input->post('no_tiket'),
             "nik"           => $this->input->post('inputNik'),
-            "nik_noc"       => $this->input->post('nik_receiver'),
+            "nik_admin"     => $this->input->post('nik_receiver'),
             "item"          => $this->input->post('itemName'),
             "item_id"       => $this->input->post('itemID'),
             "kategori"      => $this->input->post('kategori'),
@@ -513,7 +516,7 @@ class Model_Noc extends CI_Model
         foreach ($data as $d) {
             $this->update_data_employee($d['nik'], $this->input->post('inputNik'), $id_receipt);
             $this->update_data_receipt($id_receipt);
-            $this->update_data_noc($d['nik_noc'], $this->input->post('nik_receiver'), $id_receipt);
+            $this->update_data_noc($d['nik_admin'], $this->input->post('nik_receiver'), $id_receipt);
         }
     }
 
@@ -534,6 +537,7 @@ class Model_Noc extends CI_Model
     public function update_data_employee($nik, $newNik, $id_receipt)
     {
         if ($nik != $newNik) {
+
             $cek = $this->db->query("SELECT * FROM employee where nik='" . $newNik . "'");
             if ($cek->num_rows() >= 1) {
                 $update = array(
@@ -542,7 +546,7 @@ class Model_Noc extends CI_Model
                     "jabatan" => $this->input->post('position')
                 );
                 $this->db->where('nik', $newNik);
-                $this->db->update('receipt', $update);
+                $this->db->update('employee', $update);
             } else {
                 $data = array(
                     "nik" => $newNik,
@@ -578,9 +582,8 @@ class Model_Noc extends CI_Model
                     "position_admin" => $this->input->post('position_receiver'),
                     "division_admin" => $this->input->post('division_receiver')
                 );
-                $this->db->where('nik_noc', $newNik);
+                $this->db->where('nik_admin', $newNik);
                 $this->db->update('receipt', $update);
-
             } else {
                 $data = array(
                     "nik_admin" => $newNik,

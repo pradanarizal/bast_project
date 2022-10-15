@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 14, 2022 at 12:22 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 7.3.31
+-- Host: localhost:3306
+-- Generation Time: Oct 15, 2022 at 07:25 PM
+-- Server version: 5.7.33
+-- PHP Version: 7.4.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,10 +29,10 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `category` (
   `id_category` int(3) NOT NULL,
-  `operating_system` int(1) NOT NULL DEFAULT 0,
-  `microsoft_office` int(1) NOT NULL DEFAULT 0,
-  `software_design` int(1) NOT NULL DEFAULT 0,
-  `software_lainnya` int(1) NOT NULL DEFAULT 0
+  `operating_system` int(1) NOT NULL DEFAULT '0',
+  `microsoft_office` int(1) NOT NULL DEFAULT '0',
+  `software_design` int(1) NOT NULL DEFAULT '0',
+  `software_lainnya` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -41,7 +41,11 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `software_design`, `software_lainnya`) VALUES
 (1, 1, 0, 0, 0),
-(2, 1, 0, 0, 0);
+(2, 1, 0, 0, 0),
+(3, 1, 0, 0, 0),
+(4, 1, 0, 1, 0),
+(5, 0, 0, 1, 1),
+(6, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -61,15 +65,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
-('0000000000000001', 'Rizaldi Akbar', 'Juanda', 'IT Support'),
-('0000000000000002', 'Rizal Aziz', 'Juanda', 'IT Helpdesk'),
-('0000000000000003', 'Rifky Yusuf', 'Juanda', 'IT Governance'),
-('0000000000000004', 'Sulthan', 'Juanda', 'HR & Development'),
-('0000000000000005', 'Doly', 'Juanda', 'IT Support'),
-('0000000000000006', 'Muhammad Agam', 'Juanda', 'IT Helpdesk'),
-('0000000000000007', 'Zidan Nurdin', 'Juanda', 'IT Operation'),
-('0000000000000008', 'Tri Aji', 'Juanda', 'IT Operation'),
-('0000000000000009', 'Muhammad Fadhlurrahman', 'Juanda', 'IT Governance');
+('1235', 'Rizaldi Akbar', 'IT Juanda', 'Staff Accounting'),
+('9178131212', 'Doly Ganggeng Prahoro', 'IT Depok', 'Manager');
 
 -- --------------------------------------------------------
 
@@ -115,9 +112,8 @@ CREATE TABLE `noc_admin` (
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
-('1231', 'Dede Junaedi', 'Juanda', 'IT Support'),
-('1232', 'Udin Santoso', 'Juanda', 'IT Support NOC'),
-('1233', 'Udin Bahrudin', 'Juanda', 'IT');
+('67891345', 'Andrian Laksamana', 'Head IT dede', 'IT Manggarai'),
+('82732636121212', 'Bandoro', 'Head IT NOC', 'grgrg');
 
 -- --------------------------------------------------------
 
@@ -128,10 +124,10 @@ INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_
 CREATE TABLE `receipt` (
   `id_receipt` int(11) NOT NULL,
   `no_tiket` varchar(10) NOT NULL,
-  `nik` int(16) NOT NULL,
-  `nik_noc` int(16) NOT NULL,
+  `nik` varchar(16) NOT NULL,
+  `nik_admin` varchar(16) NOT NULL,
   `item` varchar(20) NOT NULL,
-  `item_id` int(11) NOT NULL,
+  `item_id` varchar(11) NOT NULL,
   `kategori` varchar(20) NOT NULL,
   `description` varchar(70) NOT NULL,
   `date` date NOT NULL
@@ -141,8 +137,9 @@ CREATE TABLE `receipt` (
 -- Dumping data for table `receipt`
 --
 
-INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_noc`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
-(1, '4444444444', 1123, 1231, 'Gate', 11111, 'Peminjaman', 'aaaaaaaaaaaaaa', '2022-10-14');
+INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
+(16, '766523', '9178131212', '82732636121212', 'Laptop', '11625', 'Surat Serah Terima', 'dss', '2022-10-15'),
+(17, '766523232', '1235', '67891345', 'Gatewayyyyy', '92738', 'Surat Serah Terima', 'dwssd', '2022-10-15');
 
 -- --------------------------------------------------------
 
@@ -158,7 +155,7 @@ CREATE TABLE `request` (
   `tipe_pengajuan` enum('hardware','software') NOT NULL,
   `status` enum('pending','process','approved','revision','rejected') NOT NULL,
   `nik` varchar(16) NOT NULL,
-  `id_category` int(1) NOT NULL DEFAULT 1,
+  `id_category` int(1) NOT NULL DEFAULT '1',
   `tanggal_request` date NOT NULL,
   `tanggal_approval` date NOT NULL,
   `approval_notes` text NOT NULL,
@@ -170,8 +167,10 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`) VALUES
-(1, 'Update Windows', '4444444444', '444444/432413/214132', 'software', 'approved', '134134135133434', 1, '2022-10-13', '2022-10-14', 'Mantap', ''),
-(2, '1111111', '4444444444', '444449', 'software', 'pending', '134134135133434', 2, '2022-10-14', '0000-00-00', '', '');
+(4, 'bisa', '34342', '09765', 'hardware', 'pending', '2121312234444444', 5, '2022-10-15', '0000-00-00', '', ''),
+(5, 'Ganti', '7665', '1212', 'software', 'process', '2123434343343433', 4, '2022-10-15', '0000-00-00', '', ''),
+(6, 'ww', '766523', '09765', 'software', 'pending', '2121313131313131', 5, '2022-10-15', '0000-00-00', '', ''),
+(7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', '');
 
 -- --------------------------------------------------------
 
@@ -193,7 +192,9 @@ CREATE TABLE `software` (
 
 INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `notes`) VALUES
 (2, '4444444444', 'Antivirus', '13', 'Avira'),
-(4, '4444444444', 'Microsoft Windows', '11', 'Windows 11 PRO');
+(4, '4444444444', 'Microsoft Windows', '11', 'Windows 11 PRO'),
+(5, '766523', 'Microsoft Project', '2', 't'),
+(6, '7665', 'Microsoft Project', '55', 'Instalasi');
 
 -- --------------------------------------------------------
 
@@ -277,25 +278,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `software`
 --
 ALTER TABLE `software`
-  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
