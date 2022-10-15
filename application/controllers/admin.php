@@ -192,7 +192,10 @@ class Admin extends CI_Controller
     }
 
     public function print_receipt()
-    {
-        
+    {   
+        $id = $this->input->get('id_receipt');
+        $data['title'] = "Data Receipt";
+        $data['receipt'] = $this->Model_Noc->getReceipt($id);
+        $this->load->view('admin/cetak_tandaterima', $data);
     }
 }

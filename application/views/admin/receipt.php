@@ -23,7 +23,9 @@
 
                         <tbody>
                         <?php 
-                            foreach ($receipt as $data) :
+                            foreach ($receipt as $data) {
+                                $id = $data->id_receipt ;
+                            
                         ?>
                             <tr>
                                 <td><?php echo $data->no_tiket ;?></td>
@@ -41,14 +43,13 @@
                                             <i class="fa fa-edit text-white"></i>
                                         </div>
                                     </button>
-                                    <button class="tombol bg-danger text-white" data-toggle="modal"> 
-                                        <?php // echo base_url('admin/print_receipt') ?>
-                                            <i class="fa fa-print"></i>
+                                    <button class="tombol bg-danger text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id); ?>');newWindow.print();">
+                                        <i class="fa fa-print text-white"></i>
                                     </button>
                                     
                                 </td>
                             </tr>
-                            <?php endforeach ; ?>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

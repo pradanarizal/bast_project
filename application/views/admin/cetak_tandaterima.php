@@ -1,4 +1,3 @@
-@@ -0,0 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
 
@@ -38,6 +37,18 @@
         padding: 2px;
     }
 
+    .tabel2 {
+      border-collapse: collapse;
+    }
+
+    .tabel4 {
+      border-collapse: collapse;
+    }
+
+    .tabel6{
+      border-collapse: collapse;
+    }
+
     #halaman {
         width: auto; 
         height: auto; 
@@ -68,6 +79,7 @@
 </style>
 
 <body style="font-size: 12px;">
+  <div>
     <table class="tabel" border="1" width="100%" cellpadding="0" align="center" cellspacing="0">
         <tr>
             <td rowspan="5">
@@ -91,185 +103,134 @@
     </table>
 
     <br>
-    <table class="tabel2" border="1" width="25%"  align="left" >
-        <tr>
-            <td>No. Tiket :</td>
-        </tr>
-        <tr>
-            <td>Tanggal :</td>
-        </tr>
-    </table>
-
-    <br><br>
-    <div id="halaman">
-
-    <p>Pada hari ini, tanggal bulan tahun</p>
-    
-    <table class= "tabel3" width="70%" border="0" align="left">
-      <tr>
-          <td style="width: 50%;">Nama Lengkap</td>
-          <td style="width: 5%;">:</td>
-          <td style="width: 50%;">Bandoro Abdul Jamal Muhammad</td>
-      </tr>
-      <tr>
-          <td style="width: 50%;">NIK/NIPP</td>
-          <td style="width: 5%;">:</td>
-          <td style="width: 50%;">1199273223267</td>
-      </tr>
-      <tr>
-        <td style="width: 50%;">Jabatan</td>
-        <td style="width: 5%;">:</td>
-        <td style="width: 50%;">IT Operasional</td>
-      </tr>
-      <tr>
-          <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
-          <td style="width: 5%; vertical-align: top;">:</td>
-          <td style="width: 90%;">Stasiun Juanda</td>
-      </tr>
-    </table>
-    
-    
-    
-   
-    <table class="tabel4" width="100%" border="1" align="left">
-      <thead>
-        <tr>
-          <td>NO</td>
-          <td>NAMA BARANG</td>
-          <td>ID BARANG</td>
-          <td>URAIAN</td>
-        </tr>
-      </thead>
-      
-      <tbody>
-        <?php 
-            foreach ($receipt as $data) :
-        ?>
+    <?php // if(isset($receipt)){ foreach ($receipt as $data): $no = 1 ; 
+    ?>
+      <table class="tabel2" border="1" width="25%"  align="left" >
+          <thead>
             <tr>
-                <td><?php echo $data->no_tiket ;?></td>
-                <td><?php echo $data->item ?></td>
-                <td><?php echo $data->item_id ?></td>
-                <td><?php echo $data->description ?></td>
+                <td style="width: 30%;">No. Tiket</td>
+                <td style="width: 50%;"><?php //echo $data->no_tiket?></td>
             </tr>
-            <?php endforeach ; ?>
-      </tbody>  
-    </table>
+            <tr>
+              <td style="width: 30%;">Tanggal</td>
+              <td style="width: 50%;"><?php //echo $data->date?></td>
+            </tr>
+          </thead>
+        </table>
+      <br><br>
+      <div id="halaman">
 
-    <br>
-    <table class= "tabel5" width="70%" border="0" align="left">
-      <tr>
-        <td width="1">Kepada :</td>
-      </tr>
-      <div>
-        <tr>
-          <td style="width: 50%;">Nama Lengkap</td>
-          <td style="width: 5%;">:</td>
-          <td style="width: 50%;">Bandoro Abdul Jamal Muhammad</td>
-        </tr>
-        <tr>
-            <td style="width: 50%;">NIK/NIPP</td>
+        <p>Pada hari ini, tanggal bulan tahun</p>
+        <table class="tabel3" width="70%" align="left">
+          <tr>
+              <td style="width: 50%;">Nama Lengkap</td>
+              <td style="width: 5%;">:</td>
+              <td style="width: 50%;"><?php // echo $data->nama; ?></td>
+          </tr>
+          <tr>
+              <td style="width: 50%;">NIK/NIPP</td>
+              <td style="width: 5%;">:</td>
+              <td style="width: 50%;"><?php //echo $data->nik?></td>
+          </tr>
+          <tr>
+            <td style="width: 50%;">Jabatan</td>
             <td style="width: 5%;">:</td>
-            <td style="width: 50%;">1199273223267</td>
-        </tr>
-        <tr>
-          <td style="width: 50%;">Jabatan</td>
-          <td style="width: 5%;">:</td>
-          <td style="width: 50%;">IT Operasional</td>
-        </tr>
-        <tr>
-            <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
-            <td style="width: 5%; vertical-align: top;">:</td>
-            <td style="width: 90%;">Stasiun Juanda</td>
-        </tr>
-      </div>
-      <tr>
-        <td>Menyerahkan sebagai berikut :</td>
-      </tr>
-    <!-- <tr>
-    <p>Dipergunakan untuk ______ yang menjadi tagggung jawab penerima sepenuhnya </p>
-    <p>untuk sebagaimana mestinya</p>
-    </tr> -->
-    </table>
+            <td style="width: 50%;"><?php //echo $data->jabatan?></td>
+          </tr>
+          <tr>
+              <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
+              <td style="width: 5%; vertical-align: top;">:</td>
+              <td style="width: 50%;"><?php //echo $data->bagian?></td>
+          </tr>
+
+        </table>
+        
+        <table class="tabel4" width="100%" border="1" align="left">
+          <thead>
+            <tr>
+              <td>NO TIKET</td>
+              <td>NAMA BARANG</td>
+              <td>ID BARANG</td>
+              <td>URAIAN</td>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <?php foreach ($receipt as $data) :
+            ?>
+                <tr>
+                    <td><?php echo $data->no_tiket ; ?></td>
+                    <td><?php echo $data->item ; ?></td>
+                    <td><?php echo $data->item_id ; ?></td>
+                    <td><?php echo $data->description ; ?></td>
+                </tr>
+                <?php endforeach ; ?> 
+          </tbody>  
+        </table>
+      
+        <br>
+        <table class= "tabel5" width="70%" border="0" align="left">
+          <tr>
+            <td width="1">Kepada :</td>
+          </tr>
+          <div>
+            <tr>
+              <td style="width: 50%;">Nama Lengkap</td>
+              <td style="width: 5%;">:</td>
+              <td style="width: 50%;"><?php echo $data->nama_admin ; ?></td>
+            </tr>
+            <tr>
+                <td style="width: 50%;">NIK/NIPP</td>
+                <td style="width: 5%;">:</td>
+                <td style="width: 50%;"><?php echo $data->nik_admin ; ?></td>
+            </tr>
+            <tr>
+              <td style="width: 50%;">Jabatan</td>
+              <td style="width: 5%;">:</td>
+              <td style="width: 50%;"><?php echo $data->position_admin ; ?></td>
+            </tr>
+            <tr>
+                <td style="width: 50%; vertical-align: top;">Unit/Bagian</td>
+                <td style="width: 5%; vertical-align: top;">:</td>
+                <td style="width: 50%;"><?php echo $data->division_admin ; ?></td>
+            </tr>
+          </div>
+        </table>
+      
+        <table width="70%">
+          <tr>
+            <td>Menyerahkan sebagai berikut :</td>
+          </tr>
+          <tr>
+            <td >
+              <p>Dipergunakan untuk <span><?php echo $data->description ; ?></span> yang menjadi tagggung jawab penerima sepenuhnya </p>
+              <p>untuk sebagaimana mestinya</p>
+            </td>
+          </tr>
+        </table>
+      <?php // ; } ?>
+
+        <table class="tabel6" width="100%">
+          <tr>
+            <td>
+              <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
+              <div style="width: 50%; text-align: left; float: right;">Pihak Pertama,</div><br><br><br><br><br>
+              <div style="width: 50%; text-align: left; float: right;">NIPP: <span><?php echo $data->nik ; ?></span></div> 
+            </td>
+            <td>
+              <div style="width: 50%; text-align: left; float: right;">Yang Menerima</div><br>
+              <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div><br><br><br><br><br>
+              <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php echo $data->nik_noc ; ?></span></div> 
+            </td> 
+          </tr>
+        </table>
+    </div>
+
+
     <!-- <br><br><br>
     
     <p>Dipergunakan untuk ______ yang menjadi tagggung jawab penerima sepenuhnya </p>
     <p>untuk sebagaimana mestinya</p> -->
-    </div>
+  </div>
 </body>
 
-
-<!-- <style>
-    table {
-      border-collapse: collapse;
-    }
-
-    thead>tr {
-      background-color: #0070C0;
-      color: #f1f1f1;
-    }
-
-    thead>tr>th {
-      background-color: #0070C0;
-      color: #fff;
-      padding: 10px;
-      border-color: #fff;
-    }
-
-    th,
-    td {
-      padding: 2px;
-    }
-
-    th {
-      color: #222;
-    }
-
-    body {
-      font-family: Calibri;
-      color: #000000;
-    }
-  </style>
-
-
-<body onload="">
-  <?php $this->load->view('form/kop_lap'); ?>
-  <h4 align="center" style="margin-top:0px;"><u>SURAT TANDA TERIMA</u></h4>
-  
-
-  <center>
-    <table width="90%" border="1">
-      <tr align="center">
-        <th>NO</th>
-        <th>NAMA BARANG</th>
-        <th width="100">QTY</th>
-        <th>PERIHAL</th>
-      </tr>
-      <tr>
-        <td style="padding-left:10px;" align="center">1</td>
-        
-        <td style="padding-left:10px;">ini adalah isi</td>
-        
-        <td style="padding-left:10px;">ini adalah isi</td>
-        
-        <td style="padding-left:10px;">ini adalah isi</td>
-        
-      </tr>
-    </table>
-  </center>
-  <br>
-
-  <div style="float:right;margin-right:100px;">
-    <table>
-      <tr>
-        <td>
-        <u>YANG MENERIMA</u><br>
-          <br><br><br><br>
-          (.............................................)
-        </td>
-        <br>
-        <td colspan="3" align="center">
-        </td>
-      </tr>
-    </table>
-      NIK/NIPP:
-  </div> -->

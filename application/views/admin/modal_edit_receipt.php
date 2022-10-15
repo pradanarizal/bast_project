@@ -95,8 +95,7 @@
                                     <label for="itemID" class="text-dark font-weight-bold">Nama</label>
                                     <input type="text" class="form-control"
                                         name="nama_receiver"
-                                        value="<?php echo $data->nama_admin ?>"
-                                        > 
+                                        value="<?php echo $data->nama_admin ?>"> 
                                 </div>
                             </div>
                             <div class="form-check-inline row" style="width=100%;">
@@ -105,16 +104,14 @@
                                     <input type="text" id="position" 
                                         name="position_receiver" 
                                         class="form-control"
-                                        value="<?php echo $data->position_admin ?>"
-                                        > 
+                                        value="<?php echo $data->position_admin ?>"> 
                                 </div>
                                 <div class="form-grup mt-3 col-sm">
                                     <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
                                     <input type="text" id="unit_division" 
                                         name="division_receiver" 
                                         class="form-control"
-                                        value="<?php echo $data->division_admin ?>"
-                                        > 
+                                        value="<?php echo $data->division_admin ?>"> 
                                 </div>
                             </div>
                         </div>
