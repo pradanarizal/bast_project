@@ -329,7 +329,7 @@ class Admin extends CI_Controller
         $data = $this->Model_Noc->caridata_employee($inputnik);
         echo json_encode($data);
     }
-    
+
     function get_executor()
     {
         $nikadmin = $this->input->post('nik');
@@ -338,8 +338,8 @@ class Admin extends CI_Controller
     }
 
     public function print_receipt()
-    {           
-        $id = $this->input->get('id');
+    {
+        $id = $this->input->get('id_receipt');
         $data['title'] = "Data Receipt";
         $data['tanggal'] = date("d/m/Y");
         $data['receipt'] = $this->Model_Noc->getReceiptPrint($id);
