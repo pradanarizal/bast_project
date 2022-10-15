@@ -32,7 +32,7 @@ class Manager extends CI_Controller
     }
     public function liatForm()
     {
-        $this->load->view('form/form_permintaan_software');
+        $this->load->view('form/form_permintaan_hardware');
     }
     public function reviewReq()
     {
