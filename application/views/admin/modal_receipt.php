@@ -135,7 +135,6 @@
                                     <canvas id="the_canvas" width="350px" height="100px"></canvas>
                                 </div>
                                 <div style="margin:10px;">
-                                    <input type="hidden" id="signature" name="signature">
                                     <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
                                     <button type="button" id="save_btn" class="btn btn-success" data-action="save-png">Save</button>
                                 </div>

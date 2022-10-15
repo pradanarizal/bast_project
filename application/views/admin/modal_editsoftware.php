@@ -46,21 +46,18 @@ foreach ($requestor as $data) {
 
                                 <div class="form-grup mt-3">
                                     <label for="">Category</label><br>
-
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" name="os" type="checkbox" id="os<?php echo $data->id_request; ?>" value="1" <?php if ($data->operating_system == 1) {
                                                                                                                                                         echo "checked";
                                                                                                                                                     } ?>>
                                         <label class="form-check-label" for="os<?php echo $data->id_request; ?>">Operating System</label>
                                     </div>
-
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" name="mo" type="checkbox" id="mo<?php echo $data->id_request; ?>" value="1" <?php if ($data->microsoft_office == 1) {
                                                                                                                                                         echo "checked";
                                                                                                                                                     } ?>>
                                         <label class="form-check-label" for="mo<?php echo $data->id_request; ?>">Microsoft Office</label>
                                     </div>
-
                                     <div class="form-check form-check-inline">
                                         <input class="form-check-input" name="sd" type="checkbox" id="sd<?php echo $data->id_request; ?>" value="1" <?php if ($data->software_design == 1) {
                                                                                                                                                         echo "checked";
@@ -81,12 +78,31 @@ foreach ($requestor as $data) {
                                     <label for="">No Asset / Inventaris / Serial Number</label>
                                     <input type="text" name="no_asset" class="form-control" value="<?php echo $data->no_aset; ?>" required>
                                 </div>
-
                                 <div class="form-grup mt-3">
                                     <label for="">Description of Needs</label>
                                     <textarea name="description" class="form-control" cols="30" rows="10"><?php echo $data->keluhan; ?></textarea>
                                 </div>
+<<<<<<< HEAD:application/views/admin/modal_editsoftware.php
 
+=======
+                                <div class="form-grup  mt-3">
+                                    <label for="">Signature</label>
+                                    <!-- <input type="file" name="gambar" class="form-control"> -->
+                                    <form method="post" action="process.php" enctype="multipart/form-data">
+                                        <div id="signature-pad">
+                                            <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                                                <div id="note" onmouseover="my_function();">The signature should be inside box</div>
+                                                <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                                            </div>
+                                            <div style="margin:10px;">
+                                                <input type="hidden" id="signature" name="signature">
+                                                <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
+                                                <button type="button" id="save_btn" class="btn btn-success" data-action="save-png">Save</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+>>>>>>> submission-admin:application/views/admin/modal_edit_request.php
                             </div>
                         </div>
                         <div class="modal-footer  mt-3">
