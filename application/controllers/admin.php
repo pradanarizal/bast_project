@@ -152,6 +152,7 @@ class Admin extends CI_Controller
         } else {
             $this->Model_Noc->changeStatusRequest($id_request, $status);
             $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
+            $this->Model_Noc->updateNikAdmin($id_request, $noc_nik);
             echo '<script>
             window.location.href="' . base_url("admin/subsoftware") . '";
             alert("Successfully forwarded to manager!"); 
@@ -239,6 +240,7 @@ class Admin extends CI_Controller
         } else {
             $this->Model_Noc->changeStatusRequest($id_request, $status);
             $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
+            $this->Model_Noc->updateNikAdmin($id_request, $noc_nik);
             echo '<script>
             window.location.href="' . base_url("admin/subhardware") . '";
             alert("The hardware components has been checked and the status is complete...!"); 
@@ -338,7 +340,7 @@ class Admin extends CI_Controller
     }
 
     public function print_receipt()
-    {           
+    {
         $id = $this->input->get('id');
         $data['title'] = "Data Receipt";
         $data['tanggal'] = date("d/m/Y");
