@@ -338,8 +338,8 @@ class Admin extends CI_Controller
     }
 
     public function print_receipt()
-    {
-        $id = $this->input->get('id_receipt');
+    {           
+        $id = $this->input->get('id');
         $data['title'] = "Data Receipt";
         $data['tanggal'] = date("d/m/Y");
         $data['receipt'] = $this->Model_Noc->getReceiptPrint($id);
