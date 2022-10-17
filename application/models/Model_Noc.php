@@ -434,6 +434,16 @@ class Model_Noc extends CI_Model
             $this->db->insert('noc_admin', $insert);
         }
     }
+
+    public function updateNikAdmin($id_request, $nikAdmin)
+    {
+        $update = array(
+            "nik_admin" => $nikAdmin
+        );
+        $this->db->where('id_request', $id_request);
+        $this->db->update('request', $update);
+    }
+
     //receipt function
     public function getReceipt()
     {
@@ -592,13 +602,12 @@ class Model_Noc extends CI_Model
                     "division_admin" => $this->input->post('division_receiver')
                 );
                 $this->db->insert('noc_admin', $data);
-            } 
+            }
             $updateReceipt = array(
                 "nik_admin" => $newNik
             );
             $this->db->where('id_receipt', $id_receipt);
             $this->db->update('receipt', $updateReceipt);
-            
         } else {
             $data = array(
                 "nama_admin" => $this->input->post('nama_receiver'),
