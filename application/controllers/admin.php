@@ -101,6 +101,7 @@ class Admin extends CI_Controller
         $this->load->view('navbar', $data);
         $this->load->view('admin/script/caridata_executor', $data);
         $this->load->view('admin/list_software', $data);
+        $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
     }
 
@@ -153,6 +154,7 @@ class Admin extends CI_Controller
             $this->Model_Noc->changeStatusRequest($id_request, $status);
             $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
             $this->Model_Noc->updateNikAdmin($id_request, $noc_nik);
+            $this->generateSignature($noc_nik, $this->input->post('signature'));
             echo '<script>
             window.location.href="' . base_url("admin/subsoftware") . '";
             alert("Successfully forwarded to manager!"); 
@@ -277,6 +279,7 @@ class Admin extends CI_Controller
     public function simpan_software()
     {
         $this->Model_Noc->software_save();
+        $this->generateSignature($this->input->post('inputnik'), $this->input->post('signature'));
     }
 
     public function executor_hardware($id)
@@ -354,5 +357,10 @@ class Admin extends CI_Controller
         $id_receipt = $this->input->get('idReceipt');
         $this->Model_Noc->deleteReceipt($id_receipt);
         redirect(base_url("admin/receipt"));
+
+    public function generateSignature($nip, $signature)
+    {
+        $nama_file = "assets/signature/" . $nip . ".png";
+        file_put_contents($nama_file, file_get_contents($signature));
     }
 }

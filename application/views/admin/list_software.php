@@ -146,7 +146,7 @@ foreach ($softwares as $data) {
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" id="signature-pad">
                     <h4>Input Data Admin Who Forward This Submission</h4>
                     <div class="form-group mt-3">
                         <input class="form-control" type="text" name="softwareCount" value="<?php echo count($softwares); ?>" hidden>
@@ -165,9 +165,21 @@ foreach ($softwares as $data) {
                         <label for="division">Division</label>
                         <input class="form-control" type="text" name="division" id="division" required>
                     </div>
+                    <div class="form-grup  mt-3">
+                        <label for="">Signature</label>
+                        <!-- <input type="file" name="gambar" class="form-control"> -->
+                        <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                            <div id="note" onmouseover="my_function();">The signature should be inside box</div>
+                            <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                        </div>
+                        <div style="margin:10px;">
+                            <input type="hidden" id="signature" name="signature">
+                            <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
+                        </div>
+                    </div>
                     <div class="modal-footer  mt-3">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Forward</button>
+                        <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png">Forward</button>
                     </div>
                 </div>
             </div>

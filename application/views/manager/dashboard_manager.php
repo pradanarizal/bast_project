@@ -92,11 +92,13 @@ foreach ($requestor as $data) {
                                                     <i class="fa fa-eye"></i>
                                                 </font>
                                             </button>
-                                            <button class="tombol bg-success text-white" data-toggle="modal" title="Approved" data-target="#modalAcc<?php echo $data['id_request']; ?>">
-                                                <font style="font-weight: bold;">
-                                                    <i class="fa fa-check"></i>
-                                                </font>
-                                            </button>
+                                            <a href="<?php echo base_url('manager/confirmApprove?id=' . $id . '&tiket=' . $data['no_tiket'] . '&requestor=' . $data['nama'] . "&needs=" . $data['keluhan']); ?>">
+                                                <button class="tombol bg-success text-white" data-toggle="modal" title="Approved">
+                                                    <font style="font-weight: bold;">
+                                                        <i class="fa fa-check"></i>
+                                                    </font>
+                                                </button>
+                                            </a>
                                             <button class="tombol bg-primary text-white" data-toggle="modal" title="Revision" data-target="#modalRevision<?php echo $data['id_request']; ?>">
                                                 <font style="font-weight: bold;">
                                                     <i class="fa fa-sync-alt"></i>
@@ -139,7 +141,6 @@ foreach ($requestor as $data) {
 <!-- /Content -->
 </div>
 <!-- End Main Content -->
-
 <!-- modal reject -->
 <?php
 foreach ($requestor as $data) {
@@ -251,31 +252,34 @@ foreach ($requestor as $data) {
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <p>Ticket Number : <?php echo $tiket; ?></p>
-                    <p>Requestor : <?php echo $nama; ?></p>
-                    <!-- <p>Date : <?php //echo date("d/m/Y"); 
-                                    ?></p> -->
-                    <p>Notes</p>
-                    <form action="<?php echo base_url('manager/approve'); ?>" method="POST">
+                <form action="<?php echo base_url('manager/approve'); ?>" method="POST" id="signature-pad">
+                    <div class="modal-body">
+                        <p>Ticket Number : <?php echo $tiket; ?></p>
+                        <p>Requestor : <?php echo $nama; ?></p>
                         <input name="id" type="hidden" value="<?php echo $id; ?>">
                         <input name="tanggal" type="hidden" value="<?php echo date("Y-m-d"); ?>">
-                        <textarea class="form-control" type="text" name="notes" id="notes" placeholder="Notes..."></textarea>
-
-                        <!-- <br>
-                        <p>Approval Authorization</p>
-                        <input type="radio" name="approval" value="approved" id="approved" checked />
-                        <label for="approved">(A) Approved</label> <br>
-                        <input type="radio" name="approval" value="rejected" id="rejected" />
-                        <label for="rejected">(R) Rejected</label><br>
-                        <input type="radio" name="approval" value="revision" id="revision" />
-                        <label for="revision">(N) Revision Needed</label> -->
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <input class="btn btn-primary" type="submit" name="submit" value="Save">
-                    </form>
-                </div>
+                        <div class="form-grup  mt-3">
+                            <p>Notes</p>
+                            <textarea class="form-control" type="text" name="notes" id="notes" placeholder="Notes..."></textarea>
+                        </div>
+                        <div class="form-grup mt-3">
+                            <label for="">Signature</label>
+                            <!-- <input type="file" name="gambar" class="form-control"> -->
+                            <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                                <div id="note" onmouseover="my_function();">The signature should be inside box</div>
+                                <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                            </div>
+                            <div style="margin:10px;">
+                                <input type="hidden" id="signature" name="signature">
+                                <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <input class="btn btn-primary" type="submit" name="submit" value="Save">
+                    </div>
+                </form>
             </div>
         </div>
     </div>
