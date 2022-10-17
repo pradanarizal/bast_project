@@ -55,7 +55,7 @@
     </table>
     <div style="padding-left: 10px;">Tanggal Request : fgf(dd/mm/yyyy)</div>
     <div class="container">
-        <table border="1PX" width="100%" cellpadding="0">
+        <table border="0" width="100%" cellpadding="0">
             <tr>
                 <td colspan="7" style="font-size: 12px;">HARAP DITULIS DENGAN HURUF CETAK *DIISI SETELAH PENGECEKAN SELESAI DILAKUKAN</td>
             </tr>
@@ -88,7 +88,7 @@
                     fgfgf
                 </td>
             </tr>
-            <tr>
+            <!-- <tr>
                 <td>Category</td>
                 <td>:</td>
                 <td colspan="5" r>
@@ -96,7 +96,7 @@
                     <label style="margin-right: 1px;" for="category1">Operating System</label>
                     <input type="checkbox" name="category2" id="category2" value="2" checked disabled>
                 </td>
-            </tr>
+            </tr> -->
             <tr>
                 <td>Uraian Kebutuhan</td>
                 <td>:</td>

@@ -59,7 +59,15 @@ $soft = array(
         </tr>
     </table>
     <?php
+    $nik;
+    $nama;
+    $nik_admin;
+    $nama_admin;
     foreach ($requestor as $data) {
+        $nik = $data['nik'];
+        $nama = $data['nama'];
+        $nik_admin = $data['nik_admin'];
+        $nama_admin = $data['nama_admin'];
     ?>
         <div style="padding-left: 10px;">Nomor Request : <?php echo $data['id_request']; ?><br>
             Tanggal Request : <?php echo date("d/m/Y",  strtotime($data['tanggal_request'])); ?>(dd/mm/yyyy)</div>
@@ -73,7 +81,7 @@ $soft = array(
                 </tr>
                 <tr>
                     <td>Nama</td>
-                    <td>:</td>
+                    <td width="1px">:</td>
                     <td>
                         <?php echo $data['nama']; ?>
                     </td>
@@ -101,13 +109,13 @@ $soft = array(
                     <td>Category</td>
                     <td>:</td>
                     <td colspan="5">
-                        <input style="margin-left: 1px;" type="checkbox" name="category1" id="category1" value="1" <?php if ($data['id_category'] == 1) echo 'checked'; ?> disabled>
+                        <input style="margin-left: 1px;" type="checkbox" name="category1" id="category1" value="1" <?php if ($data['operating_system'] == 1) echo 'checked'; ?> disabled>
                         <label style="margin-right: 1px;" for="category1">Operating System</label>
-                        <input type="checkbox" name="category2" id="category2" value="2" <?php if ($data['id_category'] == 2) echo 'checked'; ?> disabled>
+                        <input type="checkbox" name="category2" id="category2" value="2" <?php if ($data['microsoft_office'] == 1) echo 'checked'; ?> disabled>
                         <label style="margin-right: 1px;" for="category2">Microsoft Office</label>
-                        <input type="checkbox" name="category3" id="category3" value="3" <?php if ($data['id_category'] == 3) echo 'checked'; ?> disabled>
+                        <input type="checkbox" name="category3" id="category3" value="3" <?php if ($data['software_design'] == 1) echo 'checked'; ?> disabled>
                         <label style="margin-right: 1px;" for="category3">Software Design</label>
-                        <input type="checkbox" name="category4" id="category4" value="4" <?php if ($data['id_category'] == 4) echo 'checked'; ?> disabled>
+                        <input type="checkbox" name="category4" id="category4" value="4" <?php if ($data['software_lainnya'] == 1) echo 'checked'; ?> disabled>
                         <label for="category4">Software Lainnya</label>
                     </td>
                 </tr>
@@ -134,13 +142,29 @@ $soft = array(
                 <tr>
                     <td colspan="7" align="right" style="margin: 0;">
                         <table border="0" cellspacing="0" style="margin-bottom: 10px;">
-                            <tr>
-                                <td>Nama/Tanda Tangan :</td>
-                                <td rowspan="7">
-                                    <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
-                                </td>
-                                <td></td>
-                            </tr>
+                            <?php
+                            if (file_exists("assets/signature/" . $data['nik'] . ".png")) {
+                            ?>
+                                <tr style="position: relative;text-align: center;">
+                                    <td>Nama/Tanda Tangan :</td>
+                                    <td rowspan="8">
+                                        <div class="ttd">
+                                            <img src="<?php echo base_url("assets/signature/" . $data['nik'] . ".png"); ?>" width="145" height="auto">
+                                            <div style="position: absolute;top: 28%;left: 85%;"><?php echo $data['nama']; ?></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php
+                            } else {
+                            ?>
+                                <tr>
+                                    <td>Nama/Tanda Tangan :</td>
+                                    <td rowspan="7">
+                                        <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                            <?php } ?>
                             <tr>
                                 <td></td>
                             </tr>
@@ -182,7 +206,7 @@ $soft = array(
                 if ($soft['count'] > 0) {
             ?>
                     <tr class="form-software">
-                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>" checked></td>
+                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>" checked disabled></td>
                         <td colspan="2"><label for="<?php echo $softName; ?>"><?php echo $softName; ?></label></td>
                         <td colspan="2">
                             <?php
@@ -209,7 +233,7 @@ $soft = array(
                     $soft['notes'] = "-";
                 } else { ?>
                     <tr class="form-software">
-                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>"></td>
+                        <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>" disabled></td>
                         <td colspan="2"><label for="<?php echo $softName; ?>"><?php echo $softName; ?></label></td>
                         <td colspan="2">
                             ______________________
@@ -221,18 +245,50 @@ $soft = array(
             <?php }
             } ?>
             <tr>
-                <td colspan="3" style="padding-left:50px;">
-                    <div class="ttd" style="padding: 0px 30px 40px 10px;">Request Owner</div>
-                </td>
-                <td colspan="4" align="right" style="margin: 0;">
+                <?php
+                if (file_exists("assets/signature/" . $nik . ".png")) {
+                ?>
+                    <td colspan="3">
+                        <div style="padding-left: 90px;margin-right:25%;">
+                            <div class="ttd">
+                                <img src="<?php echo base_url("assets/signature/" . $nik . ".png"); ?>" width="145" height="auto">
+                                <div style="position: absolute;top: 81%;left: 22%;"><?php echo $nama; ?></div>
+                                <div style="position: absolute;top: 78%;left: 15%;">Request Owner</div>
+                            </div>
+                        </div>
+                    </td>
+                <?php
+                } else {
+                ?>
+                    <td colspan="3" style="padding-left:50px;">
+                        <div class="ttd" style="padding: 0px 30px 40px 10px;">Request Owner</div>
+                    </td>
+                <?php } ?>
+                <td colspan="5" align="right" style="margin: 0;">
                     <table border="0" cellspacing="7" style="margin-bottom: 10px;">
-                        <tr>
-                            <td>Nama/Tanda Tangan :</td>
-                            <td rowspan="7">
-                                <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
-                            </td>
-                            <td></td>
-                        </tr>
+                        <?php
+                        if (file_exists("assets/signature/" . $nik_admin . ".png")) {
+                        ?>
+                            <tr style="position: relative;text-align: center;">
+                                <td>Nama/Tanda Tangan :</td>
+                                <td rowspan="7">
+                                    <div class="ttd">
+                                        <img src="<?php echo base_url("assets/signature/" . $nik_admin . ".png"); ?>" width="145" height="auto">
+                                        <div style="position: absolute;top: 80.5%;left: 83%;"><?php echo $nama_admin; ?></div>
+                                    </div>
+                                </td>
+                            </tr>
+                        <?php
+                        } else {
+                        ?>
+                            <tr>
+                                <td>Nama/Tanda Tangan :</td>
+                                <td rowspan="7">
+                                    <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        <?php } ?>
                         <tr>
                             <td></td>
                         </tr>
@@ -301,11 +357,26 @@ $soft = array(
                                 <td colspan="2">Nama/Tanda Tangan</td>
                                 <td colspan="2" align="right">Jakarta, <?php echo $tanggal; ?>(dd/mm/yyyy)</td>
                             </tr>
-                            <tr>
-                                <td colspan="3">
-                                    <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
-                                </td>
-                            </tr>
+                            <?php
+                            if (file_exists("assets/signature/" . $manager_nip . ".png")) {
+                            ?>
+                                <tr style="position: relative;text-align: center;">
+                                    <td rowspan="7">
+                                        <div class="ttd">
+                                            <img src="<?php echo base_url("assets/signature/" . $manager_nip . ".png"); ?>" width="130" height="auto">
+                                            <div style="position: absolute;top: 97%;left: 43%;"><?php echo $manager_name; ?></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php
+                            } else {
+                            ?>
+                                <tr>
+                                    <td colspan="3">
+                                        <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </table>
                     </td>
                 <?php } ?>

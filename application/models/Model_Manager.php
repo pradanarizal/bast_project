@@ -15,7 +15,7 @@ class Model_Manager extends CI_Model
     }
     public function getRequestorById($id)
     {
-        $data = $this->db->query("SELECT * FROM request INNER JOIN employee ON request.nik= employee.nik WHERE id_request = $id");
+        $data = $this->db->query("SELECT * FROM request JOIN employee ON request.nik= employee.nik JOIN category ON request.id_category= category.id_category JOIN noc_admin ON request.nik_admin = noc_admin.nik_admin WHERE id_request = $id");
         $row = $data->result_array();
         return $row;
     }
@@ -27,7 +27,13 @@ class Model_Manager extends CI_Model
     }
     public function changeStatus($id, $notes, $status, $tanggal)
     {
-        $data = $this->db->query("UPDATE `request` SET `tanggal_approval` = '$tanggal', `status` = '$status', `approval_notes` = '$notes' WHERE `request`.`id_request` = $id;");
+        $data = $this->db->query("UPDATE `request` SET `tanggal_approval` = '$tanggal', `status` = '$status', `approval_notes` = '$notes' WHERE `id_request` = $id;");
         return $data;
     }
+    // public function getCategoryByTiket($tiket)
+    // {
+    //     $data = $this->db->query("SELECT * FROM category WHERE no_tiket = $tiket");
+    //     $row = $data->result_array();
+    //     return $row;
+    // }
 }
