@@ -609,4 +609,9 @@ class Model_Noc extends CI_Model
             $this->db->update('noc_admin', $data);
         }
     }
+
+    public function deleteReceipt($id_receipt)
+    {
+        $this->db->query("DELETE FROM `receipt` WHERE id_receipt = '$id_receipt' ");
+    }
 }

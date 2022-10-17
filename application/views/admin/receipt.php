@@ -1,12 +1,15 @@
-<div class="mr-4 ml-4">
+<div class="mr-2 ml-2">
     <!-- Content Row -->
     <div class="row">
-        <div class="card-header justify-content-start">
+        <div class="card-header">
             <h3 class=" font-weight-bold text-dark">Surat Tanda Terima</h3>
         </div>
         <div class="container-fluid">
-            <div class="card shadow mb-4">
+            <div class="card shadow mb-2">
                 <div class="card-body">
+                    <div class="float-left">
+                        <button class="btn btn-md btn-success mb-3" data-toggle="modal" data-target="#addReceipt"><i class="fas fa-plus fa-sm mr-2"></i>Add New Receipt</button>
+                    </div>
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
@@ -43,10 +46,16 @@
                                             <i class="fa fa-edit text-white"></i>
                                         </div>
                                     </button>
-                                    <button class="tombol bg-danger text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id); ?>');newWindow.print();">
+                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id); ?>');newWindow.print();">
                                         <i class="fa fa-print text-white"></i>
                                     </button>
-                                    
+                                    <button class="tombol bg-danger text-white"
+                                        data-toggle="modal" 
+                                        data-target="#deleteReceipt<?php echo $data->id_receipt ; ?>">
+                                        <div style="font-weight: bold;">
+                                            <i class="fa fa-trash text-white"></i>
+                                        </div>
+                                    </button>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -55,9 +64,6 @@
                 </div>
             </div>
             
-            <div class="float-right">
-                <button class="btn btn-md btn-success mt-3 mb-3" data-toggle="modal" data-target="#addReceipt"><i class="fas fa-plus fa-sm mr-2"></i>Add New Receipt</button>
-            </div>
         </div>
     </div>
     </div>

@@ -307,6 +307,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/receipt', $data);
         $this->load->view('admin/modal_receipt', $data);
         $this->load->view('admin/modal_edit_receipt', $data);
+        $this->load->view('admin/script/hapus_receipt', $data);
         $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
     }
@@ -344,5 +345,12 @@ class Admin extends CI_Controller
         $data['tanggal'] = date("d/m/Y");
         $data['receipt'] = $this->Model_Noc->getReceiptPrint($id);
         $this->load->view('admin/cetak_tandaterima', $data);
+    }
+
+    public function delete_receipt()
+    {
+        $id_receipt = $this->input->get('idReceipt');
+        $this->Model_Noc->deleteReceipt($id_receipt);
+        redirect(base_url("admin/receipt"));
     }
 }
