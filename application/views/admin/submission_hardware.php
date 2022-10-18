@@ -43,7 +43,7 @@
                                         if ($data->status == "finish") { ?>
                                             <!-- tombol view data dengan status = finish -->
                                             <td>
-                                                <button class="tombol bg-primary text-white" title="Print" onClick="newWindow = window.open('<?php echo base_url('admin/reviewReq?idRequest=' . $data->id_request . '&noTiket=' . $data->no_tiket); ?>');newWindow.print();">
+                                                <button class="tombol bg-primary text-white" title="Print" onClick="newWindow = window.open('<?php echo base_url('admin/reviewReq?idRequest=' . $data->id_request . '&noTiket=' . $data->no_tiket . '&nik_admin=' . $data->nik_admin); ?>');newWindow.print();">
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-print"></i>
                                                     </font>

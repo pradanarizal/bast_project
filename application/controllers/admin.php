@@ -188,9 +188,9 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/script/caridata_executor', $data);
+        $this->load->view('admin/modal_executor_hardware', $data);
         $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('admin/list_component', $data);
-        $this->load->view('admin/modal_executor_hardware', $data);
         $this->load->view('footer', $data);
     }
 
@@ -202,7 +202,7 @@ class Admin extends CI_Controller
         $tiket = $this->input->post("tiket");
         $id_request = $this->input->post("idRequest");
         $status = "process";
-        
+
         $this->Model_Noc->insert_component($component, $status_component, $problem, $tiket, $id_request);
         $this->Model_Noc->changeStatusRequest($id_request, $status);
     }
@@ -407,10 +407,12 @@ class Admin extends CI_Controller
 
         $id_request = $this->input->get('idRequest');
         $no_tiket = $this->input->get('noTiket');
+        $nik_admin = $this->input->get('nik_admin');
 
         // $data['manager_name'] = $this->session->userdata('nama');
         // $data['manager_nip'] = $this->session->userdata('nip');
 
+        $data['nocAdmin'] = $this->Model_Noc->getNocAdminBynik($nik_admin);
         $data['requestor'] = $this->Model_Noc->getRequestorById_2($id_request);
         $data['komponen'] = $this->Model_Noc->gethardware_byNoTiket($no_tiket);
         // $data['tanggal'] = date("d/m/Y");

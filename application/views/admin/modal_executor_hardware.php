@@ -12,7 +12,7 @@
                     </button>
                 </div>
 
-                <div class="modal-body">
+                <div class="modal-body" id="signature-pad">
 
                     <h4>Input Executor who finished this submission</h4>
 
@@ -62,7 +62,7 @@
 
                     <div class="modal-footer  mt-3">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Finish</button>
+                        <button type="SUBMIT" id="save_btn" class="btn btn-primary" data-action="save-png">Finish</button>
                     </div>
                 </div>
 

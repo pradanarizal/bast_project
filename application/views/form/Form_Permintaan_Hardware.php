@@ -1,3 +1,10 @@
+<?php
+$hard = array(
+    "count" => 0,
+    "problem" => "-",
+    "status_hardware" => "-"
+);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -54,15 +61,16 @@
         </tr>
     </table>
     <?php
-    $nik;
-    $nama;
+    $nik_admin;
+    $nama_admin;
+    $recommendation;
     foreach ($requestor as $data) {
-        $nik = $data['nik'];
-        $nama = $data['nama'];
+        $nik_admin = $data['nik_admin'];
+        $recommendation = $data['approval_notes'];
     ?>
 
 
-        <div style="padding-left: 10px;">Tanggal Request : fgf(dd/mm/yyyy)</div>
+        <div style="padding-left: 10px;">Tanggal Request : <?php echo date("d/m/Y",  strtotime($data['tanggal_request'])); ?>(dd/mm/yyyy)</div>
         <div class="container">
             <table border="0" width="100%" cellpadding="0">
                 <tr>
@@ -167,11 +175,12 @@
             foreach ($component as $hardname) {
                 foreach ($komponen as $data) {
                     if ($data['komponen'] == $hardname) {
-                        $soft['count'] = 1;
-                        $soft['problem'] = $data['problem'];
+                        $hard['count'] = 1;
+                        $hard['problem'] = $data['problem'];
+                        $hard['status_hardware'] = $data['status_hardware'];
                     }
                 }
-                if ($soft['count'] > 0) {
+                if ($hard['count'] > 0) {
 
             ?>
                     <tr class="form-software">
@@ -179,10 +188,10 @@
                         <td colspan="2"><label for="<?php echo $hardname; ?>"><?php echo $hardname; ?></label></td>
 
                         <?php
-                        if ($data['status_hardware'] = "OK") {
+                        if ($hard['status_hardware'] == "OK") {
                             echo '<td align="center"><input type="checkbox" name="" id="" value="" checked disabled></td>
                                 <td align="center"><input type="checkbox" name="" id="" value="" disabled></td>';
-                        } else if ($data['status_hardware'] = "NOK") {
+                        } else if ($hard['status_hardware'] == "NOK") {
                             echo '<td align="center"><input type="checkbox" name="" id="" value="" disabled></td>
                                 <td align="center"><input type="checkbox" name="" id="" value="" checked disabled></td>';
                         } else {
@@ -195,8 +204,8 @@
                         <!-- Problem -->
                         <td colspan="2">
                             <?php
-                            if ($soft['problem'] != "-") {
-                                echo $soft['problem'];
+                            if ($hard['problem'] != "-") {
+                                echo $hard['problem'];
                             } else {
                                 echo "______________________";
                             }
@@ -204,7 +213,9 @@
                         </td>
                     </tr>
                 <?php
-                    $soft['count'] = 0;
+                    $hard['count'] = 0;
+                    $hard['problem'] = "-";
+                    $hard['status_hardware'] = "-";
                 } else { ?>
                     <tr class="form-software">
 
@@ -226,13 +237,22 @@
             <tr>
                 <td colspan="7" align="right">
                     <table border="0" style="margin-bottom: 10px;">
-                        <tr>
-                            <td>Nama/Tanda Tangan :</td>
-                            <td rowspan="7">
-                                <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
-                            </td>
-                            <td></td>
-                        </tr>
+                        <?php
+                        foreach ($nocAdmin as $admin) {
+                            if (file_exists("assets/signature/" . $admin['nik_admin'] . ".png")) {
+                        ?>
+                                <tr style="position: relative;text-align: center;">
+                                    <td>Nama/Tanda Tangan :</td>
+                                    <td rowspan="8">
+                                        <div class="ttd" style="padding: 0.5rem;">
+                                            <img src="<?php echo base_url("assets/signature/" . $admin['nik_admin'] . ".png"); ?>" width="145" height="auto">
+                                            <div><?php echo $admin['nama_admin']; ?></div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                        <?php }
+                        } ?>
                     </table>
                 </td>
             </tr>
@@ -241,7 +261,7 @@
             </tr>
             <tr>
                 <td colspan="7">
-                    <div class="ttd" style="padding: 20px 0;">Comment :</div>
+                    <div class="ttd" style="padding: 20px 0;">Comment : <?php echo $recommendation; ?></div>
                 </td>
             </tr>
             <tr>

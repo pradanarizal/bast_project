@@ -81,6 +81,15 @@ class Model_Noc extends CI_Model
         return $query->result_array();
     }
 
+    public function getNocAdminBynik($nik)
+    {
+        $this->db->select('*');
+        $this->db->from('noc_admin');
+        $this->db->where('nik_admin', $nik);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
     public function getSoftwareByNoTiket($no_tiket)
     {
         $this->db->select('*');
