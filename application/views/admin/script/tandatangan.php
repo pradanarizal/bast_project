@@ -25,7 +25,3 @@
         document.getElementById("note").innerHTML = "";
     }
 </script>
-
-</body>
-
-</html>

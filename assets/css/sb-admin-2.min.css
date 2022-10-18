@@ -2131,18 +2131,21 @@ textarea.form-control {
 
 .form-check-label {
     margin-bottom: 0;
+    margin-left: 0.5rem;
+    margin-right: 1rem;
+    margin-top: 0.05rem;
 }
 
 .form-check-inline {
     display: inline-flex;
     align-items: center;
     padding-left: 0;
-    margin-right: 0.75rem;
+    margin-right: 0 auto;
 }
 
 .form-check-inline .form-check-input {
     position: static;
-    margin: 0.7rem;
+    margin: 0 auto;
 }
 
 .valid-feedback {
