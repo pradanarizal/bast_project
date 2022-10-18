@@ -139,6 +139,7 @@ class Manager extends CI_Controller
         }
         $this->dashboard();
     }
+    
     public function generateSignature($nip, $signature)
     {
         $nama_file = "assets/signature/" . $nip . ".png";

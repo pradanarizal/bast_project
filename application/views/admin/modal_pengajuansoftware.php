@@ -4,14 +4,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header bg-primary">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Form Pengajuan Software</h5>
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Submission Software Form</h5>
                     <button type="button red" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
 
                 <div class="modal-body" id="signature-pad">
-                    <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Permintaan Instalasi Software</h5>
+                    <h5 class="text-dark mt-3 text-center font-weight-bold">Software Installation Request Form</h5>
                     <div class="card">
                         <div class="form-group mt-3">
                             <label for="no_tiket">No Ticket</label>

@@ -104,6 +104,16 @@ class Model_Noc extends CI_Model
         $this->db->query("DELETE FROM `request` WHERE id_request = '$id_request'");
     }
 
+    public function cancel_finished_request($id_request)
+    {
+        $update = array(
+            "status" => "process"
+        );
+        $this->db->where('id_request', $id_request);
+        $this->db->update('request', $update);
+    }
+
+
     public function insertSoftware($software, $version, $notes, $tiket, $id_request)
     {
         $data = array(
@@ -408,6 +418,16 @@ class Model_Noc extends CI_Model
     {
         $update = array(
             "status" => $status
+        );
+        $this->db->where('id_request', $id_request);
+        $this->db->update('request', $update);
+    }
+
+    public function recommendation_request($id_request, $rekomendasi, $noc_nik)
+    {
+        $update = array(
+            "approval_notes" => $rekomendasi,
+            "nik_admin" => $noc_nik
         );
         $this->db->where('id_request', $id_request);
         $this->db->update('request', $update);

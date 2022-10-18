@@ -206,7 +206,9 @@ $soft = array(
                 if ($soft['count'] > 0) {
             ?>
                     <tr class="form-software">
+
                         <td align="center"><input type="checkbox" name="<?php echo $softName; ?>" id="<?php echo $softName; ?>" value="<?php echo $softName; ?>" checked disabled></td>
+
                         <td colspan="2"><label for="<?php echo $softName; ?>"><?php echo $softName; ?></label></td>
                         <td colspan="2">
                             <?php
