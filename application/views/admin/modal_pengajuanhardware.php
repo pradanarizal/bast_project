@@ -31,7 +31,7 @@
 
                             <div class="form-grup mt-3">
                                 <label for="inputnik">NIK/NIP</label>
-                                <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="16" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             </div>
 
                             <div class="form-grup mt-3">
