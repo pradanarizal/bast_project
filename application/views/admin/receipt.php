@@ -19,8 +19,8 @@
                                 <th>Item Name</th>
                                 <th>Use For</th>
                                 <th>Description</th>
-                                <th>Create Date</th>
-                                <th>Action</th>
+                                <th >Create Date</th>
+                                <th width="15%">Action</th>
                             </tr>
                         </thead>
 

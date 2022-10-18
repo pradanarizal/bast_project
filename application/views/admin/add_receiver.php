@@ -12,15 +12,15 @@
             <div class="form-grup mt-3">
                 <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
                 <input type="text" id="nik"  class="form-control"
-                    name="nik_receiver"
-                    value="<?php echo $data['nik_admin'] ?>"
+                    name="nik_receiver" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
+                    value="<?php echo $data['nik_admin'] ?>" required
                     >
             </div>
             <div class="form-grup mt-3">
                 <label for="itemID" class="text-dark font-weight-bold">Nama</label>
                 <input type="text" class="form-control"
                     name="nama_receiver"
-                    value="<?php echo $data['nama_admin'] ?>" 
+                    value="<?php echo $data['nama_admin'] ?>" required
                 >
             </div>
             <div class="form-grup mt-3">
@@ -28,7 +28,7 @@
                 <input type="text" id="position" 
                     name="position_receiver" 
                     class="form-control"
-                    value="<?php echo $data['position_admin'] ?>"
+                    value="<?php echo $data['position_admin'] ?>" required
                     >
             </div>
             <div class="form-grup mt-3">
@@ -36,7 +36,7 @@
                 <input type="text" id="unit_division" 
                     name="division_receiver" 
                     class="form-control"
-                    value="<?php echo $data['division_admin'] ?>"
+                    value="<?php echo $data['division_admin'] ?>" required
                     >
             </div>
 
@@ -60,26 +60,27 @@
                 <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
                 <input type="text" id="nik"  class="form-control"
                     name="nik_receiver"
+                    minlength="10" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
                     >
             </div>
             <div class="form-grup mt-3">
                 <label for="itemID" class="text-dark font-weight-bold">Nama</label>
                 <input type="text" class="form-control"
-                    name="nama_receiver" 
+                    name="nama_receiver" required
                 >
             </div>
             <div class="form-grup mt-3">
                 <label for="inputNama" class="text-dark font-weight-bold">Position</label>
                 <input type="text" id="position" 
                     name="position_receiver" 
-                    class="form-control"
+                    class="form-control" required
                     >
             </div>
             <div class="form-grup mt-3">
                 <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
                 <input type="text" id="unit_division" 
                     name="division_receiver" 
-                    class="form-control"
+                    class="form-control" required
                     >
             </div>
 

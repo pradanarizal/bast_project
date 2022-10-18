@@ -19,6 +19,7 @@
                             <input type="text" name="no_tiket" class="form-control" 
                                 id="inputEmail4" 
                                 placeholder="input no ticket"
+                                minlength="4" maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
                             >
                         </div>
                     </div>
@@ -32,13 +33,15 @@
                             <input type="text" id="inputNama" 
                                     name="inputNama" 
                                     class="form-control"
+                                    required
                                     >
                         </div>
                         <div class="form-grup mt-3">
                             <label for="inputNik" class="text-dark font-weight-bold">NIK/NIP</label>
                             <input type="text" id="inputNik" 
                                     name="inputNik" 
-                                    class="form-control"
+                                    class="form-control" required
+                                    minlength="10" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
                                     >
                         </div>
                         <div class="form-check-inline row">
@@ -47,6 +50,7 @@
                                 <input type="text" id="position" 
                                     name="position" 
                                     class="form-control"
+                                    required
                                     >
                             </div>
                             <div class="form-grup mt-3 col-sm">
@@ -54,6 +58,7 @@
                                 <input type="text" id="unit_division" 
                                     name="unit_division" 
                                     class="form-control"
+                                    required
                                     >
                             </div>
                         </div>
@@ -64,6 +69,7 @@
                                 <input type="text" id="itemName" 
                                     name="itemName" 
                                     class="form-control"
+                                    required
                                     >
                             </div>
                             <div class="form-grup mt-3 col-sm">
@@ -71,6 +77,7 @@
                                 <input type="text" 
                                     name="itemID" 
                                     class="form-control"
+                                    required
                                     >
                             </div>
                         </div>
