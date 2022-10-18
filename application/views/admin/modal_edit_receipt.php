@@ -1,10 +1,8 @@
 <!-- modal-edit -->
-<?php  foreach ( $receipt as $data) 
-    { 
+<?php  foreach ( $receipt as $data) { 
 ?>
-
 <form action="<?php echo base_url() . 'admin/edit_receipt'; ?>" method="POST" enctype="multipart/form-data">
-    <div class="modal fade" id="editReceipt_modal<?php echo $data->id_receipt ?>"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editReceipt_modal<?php echo $data->id_receipt ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog  modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary justify-content-center">
@@ -80,7 +78,7 @@
                             </div>
                         </div>
 
-                        <div class="card mt-3 receiver-content">
+                        <!-- <div class="card mt-3 receiver-content">
                             <div class="tittle bg-primary">
                                 <h5 class="text-light mt-3 text-center font-weight-bold">RECEIVER</h5>
                             </div>
@@ -89,13 +87,13 @@
                                     <label for="nik" class="text-dark font-weight-bold">NIK/NIP</label>
                                     <input type="text" id="nik"  class="form-control"
                                         name="nik_receiver"
-                                        value="<?php echo $data->nik_admin ?>">
+                                        value="<?php //echo $data->nik_admin ?>">
                                 </div>
                                 <div class="form-grup mt-3 col-sm">
                                     <label for="itemID" class="text-dark font-weight-bold">Nama</label>
                                     <input type="text" class="form-control"
                                         name="nama_receiver"
-                                        value="<?php echo $data->nama_admin ?>"> 
+                                        value="<?php //echo $data->nama_admin ?>"> 
                                 </div>
                             </div>
                             <div class="form-check-inline row" style="width=100%;">
@@ -104,17 +102,17 @@
                                     <input type="text" id="position" 
                                         name="position_receiver" 
                                         class="form-control"
-                                        value="<?php echo $data->position_admin ?>"> 
+                                        value="<?php //echo $data->position_admin ?>"> 
                                 </div>
                                 <div class="form-grup mt-3 col-sm">
                                     <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
                                     <input type="text" id="unit_division" 
                                         name="division_receiver" 
                                         class="form-control"
-                                        value="<?php echo $data->division_admin ?>"> 
+                                        value="<?php //echo $data->division_admin ?>"> 
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <div class="form-grup mt-3">
                             <label for="" class="text-dark font-weight-bold">Used For</label>
@@ -126,20 +124,8 @@
 
                         <div class="form-grup  mt-3">
                             <label for="">Signature</label>
-                            <!-- <input type="file" name="gambar" class="form-control"> -->
-                            <form method="post" action="process.php" enctype="multipart/form-data">
-                                <div id="signature-pad">
-                                    <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
-                                        <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                                        <canvas id="the_canvas" width="350px" height="100px"></canvas>
-                                    </div>
-                                    <div style="margin:10px;">
-                                        <input type="hidden" id="signature" name="signature">
-                                        <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
-                                        <button type="button" id="save_btn" class="btn btn-success" data-action="save-png">Save</button>
-                                    </div>
-                                </div>
-                            <form>
+                            <p style="border:solid 1px teal;width:355px;height:110px;"><img src="<?php echo base_url('assets/signature/' . $data->nik . '.png'); ?>"></p>
+                            <p style="color: red;">*if you want to edit signature, you must delete the submission</p>
                         </div>
                         <div class="modal-footer  mt-3">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>

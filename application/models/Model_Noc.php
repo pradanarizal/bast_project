@@ -447,9 +447,9 @@ class Model_Noc extends CI_Model
     //receipt function
     public function getReceipt()
     {
-        $this->db->select('receipt.*, employee.*, noc_admin.*');
+        $this->db->select('receipt.*, employee.*');
         $this->db->join('employee', 'receipt.nik = employee.nik');
-        $this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
+        //$this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
         $this->db->from('receipt');
         $query = $this->db->get();
         return $query->result();
@@ -460,6 +460,15 @@ class Model_Noc extends CI_Model
         $this->db->select('receipt.*, employee.*, noc_admin.*');
         $this->db->join('employee', 'receipt.nik = employee.nik');
         $this->db->join('noc_admin', 'receipt.nik_admin = noc_admin.nik_admin');
+        $this->db->from('receipt');
+        $this->db->where('id_receipt', $id_receipt);
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getReceiptByIdReceiver($id_receipt)
+    {
+        $this->db->select('*');
         $this->db->from('receipt');
         $this->db->where('id_receipt', $id_receipt);
         $query = $this->db->get();
@@ -483,7 +492,7 @@ class Model_Noc extends CI_Model
         $data = array(
             "no_tiket"      => $this->input->post('no_tiket'),
             "nik"           => $this->input->post('inputNik'),
-            "nik_admin"     => $this->input->post('nik_receiver'),
+            //"nik_admin"     => $this->input->post('nik_receiver'),
             "item"          => $this->input->post('itemName'),
             "item_id"       => $this->input->post('itemID'),
             "kategori"      => $this->input->post('kategori'),
@@ -506,18 +515,50 @@ class Model_Noc extends CI_Model
             $this->db->insert('employee', $data2);
         }
 
-        $data3 = array(
-            "nama_admin"      => $this->input->post('nama_receiver'),
-            'nik_admin'       => $this->input->post('nik_receiver'),
-            'position_admin'  => $this->input->post('position_receiver'),
-            'division_admin'  => $this->input->post('division_receiver')
-        );
+        // $data3 = array(
+        //     "nama_admin"      => $this->input->post('nama_receiver'),
+        //     'nik_admin'       => $this->input->post('nik_receiver'),
+        //     'position_admin'  => $this->input->post('position_receiver'),
+        //     'division_admin'  => $this->input->post('division_receiver')
+        // );
 
-        $cek_noc = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $this->input->post('nik_receiver') . "'");
-        if ($cek_noc->num_rows() >= 1) {
+        // $cek_noc = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $this->input->post('nik_receiver') . "'");
+        // if ($cek_noc->num_rows() >= 1) {
+        // } else {
+        //     $this->db->insert('noc_admin', $data3);
+        // }
+    }
+
+    public function save_receipt_receiver($noc_nik, $noc_name, $noc_position, $noc_division)
+    {
+        $cek = $this->db->query("SELECT * FROM noc_admin where nik_admin='" . $noc_nik . "'");
+        if ($cek->num_rows() >= 1) {
+            $insert = array(
+                "nama_admin" => $noc_name,
+                "position_admin" => $noc_position,
+                "division_admin" => $noc_division
+            );
+            $this->db->where('nik_admin', $noc_nik);
+            $this->db->update('noc_admin', $insert);
         } else {
-            $this->db->insert('noc_admin', $data3);
+            $insert = array(
+                "nik_admin" => $noc_nik,
+                "nama_admin" => $noc_name,
+                "position_admin" => $noc_position,
+                "division_admin" => $noc_division
+            );
+            $this->db->insert('noc_admin', $insert);
         }
+
+        // $data2 = array(
+        //     "nama_admin"      => $this->input->post('nama_receiver'),
+        //     'nik_admin'       => $this->input->post('nik_receiver'),
+        //     'position_admin'  => $this->input->post('position_receiver'),
+        //     'division_admin'  => $this->input->post('division_receiver')
+        // );
+
+        // $this->db->insert('noc_admin', $data2);
+
     }
 
     public function receipt_update($id_receipt)
@@ -526,7 +567,7 @@ class Model_Noc extends CI_Model
         foreach ($data as $d) {
             $this->update_data_employee($d['nik'], $this->input->post('inputNik'), $id_receipt);
             $this->update_data_receipt($id_receipt);
-            $this->update_data_noc($d['nik_admin'], $this->input->post('nik_receiver'), $id_receipt);
+            //$this->update_data_noc($d['nik_admin'], $this->input->post('nik_receiver'), $id_receipt);
         }
     }
 

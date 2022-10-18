@@ -24,10 +24,6 @@
         border: solid 1px black;
     }
 
-    .ttd {
-        border: solid 1px black;
-    }
-
     .header {
         background-color: lightgray;
         font-weight: bold;
@@ -55,6 +51,15 @@
 
     .tabel6{
       border-collapse: collapse;
+    }
+
+    .content-ttd{
+      position:relative;
+      width:80%;
+    }
+
+    .ttd{
+      float:right;
     }
 
     #halaman {
@@ -109,8 +114,14 @@
             <td>Halaman : 1 dari 1</td>
         </tr>
     </table>
-    <?php foreach ($receipt as $data) { 
-      ?>
+    <?php 
+
+      $name ;
+      $nama_admin ;
+      foreach ($receipt as $data) {
+      $name = $data->nama ;
+      $nama_admin = $data->nama_admin ;
+    ?>
 
     <br>
       <table class="tabel2" border="1" width="25%"  align="left" >
@@ -214,23 +225,84 @@
           </tr>
         </table>
 
-        <table class="tabel6" width="100%">
+    <table class="tabel6" width="100%" style="border:1px solid black;">
+      <tr>
+        <td>
+            <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
+            <div style="width: 50%; text-align: left; float: right;">Pihak Pertama,</div><br><br>
+    
+          <?php
+            if (file_exists("assets/signature/" . $nik . ".png")) {
+          ?>
+            <div class="content-ttd" >
+                <img class="ttd" src="<?php echo base_url("assets/signature/" . $nik . ".png"); ?>" width="130" height="auto">
+            </div>
+            <div style="width: 50%; text-align: left; float: right;">NIPP: <?php echo $nik ?></div>
+            <div class="content_name" style="width: 50%; float: right; ">
+              <p><?php echo $name ?></p>
+            </div>
+          <?php
+          } else {
+          ?>
+            <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
+              
+          <?php } ?>
+
+        </td>
+        
+        <td>
+            <!-- <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
+            <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div> -->
+          
+    
+          <!-- <?php
+            //if (file_exists("assets/signature/" . $data->nik_admin . ".png")) {
+          ?>
+            <div>
+                <img src="<?php //echo base_url("assets/signature/" . $nik_admin . ".png"); ?>" width="130" height="auto">
+            </div>
+            <div style="width: 50%; text-align: left; float: right;">NIPP: //<?php //echo $nik_admin ?></div>
+            <div style="width: 50%; text-align: left; float: right;"><?php //echo $nama_admin ?></div>
+          <?php
+          //} else {
+          ?>
+            <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
+              
+          <?php //} ?>
+
+        </td> -->
+
+        <td>
+          <div style="width: 50%; text-align: left; float: right;">Yang Menerima</div><br>
+          <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div><br><br><br><br><br>
+          <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php //echo $data->nik_admin; ?></span></div> 
+        </td> 
+      </tr>
+    </table>
+  <?php  } ?>
+
+
+    <?php 
+     // if (file_exists("assets/signature/" . $manager_nip . ".png")) { 
+    ?>
+        <!-- <table class="tabel6" width="100%">
           <tr>
             <td>
               <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
-              <div style="width: 50%; text-align: left; float: right;">Pihak Pertama,</div><br><br><br><br><br>
-              <div style="width: 50%; text-align: left; float: right;">NIPP: <span><?php echo $data->nik ; ?></span></div> 
+              <div style="width: 50%; text-align: left; float: right;">Pihak Pertama,</div>
+              <div class="ttd">
+                <img src="<?php //echo base_url("assets/signature/" . $nik . ".png"); ?>" width="130" height="auto">
+              </div>
+              <div style="width: 50%; text-align: left; float: right;">NIPP: <span><?php //echo $data->nik ; ?></span></div> 
             </td>
             <td>
               <div style="width: 50%; text-align: left; float: right;">Yang Menerima</div><br>
               <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div><br><br><br><br><br>
-              <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php echo $data->nik_admin ; ?></span></div> 
+              <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php //echo $data->nik_admin ; ?></span></div> 
             </td> 
           </tr>
-
-        </table>
-        <?php  } ?> 
-
+        </table> -->
+    <?php //} ?>
   </div>
 
 

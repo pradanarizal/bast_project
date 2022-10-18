@@ -317,12 +317,36 @@ class Admin extends CI_Controller
         $this->load->view('footer', $data);
     }
 
+    public function add_receiver()
+    {
+        $data['receipt'] = $this->Model_Noc->getReceiptByIdReceiver($this->input->get('idReceipt'));
+        $this->load->view('head');
+        $this->load->view('admin/sidebar_admin');
+        $this->load->view('navbar');
+        $this->load->view('admin/add_receiver', $data);
+        $this->load->view('admin/script/tandatangan');
+        $this->load->view('footer');
+    }
     public function simpan_receipt()
     {
         $this->Model_Noc->receipt_save();
+        $this->generateSignature($this->input->post('inputNik'), $this->input->post('signature'));
         redirect(base_url('admin/receipt'));
     }
 
+    public function simpan_receipt_receiver()
+    {
+        $id_request = $this->input->get("idRequest");
+        //$tiket = $this->input->get("noTiket");
+        $noc_nik = $this->input->post("nik_receiver");
+        $noc_name = $this->input->post("nama_receiver");
+        $noc_position = $this->input->post("position_receiver");
+        $noc_division = $this->input->post("division_receiver");
+        $this->Model_Noc->save_receipt_receiver($noc_nik, $noc_name, $noc_position, $noc_division);
+        $this->generateSignature($noc_nik, $this->input->post('signature'));
+        redirect(base_url('admin/receipt'));
+
+    }
     public function edit_receipt()
     {
         $this->Model_Noc->receipt_update($this->input->post('id_receipt'));
@@ -348,6 +372,7 @@ class Admin extends CI_Controller
         $id = $this->input->get('id');
         $data['title'] = "Data Receipt";
         $data['tanggal'] = date("d/m/Y");
+        $data['nik'] = $this->input->get('nik');
         $data['receipt'] = $this->Model_Noc->getReceiptPrint($id);
         $this->load->view('admin/cetak_tandaterima', $data);
     }
@@ -357,7 +382,8 @@ class Admin extends CI_Controller
         $id_receipt = $this->input->get('idReceipt');
         $this->Model_Noc->deleteReceipt($id_receipt);
         redirect(base_url("admin/receipt"));
-
+    }
+    
     public function generateSignature($nip, $signature)
     {
         $nama_file = "assets/signature/" . $nip . ".png";

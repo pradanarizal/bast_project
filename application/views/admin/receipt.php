@@ -28,6 +28,7 @@
                         <?php 
                             foreach ($receipt as $data) {
                                 $id = $data->id_receipt ;
+                                $nik = $data->nik;
                             
                         ?>
                             <tr>
@@ -46,7 +47,10 @@
                                             <i class="fa fa-edit text-white"></i>
                                         </div>
                                     </button>
-                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id); ?>');newWindow.print();">
+                                    <button class="tombol bg-success text-white"> <?php echo anchor('admin/add_receiver?idReceipt=' .$data->id_receipt, 
+                                        '<i class="fa fa-plus text-white"></i>' ) ?>
+                                    </button>
+                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id . '&nik=' . $nik); ?>');newWindow.print();">
                                         <i class="fa fa-print text-white"></i>
                                     </button>
                                     <button class="tombol bg-danger text-white"

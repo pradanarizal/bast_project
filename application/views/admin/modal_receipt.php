@@ -10,7 +10,7 @@
                 </button>
             </div>
         
-            <div class="modal-body">
+            <div class="modal-body" id="signature-pad">
 
                 <form action="<?php echo site_url() . 'admin/receipt_save'; ?>" method="post" enctype="multipart/form-data">
                     <div class="card mb-3">
@@ -79,9 +79,29 @@
                             <textarea id="description" 
                                 name="description" class="form-control" cols="30" rows="10"><?php // echo $data->description ?></textarea>
                         </div>
+                        <div class="form-grup mt-3">
+                            <label for="" class="text-dark font-weight-bold">Used For</label>
+                            <select name="kategori" class="form-control">
+                                <option>Surat Serah Terima</option>
+                                <option>Peminjaman</option>
+                            </select>
+                        </div>
+
+                        <div class="form-grup mt-3">
+                            <label for="">Signature</label>
+                            <!-- <input type="file" name="gambar" class="form-control"> -->
+                            <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                                <div id="note" onmouseover="my_function();">The signature should be inside box</div>
+                                <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                            </div>
+                            <div style="margin:10px;">
+                                <input type="hidden" id="signature" name="signature">
+                                <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="card mt-3 receipt-content">
+                    <!-- <div class="card mt-3 receipt-content">
                         <div class="tittle bg-primary">
                             <h5 class="text-light mt-3 text-center font-weight-bold">RECEIVER</h5>
                         </div>
@@ -123,28 +143,23 @@
                             <option>Surat Serah Terima</option>
                             <option>Peminjaman</option>
                         </select>
-                    </div>
+                    </div> -->
 
-                    <div class="form-grup  mt-3">
+                    <!-- <div class="form-grup mt-3" id="signature-pad1">
                         <label for="">Signature</label>
-                        <!-- <input type="file" name="gambar" class="form-control"> -->
-                        <form method="post" action="process.php" enctype="multipart/form-data">
-                            <div id="signature-pad">
-                                <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
-                                    <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                                    <canvas id="the_canvas" width="350px" height="100px"></canvas>
-                                </div>
-                                <div style="margin:10px;">
-                                    <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear">Clear</button>
-                                    <button type="button" id="save_btn" class="btn btn-success" data-action="save-png">Save</button>
-                                </div>
-                            </div>
-                        <form>
-                    </div>
+                        <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                            <div id="note1" onmouseover="my_function();">The signature should be inside box</div>
+                            <canvas id="the_canvas1" width="350px" height="100px"></canvas>
+                        </div>
+                        <div style="margin:10px;">
+                            <input type="hidden" id="signature1" name="signature1">
+                            <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear1">Clear</button>
+                        </div>
+                    </div> -->
 
                     <div class="modal-footer  mt-3">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Save changes</button>
+                        <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png">Save changes</button>
                     </div>
                 </form>
             </div>
