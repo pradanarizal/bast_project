@@ -320,6 +320,14 @@ class Admin extends CI_Controller
     public function add_receiver()
     {
         $data['receipt'] = $this->Model_Noc->getReceiptByIdReceiver($this->input->get('idReceipt'));
+        if($this->input->get('nikAdmin') != ""){
+            $nik_admin = $this->input->get('nikAdmin');
+            $data['noc_admin'] = $this->Model_Noc->getNocAdminById($nik_admin);
+            $data['nik_admin'] = $this->input->get('nikAdmin');  
+        } else {
+            $data['nik_admin'] = 0;
+        }
+
         $this->load->view('head');
         $this->load->view('admin/sidebar_admin');
         $this->load->view('navbar');
@@ -336,17 +344,28 @@ class Admin extends CI_Controller
 
     public function simpan_receipt_receiver()
     {
-        $id_request = $this->input->get("idRequest");
-        //$tiket = $this->input->get("noTiket");
+        $id_receipt = $this->input->get("idReceipt");
         $noc_nik = $this->input->post("nik_receiver");
         $noc_name = $this->input->post("nama_receiver");
         $noc_position = $this->input->post("position_receiver");
         $noc_division = $this->input->post("division_receiver");
         $this->Model_Noc->save_receipt_receiver($noc_nik, $noc_name, $noc_position, $noc_division);
-        $this->generateSignature($noc_nik, $this->input->post('signature'));
+        $this->Model_Noc->edit_nikadmin_receipt($id_receipt, $noc_nik);
+        $this->generateSignature($this->input->post('nik_receiver'), $this->input->post('signature'));
         redirect(base_url('admin/receipt'));
-
     }
+
+    public function update_receipt_receiver()
+    {
+        $id_receipt = $this->input->get("idReceipt");
+        $noc_nik = $this->input->post("nik_receiver");
+        $noc_name = $this->input->post("nama_receiver");
+        $noc_position = $this->input->post("position_receiver");
+        $noc_division = $this->input->post("division_receiver");
+        $this->Model_Noc->update_data_noc($id_receipt, $noc_nik, $noc_name, $noc_position, $noc_division);
+        redirect(base_url('admin/receipt'));
+    }
+
     public function edit_receipt()
     {
         $this->Model_Noc->receipt_update($this->input->post('id_receipt'));
@@ -373,6 +392,7 @@ class Admin extends CI_Controller
         $data['title'] = "Data Receipt";
         $data['tanggal'] = date("d/m/Y");
         $data['nik'] = $this->input->get('nik');
+        $data['nik_admin'] = $this->input->get('nikAdmin');
         $data['receipt'] = $this->Model_Noc->getReceiptPrint($id);
         $this->load->view('admin/cetak_tandaterima', $data);
     }

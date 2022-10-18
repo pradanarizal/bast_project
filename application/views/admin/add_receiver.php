@@ -4,6 +4,57 @@
         <h4 class="text-white font-weight-bold">ADD RECEIVER</h4>
     </div>
     <div class="body-content" id="signature-pad">
+        <?php 
+            if($nik_admin != 0) {
+            foreach ($noc_admin as $data) {
+        ?>
+        <form method="post" action="<?php echo site_url('admin/update_receipt_receiver') ?>">
+            <div class="form-grup mt-3">
+                <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
+                <input type="text" id="nik"  class="form-control"
+                    name="nik_receiver"
+                    value="<?php echo $data['nik_admin'] ?>"
+                    >
+            </div>
+            <div class="form-grup mt-3">
+                <label for="itemID" class="text-dark font-weight-bold">Nama</label>
+                <input type="text" class="form-control"
+                    name="nama_receiver"
+                    value="<?php echo $data['nama_admin'] ?>" 
+                >
+            </div>
+            <div class="form-grup mt-3">
+                <label for="inputNama" class="text-dark font-weight-bold">Position</label>
+                <input type="text" id="position" 
+                    name="position_receiver" 
+                    class="form-control"
+                    value="<?php echo $data['position_admin'] ?>"
+                    >
+            </div>
+            <div class="form-grup mt-3">
+                <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
+                <input type="text" id="unit_division" 
+                    name="division_receiver" 
+                    class="form-control"
+                    value="<?php echo $data['division_admin'] ?>"
+                    >
+            </div>
+
+            <div class="form-grup  mt-3">
+                <label for="">Signature</label>
+                <p style="border:solid 1px teal;width:355px;height:110px;"><img src="<?php echo base_url('assets/signature/' . $data['nik_admin'] . '.png'); ?>"></p>
+                <p style="color: red;">*if you want to edit signature, you must delete the submission</p>
+            </div>
+
+            <div class="float-right">
+                <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png">Save changes</button>
+            </div>
+        </form>
+
+        <?php 
+           } } else { 
+        ?>
+        
         <form method="post" action="<?php echo site_url('admin/simpan_receipt_receiver') ?>">
             <div class="form-grup mt-3">
                 <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
@@ -47,8 +98,10 @@
             <div class="float-right">
                 <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png">Save changes</button>
             </div>
-            
         </form>
+        <?php } ?>
     </div>
     </div>
 </div>
+
+

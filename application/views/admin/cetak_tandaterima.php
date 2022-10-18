@@ -58,10 +58,6 @@
       width:80%;
     }
 
-    .ttd{
-      float:right;
-    }
-
     #halaman {
         width: auto; 
         height: auto; 
@@ -225,11 +221,14 @@
           </tr>
         </table>
 
-    <table class="tabel6" width="100%" style="border:1px solid black;">
+    <table class="tabel6" width="100%">
       <tr>
         <td>
-            <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
-            <div style="width: 50%; text-align: left; float: right;">Pihak Pertama,</div><br><br>
+            <div style="width: 50%; float:left;">
+              <p style=" text-align: center; ">Yang Menyerahkan</p>
+              <p style=" text-align: center; ">Pihak Pertama</p> 
+            
+            <!-- <div style="width: 50%; text-align: center; float: left;">Pihak Pertama,</div> -->
     
           <?php
             if (file_exists("assets/signature/" . $nik . ".png")) {
@@ -237,46 +236,42 @@
             <div class="content-ttd" >
                 <img class="ttd" src="<?php echo base_url("assets/signature/" . $nik . ".png"); ?>" width="130" height="auto">
             </div>
-            <div style="width: 50%; text-align: left; float: right;">NIPP: <?php echo $nik ?></div>
-            <div class="content_name" style="width: 50%; float: right; ">
-              <p><?php echo $name ?></p>
+              <p style=" text-align: center; ">NIPP: <?php echo $data->nik ?></p>
+              <p style=" text-align: center; "><?php echo $name ?></p>
             </div>
           <?php
           } else {
           ?>
-            <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
+            <div class="ttd"></div>
               
           <?php } ?>
 
         </td>
         
         <td>
-            <!-- <div style="width: 50%; text-align: left; float: right;">Yang Menyerahkan</div><br>
-            <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div> -->
-          
+            <div style="width: 50%; float:right;">
+              <p style=" text-align: center; ">Yang Menyerahkan</p>
+              <p style=" text-align: center; ">Pihak Kedua</p> 
+            
+            <!-- <div style="width: 50%; text-align: center; float: left;">Pihak Pertama,</div> -->
     
-          <!-- <?php
-            //if (file_exists("assets/signature/" . $data->nik_admin . ".png")) {
-          ?>
-            <div>
-                <img src="<?php //echo base_url("assets/signature/" . $nik_admin . ".png"); ?>" width="130" height="auto">
-            </div>
-            <div style="width: 50%; text-align: left; float: right;">NIPP: //<?php //echo $nik_admin ?></div>
-            <div style="width: 50%; text-align: left; float: right;"><?php //echo $nama_admin ?></div>
           <?php
-          //} else {
+            if (file_exists("assets/signature/" . $nik_admin . ".png")) {
           ?>
-            <div class="ttd" style="padding:20px 30px; font-weight:bold;"></div>
+            <div class="content-ttd " >
+                <img class="ttd" src="<?php echo base_url("assets/signature/" . $nik_admin . ".png"); ?>" width="130" height="auto">
+            </div>
+              <p style=" text-align: center; ">NIPP: <?php echo $nik_admin ?></p>
+              <p style=" text-align: center; "><?php echo $nama_admin ?></p>
+            </div>
+          <?php
+          } else {
+          ?>
+            <div class="ttd"></div>
               
-          <?php //} ?>
+          <?php } ?>
 
-        </td> -->
-
-        <td>
-          <div style="width: 50%; text-align: left; float: right;">Yang Menerima</div><br>
-          <div style="width: 50%; text-align: left; float: right;">Pihak Kedua,</div><br><br><br><br><br>
-          <div style="width: 50%; text-align: left; float: right;">NIPP:<span><?php //echo $data->nik_admin; ?></span></div> 
-        </td> 
+        </td>
       </tr>
     </table>
   <?php  } ?>
