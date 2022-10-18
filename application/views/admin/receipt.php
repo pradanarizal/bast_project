@@ -2,7 +2,7 @@
     <!-- Content Row -->
     <div class="row">
         <div class="card-header">
-            <h3 class=" font-weight-bold text-dark">Surat Tanda Terima</h3>
+            <h3 class=" font-weight-bold text-dark">Receipt</h3>
         </div>
         <div class="container-fluid">
             <div class="card shadow mb-2">
@@ -19,8 +19,8 @@
                                 <th>Item Name</th>
                                 <th>Use For</th>
                                 <th>Description</th>
-                                <th>Create Date</th>
-                                <th>Action</th>
+                                <th >Create Date</th>
+                                <th width="15%">Action</th>
                             </tr>
                         </thead>
 
@@ -29,7 +29,7 @@
                             foreach ($receipt as $data) {
                                 $id = $data->id_receipt ;
                                 $nik = $data->nik;
-                            
+                                $nik_admin = $data->nik_admin;
                         ?>
                             <tr>
                                 <td><?php echo $data->no_tiket ;?></td>
@@ -47,10 +47,10 @@
                                             <i class="fa fa-edit text-white"></i>
                                         </div>
                                     </button>
-                                    <button class="tombol bg-success text-white"> <?php echo anchor('admin/add_receiver?idReceipt=' .$data->id_receipt, 
+                                    <button class="tombol bg-success text-white"> <?php echo anchor('admin/add_receiver?idReceipt=' .$data->id_receipt . '&nikAdmin='. $data->nik_admin , 
                                         '<i class="fa fa-plus text-white"></i>' ) ?>
                                     </button>
-                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id . '&nik=' . $nik); ?>');newWindow.print();">
+                                    <button class="tombol bg-warning text-white" onClick="newWindow = window.open('<?php echo base_url('admin/print_receipt?id=' . $id . '&nik=' . $nik . '&nikAdmin=' .$nik_admin); ?>');newWindow.print();">
                                         <i class="fa fa-print text-white"></i>
                                     </button>
                                     <button class="tombol bg-danger text-white"

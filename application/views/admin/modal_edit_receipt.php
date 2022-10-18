@@ -36,7 +36,10 @@
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="inputNik" class="text-dark font-weight-bold">NIK/NIP</label>
-                                <input type="text" id="inputNik" name="inputNik" class="form-control" value="<?php echo $data->nik ?>">
+                                <input type="text" id="inputNik" name="inputNik" class="form-control"
+                                    minlength="10" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
+                                    value="<?php echo $data->nik ?>"
+                                >
                             </div>
                             <div class="form-check-inline row">
                                 <div class="form-grup mt-3 col-sm">
@@ -44,14 +47,14 @@
                                     <input type="text" id="position" 
                                         name="position" 
                                         class="form-control"
-                                        value="<?php echo $data->jabatan ?>">
+                                        value="<?php echo $data->jabatan ?>" required >
                                 </div>
                                 <div class="form-grup mt-3 col-sm">
                                     <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
                                     <input type="text" id="unit_division" 
                                         name="unit_division" 
                                         class="form-control"
-                                        value="<?php echo $data->bagian ?>">
+                                        value="<?php echo $data->bagian ?>" required >
                                 </div>
                             </div>
 
@@ -61,14 +64,14 @@
                                     <input type="text" id="itemName" 
                                         name="itemName" 
                                         class="form-control"
-                                        value="<?php echo $data->item ?>">
+                                        value="<?php echo $data->item ?>" required >
                                 </div>
                                 <div class="form-grup mt-3 col-sm">
                                     <label for="itemID" class="text-dark font-weight-bold">Item ID</label>
                                     <input type="text" 
                                         name="itemID" 
                                         class="form-control"
-                                        value="<?php echo $data->item_id ?>">
+                                        value="<?php echo $data->item_id ?>" required >
                                 </div>
                             </div>
                             <div class="form-grup mt-3">
@@ -77,42 +80,6 @@
                                     name="description" class="form-control" cols="30" rows="10"><?php echo $data->description ?></textarea>
                             </div>
                         </div>
-
-                        <!-- <div class="card mt-3 receiver-content">
-                            <div class="tittle bg-primary">
-                                <h5 class="text-light mt-3 text-center font-weight-bold">RECEIVER</h5>
-                            </div>
-                            <div class="form-check-inline row">
-                                <div class="form-grup mt-3 col-sm">
-                                    <label for="nik" class="text-dark font-weight-bold">NIK/NIP</label>
-                                    <input type="text" id="nik"  class="form-control"
-                                        name="nik_receiver"
-                                        value="<?php //echo $data->nik_admin ?>">
-                                </div>
-                                <div class="form-grup mt-3 col-sm">
-                                    <label for="itemID" class="text-dark font-weight-bold">Nama</label>
-                                    <input type="text" class="form-control"
-                                        name="nama_receiver"
-                                        value="<?php //echo $data->nama_admin ?>"> 
-                                </div>
-                            </div>
-                            <div class="form-check-inline row" style="width=100%;">
-                                <div class="form-grup mt-3 col-sm">
-                                    <label for="inputNama" class="text-dark font-weight-bold">Position</label>
-                                    <input type="text" id="position" 
-                                        name="position_receiver" 
-                                        class="form-control"
-                                        value="<?php //echo $data->position_admin ?>"> 
-                                </div>
-                                <div class="form-grup mt-3 col-sm">
-                                    <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
-                                    <input type="text" id="unit_division" 
-                                        name="division_receiver" 
-                                        class="form-control"
-                                        value="<?php //echo $data->division_admin ?>"> 
-                                </div>
-                            </div>
-                        </div> -->
 
                         <div class="form-grup mt-3">
                             <label for="" class="text-dark font-weight-bold">Used For</label>
