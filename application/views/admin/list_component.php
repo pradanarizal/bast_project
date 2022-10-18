@@ -15,7 +15,7 @@
                 <div class="card-body">
                     <div class="float-left">
                         <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#check_component"><i class="fas fa-plus fa-sm mr-2"></i>Component Check</button>
-                        <button class="btn btn-md btn-info  mb-3" data-toggle="modal" data-target="#forwardToManager"><i class="fas fa-forward fa-sm mr-2"></i>Executor</button>
+                        <button class="btn btn-md btn-info  mb-3" data-toggle="modal" data-target="#finish_this_submission"><i class="fas fa-forward fa-sm mr-2"></i>Executor</button>
                     </div>
                     <!-- data table -->
                     <table id="myTable" class="display">
@@ -123,6 +123,7 @@
 
 <!-- End of modal add component -->
 
+
 <!-- Modal Delete -->
 <?php
 foreach ($komponen as $data) {
@@ -151,50 +152,3 @@ foreach ($komponen as $data) {
     </form>
 <?php } ?>
 <!-- End of modal delete -->
-
-<!-- Modal add executor -->
-<form action="<?php echo site_url('admin/add_executor?idRequest=' . $id_request . '&noTiket=' . $tiket); ?>" method="POST" enctype="multipart/form-data">
-
-    <div class="modal fade" id="forwardToManager" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-                <div class="modal-header bg-primary">
-                    <h5 class="modal-title text-white" id="exampleModalLabel">Forward to Manager</h5>
-                    <button type="button red" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-
-                <div class="modal-body">
-                    <h4>Input Executor who executes this submission</h4>
-                    <div class="form-group mt-3">
-                        <input class="form-control" type="text" name="component_count" value="<?php echo count($komponen); ?>" hidden>
-                        <label for="nik">NIP/NIK</label>
-                        <input class="form-control" type="text" name="nik" id="nik" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="name">Admin Name</label>
-                        <input class="form-control" type="text" name="name" id="name" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="position">Position</label>
-                        <input class="form-control" type="text" name="position" id="position" required>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label for="division">Division</label>
-                        <input class="form-control" type="text" name="division" id="division" required>
-                    </div>
-                    <div class="modal-footer  mt-3">
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Forward</button>
-                    </div>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</form>
-
-<!-- End of add executor -->

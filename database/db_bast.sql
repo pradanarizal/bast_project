@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Oct 15, 2022 at 07:25 PM
--- Server version: 5.7.33
--- PHP Version: 7.4.19
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 18 Okt 2022 pada 13.09
+-- Versi server: 10.4.21-MariaDB
+-- Versi PHP: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,19 +24,19 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `category`
+-- Struktur dari tabel `category`
 --
 
 CREATE TABLE `category` (
   `id_category` int(3) NOT NULL,
-  `operating_system` int(1) NOT NULL DEFAULT '0',
-  `microsoft_office` int(1) NOT NULL DEFAULT '0',
-  `software_design` int(1) NOT NULL DEFAULT '0',
-  `software_lainnya` int(1) NOT NULL DEFAULT '0'
+  `operating_system` int(1) NOT NULL DEFAULT 0,
+  `microsoft_office` int(1) NOT NULL DEFAULT 0,
+  `software_design` int(1) NOT NULL DEFAULT 0,
+  `software_lainnya` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `category`
+-- Dumping data untuk tabel `category`
 --
 
 INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `software_design`, `software_lainnya`) VALUES
@@ -45,12 +45,13 @@ INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `
 (3, 1, 0, 0, 0),
 (4, 1, 0, 1, 0),
 (5, 0, 0, 1, 1),
-(6, 0, 0, 1, 0);
+(6, 0, 0, 1, 0),
+(7, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `employee`
+-- Struktur dari tabel `employee`
 --
 
 CREATE TABLE `employee` (
@@ -61,17 +62,24 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `employee`
+-- Dumping data untuk tabel `employee`
 --
 
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
-('1235', 'Rizaldi Akbar', 'IT Juanda', 'Staff Accounting'),
-('9178131212', 'Doly Ganggeng Prahoro', 'IT Depok', 'Manager');
+('0000000000000001', 'Rizaldi Akbar', 'Juanda', 'IT Support'),
+('0000000000000002', 'Rizal Aziz', 'Juanda', 'IT Helpdesk'),
+('0000000000000003', 'Rifky Yusuf', 'Juanda', 'IT Governance'),
+('0000000000000004', 'Sulthan', 'Juanda', 'HR & Development'),
+('0000000000000005', 'Doly', 'Juanda', 'IT Support'),
+('0000000000000006', 'Muhammad Agam', 'Juanda', 'IT Helpdesk'),
+('0000000000000007', 'Zidan Nurdin', 'Juanda', 'IT Operation'),
+('0000000000000008', 'Tri Aji', 'Juanda', 'IT Operation'),
+('0000000000000009', 'Muhammad Fadhlurrahman', 'Juanda', 'IT Governance');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `giver`
+-- Struktur dari tabel `giver`
 --
 
 CREATE TABLE `giver` (
@@ -83,21 +91,32 @@ CREATE TABLE `giver` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `hardware`
+-- Struktur dari tabel `hardware`
 --
 
 CREATE TABLE `hardware` (
   `id_hardware` int(3) NOT NULL,
   `no_tiket` varchar(10) NOT NULL,
   `komponen` varchar(50) NOT NULL,
-  `status_hardware` varchar(3) NOT NULL,
+  `status_hardware` enum('OK','NOK') NOT NULL,
   `problem` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `hardware`
+--
+
+INSERT INTO `hardware` (`id_hardware`, `no_tiket`, `komponen`, `status_hardware`, `problem`) VALUES
+(1, '6546435325', 'Hardisk', 'OK', '-'),
+(2, '6546435325', 'Mouse', 'OK', '-'),
+(6, '6546435325', 'Memory', 'NOK', 'Memori penuh'),
+(7, '7773427432', 'Monitor', 'NOK', '-'),
+(8, '7773427432', 'Keyboard', 'OK', '-');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `noc_admin`
+-- Struktur dari tabel `noc_admin`
 --
 
 CREATE TABLE `noc_admin` (
@@ -108,17 +127,17 @@ CREATE TABLE `noc_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `noc_admin`
+-- Dumping data untuk tabel `noc_admin`
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
-('67891345', 'Andrian Laksamana', 'Head IT dede', 'IT Manggarai'),
-('82732636121212', 'Bandoro', 'Head IT NOC', 'grgrg');
+('121', 'Bandoro', 'Head IT NOC', 'IT Operations'),
+('123', 'Andrian Laksamana', 'Head IT dede', 'IT Planning');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `receipt`
+-- Struktur dari tabel `receipt`
 --
 
 CREATE TABLE `receipt` (
@@ -134,7 +153,7 @@ CREATE TABLE `receipt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `receipt`
+-- Dumping data untuk tabel `receipt`
 --
 
 INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
@@ -144,7 +163,7 @@ INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `it
 -- --------------------------------------------------------
 
 --
--- Table structure for table `request`
+-- Struktur dari tabel `request`
 --
 
 CREATE TABLE `request` (
@@ -153,9 +172,9 @@ CREATE TABLE `request` (
   `no_tiket` varchar(10) NOT NULL,
   `no_aset` varchar(20) NOT NULL,
   `tipe_pengajuan` enum('hardware','software') NOT NULL,
-  `status` enum('pending','process','approved','revision','rejected') NOT NULL,
+  `status` enum('pending','process','approved','revision','rejected','finish') NOT NULL,
   `nik` varchar(16) NOT NULL,
-  `id_category` int(1) NOT NULL DEFAULT '1',
+  `id_category` int(1) NOT NULL DEFAULT 1,
   `tanggal_request` date NOT NULL,
   `tanggal_approval` date NOT NULL,
   `approval_notes` text NOT NULL,
@@ -163,19 +182,23 @@ CREATE TABLE `request` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `request`
+-- Dumping data untuk tabel `request`
 --
 
 INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`) VALUES
 (4, 'bisa', '34342', '09765', 'hardware', 'pending', '2121312234444444', 5, '2022-10-15', '0000-00-00', '', ''),
 (5, 'Ganti', '7665', '1212', 'software', 'process', '2123434343343433', 4, '2022-10-15', '0000-00-00', '', ''),
 (6, 'ww', '766523', '09765', 'software', 'pending', '2121313131313131', 5, '2022-10-15', '0000-00-00', '', ''),
-(7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', '');
+(7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', ''),
+(8, 'Monitor mati', '6546435325', 'A/201/RIFKY', 'hardware', 'finish', '0000000000000001', 5, '2022-10-17', '0000-00-00', '', '123'),
+(9, 'Memori planning', '7773427432', 'A/201/Sulthan', 'hardware', 'finish', '0000000000000004', 5, '2022-10-17', '0000-00-00', 'Coba diancurin', '123'),
+(10, 'Booting keluar asap', '9993472874', 'A/201/PCA', 'hardware', 'pending', '0000000000000005', 5, '2022-10-17', '0000-00-00', '', ''),
+(11, 'a', '2147483643', 'A/201/PCA', 'software', 'process', '0000000000000005', 7, '2022-10-17', '0000-00-00', '', '123');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `software`
+-- Struktur dari tabel `software`
 --
 
 CREATE TABLE `software` (
@@ -187,19 +210,20 @@ CREATE TABLE `software` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `software`
+-- Dumping data untuk tabel `software`
 --
 
 INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `notes`) VALUES
 (2, '4444444444', 'Antivirus', '13', 'Avira'),
 (4, '4444444444', 'Microsoft Windows', '11', 'Windows 11 PRO'),
 (5, '766523', 'Microsoft Project', '2', 't'),
-(6, '7665', 'Microsoft Project', '55', 'Instalasi');
+(6, '7665', 'Microsoft Project', '55', 'Instalasi'),
+(7, '2147483643', 'Microsoft Office Standart', '1', 'a');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -210,7 +234,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
@@ -223,80 +247,86 @@ INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
 --
 
 --
--- Indexes for table `category`
+-- Indeks untuk tabel `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indexes for table `employee`
+-- Indeks untuk tabel `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indexes for table `hardware`
+-- Indeks untuk tabel `hardware`
 --
 ALTER TABLE `hardware`
   ADD PRIMARY KEY (`id_hardware`);
 
 --
--- Indexes for table `noc_admin`
+-- Indeks untuk tabel `noc_admin`
 --
 ALTER TABLE `noc_admin`
   ADD PRIMARY KEY (`nik_admin`);
 
 --
--- Indexes for table `receipt`
+-- Indeks untuk tabel `receipt`
 --
 ALTER TABLE `receipt`
   ADD PRIMARY KEY (`id_receipt`);
 
 --
--- Indexes for table `request`
+-- Indeks untuk tabel `request`
 --
 ALTER TABLE `request`
   ADD PRIMARY KEY (`id_request`);
 
 --
--- Indexes for table `software`
+-- Indeks untuk tabel `software`
 --
 ALTER TABLE `software`
   ADD PRIMARY KEY (`id_software`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`nip`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `category`
+-- AUTO_INCREMENT untuk tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
--- AUTO_INCREMENT for table `receipt`
+-- AUTO_INCREMENT untuk tabel `hardware`
+--
+ALTER TABLE `hardware`
+  MODIFY `id_hardware` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT untuk tabel `receipt`
 --
 ALTER TABLE `receipt`
   MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT for table `request`
+-- AUTO_INCREMENT untuk tabel `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- AUTO_INCREMENT for table `software`
+-- AUTO_INCREMENT untuk tabel `software`
 --
 ALTER TABLE `software`
-  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

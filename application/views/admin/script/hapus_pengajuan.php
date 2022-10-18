@@ -14,11 +14,11 @@ foreach ($requestor as $data) {
                     </div>
 
                     <div class="modal-body">
-                        Delete Request with ticket number <?php echo $data->no_tiket; ?>?
+                        Delete Request with ticket number <?php echo $data->no_tiket; ?> ?
                     </div>
                     <div class="modal-footer  mt-3">
-                        <button type="button" class="btn" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-danger">Delete</button>
+                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
+                        <button type="SUBMIT" class="btn btn-outline-danger">Yes</button>
                     </div>
                 </div>
             </div>

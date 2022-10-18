@@ -188,6 +188,8 @@ class Admin extends CI_Controller
         $this->load->view('admin/sidebar_admin', $data);
         $this->load->view('navbar', $data);
         $this->load->view('admin/script/caridata_executor', $data);
+        $this->load->view('admin/modal_executor_hardware', $data);
+        $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('admin/list_component', $data);
         $this->load->view('footer', $data);
     }
@@ -200,6 +202,7 @@ class Admin extends CI_Controller
         $tiket = $this->input->post("tiket");
         $id_request = $this->input->post("idRequest");
         $status = "process";
+
         $this->Model_Noc->insert_component($component, $status_component, $problem, $tiket, $id_request);
         $this->Model_Noc->changeStatusRequest($id_request, $status);
     }
@@ -232,6 +235,9 @@ class Admin extends CI_Controller
         $noc_name = $this->input->post("name");
         $noc_position = $this->input->post("position");
         $noc_division = $this->input->post("division");
+        $rekomendasi = $this->input->post("rekomendasi");
+
+        $this->generateSignature_executor($this->input->post('nik'), $this->input->post('signature'));
         $status = "finish";
 
         if ($component_count == 0) {
@@ -243,11 +249,17 @@ class Admin extends CI_Controller
             $this->Model_Noc->changeStatusRequest($id_request, $status);
             $this->Model_Noc->addOrUpdateNOCAdmin($noc_name, $noc_nik, $noc_position, $noc_division);
             $this->Model_Noc->updateNikAdmin($id_request, $noc_nik);
+            $this->Model_Noc->recommendation_request($id_request, $rekomendasi, $noc_nik);
             echo '<script>
             window.location.href="' . base_url("admin/subhardware") . '";
             alert("The hardware components has been checked and the status is complete...!"); 
             </script>';
         }
+    }
+    public function generateSignature_executor($nik, $signature)
+    {
+        $nama_file = "assets/signature/" . $nik . ".png";
+        file_put_contents($nama_file, file_get_contents($signature));
     }
 
 
@@ -262,6 +274,13 @@ class Admin extends CI_Controller
         } else {
             redirect(base_url('admin/subsoftware'));
         }
+    }
+
+    public function cancel_request()
+    {
+        $id_request = $this->input->get('idRequest');
+        $this->Model_Noc->cancel_finished_request($id_request);
+        redirect(base_url('admin/subhardware'));
     }
 
     public function SoftwareRequestUpdate()
@@ -282,6 +301,12 @@ class Admin extends CI_Controller
         $this->generateSignature($this->input->post('inputnik'), $this->input->post('signature'));
     }
 
+    public function simpan_hardware()
+    {
+        $this->Model_Noc->hardware_save();
+        $this->generateSignature($this->input->post('inputnik'), $this->input->post('signature'));
+    }
+
     public function executor_hardware($id)
     {
         $where = array('id_request' => $id);
@@ -296,11 +321,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/modal', $data);
         $this->load->view('footer', $data);
     }
-    public function simpan_hardware()
-    {
-        $this->Model_Noc->hardware_save();
-        redirect(base_url('admin/subhardware'));
-    }
+
 
     public function receipt()
     {
@@ -345,7 +366,6 @@ class Admin extends CI_Controller
         $this->Model_Noc->save_receipt_receiver($noc_nik, $noc_name, $noc_position, $noc_division);
         $this->generateSignature($noc_nik, $this->input->post('signature'));
         redirect(base_url('admin/receipt'));
-
     }
     public function edit_receipt()
     {
@@ -383,10 +403,40 @@ class Admin extends CI_Controller
         $this->Model_Noc->deleteReceipt($id_receipt);
         redirect(base_url("admin/receipt"));
     }
-    
+
     public function generateSignature($nip, $signature)
     {
         $nama_file = "assets/signature/" . $nip . ".png";
         file_put_contents($nama_file, file_get_contents($signature));
+    }
+
+    // print submission hardware
+    public function reviewReq()
+    {
+        $data['component'] = array(
+            "Hardisk",
+            "Memory",
+            "Monitor",
+            "Keyboard",
+            "Mouse",
+            "Software",
+            "Adaptor/Power Supply",
+            "Processor",
+            "Fan/Heatsink",
+            "Lainnya"
+        );
+
+        $id_request = $this->input->get('idRequest');
+        $no_tiket = $this->input->get('noTiket');
+        $nik_admin = $this->input->get('nik_admin');
+
+        // $data['manager_name'] = $this->session->userdata('nama');
+        // $data['manager_nip'] = $this->session->userdata('nip');
+
+        $data['nocAdmin'] = $this->Model_Noc->getNocAdminBynik($nik_admin);
+        $data['requestor'] = $this->Model_Noc->getRequestorById_2($id_request);
+        $data['komponen'] = $this->Model_Noc->gethardware_byNoTiket($no_tiket);
+        // $data['tanggal'] = date("d/m/Y");
+        $this->load->view('form/form_permintaan_hardware', $data);
     }
 }
