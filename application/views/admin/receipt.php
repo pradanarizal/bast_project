@@ -1,10 +1,10 @@
 <div class="mr-2 ml-2">
     <!-- Content Row -->
     <div class="row">
-        <div class="card-header">
-            <h3 class=" font-weight-bold text-dark">Receipt</h3>
-        </div>
         <div class="container-fluid">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h2 class="h3 mb-0 text-gray-800">Receipt</h2>
+            </div>
             <div class="card shadow mb-2">
                 <div class="card-body">
                     <div class="float-left">

@@ -40,21 +40,13 @@ class Sadmin extends CI_Controller
         $this->load->view('sadmin/user_sadmin');
         $this->load->view('footer');
     }
+
     public function InsertData()
     {
-        $nip = $this->input->post('nip');
-        $nama = $this->input->post('nama');
-        $role = $this->input->post('role');
-        $password = $this->input->post('password');
-        $dataInsert = array(
-            'nip' => $nip,
-            'nama' => $nama,
-            'role' => $role,
-            'password' => $password,
-        );
-        $this->Model_Sadmin->InsertData($dataInsert);
-        redirect(base_url('sadmin/user'));
+        $this->Model_Sadmin->input_data_user();
+        // redirect(base_url('sadmin/user'));
     }
+
     public function changeData()
     {
         $nip = $this->input->post('nip');

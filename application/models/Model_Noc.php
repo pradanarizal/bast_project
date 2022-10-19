@@ -423,6 +423,23 @@ class Model_Noc extends CI_Model
         return $hasil;
     }
 
+    function caridata_receiver($inputnik)
+    {
+        $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'nik_receiver' => $data->nik,
+                    'nama_receiver' => $data->nama,
+                    'division_receiver' => $data->bagian,
+                    'position_receiver' => $data->jabatan,
+                );
+            }
+        }
+        return $hasil;
+    }
+
+
     function caridata_executor($nikadmin)
     {
         $hsl = $this->db->query("SELECT * FROM noc_admin WHERE nik_admin='$nikadmin'");

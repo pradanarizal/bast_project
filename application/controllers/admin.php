@@ -328,6 +328,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/modal_receipt', $data);
         $this->load->view('admin/modal_edit_receipt', $data);
         $this->load->view('admin/script/caridata_employee_2', $data);
+        $this->load->view('admin/script/caridata_receiver', $data);
         $this->load->view('admin/script/hapus_receipt', $data);
         $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
@@ -347,6 +348,7 @@ class Admin extends CI_Controller
         $this->load->view('head');
         $this->load->view('admin/sidebar_admin');
         $this->load->view('navbar');
+        $this->load->view('admin/script/caridata_receiver', $data);
         $this->load->view('admin/add_receiver', $data);
         $this->load->view('admin/script/tandatangan');
         $this->load->view('footer');
@@ -399,6 +401,13 @@ class Admin extends CI_Controller
     {
         $inputnik = $this->input->post('inputNik');
         $data = $this->Model_Noc->caridata_employee_2($inputnik);
+        echo json_encode($data);
+    }
+
+    function get_receiver()
+    {
+        $inputnik = $this->input->post('nik_receiver');
+        $data = $this->Model_Noc->caridata_receiver($inputnik);
         echo json_encode($data);
     }
 
