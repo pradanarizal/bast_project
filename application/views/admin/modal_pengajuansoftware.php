@@ -15,7 +15,7 @@
                     <div class="card">
                         <div class="form-group mt-3">
                             <label for="no_tiket">No Ticket</label>
-                            <input type="text" name="no_tiket" class="form-control" id="no_tiket" minlength="10" maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                            <input type="text" name="no_tiket" class="form-control" id="no_tiket" minlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                         </div>
                     </div>
 

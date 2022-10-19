@@ -237,7 +237,7 @@ class Admin extends CI_Controller
         $noc_division = $this->input->post("division");
         $rekomendasi = $this->input->post("rekomendasi");
 
-        $this->generateSignature_executor($this->input->post('nik'), $this->input->post('signature'));
+        $this->generateSignature($this->input->post('nik'), $this->input->post('signature'));
         $status = "finish";
 
         if ($component_count == 0) {
@@ -256,12 +256,6 @@ class Admin extends CI_Controller
             </script>';
         }
     }
-    public function generateSignature_executor($nik, $signature)
-    {
-        $nama_file = "assets/signature/" . $nik . ".png";
-        file_put_contents($nama_file, file_get_contents($signature));
-    }
-
 
     public function deleteRequestSoftware()
     {
@@ -333,6 +327,7 @@ class Admin extends CI_Controller
         $this->load->view('admin/receipt', $data);
         $this->load->view('admin/modal_receipt', $data);
         $this->load->view('admin/modal_edit_receipt', $data);
+        $this->load->view('admin/script/caridata_employee_2', $data);
         $this->load->view('admin/script/hapus_receipt', $data);
         $this->load->view('admin/script/tandatangan', $data);
         $this->load->view('footer', $data);
@@ -397,6 +392,13 @@ class Admin extends CI_Controller
     {
         $inputnik = $this->input->post('inputnik');
         $data = $this->Model_Noc->caridata_employee($inputnik);
+        echo json_encode($data);
+    }
+
+    function get_employee_2()
+    {
+        $inputnik = $this->input->post('inputNik');
+        $data = $this->Model_Noc->caridata_employee_2($inputnik);
         echo json_encode($data);
     }
 

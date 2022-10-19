@@ -166,9 +166,13 @@ $hard = array(
                 <td colspan="7" class="header">EXECUTOR</td>
             </tr>
             <tr>
-                <td align="center" colspan="1">Component</td>
-                <td colspan="2">Status</td>
-                <td colspan="2">Problem</td>
+                <td colspan="2rem" style="width: 120px;">Component</td>
+                <td colspan="2" style="padding-left: 4rem;">Status</td>
+                <td style="padding-left: 3rem;">Problem</td>
+            </tr>
+            <tr>
+                <td colspan="3" style="padding-left: 10rem;">OK</td>
+                <td colspan="1">NOK</td>
             </tr>
             <!-- software loop -->
             <?php
@@ -202,7 +206,7 @@ $hard = array(
                         <!-- Status komponen NOK -->
 
                         <!-- Problem -->
-                        <td colspan="2">
+                        <td colspan="2" style="padding-left: 3rem;">
                             <?php
                             if ($hard['problem'] != "-") {
                                 echo $hard['problem'];
@@ -226,7 +230,7 @@ $hard = array(
                         <td align="center"><input type="checkbox" name="" id="" value="" disabled></td>
 
                         <!-- problem -->
-                        <td colspan="2">
+                        <td colspan="2" style="padding-left: 3rem;">
                             ______________________
                         </td>
                     </tr>

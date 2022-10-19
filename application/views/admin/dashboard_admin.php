@@ -23,11 +23,11 @@ foreach ($request as $data) {
         }
     } else {
         $hardware++;
-        if ($data['status'] == "approved") {
+        if ($data['status'] == "pending") {
             $aHard++;
         } elseif ($data['status'] == "process") {
             $pHard++;
-        } elseif ($data['status'] == "rejected") {
+        } elseif ($data['status'] == "finish") {
             $rHard++;
         }
     }
@@ -54,18 +54,21 @@ foreach ($request as $data) {
                     <p>Software Installation Submission</p>
                     <h2><?php echo $software; ?></h2>
                 </div>
+                <hr class="sidebar-divider">
                 <div class="items">
                     <div class="item_admin">
-                        Approved
-                        <div class="hasil"><?php echo $aSoft; ?></div>
+                        Rejected
+                        <h4><div class="hasil"><?php echo $rSoft; ?></div></h4>
                     </div>
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $pSoft; ?></div>
+                       <h4><div class="hasil"><?php echo $pSoft; ?></div></h4>
                     </div>
+                </div>
+                <div class="items">
                     <div class="item_admin">
-                        Rejected
-                        <div class="hasil"><?php echo $rSoft; ?></div>
+                        Approved
+                        <h4><div class="hasil"><?php echo $aSoft; ?></div></h4>
                     </div>
                 </div>
             </div>
@@ -74,18 +77,21 @@ foreach ($request as $data) {
                     <p>Hardware Check Submission</p>
                     <h2><?php echo $hardware; ?></h2>
                 </div>
+                <hr class="sidebar-divider">
                 <div class="items">
                     <div class="item_admin">
-                        Approved
-                        <div class="hasil"><?php echo $aHard; ?></div>
+                        Pending
+                        <h4><div class="hasil"><?php echo $aHard; ?></div></h4>
                     </div>
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $pHard; ?></div>
+                        <h4><div class="hasil"><?php echo $pHard; ?></div></h4>
                     </div>
+                </div>
+                <div class="items">
                     <div class="item_admin">
-                        Rejected
-                        <div class="hasil"><?php echo $rHard; ?></div>
+                        Finish
+                       <h4><div class="hasil"><?php echo $rHard; ?></div></h4>
                     </div>
                 </div>
             </div>
@@ -94,18 +100,29 @@ foreach ($request as $data) {
                     <p>All Submission</p>
                     <h2><?php echo $all; ?></h2>
                 </div>
+                <hr class="sidebar-divider">
                 <div class="items">
                     <div class="item_admin">
-                        Approved
-                        <div class="hasil"><?php echo $aAll; ?></div>
+                        Rejected
+                        <h4><div class="hasil"><?php echo $rSoft; ?></div></h4>
                     </div>
+                    <div class="item_admin">
+                        Pending
+                       <h4><div class="hasil"><?php echo $aHard; ?></div></h4>
+                    </div>
+                </div>
+                <div class="items">
                     <div class="item_admin">
                         Process
-                        <div class="hasil"><?php echo $pAll; ?></div>
+                       <h4><div class="hasil"><?php echo $pAll; ?></div></h4>
                     </div>
                     <div class="item_admin">
-                        Rejected
-                        <div class="hasil"><?php echo $rAll; ?></div>
+                        Approved
+                        <h4><div class="hasil"><?php echo $aAll; ?></div></h4>
+                    </div>
+                    <div class="item_admin">
+                        Finish
+                        <h4><div class="hasil"><?php echo $rHard; ?></div></h4>
                     </div>
                 </div>
             </div>

@@ -407,6 +407,22 @@ class Model_Noc extends CI_Model
         return $hasil;
     }
 
+    function caridata_employee_2($inputnik)
+    {
+        $hsl = $this->db->query("SELECT * FROM employee WHERE nik='$inputnik'");
+        if ($hsl->num_rows() > 0) {
+            foreach ($hsl->result() as $data) {
+                $hasil = array(
+                    'inputNik' => $data->nik,
+                    'inputNama' => $data->nama,
+                    'unit_division' => $data->bagian,
+                    'position' => $data->jabatan,
+                );
+            }
+        }
+        return $hasil;
+    }
+
     function caridata_executor($nikadmin)
     {
         $hsl = $this->db->query("SELECT * FROM noc_admin WHERE nik_admin='$nikadmin'");
@@ -577,7 +593,7 @@ class Model_Noc extends CI_Model
     }
 
     public function edit_nikadmin_receipt($id_receipt, $nik_noc)
-    {   
+    {
         $updateNik = array(
             'nik_admin' => $nik_noc
         );
