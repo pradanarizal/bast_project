@@ -461,14 +461,41 @@ class Admin extends CI_Controller
         $id_request = $this->input->get('idRequest');
         $no_tiket = $this->input->get('noTiket');
         $nik_admin = $this->input->get('nik_admin');
-
-        // $data['manager_name'] = $this->session->userdata('nama');
-        // $data['manager_nip'] = $this->session->userdata('nip');
-
         $data['nocAdmin'] = $this->Model_Noc->getNocAdminBynik($nik_admin);
         $data['requestor'] = $this->Model_Noc->getRequestorById_2($id_request);
         $data['komponen'] = $this->Model_Noc->gethardware_byNoTiket($no_tiket);
-        // $data['tanggal'] = date("d/m/Y");
         $this->load->view('form/form_permintaan_hardware', $data);
+    }
+    public function reviewReq_software()
+    {
+        $data['softwares'] = array(
+            "Microsoft Windows",
+            "Microsoft Office Standart",
+            "Microsoft Visio",
+            "Microsoft Project",
+            "Autocad",
+            "Corel Draw",
+            "Adobe Photoshop",
+            "Adobe Premiere",
+            "Adobe Ilustrator",
+            "Adobe After Effect",
+            "Antivirus",
+            "Sketch Up Pro",
+            "Vray Fr Sketchup",
+            "Nitro PDF Pro",
+            "Linux OS",
+            "Open Office",
+            "Mac OS",
+            "Microsoft Office For Mac",
+            "SAP",
+            "Software Lainnya"
+        );
+        $id_request = $this->input->get('idRequest');
+        $tiket = $this->input->get('noTiket');
+        $data['manager_name'] = $this->session->userdata('nama');
+        $data['requestor'] = $this->Model_Noc->getRequestorById_cetak($id_request);
+        $data['software'] = $this->Model_Noc->getSoftwareByTiket($tiket);
+        $data['tanggal'] = date("d/m/Y");
+        $this->load->view('form/form_permintaan_software_admin', $data);
     }
 }

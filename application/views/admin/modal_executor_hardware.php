@@ -20,7 +20,7 @@
                         <input class="form-control" type="text" name="component_count" value="<?php echo count($komponen); ?>" hidden>
 
                         <label for="nik">NIP/NIK</label>
-                        <input class="form-control" type="text" name="nik" id="nik" required>
+                        <input class="form-control" type="text" name="nik" id="nik" maxlength="16" required>
                     </div>
 
                     <div class="form-group mt-3">

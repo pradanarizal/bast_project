@@ -315,6 +315,8 @@ $soft = array(
             <tr>
                 <?php
                 foreach ($requestor as $data) {
+                    $nip = $data['nip'];
+                    $nama = $data['nama'];
                     $otorisasi = "-";
                     if ($data['status'] == "approved") {
                         $otorisasi = "A";
@@ -360,13 +362,13 @@ $soft = array(
                                 <td colspan="2" align="right">Jakarta, <?php echo $tanggal; ?>(dd/mm/yyyy)</td>
                             </tr>
                             <?php
-                            if (file_exists("assets/signature/" . $manager_nip . ".png")) {
+                            if (file_exists("assets/signature/" . $nip . ".png")) {
                             ?>
                                 <tr style="position: relative;text-align: center;">
                                     <td rowspan="7">
                                         <div class="ttd">
-                                            <img src="<?php echo base_url("assets/signature/" . $manager_nip . ".png"); ?>" width="130" height="auto">
-                                            <div style="position: absolute;top: 97%;left: 43%;"><?php echo $manager_name; ?></div>
+                                            <img src="<?php echo base_url("assets/signature/" . $nip . ".png"); ?>" width="130" height="auto">
+                                            <div style="position: absolute;top: 97%;left: 43%;"><?php echo $nama; ?></div>
                                         </div>
                                     </td>
                                 </tr>

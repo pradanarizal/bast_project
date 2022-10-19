@@ -51,6 +51,7 @@ class Manager extends CI_Controller
     {
         $this->load->view('form/form_permintaan_hardware');
     }
+    
     public function reviewReq()
     {
         $data['softwares'] = array(
@@ -96,7 +97,9 @@ class Manager extends CI_Controller
         $notes = $this->input->post('notes');
         $tanggal = date('Y-m-d');
         $status = "approved";
-        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        $nip = $this->session->userdata('nip');
+
+        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal, $nip);
         $this->generateSignature($this->session->userdata('nip'), $this->input->post('signature'));
         if ($status) {
             echo "<script>alert('Submission has been Approved!')</script>";
@@ -109,7 +112,7 @@ class Manager extends CI_Controller
         $notes = $this->input->post('notes');
         $tanggal = $this->input->post('tanggal');
         $status = "revision";
-        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        $status = $this->Model_Manager->cancelStatus($id, $notes, $status, $tanggal);
         if ($status) {
             echo "<script>alert('Status changed to Need Revision!')</script>";
         }
@@ -121,7 +124,7 @@ class Manager extends CI_Controller
         $status = "process";
         $notes = "Cancelled";
         $tanggal = date("Y-m-d");
-        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        $status = $this->Model_Manager->cancelStatus($id, $notes, $status, $tanggal);
         if ($status) {
             echo "<script>alert('Status changed to cancelled!')</script>";
         }
@@ -133,7 +136,7 @@ class Manager extends CI_Controller
         $status = "rejected";
         $notes = "Rejected";
         $tanggal = date("Y-m-d");
-        $status = $this->Model_Manager->changeStatus($id, $notes, $status, $tanggal);
+        $status = $this->Model_Manager->cancelStatus($id, $notes, $status, $tanggal);
         if ($status) {
             echo "<script>alert('Submission has been Rejected!')</script>";
         }

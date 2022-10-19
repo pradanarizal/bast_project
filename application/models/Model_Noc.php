@@ -723,4 +723,25 @@ class Model_Noc extends CI_Model
     {
         $this->db->query("DELETE FROM `receipt` WHERE id_receipt = '$id_receipt' ");
     }
+
+    public function getSoftwareByTiket($tiket)
+    {
+        $data = $this->db->query("SELECT * FROM software WHERE no_tiket = $tiket");
+        $row = $data->result_array();
+        return $row;
+    }
+
+    public function getRequestorById_cetak($id_request)
+    {
+        $data = $this->db->query("SELECT * FROM request JOIN employee ON request.nik= employee.nik JOIN category ON request.id_category= category.id_category JOIN noc_admin ON request.nik_admin = noc_admin.nik_admin JOIN user ON request.nip = user.nip WHERE id_request = $id_request");
+        $row = $data->result_array();
+        return $row;
+    }
+
+    public function get_approval_user($id_request)
+    {
+        $data = $this->db->query("SELECT * FROM request JOIN user ON request.nip= user.nip WHERE id_request = $id_request");
+        $row = $data->result_array();
+        return $row;
+    }
 }
