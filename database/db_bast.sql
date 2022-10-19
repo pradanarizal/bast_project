@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 18 Okt 2022 pada 13.09
+-- Waktu pembuatan: 19 Okt 2022 pada 12.14
 -- Versi server: 10.4.21-MariaDB
 -- Versi PHP: 7.3.31
 
@@ -46,7 +46,9 @@ INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `
 (4, 1, 0, 1, 0),
 (5, 0, 0, 1, 1),
 (6, 0, 0, 1, 0),
-(7, 1, 0, 0, 0);
+(7, 1, 0, 0, 0),
+(8, 1, 0, 1, 0),
+(9, 1, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -68,8 +70,8 @@ CREATE TABLE `employee` (
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
 ('0000000000000001', 'Rizaldi Akbar', 'Juanda', 'IT Support'),
 ('0000000000000002', 'Rizal Aziz', 'Juanda', 'IT Helpdesk'),
-('0000000000000003', 'Rifky Yusuf', 'Juanda', 'IT Governance'),
-('0000000000000004', 'Sulthan', 'Juanda', 'HR & Development'),
+('0000000000000003', 'Rifky Yusuf Mahfuz', 'Juanda', 'IT Governance'),
+('0000000000000004', 'Sulthani', 'Juanda', 'HR & Development'),
 ('0000000000000005', 'Doly', 'Juanda', 'IT Support'),
 ('0000000000000006', 'Muhammad Agam', 'Juanda', 'IT Helpdesk'),
 ('0000000000000007', 'Zidan Nurdin', 'Juanda', 'IT Operation'),
@@ -111,7 +113,11 @@ INSERT INTO `hardware` (`id_hardware`, `no_tiket`, `komponen`, `status_hardware`
 (2, '6546435325', 'Mouse', 'OK', '-'),
 (6, '6546435325', 'Memory', 'NOK', 'Memori penuh'),
 (7, '7773427432', 'Monitor', 'NOK', '-'),
-(8, '7773427432', 'Keyboard', 'OK', '-');
+(8, '7773427432', 'Keyboard', 'OK', '-'),
+(9, '2426666666', 'Monitor', 'NOK', 'Ganti LCD'),
+(10, '3333424332', 'Keyboard', 'NOK', 'Keyboard error banyak karat dan kabel putus'),
+(11, '2426666666', 'Keyboard', 'NOK', 'Kabelnya putus'),
+(12, '3333333333', 'Monitor', 'NOK', 'Soket putus');
 
 -- --------------------------------------------------------
 
@@ -131,8 +137,11 @@ CREATE TABLE `noc_admin` (
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
+('0000000000000001', 'Rizaldi Akbar', 'Juanda', 'IT Support'),
+('0000000000000002', 'Rizal Aziz', 'Juanda', 'IT Helpdesk'),
+('0000000000000004', 'Sulthani', 'HR & Development', 'Juanda'),
 ('121', 'Bandoro', 'Head IT NOC', 'IT Operations'),
-('123', 'Andrian Laksamana', 'Head IT dede', 'IT Planning');
+('909095', 'Andrian Laksamana', 'Head IT dede', 'IT Planning');
 
 -- --------------------------------------------------------
 
@@ -157,8 +166,11 @@ CREATE TABLE `receipt` (
 --
 
 INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
-(16, '766523', '9178131212', '82732636121212', 'Laptop', '11625', 'Surat Serah Terima', 'dss', '2022-10-15'),
-(17, '766523232', '1235', '67891345', 'Gatewayyyyy', '92738', 'Surat Serah Terima', 'dwssd', '2022-10-15');
+(16, '766523', '9178131212', '0000000000000004', 'Laptop', '11625', 'Surat Serah Terima', 'dss', '2022-10-15'),
+(17, '766523232', '1235', '0000000000000004', 'Gatewayyyyy', '92738', 'Surat Serah Terima', 'dwssd', '2022-10-15'),
+(18, '2426666666', '0000000000000001', '0000000000000004', 'Proyektor', '12', 'Peminjaman', 'Peminjaman proyektor', '2022-10-19'),
+(19, '2426666666', '0000000000000002', '0000000000000004', 'Proyektor', '12', 'Surat Serah Terima', 'Peminjaman proyektor', '2022-10-19'),
+(20, '2147483643', '0000000000000001', '0000000000000004', 'Proyektor', '12', 'Surat Serah Terima', 'Laptop', '2022-10-19');
 
 -- --------------------------------------------------------
 
@@ -178,22 +190,24 @@ CREATE TABLE `request` (
   `tanggal_request` date NOT NULL,
   `tanggal_approval` date NOT NULL,
   `approval_notes` text NOT NULL,
-  `nik_admin` varchar(16) NOT NULL
+  `nik_admin` varchar(16) NOT NULL,
+  `nip` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data untuk tabel `request`
 --
 
-INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`) VALUES
-(4, 'bisa', '34342', '09765', 'hardware', 'pending', '2121312234444444', 5, '2022-10-15', '0000-00-00', '', ''),
-(5, 'Ganti', '7665', '1212', 'software', 'process', '2123434343343433', 4, '2022-10-15', '0000-00-00', '', ''),
-(6, 'ww', '766523', '09765', 'software', 'pending', '2121313131313131', 5, '2022-10-15', '0000-00-00', '', ''),
-(7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', ''),
-(8, 'Monitor mati', '6546435325', 'A/201/RIFKY', 'hardware', 'finish', '0000000000000001', 5, '2022-10-17', '0000-00-00', '', '123'),
-(9, 'Memori planning', '7773427432', 'A/201/Sulthan', 'hardware', 'finish', '0000000000000004', 5, '2022-10-17', '0000-00-00', 'Coba diancurin', '123'),
-(10, 'Booting keluar asap', '9993472874', 'A/201/PCA', 'hardware', 'pending', '0000000000000005', 5, '2022-10-17', '0000-00-00', '', ''),
-(11, 'a', '2147483643', 'A/201/PCA', 'software', 'process', '0000000000000005', 7, '2022-10-17', '0000-00-00', '', '123');
+INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`, `nip`) VALUES
+(4, 'bisa', '34342', '09765', 'hardware', 'pending', '2121312234444444', 5, '2022-10-15', '0000-00-00', '', '', ''),
+(5, 'Ganti', '7665', '1212', 'software', 'process', '2123434343343433', 4, '2022-10-15', '0000-00-00', '', '', ''),
+(6, 'ww', '766523', '09765', 'software', 'pending', '2121313131313131', 5, '2022-10-15', '0000-00-00', '', '', ''),
+(7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', '', ''),
+(11, 'a', '2147483643', 'A/201/PCA', 'software', 'revision', '0000000000000005', 7, '2022-10-17', '0000-00-00', 'Rusak', '909095', '0000000001'),
+(14, 'Keyboard mati', '2426666666', 'A/201/RIFKY', 'hardware', 'process', '0000000000000004', 5, '2022-10-19', '0000-00-00', 'Beli kabel keyboard baru', '909095', ''),
+(15, 'Monitor mati', '3333333333', 'A/201/PCA21', 'hardware', 'process', '0000000000000001', 5, '2022-10-19', '0000-00-00', 'Beli soket baru', '121', ''),
+(16, 'Install aplikasi windows', '2313124124', 'A/201/PCA', 'software', 'pending', '0000000000000004', 8, '2022-10-19', '0000-00-00', '', '', ''),
+(17, '2222222AA', '2222222222', '321344', 'software', 'approved', '0000000000000001', 9, '2022-10-19', '2022-10-19', 'AAAAAAA', '0000000000000002', '0000000001');
 
 -- --------------------------------------------------------
 
@@ -218,7 +232,9 @@ INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `
 (4, '4444444444', 'Microsoft Windows', '11', 'Windows 11 PRO'),
 (5, '766523', 'Microsoft Project', '2', 't'),
 (6, '7665', 'Microsoft Project', '55', 'Instalasi'),
-(7, '2147483643', 'Microsoft Office Standart', '1', 'a');
+(7, '2147483643', 'Microsoft Office Standart', '1', 'a'),
+(8, '2313124124', 'Microsoft Office Standart', '1', 'a'),
+(9, '2222222222', 'Microsoft Office Standart', '1', 'A');
 
 -- --------------------------------------------------------
 
@@ -238,9 +254,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
-('0000000001', 'Rifky', 'manager', '123'),
+('0000000001', 'Rifky Yusuf', 'manager', '123'),
 ('0000000002', 'Rizal', 'admin', '321'),
-('0000000003', 'Doly', 'sadmin', '111');
+('0000000003', 'Doly', 'sadmin', '111'),
+('0000000004', 'Sulthan', 'sadmin', '1234');
 
 --
 -- Indexes for dumped tables
@@ -302,31 +319,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `category`
 --
 ALTER TABLE `category`
-  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `hardware`
 --
 ALTER TABLE `hardware`
-  MODIFY `id_hardware` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_hardware` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT untuk tabel `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT untuk tabel `software`
 --
 ALTER TABLE `software`
-  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
