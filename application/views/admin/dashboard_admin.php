@@ -1,6 +1,8 @@
 <?php
 $software = 0;
 $aSoft = 0;
+$bSoft = 0;
+$cSoft = 0;
 $pSoft = 0;
 $rSoft = 0;
 $hardware = 0;
@@ -18,6 +20,10 @@ foreach ($request as $data) {
             $aSoft++;
         } elseif ($data['status'] == 'process') {
             $pSoft++;
+        } elseif ($data['status'] == 'pending') {
+            $bSoft++;
+        } elseif ($data['status'] == 'revision') {
+            $cSoft++;
         } elseif ($data['status'] == "rejected") {
             $rSoft++;
         }
@@ -35,6 +41,7 @@ foreach ($request as $data) {
     $aAll = $aSoft + $aHard;
     $pAll = $pSoft + $pHard;
     $rAll = $rSoft + $rHard;
+    $allpending = $bSoft + $aHard;
 }
 ?>
 <!-- Content -->
@@ -58,17 +65,35 @@ foreach ($request as $data) {
                 <div class="items">
                     <div class="item_admin">
                         Rejected
-                        <h4><div class="hasil"><?php echo $rSoft; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $rSoft; ?></div>
+                        </h4>
                     </div>
                     <div class="item_admin">
-                        Process
-                       <h4><div class="hasil"><?php echo $pSoft; ?></div></h4>
+                        Pending
+                        <h4>
+                            <div class="hasil"><?php echo $bSoft; ?></div>
+                        </h4>
+                    </div>
+                    <div class="item_admin">
+                        Revision
+                        <h4>
+                            <div class="hasil"><?php echo $cSoft; ?></div>
+                        </h4>
                     </div>
                 </div>
                 <div class="items">
                     <div class="item_admin">
+                        Process
+                        <h4>
+                            <div class="hasil"><?php echo $pSoft; ?></div>
+                        </h4>
+                    </div>
+                    <div class="item_admin">
                         Approved
-                        <h4><div class="hasil"><?php echo $aSoft; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $aSoft; ?></div>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -81,17 +106,23 @@ foreach ($request as $data) {
                 <div class="items">
                     <div class="item_admin">
                         Pending
-                        <h4><div class="hasil"><?php echo $aHard; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $aHard; ?></div>
+                        </h4>
                     </div>
                     <div class="item_admin">
                         Process
-                        <h4><div class="hasil"><?php echo $pHard; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $pHard; ?></div>
+                        </h4>
                     </div>
                 </div>
                 <div class="items">
                     <div class="item_admin">
                         Finish
-                       <h4><div class="hasil"><?php echo $rHard; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $rHard; ?></div>
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -104,25 +135,35 @@ foreach ($request as $data) {
                 <div class="items">
                     <div class="item_admin">
                         Rejected
-                        <h4><div class="hasil"><?php echo $rSoft; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $rSoft; ?></div>
+                        </h4>
                     </div>
                     <div class="item_admin">
                         Pending
-                       <h4><div class="hasil"><?php echo $aHard; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $allpending; ?></div>
+                        </h4>
                     </div>
                 </div>
                 <div class="items">
                     <div class="item_admin">
                         Process
-                       <h4><div class="hasil"><?php echo $pAll; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $pAll; ?></div>
+                        </h4>
                     </div>
                     <div class="item_admin">
                         Approved
-                        <h4><div class="hasil"><?php echo $aAll; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $aAll; ?></div>
+                        </h4>
                     </div>
                     <div class="item_admin">
                         Finish
-                        <h4><div class="hasil"><?php echo $rHard; ?></div></h4>
+                        <h4>
+                            <div class="hasil"><?php echo $rHard; ?></div>
+                        </h4>
                     </div>
                 </div>
             </div>
