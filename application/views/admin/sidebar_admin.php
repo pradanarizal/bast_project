@@ -6,10 +6,29 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
+            <script>
+                var externalContent = $('#page-top'),
+                    execOnResize = function() {
+                        if (window.innerWidth >= 992) {
+                            externalContent.addClass('show');
+                        } else {
+                            externalContent.removeClass('show');
+                        }
+                    };
+                // the next line was only addded for jsfiddle       
+                execOnResize();
 
+                window.onresize = function(event) {
+                    execOnResize();
+                };
+
+                window.addEventListener('load', function() {
+                    execOnResize();
+                })
+            </script>
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('admin') ?>">
                 <img class="img-sidebar" src="<?php echo base_url('assets/img/logo.png') ?>">
             </a>
 

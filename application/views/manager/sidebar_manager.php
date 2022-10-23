@@ -4,10 +4,10 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('manager') ?>">
                 <img class="img-sidebar" src="<?php echo base_url('assets/img/logo.png') ?>">
             </a>
 
@@ -22,7 +22,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?= $this->uri->segment(2) == '' ? "active" : '' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('manager') ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>

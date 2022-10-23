@@ -5,15 +5,15 @@
             <?php
             foreach ($requestor as $data) {
             ?>
-                <h2>
-                    Add Software
-                    <br>Ticket Number : <?php echo $data['no_tiket']; ?>
-                    <br>Requestor : <?php echo $data['nama']; ?>
-                </h2>
+                <div>
+                    Add Software With :
+                   <li>Ticket Number = <b><?php echo $data['no_tiket']; ?></b></li>
+                    <li>Requestor = <b><?php echo $data['nama']; ?></b></li>
+                </div>
             <?php } ?>
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <div class="float-left">
+                    <div class="tombol-aksi-hardsoft">
                         <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#addSoftware"><i class="fas fa-plus fa-sm mr-2"></i>Add Software</button>
                         <button class="btn btn-md btn-info  mb-3" data-toggle="modal" data-target="#forwardToManager"><i class="fas fa-forward fa-sm mr-2"></i>Forward To Manager</button>
                     </div>
@@ -98,7 +98,7 @@
 
                     <div class="modal-footer  mt-3">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Save changes</button>
+                        <button type="SUBMIT" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </div>
@@ -168,9 +168,9 @@ foreach ($softwares as $data) {
                     <div class="form-grup  mt-3">
                         <label for="">Signature</label>
                         <!-- <input type="file" name="gambar" class="form-control"> -->
-                        <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                        <div class="form-ttd">
                             <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                            <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                            <canvas id="the_canvas" class="isi-ttd" height="100px"></canvas>
                         </div>
                         <div style="margin:10px;">
                             <input type="hidden" id="signature" name="signature">

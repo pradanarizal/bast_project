@@ -20,7 +20,7 @@
                         <input class="form-control" type="text" name="component_count" value="<?php echo count($komponen); ?>" hidden>
 
                         <label for="nik">NIP/NIK</label>
-                        <input class="form-control" type="text" name="nik" id="nik" maxlength="16" required>
+                        <input class="form-control" type="text" name="nik" id="nik" minlength="4" maxlength="16" required>
                     </div>
 
                     <div class="form-group mt-3">
@@ -48,9 +48,9 @@
 
                     <div class="form-grup mt-3">
                         <label for="">Signature</label>
-                        <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                        <div class="form-ttd">
                             <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                            <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                            <canvas id="the_canvas" class="isi-ttd" height="100px"></canvas>
                         </div>
 
                         <div style="margin:10px;">

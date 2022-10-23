@@ -17,6 +17,7 @@
 
     <!-- Custom styles for this template-->
     <link href="<?php echo base_url(); ?>assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="<?php echo base_url(); ?>assets/css/style.css" rel="stylesheet">
 
 </head>
 <?php
@@ -28,34 +29,31 @@ if (isset($message)) {
 
 <body background="<?php echo base_url('assets/img/background.jfif'); ?>" style="background-repeat: no-repeat;background-size: cover;">
 
-    <div class="container container-login">
+    <div class="container-login">
 
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-5">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
-                    <!-- Nested Row within Card Body -->
-                    <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4" style="color: red; font-weight: bold;">BAST Apps</h1>
-                            <p class="mb-4">Aplikasi Berita Acara Serah Terima PT.KCI</p>
-                        </div>
-                        <form class="user" action="<?php echo base_url('login_controller/dashboard') ?>" method="POST">
-                            <div class="form-group">
-                                <input type="text" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIP" minlength="4"
-                                maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
-                            </div>
-                            <div class="form-group">
-                                <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="password" placeholder="Password" required>
-                            </div>
-                            <input type="submit" name="login" value="Login" class="btn btn-danger btn-block custom-button">
-                        </form>
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <!-- Nested Row within Card Body -->
+                <div class="batas-login">
+                    <div class="text-center">
+                        <div class="h4 judul-login">BAST Apps</div>
+                        <p class="mb-4">Aplikasi Berita Acara Serah Terima PT.KCI</p>
                     </div>
+                    <form class="user" action="<?php echo base_url('login_controller/dashboard') ?>" method="POST">
+                        <div class="form-group">
+                            <input type="text" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIP" minlength="4" maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="password" placeholder="Password" required>
+                        </div>
+                        <input type="submit" name="login" value="Login" class="btn btn-danger btn-block custom-button">
+                    </form>
                 </div>
-
             </div>
+
 
         </div>
 

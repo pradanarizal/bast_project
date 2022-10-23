@@ -5,15 +5,15 @@
             <?php
             foreach ($requestor as $data) {
             ?>
-                <h2>
-                    Components Check
-                    <br>Ticket Number : <?php echo $data['no_tiket']; ?>
-                    <br>Requestor : <?php echo $data['nama']; ?>
-                </h2>
+                <div>
+                    Components Check With:
+                    <li>Ticket Number = <b><?php echo $data['no_tiket']; ?></b></li>
+             <li>Requestor = <b><?php echo $data['nama']; ?></b></li>
+                </div>
             <?php } ?>
             <div class="card shadow mb-4">
                 <div class="card-body">
-                    <div class="float-left">
+                    <div class="tombol-aksi-hardsoft">
                         <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#check_component"><i class="fas fa-plus fa-sm mr-2"></i>Component Check</button>
                         <button class="btn btn-md btn-info  mb-3" data-toggle="modal" data-target="#finish_this_submission"><i class="fas fa-forward fa-sm mr-2"></i>Executor</button>
                     </div>
@@ -113,7 +113,7 @@
 
                     <div class="modal-footer  mt-3">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                        <button type="SUBMIT" class="btn btn-primary">Save changes</button>
+                        <button type="SUBMIT" class="btn btn-primary">Save</button>
                     </div>
                 </div>
             </div>

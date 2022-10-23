@@ -91,7 +91,7 @@ foreach ($requestor as $data) {
                         </div>
                         <div class="modal-footer  mt-3">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="SUBMIT" class="btn btn-primary">Save changes</button>
+                            <button type="SUBMIT" class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>

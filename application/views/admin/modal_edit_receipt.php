@@ -37,7 +37,7 @@
                             <div class="form-grup mt-3">
                                 <label for="inputNik" class="text-dark font-weight-bold">NIK/NIP</label>
                                 <input type="text" id="inputNik" name="inputNik" class="form-control"
-                                    minlength="10" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
+                                    minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57"
                                     value="<?php echo $data->nik ?>"
                                 >
                             </div>
@@ -96,7 +96,7 @@
                         </div>
                         <div class="modal-footer  mt-3">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="SUBMIT" class="btn btn-primary">Save changes</button>
+                            <button type="SUBMIT" class="btn btn-primary">Save</button>
                         </div>
                     </div>
                 </div>

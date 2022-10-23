@@ -28,25 +28,25 @@ foreach ($requestor as $data) {
         <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
     </div>
 
-    <div class="mb-4">
+    <div class="mb-4 wrap-jumlah-pengajuan">
         <table class="tabel" border="0" cellpadding="10px">
             <tr>
                 <td>
-                    <div class=" box bg-primary shadow">
+                    <div class="box bg-primary shadow jumlah-pengajuan">
                         <i class="fa fa-edit fa-2x"></i>
                         <p>Pending Submission</p>
                         <h3><?php echo $process; ?></h3>
                     </div>
                 </td>
                 <td>
-                    <div class="card box bg-danger shadow">
+                    <div class="card box bg-danger shadow jumlah-pengajuan">
                         <i class="fa fa-edit fa-2x mb-2"></i>
                         <p>Revision Submission</p>
                         <h3><?php echo $revision; ?></h3>
                     </div>
                 </td>
                 <td>
-                    <div class="card box bg-success shadow">
+                    <div class="card box bg-success shadow jumlah-pengajuan">
                         <i class="fa fa-edit fa-2x mb-2"></i>
                         <p>Approved Submission</p>
                         <h3><?php echo $approved; ?></h3>
@@ -265,9 +265,9 @@ foreach ($requestor as $data) {
                         <div class="form-grup mt-3">
                             <label for="">Signature</label>
                             <!-- <input type="file" name="gambar" class="form-control"> -->
-                            <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                            <div class="form-ttd">
                                 <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                                <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                                <canvas id="the_canvas" class="isi-ttd" height="100px"></canvas>
                             </div>
                             <div style="margin:10px;">
                                 <input type="hidden" id="signature" name="signature">

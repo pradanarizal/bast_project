@@ -28,9 +28,9 @@
                 <div class="form-grup  mt-3">
                     <label for="">Signature</label>
                     <!-- <input type="file" name="gambar" class="form-control"> -->
-                    <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                    <div class="form-ttd">
                         <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                        <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                        <canvas id="the_canvas" class="isi-ttd" height="100px"></canvas>
                     </div>
                     <div style="margin:10px;">
                         <input type="hidden" id="signature" name="signature">
