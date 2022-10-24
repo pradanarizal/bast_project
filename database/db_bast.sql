@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Okt 2022 pada 12.14
--- Versi server: 10.4.21-MariaDB
--- Versi PHP: 7.3.31
+-- Generation Time: Oct 23, 2022 at 07:09 PM
+-- Server version: 10.4.25-MariaDB
+-- PHP Version: 8.1.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
@@ -36,7 +36,7 @@ CREATE TABLE `category` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `category`
+-- Dumping data for table `category`
 --
 
 INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `software_design`, `software_lainnya`) VALUES
@@ -53,7 +53,7 @@ INSERT INTO `category` (`id_category`, `operating_system`, `microsoft_office`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `employee`
+-- Table structure for table `employee`
 --
 
 CREATE TABLE `employee` (
@@ -64,7 +64,7 @@ CREATE TABLE `employee` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `employee`
+-- Dumping data for table `employee`
 --
 
 INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
@@ -81,7 +81,7 @@ INSERT INTO `employee` (`nik`, `nama`, `bagian`, `jabatan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `giver`
+-- Table structure for table `giver`
 --
 
 CREATE TABLE `giver` (
@@ -93,7 +93,7 @@ CREATE TABLE `giver` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hardware`
+-- Table structure for table `hardware`
 --
 
 CREATE TABLE `hardware` (
@@ -105,7 +105,7 @@ CREATE TABLE `hardware` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `hardware`
+-- Dumping data for table `hardware`
 --
 
 INSERT INTO `hardware` (`id_hardware`, `no_tiket`, `komponen`, `status_hardware`, `problem`) VALUES
@@ -122,7 +122,7 @@ INSERT INTO `hardware` (`id_hardware`, `no_tiket`, `komponen`, `status_hardware`
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `noc_admin`
+-- Table structure for table `noc_admin`
 --
 
 CREATE TABLE `noc_admin` (
@@ -133,7 +133,7 @@ CREATE TABLE `noc_admin` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `noc_admin`
+-- Dumping data for table `noc_admin`
 --
 
 INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_admin`) VALUES
@@ -146,7 +146,7 @@ INSERT INTO `noc_admin` (`nik_admin`, `nama_admin`, `position_admin`, `division_
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `receipt`
+-- Table structure for table `receipt`
 --
 
 CREATE TABLE `receipt` (
@@ -162,7 +162,7 @@ CREATE TABLE `receipt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `receipt`
+-- Dumping data for table `receipt`
 --
 
 INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `item_id`, `kategori`, `description`, `date`) VALUES
@@ -170,12 +170,13 @@ INSERT INTO `receipt` (`id_receipt`, `no_tiket`, `nik`, `nik_admin`, `item`, `it
 (17, '766523232', '1235', '0000000000000004', 'Gatewayyyyy', '92738', 'Surat Serah Terima', 'dwssd', '2022-10-15'),
 (18, '2426666666', '0000000000000001', '0000000000000004', 'Proyektor', '12', 'Peminjaman', 'Peminjaman proyektor', '2022-10-19'),
 (19, '2426666666', '0000000000000002', '0000000000000004', 'Proyektor', '12', 'Surat Serah Terima', 'Peminjaman proyektor', '2022-10-19'),
-(20, '2147483643', '0000000000000001', '0000000000000004', 'Proyektor', '12', 'Surat Serah Terima', 'Laptop', '2022-10-19');
+(20, '2147483643', '0000000000000001', '0000000000000004', 'Proyektor', '12', 'Surat Serah Terima', 'Laptop', '2022-10-19'),
+(21, '2147483643', '0000000000000001', '', 'Proyektor', '12212', 'Surat Serah Terima', 'Pinjam', '2022-10-23');
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `request`
+-- Table structure for table `request`
 --
 
 CREATE TABLE `request` (
@@ -195,7 +196,7 @@ CREATE TABLE `request` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `request`
+-- Dumping data for table `request`
 --
 
 INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pengajuan`, `status`, `nik`, `id_category`, `tanggal_request`, `tanggal_approval`, `approval_notes`, `nik_admin`, `nip`) VALUES
@@ -203,7 +204,7 @@ INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pen
 (5, 'Ganti', '7665', '1212', 'software', 'process', '2123434343343433', 4, '2022-10-15', '0000-00-00', '', '', ''),
 (6, 'ww', '766523', '09765', 'software', 'pending', '2121313131313131', 5, '2022-10-15', '0000-00-00', '', '', ''),
 (7, 'sds', '7665', '23232', 'software', 'pending', '92844761613', 6, '2022-10-15', '0000-00-00', '', '', ''),
-(11, 'a', '2147483643', 'A/201/PCA', 'software', 'revision', '0000000000000005', 7, '2022-10-17', '0000-00-00', 'Rusak', '909095', '0000000001'),
+(11, 'a', '2147483643', 'A/201/PCA', 'software', 'process', '0000000000000005', 7, '2022-10-17', '2022-10-23', 'Cancelled', '909095', '0000000001'),
 (14, 'Keyboard mati', '2426666666', 'A/201/RIFKY', 'hardware', 'process', '0000000000000004', 5, '2022-10-19', '0000-00-00', 'Beli kabel keyboard baru', '909095', ''),
 (15, 'Monitor mati', '3333333333', 'A/201/PCA21', 'hardware', 'process', '0000000000000001', 5, '2022-10-19', '0000-00-00', 'Beli soket baru', '121', ''),
 (16, 'Install aplikasi windows', '2313124124', 'A/201/PCA', 'software', 'pending', '0000000000000004', 8, '2022-10-19', '0000-00-00', '', '', ''),
@@ -212,7 +213,7 @@ INSERT INTO `request` (`id_request`, `keluhan`, `no_tiket`, `no_aset`, `tipe_pen
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `software`
+-- Table structure for table `software`
 --
 
 CREATE TABLE `software` (
@@ -224,7 +225,7 @@ CREATE TABLE `software` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `software`
+-- Dumping data for table `software`
 --
 
 INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `notes`) VALUES
@@ -239,22 +240,22 @@ INSERT INTO `software` (`id_software`, `no_tiket`, `nama_software`, `version`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
-  `nip` varchar(10) NOT NULL,
+  `nip` varchar(16) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `role` enum('manager','admin','sadmin') NOT NULL,
   `password` varchar(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
-('0000000001', 'Rifky Yusuf', 'manager', '123'),
+('0000000001', 'Rifky Yusuf Mahfuz', 'manager', '123'),
 ('0000000002', 'Rizal', 'admin', '321'),
 ('0000000003', 'Doly', 'sadmin', '111'),
 ('0000000004', 'Sulthan', 'sadmin', '1234');
@@ -264,83 +265,83 @@ INSERT INTO `user` (`nip`, `nama`, `role`, `password`) VALUES
 --
 
 --
--- Indeks untuk tabel `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`id_category`);
 
 --
--- Indeks untuk tabel `employee`
+-- Indexes for table `employee`
 --
 ALTER TABLE `employee`
   ADD PRIMARY KEY (`nik`);
 
 --
--- Indeks untuk tabel `hardware`
+-- Indexes for table `hardware`
 --
 ALTER TABLE `hardware`
   ADD PRIMARY KEY (`id_hardware`);
 
 --
--- Indeks untuk tabel `noc_admin`
+-- Indexes for table `noc_admin`
 --
 ALTER TABLE `noc_admin`
   ADD PRIMARY KEY (`nik_admin`);
 
 --
--- Indeks untuk tabel `receipt`
+-- Indexes for table `receipt`
 --
 ALTER TABLE `receipt`
   ADD PRIMARY KEY (`id_receipt`);
 
 --
--- Indeks untuk tabel `request`
+-- Indexes for table `request`
 --
 ALTER TABLE `request`
   ADD PRIMARY KEY (`id_request`);
 
 --
--- Indeks untuk tabel `software`
+-- Indexes for table `software`
 --
 ALTER TABLE `software`
   ADD PRIMARY KEY (`id_software`);
 
 --
--- Indeks untuk tabel `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`nip`);
 
 --
--- AUTO_INCREMENT untuk tabel yang dibuang
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT untuk tabel `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
   MODIFY `id_category` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT untuk tabel `hardware`
+-- AUTO_INCREMENT for table `hardware`
 --
 ALTER TABLE `hardware`
   MODIFY `id_hardware` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
--- AUTO_INCREMENT untuk tabel `receipt`
+-- AUTO_INCREMENT for table `receipt`
 --
 ALTER TABLE `receipt`
-  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id_receipt` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT untuk tabel `request`
+-- AUTO_INCREMENT for table `request`
 --
 ALTER TABLE `request`
   MODIFY `id_request` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
--- AUTO_INCREMENT untuk tabel `software`
+-- AUTO_INCREMENT for table `software`
 --
 ALTER TABLE `software`
   MODIFY `id_software` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;

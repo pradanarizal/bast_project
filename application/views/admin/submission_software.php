@@ -4,15 +4,15 @@
 
         <div class="container-fluid">
             <!-- Page Heading -->
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h2 class="h3 mb-0 text-gray-800">Software Installation Submission</h2>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 judul-submission">
+                <div class="mb-0 text-gray-800">Software Installation Submission</div>
             </div>
 
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <!-- data table -->
-                    <div class="float-left">
-                        <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
+                    <div class="tombol-pengajuan">
+                        <button class="btn btn-md btn-success mb-3" data-toggle="modal" data-target="#tambahBarang"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
                     </div>
                     <table id="myTable" class="display">
                         <thead>

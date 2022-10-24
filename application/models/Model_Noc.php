@@ -553,7 +553,8 @@ class Model_Noc extends CI_Model
 
     public function getReceiptByIdReceiver($id_receipt)
     {
-        $this->db->select('*');
+        $this->db->select('receipt.*, noc_admin.*');
+        $this->db->join('noc_Admin', 'receipt.nik_admin = noc_admin.nik_admin');
         $this->db->from('receipt');
         $this->db->where('id_receipt', $id_receipt);
         $query = $this->db->get();

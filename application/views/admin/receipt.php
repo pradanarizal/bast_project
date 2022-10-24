@@ -2,12 +2,12 @@
     <!-- Content Row -->
     <div class="row">
         <div class="container-fluid">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h2 class="h3 mb-0 text-gray-800">Receipt</h2>
+            <div class="d-sm-flex align-items-center justify-content-between mb-4 judul-submission">
+                <div class="mb-0 text-gray-800">Receipt</div>
             </div>
             <div class="card shadow mb-2">
                 <div class="card-body">
-                    <div class="float-left">
+                    <div class="tombol-pengajuan">
                         <button class="btn btn-md btn-success mb-3" data-toggle="modal" data-target="#addReceipt"><i class="fas fa-plus fa-sm mr-2"></i>Add New Receipt</button>
                     </div>
                     <table id="myTable" class="display">
@@ -40,12 +40,12 @@
                                     <td><?php echo $data->description ?></td>
                                     <td><?php echo $data->date ?></td>
                                     <td>
-                                        <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#editReceipt_modal<?php echo $data->id_receipt ?>">
+                                        <!-- <button class="tombol bg-primary text-white" data-toggle="modal" data-target="#editReceipt_modal<?php echo $data->id_receipt ?>">
                                             <div style="font-weight: bold;">
                                                 <i class="fa fa-edit text-white"></i>
                                             </div>
-                                        </button>
-                                        <button class="tombol bg-success text-white"> <?php echo anchor(
+                                        </button> -->
+                                        <button title="Add Receiver" class="tombol bg-success text-white"> <?php echo anchor(
                                                                                             'admin/add_receiver?idReceipt=' . $data->id_receipt . '&nikAdmin=' . $data->nik_admin,
                                                                                             '<i class="fa fa-plus text-white"></i>'
                                                                                         ) ?>

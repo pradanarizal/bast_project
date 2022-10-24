@@ -4,7 +4,7 @@
         <div class="modal-dialog  modal-lg">
             <div class="modal-content">
                 <div class="modal-header bg-primary justify-content-center">
-                    <h4 class="modal-title text-white text-justify" id="exampleModalLabel">Formulir Tanda Terima</h4>
+                    <h4 class="modal-title text-white text-justify" id="exampleModalLabel">Receipt Form</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true" class="text-light">&times;</span>
                     </button>
@@ -16,21 +16,19 @@
                         <div class="card mb-3">
                             <div class="form-group mt-3">
                                 <label for="inputEmail4">No Ticket</label>
-                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" placeholder="input no ticket" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             </div>
                         </div>
 
+                        <h5 class="text-dark mt-3 text-center font-weight-bold">Giver</h5>
                         <div class="card giver-content">
-                            <div class="tittle bg-primary">
-                                <h5 class="text-light mt-3 text-center font-weight-bold">GIVER</h5>
-                            </div>
                             <div class="form-grup mt-3">
-                                <label for="inputNama" class="text-dark font-weight-bold">Receiver Name</label>
+                                <label for="inputNama" class="text-dark font-weight-bold">Giver Name</label>
                                 <input type="text" id="inputNama" name="inputNama" class="form-control" required>
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="inputNik" class="text-dark font-weight-bold">NIK/NIP</label>
-                                <input type="text" id="inputNik" minlength="4" maxlength="16" name="inputNik" class="form-control" required minlength="10" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <input type="text" id="inputNik" minlength="4" maxlength="16" name="inputNik" class="form-control" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
                             </div>
                             <div class="form-check-inline row">
                                 <div class="form-grup mt-3 col-sm">
@@ -68,10 +66,9 @@
 
                             <div class="form-grup mt-3">
                                 <label for="">Signature</label>
-                                <!-- <input type="file" name="gambar" class="form-control"> -->
-                                <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
+                                <div class="form-ttd">
                                     <div id="note" onmouseover="my_function();">The signature should be inside box</div>
-                                    <canvas id="the_canvas" width="350px" height="100px"></canvas>
+                                    <canvas id="the_canvas" class="isi-ttd" height="100px"></canvas>
                                 </div>
                                 <div style="margin:10px;">
                                     <input type="hidden" id="signature" name="signature">
@@ -79,66 +76,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- <div class="card mt-3 receipt-content">
-                        <div class="tittle bg-primary">
-                            <h5 class="text-light mt-3 text-center font-weight-bold">RECEIVER</h5>
-                        </div>
-                        <div class="form-check-inline row">
-                            <div class="form-grup mt-3 col-sm">
-                                <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
-                                <input type="text" id="nik"  class="form-control"
-                                    name="nik_receiver"
-                                    >
-                            </div>
-                            <div class="form-grup mt-3 col-sm">
-                                <label for="itemID" class="text-dark font-weight-bold">Nama</label>
-                                <input type="text" class="form-control"
-                                    name="nama_receiver" 
-                                    >
-                            </div>
-                        </div>
-                        <div class="form-check-inline row" style="width=100%;">
-                            <div class="form-grup mt-3 col-sm">
-                                <label for="inputNama" class="text-dark font-weight-bold">Position</label>
-                                <input type="text" id="position" 
-                                    name="position_receiver" 
-                                    class="form-control"
-                                    >
-                            </div>
-                            <div class="form-grup mt-3 col-sm">
-                                <label for="inputNik" class="text-dark font-weight-bold">Unit Division</label>
-                                <input type="text" id="unit_division" 
-                                    name="division_receiver" 
-                                    class="form-control"
-                                    >
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-grup mt-3">
-                        <label for="" class="text-dark font-weight-bold">Used For</label>
-                        <select name="kategori" class="form-control">
-                            <option>Surat Serah Terima</option>
-                            <option>Peminjaman</option>
-                        </select>
-                    </div> -->
-
-                        <!-- <div class="form-grup mt-3" id="signature-pad1">
-                        <label for="">Signature</label>
-                        <div style="border:solid 1px teal; width:360px;height:110px;padding:3px;position:relative;">
-                            <div id="note1" onmouseover="my_function();">The signature should be inside box</div>
-                            <canvas id="the_canvas1" width="350px" height="100px"></canvas>
-                        </div>
-                        <div style="margin:10px;">
-                            <input type="hidden" id="signature1" name="signature1">
-                            <button type="button" id="clear_btn" class="btn btn-danger" data-action="clear1">Clear</button>
-                        </div>
-                    </div> -->
-
-                        <div class="modal-footer  mt-3">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" id="save_btn" class="btn btn-primary" data-action="save-png">Save changes</button>
+                        <div class="modal-footer mt-3 posisi-tombol">
+                            <button type="button" class="btn btn-danger all-tombol" data-dismiss="modal">Close</button>
+                            <button type="submit" id="save_btn" class="btn btn-primary all-tombol" data-action="save-png">Save</button>
                         </div>
                     </form>
                 </div>

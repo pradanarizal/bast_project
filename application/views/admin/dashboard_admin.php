@@ -48,8 +48,8 @@ foreach ($request as $data) {
 <div class="container-fluid">
 
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h2 class="h3 mb-0 text-gray-800">Dashboard</h2>
+    <div class="d-sm-flex align-items-center justify-content-between mb-4 judul-submission">
+        <div class="mb-0 text-gray-800">Dashboard</div>
     </div>
 
     <div class="mb-4">

@@ -1,132 +1,271 @@
+/* Responsive - Mobile view */
+
+@media (max-width: 600px) {
+    .tombol-pengajuan {
+        text-align: center;
+    }
+    .tombol-aksi-hardsoft {
+        text-align: center;
+    }
+    .judul-submission {
+        font-size: 20px;
+    }
+}
+
+.judul-login {
+    color: red;
+    font-weight: bold;
+}
+
+.wrap-jumlah-pengajuan {
+    overflow: auto;
+}
+
+.jumlah-pengajuan {
+    text-align: center;
+    font-size: small;
+}
+
+.jumlah-user {
+    text-align: center;
+    font-size: medium;
+    margin: 1.5rem;
+}
+
+.form-ttd {
+    border: 1px solid #d1d3e2;
+    border-radius: 0.35rem;
+    max-width: 300px;
+    height: 110px;
+    padding: 3px;
+    position: relative;
+}
+
+.isi-ttd {
+    width: 290px;
+}
+
+.posisi-tombol {
+    text-align: center;
+}
+
+.posisi-tombol-hapus {
+    display: flex;
+}
+
+.all-tombol {
+    width: 175px;
+}
+
+.all-tombol-hapus {
+    width: 125px;
+}
+
+.simpan-receipt {
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    /* CSS for datatable */
+    .batas-login {
+        padding: 1.5rem;
+    }
+    .row_admin {
+        display: grid;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+        padding-right: 1.8rem;
+    }
+    span.dtr-data {
+        display: block;
+    }
+    table.dataTable>tbody>tr.child ul.dtr-details>li:first-child {
+        padding-top: 0;
+        width: 300%;
+    }
+    table.dataTable>tbody>tr.child ul.dtr-details>li {
+        border-bottom: 1px solid #efefef;
+        padding: .5em 0;
+        width: 300%;
+    }
+    /* End of CSS for datatable */
+}
+
+
 /* Sidebar */
-@media screen and (max-width: 600px) {
-  .sidebar-brand img {
-    height: 25px;
-  }
+
+@media screen and (max-width: 768px) {
+    .sidebar-brand img {
+        height: 25px;
+    }
 }
+
+
 /* Dashboard Admin*/
-.row_admin {
-  display: flex;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  margin: 0 auto;
+
+@media (min-width:768px) {
+    .row_admin {
+        display: flex;
+        width: 100%;
+        height: auto;
+        padding: 0;
+        margin: 0 auto;
+    }
+    .judul-submission {
+        font-size: 32px;
+    }
+    .batas-login {
+        padding: 3rem !important;
+    }
 }
+
 .card_admin {
-  width: 120px;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  border-radius: 10px;
-}
-@media screen and (max-width: 600px) {
-  .card_admin {
-    width: 100%;
+    width: 120px;
+    flex-grow: 1;
+    margin: 0;
     padding: 0;
-  }
+    border-radius: 10px;
 }
+
+@media screen and (max-width: 768px) {
+    .card_admin {
+        width: 100%;
+        padding: 0;
+    }
+}
+
 .card_content_admin {
-  color: white;
-  text-align: center;
-  margin: 20px;
+    color: white;
+    text-align: center;
+    margin: 20px;
 }
+
 .card_content_admin h2 {
-  font-size: 50px;
+    font-size: 50px;
 }
 
 .items {
-  display: flex;
-  width: 100%;
-  height: auto;
-  padding: 0;
-  margin: 0 auto;
-  margin-bottom: 20px;
-  text-align: center;
-  color: white;
+    display: flex;
+    width: 100%;
+    height: auto;
+    padding: 0;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+    color: white;
 }
+
 .item_admin {
-  width: auto;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  border-radius: 10px;
+    width: auto;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
 }
+
 
 /* Submission Admin*/
+
 .formulir {
-  width: 350px;
-  padding: 8px;
-  border-color: #54a3f0;
-  border-radius: 6px;
+    width: 350px;
+    padding: 8px;
+    border-color: #54a3f0;
+    border-radius: 6px;
 }
+
 
 /* Manager */
+
 .box {
-  border-radius: 10px;
-  padding: 10px;
-  color: white;
-  width: 100%;
-}
-.tabel {
-  width: 100%;
-}
-.box p {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-.tombol {
-  width: 20;
-  border: solid 0px black;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    width: 100%;
 }
 
-/* Dashboard Sadmin*/
-.row_sadmin {
-  display: flex;
-  width: 100%;
-  height: 200px;
-  padding: 0;
-  margin: 0 auto;
-}
-.card_sadmin {
-  width: 100px;
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  border-radius: 10px;
-}
-@media screen and (max-width: 600px) {
-  .card_sadmin {
+.tabel {
     width: 100%;
+}
+
+.box p {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.tombol {
+    width: 20;
+    border: solid 0px black;
+}
+
+
+/* Dashboard Sadmin*/
+
+.row_sadmin {
+    display: flex;
+    width: 100%;
+    height: 200px;
     padding: 0;
-  }
+    margin: 0 auto;
 }
+
+.card_sadmin {
+    width: 100px;
+    flex-grow: 1;
+    margin: 0;
+    padding: 0;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .card_sadmin {
+        width: 100%;
+        padding: 0;
+    }
+}
+
 .first {
-  margin-left: 0;
-  margin-right: 20px;
+    margin-left: 0;
+    margin-right: 20px;
 }
+
 .second {
-  margin-left: 20px;
-  margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
+
 .three {
-  margin-left: 20px;
-  margin-right: 0;
+    margin-left: 20px;
+    margin-right: 0;
 }
-@media screen and (max-width: 600px) {
-  .first {
-    margin: 20px;
-  }
+
+@media screen and (max-width: 768px) {
+    .first {
+        margin: 20px;
+    }
 }
-@media screen and (max-width: 600px) {
-  .three {
-    margin: 20px;
-  }
+
+@media screen and (max-width: 768px) {
+    .three {
+        margin: 20px;
+    }
 }
+
 .card_content_sadmin {
-  margin: 20px 30px;
-  color: white;
+    margin: 20px 30px;
+    color: white;
 }
+
 .card_content_sadmin p {
-  margin-top: 20px;
-  font-size: 18px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.modal-hapus {
+    margin-top: 4rem;
+}
+
+.modal-logout {
+    margin-top: 4rem;
 }

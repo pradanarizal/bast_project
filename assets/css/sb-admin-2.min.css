@@ -591,7 +591,31 @@ pre code {
     margin-left: auto;
 }
 
+@media (min-width: 200px) {
+    .container,
+    .container-sm {
+        max-width: 250px;
+    }
+}
+
+@media (min-width: 320px) {
+    .container,
+    .container-sm {
+        max-width: 300px;
+    }
+}
+
+@media (min-width: 478px) {
+    .container,
+    .container-sm {
+        max-width: 500px;
+    }
+}
+
 @media (min-width: 576px) {
+    .img-sidebar {
+        height: 1.8rem;
+    }
     .container,
     .container-sm {
         max-width: 540px;
@@ -599,6 +623,9 @@ pre code {
 }
 
 @media (min-width: 768px) {
+    .img-sidebar {
+        height: 50px;
+    }
     .container,
     .container-md,
     .container-sm {
@@ -1887,6 +1914,9 @@ pre code {
 }
 
 @media (max-width: 767.98px) {
+    #note {
+        display: none;
+    }
     .table-responsive-md {
         display: block;
         width: 100%;
@@ -2389,7 +2419,7 @@ textarea.form-control.is-invalid {
 }
 
 .form-inline {
-    display: flex;
+    /* display: flex; */
     flex-flow: row wrap;
     align-items: center;
 }
@@ -4479,6 +4509,16 @@ input[type="submit"].btn-block {
     }
 }
 
+.container,
+.container-fluid,
+.container-lg,
+.container-md,
+.container-sm,
+.container-xl {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
 @media (min-width: 768px) {
     .navbar-expand-md {
         flex-flow: row nowrap;
@@ -4803,6 +4843,7 @@ input[type="submit"].btn-block {
     flex: 1 1 auto;
     min-height: 1px;
     padding: 1.25rem;
+    overflow: hidden;
 }
 
 .card-title {
@@ -6095,8 +6136,6 @@ a.close.disabled {
 }
 
 .modal-footer {
-    display: flex;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-end;
     padding: 0.75rem;
@@ -10163,16 +10202,6 @@ a:focus {
     flex: 1 0 auto;
 }
 
-.container,
-.container-fluid,
-.container-lg,
-.container-md,
-.container-sm,
-.container-xl {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-}
-
 .scroll-to-top {
     position: fixed;
     right: 1rem;
@@ -10526,10 +10555,6 @@ a:focus {
     width: 2rem;
 }
 
-.img-sidebar {
-    height: 50px;
-}
-
 .topbar {
     height: 4.375rem;
 }
@@ -10729,10 +10754,11 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner,
 .sidebar .nav-item .collapsing .collapse-inner {
-    /* padding: 0.5rem 0; */
+    padding: 0.5rem 0;
     min-width: 10rem;
     font-size: 0.85rem;
     margin: 0 0 1rem 0;
+    background-color: #111d2c;
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-header,

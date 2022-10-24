@@ -116,7 +116,7 @@ foreach ($user as $data) {
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="nip">NIP</label>
-                                    <input type="text" value="<?php echo $data->nip; ?>" name="nip" class="form-control" disabled>
+                                    <input minlength="4" maxlength="16" type="text" value="<?php echo $data->nip; ?>" name="nip" class="form-control" disabled>
                                     <input type="hidden" value="<?php echo $data->nip; ?>" name="nip">
                                 </div>
 
@@ -181,7 +181,7 @@ foreach ($user as $data) {
                             <div class="card">
                                 <div class="form-grup mt-3">
                                     <label for="">NIP</label>
-                                    <input type="text" id="nip" name="nip" class="form-control" required minlength="4" maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                    <input type="text" id="nip" name="nip" class="form-control" required minlength="4" maxlength="16" onkeypress="return event.charCode >= 48 && event.charCode <=57">
                                 </div>
 
                                 <div class="form-grup mt-3">

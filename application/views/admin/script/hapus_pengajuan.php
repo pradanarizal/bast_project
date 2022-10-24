@@ -16,9 +16,9 @@ foreach ($requestor as $data) {
                     <div class="modal-body">
                         Delete Request with ticket number <?php echo $data->no_tiket; ?> ?
                     </div>
-                    <div class="modal-footer  mt-3">
-                        <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">No</button>
-                        <button type="SUBMIT" class="btn btn-outline-danger">Yes</button>
+                    <div class="modal-footer mt-3 posisi-tombol-hapus">
+                        <button type="button" class="btn btn-outline-secondary all-tombol-hapus" data-dismiss="modal">No</button>
+                        <button type="SUBMIT" class="btn btn-outline-danger all-tombol-hapus">Yes</button>
                     </div>
                 </div>
             </div>
