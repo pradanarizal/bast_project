@@ -63,7 +63,7 @@ $hard = array(
     <?php
     $nik_admin;
     $nama_admin;
-    $recommendation;
+    $recommendation = "";
     foreach ($requestor as $data) {
         $nik_admin = $data['nik_admin'];
         $recommendation = $data['approval_notes'];
@@ -136,7 +136,7 @@ $hard = array(
                                     <td>Nama/Tanda Tangan :</td>
                                     <td rowspan="8">
                                         <div class="ttd" style="padding: 0.5rem;">
-                                            <img src="<?php echo base_url("assets/signature/" . $data['nik'] . ".png"); ?>" width="145" height="auto">
+                                            <img src="<?php echo base_url("assets/signature/" . $data['nik'] . ".png"); ?>" width="100" height="auto">
                                             <div><?php echo $data['nama']; ?></div>
                                         </div>
                                     </td>
@@ -249,14 +249,16 @@ $hard = array(
                                     <td>Nama/Tanda Tangan :</td>
                                     <td rowspan="8">
                                         <div class="ttd" style="padding: 0.5rem;">
-                                            <img src="<?php echo base_url("assets/signature/" . $admin['nik_admin'] . ".png"); ?>" width="145" height="auto">
+                                            <img src="<?php echo base_url("assets/signature/" . $admin['nik_admin'] . ".png"); ?>" width="100" height="auto">
                                             <div><?php echo $admin['nama_admin']; ?></div>
                                         </div>
                                     </td>
                                     <td></td>
                                 </tr>
-                        <?php }
-                        } ?>
+                        <?php
+                            }
+                        }
+                        ?>
                     </table>
                 </td>
             </tr>
@@ -271,13 +273,48 @@ $hard = array(
             <tr>
                 <td colspan="7" align="right">
                     <table border="0" style="margin-bottom: 10px;">
-                        <tr>
-                            <td>Nama/Tanda Tangan :</td>
-                            <td rowspan="7">
-                                <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
-                            </td>
-                            <td></td>
-                        </tr>
+                        <?php
+                        if (isset($userData)) {
+                            foreach ($userData as $admin) {
+                                if ($admin['nip'] != "") {
+                                    if ($recommendation != "" && $recommendation != "-") {
+                                        if (file_exists("assets/signature/" . $admin['nip'] . ".png")) {
+                        ?>
+                                            <tr style="position: relative;text-align: center;">
+                                                <td>Nama/Tanda Tangan :</td>
+                                                <td rowspan="8">
+                                                    <div class="ttd" style="padding: 0.5rem;">
+                                                        <img src="<?php echo base_url("assets/signature/" . $admin['nip'] . ".png"); ?>" width="100" height="auto">
+                                                        <div><?php echo $admin['nama']; ?></div>
+                                                    </div>
+                                                </td>
+                                                <td></td>
+                                            </tr>
+                                    <?php
+                                        }
+                                    }
+                                } else { ?>
+                                    <tr>
+                                        <td>Nama/Tanda Tangan :</td>
+                                        <td rowspan="7">
+                                            <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
+                                        </td>
+                                        <td></td>
+                                    </tr>
+                            <?php
+                                }
+                            }
+                        } else { ?>
+                            <tr>
+                                <td>Nama/Tanda Tangan :</td>
+                                <td rowspan="7">
+                                    <div class="ttd" style="padding: 20px 90px 20px 90px;"></div>
+                                </td>
+                                <td></td>
+                            </tr>
+                        <?php
+                        }
+                        ?>
                     </table>
                 </td>
             </tr>
@@ -286,9 +323,9 @@ $hard = array(
             </tr>
             <tr>
                 <td width="10px">Status</td>
-                <td width="10px" align="center"><input type="checkbox" name="<sds" id="sds" value="dsfd"></td>
+                <td width="10px" align="center"><input type="checkbox" name="sds" id="sds" value="dsfd"></td>
                 <td width="10px">OK</td>
-                <td width="10px" align="center"><input type="checkbox" name="<sds" id="sds" value="dsfd"></td>
+                <td width="10px" align="center"><input type="checkbox" name="sds" id="sds" value="dsfd"></td>
                 <td width="10px">NOT OK</td>
                 <td colspan="2"></td>
             </tr>

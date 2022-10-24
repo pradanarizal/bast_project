@@ -81,6 +81,20 @@ class Model_Noc extends CI_Model
         return $query->result_array();
     }
 
+    public function getRequestorForPrint($id_request)
+    {
+        $query = $this->db->query("SELECT * FROM request JOIN employee ON request.nik= employee.nik JOIN category ON request.id_category= category.id_category JOIN noc_admin ON request.nik_admin = noc_admin.nik_admin WHERE id_request = $id_request");
+        $row = $query->result_array();
+        return $row;
+    }
+
+    public function getUserData($nip)
+    {
+        $query = $this->db->query("SELECT * FROM user WHERE nip = $nip");
+        $row = $query->result_array();
+        return $row;
+    }
+
     public function getNocAdminBynik($nik)
     {
         $this->db->select('*');

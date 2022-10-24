@@ -285,8 +285,3 @@ foreach ($requestor as $data) {
     </div>
 <?php } ?>
 <!-- End of Main Content -->
-<script>
-    $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
-</script>

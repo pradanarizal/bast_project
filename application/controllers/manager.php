@@ -51,7 +51,7 @@ class Manager extends CI_Controller
     {
         $this->load->view('form/form_permintaan_hardware');
     }
-    
+
     public function reviewReq()
     {
         $data['softwares'] = array(
@@ -142,10 +142,54 @@ class Manager extends CI_Controller
         }
         $this->dashboard();
     }
-    
+
     public function generateSignature($nip, $signature)
     {
         $nama_file = "assets/signature/" . $nip . ".png";
         file_put_contents($nama_file, file_get_contents($signature));
+    }
+
+    public function hardwareSignature()
+    {
+        $data['requestor'] = $this->Model_Manager->getHardwareRequest();
+        $this->load->view('head', $data);
+        $this->load->view('manager/sidebar_manager', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('manager/hardware_signature', $data);
+        $this->load->view('admin/script/tandatangan');
+        $this->load->view('footer', $data);
+    }
+
+    public function actionSignature()
+    {
+        $id = $this->input->get("id");
+        $data['requestor'] = $this->Model_Manager->getHardwareRequestById($id);
+        $data['id'] = $id;
+        $this->load->view('head', $data);
+        $this->load->view('manager/sidebar_manager', $data);
+        $this->load->view('navbar', $data);
+        $this->load->view('manager/signature_action', $data);
+        $this->load->view('admin/script/tandatangan');
+        $this->load->view('footer', $data);
+    }
+
+    public function signRecommendation()
+    {
+        $id_request = $this->input->post('id');
+        $nip = $this->session->userdata('nip');
+        $signature = $this->input->post('signature');
+        $sign = $this->generateSignature($nip, $signature);
+        $this->Model_Manager->updateNipRequest($id_request, $nip);
+        if ($sign) {
+            echo '<script>
+            window.location.href="' . base_url("manager/hardwareSignature") . '";
+            alert("Sign Recommendation Success!"); 
+            </script>';
+        } else {
+            echo '<script>
+            window.location.href="' . base_url("manager/hardwareSignature") . '";
+            alert("Sign Recommendation Failed!"); 
+            </script>';
+        }
     }
 }

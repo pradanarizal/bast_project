@@ -22,12 +22,21 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?= $this->uri->segment(2) == '' ? "active" : '' ?>">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="<?php echo base_url('manager') ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Dashboard</span></a>
             </li>
 
+
+
             <!-- Nav Item - Tables -->
+            <li class="nav-item <?= $this->uri->segment(2) == 'hardwareSignature' ? "active" : '' ?>">
+                <a class="nav-link" href="<?php echo base_url('manager/hardwareSignature') ?>">
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Hardware Signature</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" href="#logoutModal">
                     <i class="fas fa-fw fa-cog"></i>

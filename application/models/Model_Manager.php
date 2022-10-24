@@ -13,6 +13,18 @@ class Model_Manager extends CI_Model
         $row = $data->result_array();
         return $row;
     }
+    public function getHardwareRequest()
+    {
+        $data = $this->db->query("SELECT * FROM request INNER JOIN employee ON request.nik = employee.nik WHERE tipe_pengajuan = 'hardware'");
+        $row = $data->result_array();
+        return $row;
+    }
+    public function getHardwareRequestById($id)
+    {
+        $data = $this->db->query("SELECT * FROM request INNER JOIN employee ON request.nik = employee.nik WHERE tipe_pengajuan = 'hardware' AND id_request = $id");
+        $row = $data->result_array();
+        return $row;
+    }
     public function getRequestorById($id)
     {
         $data = $this->db->query("SELECT * FROM request JOIN employee ON request.nik= employee.nik JOIN category ON request.id_category= category.id_category JOIN noc_admin ON request.nik_admin = noc_admin.nik_admin WHERE id_request = $id");
@@ -25,7 +37,7 @@ class Model_Manager extends CI_Model
         $row = $data->result_array();
         return $row;
     }
-    
+
     public function changeStatus($id, $notes, $status, $tanggal, $nip)
     {
         $data = $this->db->query("UPDATE `request` SET `tanggal_approval` = '$tanggal', `status` = '$status', `approval_notes` = '$notes', `nip` = '$nip'  WHERE `id_request` = $id;");
@@ -38,4 +50,12 @@ class Model_Manager extends CI_Model
         return $data;
     }
 
+    public function updateNipRequest($id_request, $nip)
+    {
+        $update = array(
+            "nip" => $nip
+        );
+        $this->db->where('id_request', $id_request);
+        $this->db->update('request', $update);
+    }
 }

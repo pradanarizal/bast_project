@@ -337,10 +337,10 @@ class Admin extends CI_Controller
     public function add_receiver()
     {
         $data['receipt'] = $this->Model_Noc->getReceiptByIdReceiver($this->input->get('idReceipt'));
-        if($this->input->get('nikAdmin') != ""){
+        if ($this->input->get('nikAdmin') != "") {
             $nik_admin = $this->input->get('nikAdmin');
             $data['noc_admin'] = $this->Model_Noc->getNocAdminById($nik_admin);
-            $data['nik_admin'] = $this->input->get('nikAdmin');  
+            $data['nik_admin'] = $this->input->get('nikAdmin');
         } else {
             $data['nik_admin'] = 0;
         }
@@ -462,7 +462,12 @@ class Admin extends CI_Controller
         $no_tiket = $this->input->get('noTiket');
         $nik_admin = $this->input->get('nik_admin');
         $data['nocAdmin'] = $this->Model_Noc->getNocAdminBynik($nik_admin);
-        $data['requestor'] = $this->Model_Noc->getRequestorById_2($id_request);
+        $data['requestor'] = $this->Model_Noc->getRequestorForPrint($id_request);
+        foreach ($data['requestor'] as $user) {
+            if ($user['nip'] != "") {
+                $data['userData'] = $this->Model_Noc->getUserData($user['nip']);
+            }
+        }
         $data['komponen'] = $this->Model_Noc->gethardware_byNoTiket($no_tiket);
         $this->load->view('form/form_permintaan_hardware', $data);
     }

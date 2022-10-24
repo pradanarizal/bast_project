@@ -13,7 +13,7 @@
                         <button class="btn btn-md btn-success  mb-3" data-toggle="modal" data-target="#tambahHardware"><i class="fas fa-plus fa-sm mr-2"></i>Add New Submission</button>
                     </div>
                     <!-- data table -->
-                    <table id="myTable" class="display">
+                    <table id="myTable" class="display nowrap table" style="width:100%">
                         <thead>
                             <tr>
                                 <th>No.Ticket</th>
@@ -36,14 +36,32 @@
                                         <td><?php echo $data->nik; ?></td>
                                         <td><?php echo $data->nama; ?></td>
                                         <td><?php echo $data->keluhan; ?></td>
-                                        <td><?php echo $data->status; ?></td>
+                                        <td>
+                                            <?php
+                                            if ($data->status != "finish") {
+                                                echo $data->status;
+                                            } else {
+                                                if ($data->nip == "") {
+                                                    if ($data->approval_notes == "") {
+                                                        echo "Done";
+                                                    } else {
+                                                        echo "Need Manager Signature";
+                                                    }
+                                                } else {
+                                                    echo "Done";
+                                                }
+                                            }
+                                            ?>
+                                        </td>
                                         <td><?php echo date("d-m-Y",  strtotime($data->tanggal_request)); ?></td>
 
                                         <?php
                                         if ($data->status == "finish") { ?>
                                             <!-- tombol view data dengan status = finish -->
                                             <td>
-                                                <button class="tombol bg-primary text-white" title="Print" onClick="newWindow = window.open('<?php echo base_url('admin/reviewReq?idRequest=' . $data->id_request . '&noTiket=' . $data->no_tiket . '&nik_admin=' . $data->nik_admin); ?>');newWindow.print();">
+                                                <button class="tombol bg-primary text-white" title="Print" onClick="newWindow = window.open('<?php echo base_url('admin/reviewReq?idRequest=' . $data->id_request . '&noTiket=' . $data->no_tiket . '&nik_admin=' . $data->nik_admin); ?>');newWindow.print();" <?php if ($data->nip == "" && $data->approval_notes != "") {
+                                                                                                                                                                                                                                                                                                                    echo "disabled";
+                                                                                                                                                                                                                                                                                                                } ?>>
                                                     <font style="font-weight: bold;">
                                                         <i class="fa fa-print"></i>
                                                     </font>
