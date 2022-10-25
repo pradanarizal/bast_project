@@ -47,7 +47,7 @@ if (isset($message)) {
                             <input type="number" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIPP"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="pwd" placeholder="Password" required>
+                            <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="password" placeholder="Password" required>
                         </div>
                         <input type="submit" name="login" value="Login" class="btn btn-danger btn-block custom-button">
                     </form>
