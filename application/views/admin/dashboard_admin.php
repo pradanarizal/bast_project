@@ -13,6 +13,7 @@ $all = 0;
 $aAll = 0;
 $pAll = 0;
 $rAll = 0;
+$allpending = 0;
 foreach ($request as $data) {
     if ($data['tipe_pengajuan'] == 'software') {
         $software++;
