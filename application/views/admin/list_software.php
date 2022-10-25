@@ -150,8 +150,8 @@ foreach ($softwares as $data) {
                     <h4>Input Data Admin Who Forward This Submission</h4>
                     <div class="form-group mt-3">
                         <input class="form-control" type="text" name="softwareCount" value="<?php echo count($softwares); ?>" hidden>
-                        <label for="nik">NIP/NIK</label>
-                        <input class="form-control" type="text" name="nik" id="nik" required>
+                        <label for="nik">NIK/NIPP</label>
+                        <input class="form-control" type="text" name="nik" id="nik" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                     </div>
                     <div class="form-group mt-3">
                         <label for="name">Admin Name</label>
