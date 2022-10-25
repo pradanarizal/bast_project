@@ -20,7 +20,7 @@
                         <input class="form-control" type="text" name="component_count" value="<?php echo count($komponen); ?>" hidden>
 
                         <label for="nik">NIK/NIPP</label>
-                        <input class="form-control" type="text" name="nik" id="nik" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
+                        <input class="form-control" type="number" name="nik" id="nik" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                     </div>
 
                     <div class="form-group mt-3">

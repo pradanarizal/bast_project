@@ -23,7 +23,7 @@
                     <tr>
                         <th>No</th>
                         <th>NIPP</th>
-                        <th>Nama</th>
+                        <th>Name</th>
                         <th>Role</th>
                         <th>Password</th>
                         <th>Action</th>

@@ -60,7 +60,7 @@
                                 <input type="number" id="nik_receiver" class="form-control" name="nik_receiver"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                             </div>
                             <div class="form-grup mt-3">
-                                <label for="itemID" class="text-dark font-weight-bold">Nama</label>
+                                <label for="itemID" class="text-dark font-weight-bold">Name</label>
                                 <input type="text" class="form-control" name="nama_receiver" required>
                             </div>
                             <div class="form-grup mt-3">
