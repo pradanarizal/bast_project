@@ -17,8 +17,8 @@
                     <table id="myTable" class="display">
                         <thead>
                             <tr>
-                                <th>No.Ticket</th>
-                                <th>NIK/NIP</th>
+                                <th>Ticket Number</th>
+                                <th>NIK/NIPP</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Status</th>

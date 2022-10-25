@@ -15,7 +15,7 @@
                             <tr>
                                 <th>No.Ticket</th>
                                 <th>Giver Name</th>
-                                <th>NIK/NIP</th>
+                                <th>NIK/NIPP</th>
                                 <th>Item Name</th>
                                 <th>Use For</th>
                                 <th>Description</th>

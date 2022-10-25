@@ -17,11 +17,11 @@
                     ?>
                             <form method="post" action="<?php echo site_url('admin/update_receipt_receiver') ?>">
                                 <div class="form-grup mt-3">
-                                    <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
-                                    <input readonly type="text" id="nik" class="form-control" name="nik_receiver" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57" value="<?php echo $data['nik_admin'] ?>" required>
+                                    <label for="itemName" class="text-dark font-weight-bold">NIK/NIPP</label>
+                                    <input readonly type="number" id="nik" class="form-control" name="nik_receiver"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required value="<?php echo $data['nik_admin'] ?>" required>
                                 </div>
                                 <div class="form-grup mt-3">
-                                    <label for="itemID" class="text-dark font-weight-bold">Nama</label>
+                                    <label for="itemID" class="text-dark font-weight-bold">Name</label>
                                     <input readonly type="text" class="form-control" name="nama_receiver" value="<?php echo $data['nama_admin'] ?>" required>
                                 </div>
                                 <div class="form-grup mt-3">
@@ -56,8 +56,8 @@
                         </div>
                         <form method="post" action="<?php echo site_url('admin/simpan_receipt_receiver') ?>">
                             <div class="form-grup mt-3">
-                                <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
-                                <input type="text" id="nik_receiver" class="form-control" name="nik_receiver" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <label for="itemName" class="text-dark font-weight-bold">NIK/NIPP</label>
+                                <input type="number" id="nik_receiver" class="form-control" name="nik_receiver"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                             </div>
                             <div class="form-grup mt-3">
                                 <label for="itemID" class="text-dark font-weight-bold">Nama</label>

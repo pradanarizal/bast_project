@@ -26,7 +26,12 @@ class Login_controller extends CI_Controller
 			$password = $this->input->post('password');
 			if ($this->Model_Login->cekLogin($nip, $password)) {
 				$data = $this->Model_Login->getDataforsession($nip, $password);
-				$data = array('nip' => $data['nip'], 'nama' => $data['nama'], 'role' => $data['role'], 'status' => 'login');
+				$data = array(
+					'nip' => $data['nip'],
+					'nama' => $data['nama'],
+					'role' => $data['role'], 
+					'status' => 'login'
+				);
 				$this->session->set_userdata($data);
 				$this->auth($data['role']);
 			} else {

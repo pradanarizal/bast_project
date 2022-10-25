@@ -14,8 +14,8 @@
                     <h5 class="text-dark mt-3 text-center font-weight-bold">Software Installation Request Form</h5>
                     <div class="card">
                         <div class="form-group mt-3">
-                            <label for="no_tiket">No Ticket</label>
-                            <input type="text" name="no_tiket" class="form-control" id="no_tiket" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                            <label for="no_tiket">Ticket Number</label>
+                            <input type="number" name="no_tiket" class="form-control" id="no_tiket"  required>
                         </div>
                     </div>
 
@@ -23,8 +23,8 @@
                         <h5 class="text-dark mt-3 text-center font-weight-bold">Requestor</h5>
                         <div class="card">
                             <div class="form-grup mt-3">
-                                <label for="inputnik">NIK/NIP</label>
-                                <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <label for="inputnik">NIK/NIPP</label>
+                                <input type="number" id="inputnik" name="inputnik" class="form-control"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                             </div>
 
                             <div class="form-grup mt-3">

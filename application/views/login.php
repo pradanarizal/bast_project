@@ -44,10 +44,10 @@ if (isset($message)) {
                     </div>
                     <form class="user" action="<?php echo base_url('login_controller/dashboard') ?>" method="POST">
                         <div class="form-group">
-                            <input type="text" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIP" minlength="4" maxlength="10" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                            <input type="number" style="border-radius: 10px !important;" class="custom-form form-control" name="nip" placeholder="NIPP"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                         </div>
                         <div class="form-group">
-                            <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="password" placeholder="Password" required>
+                            <input type="password" style="border-radius: 10px !important;" class="custom-form form-control" name="pwd" placeholder="Password" required>
                         </div>
                         <input type="submit" name="login" value="Login" class="btn btn-danger btn-block custom-button">
                     </form>

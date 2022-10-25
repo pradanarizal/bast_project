@@ -8,12 +8,12 @@
                 <div class="form-grup mt-3">
                     <label for="itemName" class="text-dark font-weight-bold">Ticket Number</label>
                     <input type="text" name="id" id="id" value="<?php echo $id; ?>" hidden>
-                    <input type="text" id="nik" class="form-control" name="" minlength="4" maxlength="16" value="<?php echo $data['no_tiket'] ?>" disabled>
+                    <input type="text" id="nik" class="form-control" name="" minlength="4" value="<?php echo $data['no_tiket'] ?>" disabled>
                 </div>
                 <div class="form-grup mt-3">
-                    <label for="itemName" class="text-dark font-weight-bold">NIK/NIP</label>
+                    <label for="itemName" class="text-dark font-weight-bold">NIK/NIPP</label>
                     <input type="text" name="nip" value="<?php echo $data['nik_admin']; ?>" hidden>
-                    <input type="text" id="nik" class="form-control" name="nip" minlength="4" maxlength="16" value="<?php echo $data['nik_admin']; ?>" disabled>
+                    <input type="text" id="nik" class="form-control" name="nip" minlength="4" maxlength="10" value="<?php echo $data['nik_admin']; ?>" disabled>
                 </div>
                 <div class="form-grup mt-3">
                     <label for="itemID" class="text-dark font-weight-bold">Nama</label>

@@ -17,9 +17,9 @@ foreach ($requestor as $data) {
                         <h5 class="text-dark mt-3 text-center font-weight-bold">Formulir Pengecekan PC/Laptop</h5>
                         <div class="card">
                             <div class="form-group mt-3">
-                                <label for="no_tiket">No Ticket</label>
+                                <label for="no_tiket">Ticket Number</label>
                                 <input type="text" name="id_request" class="form-control" value="<?php echo $data->id_request; ?>" hidden>
-                                <input type="text" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <input type="number" onkeypress="if (this.value.length == 10) return false;" name="no_tiket" class="form-control" placeholder="Input No. Ticket" value="<?php echo $data->no_tiket; ?>"  required>
                             </div>
                         </div>
 
@@ -27,8 +27,8 @@ foreach ($requestor as $data) {
                             <h5 class="text-dark mt-3 text-center font-weight-bold">Requestor</h5>
                             <div class="card">
                                 <div class="form-grup mt-3">
-                                    <label for="inputnik">NIK/NIP</label>
-                                    <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="4" maxlength="16" value="<?php echo $data->nik; ?>" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                    <label for="inputnik">NIK/NIPP</label>
+                                    <input type="number" id="inputnik" name="inputnik" class="form-control"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" value="<?php echo $data->nik; ?>" required>
                                 </div>
 
                                 <div class="form-grup mt-3">

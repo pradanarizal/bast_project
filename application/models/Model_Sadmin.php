@@ -31,7 +31,7 @@ class Model_Sadmin extends CI_Model
         if ($cek->num_rows() >= 1) {
             echo '<script>
             window.location.href="' . base_url('sadmin/user') . '";
-            alert("NIP already used...!"); 
+            alert("NIPP already used...!"); 
             </script>';
         } else {
             $this->db->insert('user', $data);

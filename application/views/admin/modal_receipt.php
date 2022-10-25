@@ -15,8 +15,8 @@
                     <form action="<?php echo site_url() . 'admin/receipt_save'; ?>" method="post" enctype="multipart/form-data">
                         <div class="card mb-3">
                             <div class="form-group mt-3">
-                                <label for="inputEmail4">No Ticket</label>
-                                <input type="text" name="no_tiket" class="form-control" id="inputEmail4" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <label for="inputEmail4">Ticket Number</label>
+                                <input type="number" name="no_tiket" class="form-control" id="inputEmail4"  required>
                             </div>
                         </div>
 
@@ -27,8 +27,8 @@
                                 <input type="text" id="inputNama" name="inputNama" class="form-control" required>
                             </div>
                             <div class="form-grup mt-3">
-                                <label for="inputNik" class="text-dark font-weight-bold">NIK/NIP</label>
-                                <input type="text" id="inputNik" minlength="4" maxlength="16" name="inputNik" class="form-control" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <label for="inputNik" class="text-dark font-weight-bold">NIK/NIPP</label>
+                                <input type="number" id="inputNik" name="inputNik" class="form-control"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                             </div>
                             <div class="form-check-inline row">
                                 <div class="form-grup mt-3 col-sm">

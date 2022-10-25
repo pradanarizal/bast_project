@@ -22,7 +22,7 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>NIP</th>
+                        <th>NIPP</th>
                         <th>Nama</th>
                         <th>Role</th>
                         <th>Password</th>
@@ -115,8 +115,8 @@ foreach ($user as $data) {
                         <div class="request">
                             <div class="card">
                                 <div class="form-grup mt-3">
-                                    <label for="nip">NIP</label>
-                                    <input minlength="4" maxlength="16" type="text" value="<?php echo $data->nip; ?>" name="nip" class="form-control" disabled>
+                                    <label for="nip">NIPP</label>
+                                    <input minlength="4" maxlength="10" type="text" value="<?php echo $data->nip; ?>" name="nip" class="form-control" disabled>
                                     <input type="hidden" value="<?php echo $data->nip; ?>" name="nip">
                                 </div>
 
@@ -180,8 +180,8 @@ foreach ($user as $data) {
                         <div class="request">
                             <div class="card">
                                 <div class="form-grup mt-3">
-                                    <label for="">NIP</label>
-                                    <input type="text" id="nip" name="nip" class="form-control" required minlength="4" maxlength="16" onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                    <label for="">NIPP</label>
+                                    <input type="number" id="nip" name="nip" class="form-control" required  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
                                 </div>
 
                                 <div class="form-grup mt-3">

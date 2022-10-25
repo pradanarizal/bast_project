@@ -10,22 +10,22 @@
         <div class="card-body">
             <table id="myTable" class="display" border="0px">
                 <tr>
-                    <td>NIP</td>
+                    <td>NIPP</td>
                     <td>:</td>
                     <td><input type="text" name="nip"></td>
                 </tr>
                 <tr>
-                    <td>NIP</td>
+                    <td>NIPP</td>
                     <td>:</td>
                     <td><input type="text" name="nip"></td>
                 </tr>
                 <tr>
-                    <td>NIP</td>
+                    <td>NIPP</td>
                     <td>:</td>
                     <td><input type="text" name="nip"></td>
                 </tr>
                 <tr>
-                    <td>NIP</td>
+                    <td>NIPP</td>
                     <td>:</td>
                     <td><input type="text" name="nip"></td>
                 </tr>

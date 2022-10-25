@@ -11,8 +11,8 @@ class Model_Login extends CI_Model
     {
         $this->db->select('nip, password');
         $this->db->from('user');
-        $this->db->where('nip', $nip, TRUE);
-        $this->db->where('password', $pass, FALSE);
+        $this->db->where('nip', $nip);
+        $this->db->where('password', $pass);
         $query = $this->db->get();
         if ($query->num_rows() == 0) {
             return false;

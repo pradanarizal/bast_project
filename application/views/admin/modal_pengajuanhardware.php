@@ -19,8 +19,8 @@
                     <h5 class="text-dark mt-3 text-center font-weight-bold">PC/Laptop Check Form</h5>
                     <div class="card">
                         <div class="form-group mt-3">
-                            <label for="noticket">No Ticket</label>
-                            <input type="text" name="noticket" class="form-control" id="noticket" minlength="4" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                            <label for="noticket">Ticket Number</label>
+                            <input type="number" name="noticket" class="form-control" id="noticket"  required>
                         </div>
                     </div>
 
@@ -30,8 +30,8 @@
                         <div class="card">
 
                             <div class="form-grup mt-3">
-                                <label for="inputnik">NIK/NIP</label>
-                                <input type="text" id="inputnik" name="inputnik" class="form-control" minlength="4" maxlength="16" required onkeypress="return event.charCode >= 48 && event.charCode <=57">
+                                <label for="inputnik">NIK/NIPP</label>
+                                <input type="number" id="inputnik" name="inputnik" class="form-control"  maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required>
                             </div>
 
                             <div class="form-grup mt-3">

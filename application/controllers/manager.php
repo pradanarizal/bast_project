@@ -180,16 +180,9 @@ class Manager extends CI_Controller
         $signature = $this->input->post('signature');
         $sign = $this->generateSignature($nip, $signature);
         $this->Model_Manager->updateNipRequest($id_request, $nip);
-        if ($sign) {
-            echo '<script>
+        echo '<script>
             window.location.href="' . base_url("manager/hardwareSignature") . '";
             alert("Sign Recommendation Success!"); 
             </script>';
-        } else {
-            echo '<script>
-            window.location.href="' . base_url("manager/hardwareSignature") . '";
-            alert("Sign Recommendation Failed!"); 
-            </script>';
-        }
     }
 }
