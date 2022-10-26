@@ -18,7 +18,7 @@ $soft = array(
 <style>
     .tabel tr td {
         text-align: center;
-        font-size: 15px;
+        font-size: 13px;
     }
 
     .container {
@@ -150,7 +150,7 @@ $soft = array(
                                     <td rowspan="8">
                                         <div class="ttd">
                                             <img src="<?php echo base_url("assets/signature/" . $data['nik'] . ".png"); ?>" width="145" height="auto">
-                                            <div style="position: absolute;top: 28%;left: 85%;"><?php echo $data['nama']; ?></div>
+                                            <div style="position: absolute;top: 28%;left: 81%;"><?php echo $data['nama']; ?></div>
                                         </div>
                                     </td>
                                 </tr>
@@ -254,7 +254,7 @@ $soft = array(
                         <div style="padding-left: 90px;margin-right:25%;">
                             <div class="ttd">
                                 <img src="<?php echo base_url("assets/signature/" . $nik . ".png"); ?>" width="145" height="auto">
-                                <div style="position: absolute;top: 81%;left: 22%;"><?php echo $nama; ?></div>
+                                <div style="position: absolute;top: 81.5%;left: 18%;"><?php echo $nama; ?></div>
                                 <div style="position: absolute;top: 78%;left: 15%;">Request Owner</div>
                             </div>
                         </div>
@@ -276,7 +276,7 @@ $soft = array(
                                 <td rowspan="7">
                                     <div class="ttd">
                                         <img src="<?php echo base_url("assets/signature/" . $nik_admin . ".png"); ?>" width="145" height="auto">
-                                        <div style="position: absolute;top: 80.5%;left: 83%;"><?php echo $nama_admin; ?></div>
+                                        <div style="position: absolute;top: 81%;left: 80%;"><?php echo $nama_admin; ?></div>
                                     </div>
                                 </td>
                             </tr>
@@ -368,7 +368,7 @@ $soft = array(
                                     <td rowspan="7">
                                         <div class="ttd">
                                             <img src="<?php echo base_url("assets/signature/" . $nip . ".png"); ?>" width="130" height="auto">
-                                            <div style="position: absolute;top: 97%;left: 43%;"><?php echo $nama; ?></div>
+                                            <div style="position: absolute;top: 97.8%;left: 43%;"><?php echo $nama; ?></div>
                                         </div>
                                     </td>
                                 </tr>
